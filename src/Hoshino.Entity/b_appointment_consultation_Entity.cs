@@ -1,0 +1,83 @@
+﻿using System;
+
+namespace Hoshino.Entity
+{
+    public class b_appointment_consultation_Entity
+    {
+        /// <summary>
+        /// 
+        /// <summary>
+        public int AC_ID { get; set; }
+
+        /// <summary>
+        /// 公司名称
+        /// <summary>
+        public string Company { get; set; }
+
+        /// <summary>
+        /// 联系人
+        /// <summary>
+        public string Contacts { get; set; }
+
+        /// <summary>
+        /// 电话
+        /// <summary>
+        public string Phone { get; set; }
+
+        /// <summary>
+        /// 电子邮箱
+        /// <summary>
+        public string Email { get; set; }
+
+        /// <summary>
+        /// 事项
+        /// <summary>
+        public string Matter { get; set; }
+
+        /// <summary>
+        /// 资料
+        /// <summary>
+        public string Material { get; set; }
+
+        /// <summary>
+        /// 未处理
+        /// <summary>
+        public int AC_Status { get; set; }
+
+        /// <summary>
+        /// 处理结果
+        /// <summary>
+        public string Processing_Result { get; set; }
+
+        /// <summary>
+        /// 
+        /// <summary>
+        public DateTime Create_Time { get; set; }
+
+        /// <summary>
+        /// 用户ID
+        /// <summary>
+        public string Create_UserId { get; set; }
+
+        /// <summary>
+        /// 用户名称：操作时的用户名
+        /// <summary>
+        public string Create_User { get; set; }
+
+        /// <summary>
+        /// 
+        /// <summary>
+        public DateTime Update_Time { get; set; }
+
+        /// <summary>
+        /// 用户ID
+        /// <summary>
+        public string Update_UserId { get; set; }
+
+        /// <summary>
+        /// 用户名称：操作时的用户名
+        /// <summary>
+        public string Update_User { get; set; }
+
+    }
+}

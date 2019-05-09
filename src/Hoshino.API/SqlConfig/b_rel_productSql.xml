@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SqlSetting>
+    <Data name="Insert_b_rel_product">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                INSERT INTO b_rel_product (P_Relevant_ID,Source_Product_ID,Rel_Product_ID,P_Relevant_Status,P_Relevant_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User) VALUES(@@P_Relevant_ID@@,@@Source_Product_ID@@,@@Rel_Product_ID@@,@@P_Relevant_Status@@,@@P_Relevant_Seq@@,@@Create_Time@@,@@Create_UserId@@,@@Create_User@@,@@Update_Time@@,@@Update_UserId@@,@@Update_User@@);
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Update_b_rel_product">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                UPDATE b_rel_product SET P_Relevant_ID=@@P_Relevant_ID@@,Source_Product_ID=@@Source_Product_ID@@,Rel_Product_ID=@@Rel_Product_ID@@,P_Relevant_Status=@@P_Relevant_Status@@,P_Relevant_Seq=@@P_Relevant_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@ WHERE P_Relevant_ID=@@P_Relevant_ID@@;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Delete_b_rel_product">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                DELETE FROM b_rel_product WHERE P_Relevant_ID=@@P_Relevant_ID@@;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Select_b_rel_product">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                SELECT P_Relevant_ID,Source_Product_ID,Rel_Product_ID,P_Relevant_Status,P_Relevant_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_rel_product WHERE P_Relevant_ID=@@P_Relevant_ID@@;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Select_b_rel_product_List">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                SELECT COUNT(0) AS row_count FROM b_rel_product WHERE P_Relevant_ID=@@P_Relevant_ID@@,Source_Product_ID=@@Source_Product_ID@@,Rel_Product_ID=@@Rel_Product_ID@@,P_Relevant_Status=@@P_Relevant_Status@@,P_Relevant_Seq=@@P_Relevant_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@;
+                SELECT P_Relevant_ID,Source_Product_ID,Rel_Product_ID,P_Relevant_Status,P_Relevant_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_rel_product WHERE P_Relevant_ID=@@P_Relevant_ID@@,Source_Product_ID=@@Source_Product_ID@@,Rel_Product_ID=@@Rel_Product_ID@@,P_Relevant_Status=@@P_Relevant_Status@@,P_Relevant_Seq=@@P_Relevant_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@ LIMIT <R%= @@StartIndex@@, @@SelectCount@@ %R> ;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+</SqlSetting>
+

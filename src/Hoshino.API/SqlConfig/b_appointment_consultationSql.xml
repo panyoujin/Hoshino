@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SqlSetting>
+    <Data name="Insert_b_appointment_consultation">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                INSERT INTO b_appointment_consultation (AC_ID,Company,Contacts,Phone,Email,Matter,Material,AC_Status,Processing_Result,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User) VALUES(@@AC_ID@@,@@Company@@,@@Contacts@@,@@Phone@@,@@Email@@,@@Matter@@,@@Material@@,@@AC_Status@@,@@Processing_Result@@,@@Create_Time@@,@@Create_UserId@@,@@Create_User@@,@@Update_Time@@,@@Update_UserId@@,@@Update_User@@);
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Update_b_appointment_consultation">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                UPDATE b_appointment_consultation SET AC_ID=@@AC_ID@@,Company=@@Company@@,Contacts=@@Contacts@@,Phone=@@Phone@@,Email=@@Email@@,Matter=@@Matter@@,Material=@@Material@@,AC_Status=@@AC_Status@@,Processing_Result=@@Processing_Result@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@ WHERE AC_ID=@@AC_ID@@;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Delete_b_appointment_consultation">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                DELETE FROM b_appointment_consultation WHERE AC_ID=@@AC_ID@@;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Select_b_appointment_consultation">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                SELECT AC_ID,Company,Contacts,Phone,Email,Matter,Material,AC_Status,Processing_Result,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_appointment_consultation WHERE AC_ID=@@AC_ID@@;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Select_b_appointment_consultation_List">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                SELECT COUNT(0) AS row_count FROM b_appointment_consultation WHERE AC_ID=@@AC_ID@@,Company=@@Company@@,Contacts=@@Contacts@@,Phone=@@Phone@@,Email=@@Email@@,Matter=@@Matter@@,Material=@@Material@@,AC_Status=@@AC_Status@@,Processing_Result=@@Processing_Result@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@;
+                SELECT AC_ID,Company,Contacts,Phone,Email,Matter,Material,AC_Status,Processing_Result,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_appointment_consultation WHERE AC_ID=@@AC_ID@@,Company=@@Company@@,Contacts=@@Contacts@@,Phone=@@Phone@@,Email=@@Email@@,Matter=@@Matter@@,Material=@@Material@@,AC_Status=@@AC_Status@@,Processing_Result=@@Processing_Result@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@ LIMIT <R%= @@StartIndex@@, @@SelectCount@@ %R> ;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+</SqlSetting>
+

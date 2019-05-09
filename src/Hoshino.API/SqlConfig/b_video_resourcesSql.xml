@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SqlSetting>
+    <Data name="Insert_b_video_resources">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                INSERT INTO b_video_resources (Video_ID,Video_Name_CH,Video_Name_HK,Video_URL,Video_Location,Video_Status,Video_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User) VALUES(@@Video_ID@@,@@Video_Name_CH@@,@@Video_Name_HK@@,@@Video_URL@@,@@Video_Location@@,@@Video_Status@@,@@Video_Seq@@,@@Create_Time@@,@@Create_UserId@@,@@Create_User@@,@@Update_Time@@,@@Update_UserId@@,@@Update_User@@);
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Update_b_video_resources">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                UPDATE b_video_resources SET Video_ID=@@Video_ID@@,Video_Name_CH=@@Video_Name_CH@@,Video_Name_HK=@@Video_Name_HK@@,Video_URL=@@Video_URL@@,Video_Location=@@Video_Location@@,Video_Status=@@Video_Status@@,Video_Seq=@@Video_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@ WHERE Video_ID=@@Video_ID@@;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Delete_b_video_resources">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                DELETE FROM b_video_resources WHERE Video_ID=@@Video_ID@@;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Select_b_video_resources">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                SELECT Video_ID,Video_Name_CH,Video_Name_HK,Video_URL,Video_Location,Video_Status,Video_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_video_resources WHERE Video_ID=@@Video_ID@@;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Select_b_video_resources_List">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                SELECT COUNT(0) AS row_count FROM b_video_resources WHERE Video_ID=@@Video_ID@@,Video_Name_CH=@@Video_Name_CH@@,Video_Name_HK=@@Video_Name_HK@@,Video_URL=@@Video_URL@@,Video_Location=@@Video_Location@@,Video_Status=@@Video_Status@@,Video_Seq=@@Video_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@;
+                SELECT Video_ID,Video_Name_CH,Video_Name_HK,Video_URL,Video_Location,Video_Status,Video_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_video_resources WHERE Video_ID=@@Video_ID@@,Video_Name_CH=@@Video_Name_CH@@,Video_Name_HK=@@Video_Name_HK@@,Video_URL=@@Video_URL@@,Video_Location=@@Video_Location@@,Video_Status=@@Video_Status@@,Video_Seq=@@Video_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@ LIMIT <R%= @@StartIndex@@, @@SelectCount@@ %R> ;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+</SqlSetting>
+

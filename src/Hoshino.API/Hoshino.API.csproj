@@ -1,0 +1,67 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.2</TargetFramework>
+        <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <UserSecretsId>8da61aa1-c069-438d-a06e-33783f96f9ff</UserSecretsId>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.App" />
+        <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.0.2105168" />
+        <PackageReference Include="NLog" Version="4.5.11" />
+        <PackageReference Include="NLog.Mongo" Version="4.6.0.68" />
+        <PackageReference Include="NLog.Web.AspNetCore" Version="4.7.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
+        <PackageReference Include="Pan.Code" Version="1.0.0" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Hoshino.Entity\Hoshino.Entity.csproj" />
+        <ProjectReference Include="..\Hoshino.IRepository\Hoshino.IRepository.csproj" />
+        <ProjectReference Include="..\Hoshino.Repository\Hoshino.Repository.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="SqlConfig\b_appointment_consultationSql.xml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Include="SqlConfig\b_banner_resourcesSql.xml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Include="SqlConfig\b_categorySql.xml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Include="SqlConfig\b_contactSql.xml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Include="SqlConfig\b_productSql.xml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Include="SqlConfig\b_product_attributeSql.xml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Include="SqlConfig\b_product_resourcesSql.xml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Include="SqlConfig\b_rel_productSql.xml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Include="SqlConfig\b_video_resourcesSql.xml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Include="SqlConfig\log_infoSql.xml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Include="SqlConfig\sys_userSql.xml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+    <ItemGroup>
+        <Content Update="appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Update="nlog.config">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+</Project>
+

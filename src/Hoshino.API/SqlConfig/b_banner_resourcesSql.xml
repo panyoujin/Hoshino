@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SqlSetting>
+    <Data name="Insert_b_banner_resources">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                INSERT INTO b_banner_resources (Banner_ID,Banner_Name_CH,Banner_Name_HK,Banner_URL,Banner_Type,Banner_Location,Banner_Status,Banner_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User) VALUES(@@Banner_ID@@,@@Banner_Name_CH@@,@@Banner_Name_HK@@,@@Banner_URL@@,@@Banner_Type@@,@@Banner_Location@@,@@Banner_Status@@,@@Banner_Seq@@,@@Create_Time@@,@@Create_UserId@@,@@Create_User@@,@@Update_Time@@,@@Update_UserId@@,@@Update_User@@);
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Update_b_banner_resources">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                UPDATE b_banner_resources SET Banner_ID=@@Banner_ID@@,Banner_Name_CH=@@Banner_Name_CH@@,Banner_Name_HK=@@Banner_Name_HK@@,Banner_URL=@@Banner_URL@@,Banner_Type=@@Banner_Type@@,Banner_Location=@@Banner_Location@@,Banner_Status=@@Banner_Status@@,Banner_Seq=@@Banner_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@ WHERE Banner_ID=@@Banner_ID@@;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Delete_b_banner_resources">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                DELETE FROM b_banner_resources WHERE Banner_ID=@@Banner_ID@@;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Select_b_banner_resources">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                SELECT Banner_ID,Banner_Name_CH,Banner_Name_HK,Banner_URL,Banner_Type,Banner_Location,Banner_Status,Banner_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_banner_resources WHERE Banner_ID=@@Banner_ID@@;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Select_b_banner_resources_List">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                SELECT COUNT(0) AS row_count FROM b_banner_resources WHERE Banner_ID=@@Banner_ID@@,Banner_Name_CH=@@Banner_Name_CH@@,Banner_Name_HK=@@Banner_Name_HK@@,Banner_URL=@@Banner_URL@@,Banner_Type=@@Banner_Type@@,Banner_Location=@@Banner_Location@@,Banner_Status=@@Banner_Status@@,Banner_Seq=@@Banner_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@;
+                SELECT Banner_ID,Banner_Name_CH,Banner_Name_HK,Banner_URL,Banner_Type,Banner_Location,Banner_Status,Banner_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_banner_resources WHERE Banner_ID=@@Banner_ID@@,Banner_Name_CH=@@Banner_Name_CH@@,Banner_Name_HK=@@Banner_Name_HK@@,Banner_URL=@@Banner_URL@@,Banner_Type=@@Banner_Type@@,Banner_Location=@@Banner_Location@@,Banner_Status=@@Banner_Status@@,Banner_Seq=@@Banner_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@ LIMIT <R%= @@StartIndex@@, @@SelectCount@@ %R> ;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+</SqlSetting>
+

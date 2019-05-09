@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SqlSetting>
+    <Data name="Insert_b_product">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                INSERT INTO b_product (Product_ID,Category_ID,Product_Name_CH,Product_Name_HK,Product_New,Product_Hot,Product_Recommend,Product_Status,Product_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User) VALUES(@@Product_ID@@,@@Category_ID@@,@@Product_Name_CH@@,@@Product_Name_HK@@,@@Product_New@@,@@Product_Hot@@,@@Product_Recommend@@,@@Product_Status@@,@@Product_Seq@@,@@Create_Time@@,@@Create_UserId@@,@@Create_User@@,@@Update_Time@@,@@Update_UserId@@,@@Update_User@@);
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Update_b_product">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                UPDATE b_product SET Product_ID=@@Product_ID@@,Category_ID=@@Category_ID@@,Product_Name_CH=@@Product_Name_CH@@,Product_Name_HK=@@Product_Name_HK@@,Product_New=@@Product_New@@,Product_Hot=@@Product_Hot@@,Product_Recommend=@@Product_Recommend@@,Product_Status=@@Product_Status@@,Product_Seq=@@Product_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@ WHERE Product_ID=@@Product_ID@@;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Delete_b_product">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                DELETE FROM b_product WHERE Product_ID=@@Product_ID@@;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Select_b_product">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                SELECT Product_ID,Category_ID,Product_Name_CH,Product_Name_HK,Product_New,Product_Hot,Product_Recommend,Product_Status,Product_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_product WHERE Product_ID=@@Product_ID@@;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Select_b_product_List">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                SELECT COUNT(0) AS row_count FROM b_product WHERE Product_ID=@@Product_ID@@,Category_ID=@@Category_ID@@,Product_Name_CH=@@Product_Name_CH@@,Product_Name_HK=@@Product_Name_HK@@,Product_New=@@Product_New@@,Product_Hot=@@Product_Hot@@,Product_Recommend=@@Product_Recommend@@,Product_Status=@@Product_Status@@,Product_Seq=@@Product_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@;
+                SELECT Product_ID,Category_ID,Product_Name_CH,Product_Name_HK,Product_New,Product_Hot,Product_Recommend,Product_Status,Product_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_product WHERE Product_ID=@@Product_ID@@,Category_ID=@@Category_ID@@,Product_Name_CH=@@Product_Name_CH@@,Product_Name_HK=@@Product_Name_HK@@,Product_New=@@Product_New@@,Product_Hot=@@Product_Hot@@,Product_Recommend=@@Product_Recommend@@,Product_Status=@@Product_Status@@,Product_Seq=@@Product_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@ LIMIT <R%= @@StartIndex@@, @@SelectCount@@ %R> ;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+</SqlSetting>
+
