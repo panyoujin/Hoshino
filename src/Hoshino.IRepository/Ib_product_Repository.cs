@@ -31,5 +31,16 @@ namespace Hoshino.IRepository
         /// <summary>
         (IEnumerable<b_product_Entity>,int) GetList(b_product_Entity model,int pageindex,int pagesize);
 
+
+        /// <summary>
+        /// 获取最新产品列表
+        /// <summary>
+        (IEnumerable<T>, int) GetNewProductList<T>();
+
+
+        /// <summary>
+        /// 获取热门產品列表
+        /// <summary>
+        (IEnumerable<T>, int) GetHotProductList<T>();
     }
 }

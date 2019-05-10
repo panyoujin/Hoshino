@@ -13,7 +13,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                UPDATE b_video_resources SET Video_ID=@@Video_ID@@,Video_Name_CH=@@Video_Name_CH@@,Video_Name_HK=@@Video_Name_HK@@,Video_URL=@@Video_URL@@,Video_Location=@@Video_Location@@,Video_Status=@@Video_Status@@,Video_Seq=@@Video_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@ WHERE Video_ID=@@Video_ID@@;
+                UPDATE b_video_resources SET Video_ID=@@Video_ID@@% <%=,Video_Name_CH=@@Video_Name_CH@@%>,<%=,Video_Name_HK=@@Video_Name_HK@@%>,<%=,Video_URL=@@Video_URL@@%>,<%=,Video_Location=@@Video_Location@@%>,<%=,Video_Status=@@Video_Status@@%>,<%=,Video_Seq=@@Video_Seq@@%>,<%=,Create_Time=@@Create_Time@@%>,<%=,Create_UserId=@@Create_UserId@@%>,<%=,Create_User=@@Create_User@@%>,<%=,Update_Time=@@Update_Time@@%>,<%=,Update_UserId=@@Update_UserId@@%>,<%=,Update_User=@@Update_User@@%> WHERE Video_ID=@@Video_ID@@%;
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -22,7 +22,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                DELETE FROM b_video_resources WHERE Video_ID=@@Video_ID@@;
+                DELETE FROM b_video_resources WHERE Video_ID=@@Video_ID@@%;
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -31,7 +31,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                SELECT Video_ID,Video_Name_CH,Video_Name_HK,Video_URL,Video_Location,Video_Status,Video_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_video_resources WHERE Video_ID=@@Video_ID@@;
+                SELECT Video_ID,Video_Name_CH,Video_Name_HK,Video_URL,Video_Location,Video_Status,Video_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_video_resources WHERE 1=1 <%= AND Video_ID=@@Video_ID@@%> <%= AND Video_Name_CH=@@Video_Name_CH@@%> <%= AND Video_Name_HK=@@Video_Name_HK@@%> <%= AND Video_URL=@@Video_URL@@%> <%= AND Video_Location=@@Video_Location@@%> <%= AND Video_Status=@@Video_Status@@%> <%= AND Video_Seq=@@Video_Seq@@%> <%= AND Create_Time=@@Create_Time@@%> <%= AND Create_UserId=@@Create_UserId@@%> <%= AND Create_User=@@Create_User@@%> <%= AND Update_Time=@@Update_Time@@%> <%= AND Update_UserId=@@Update_UserId@@%> <%= AND Update_User=@@Update_User@@%>;
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -40,8 +40,8 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                SELECT COUNT(0) AS row_count FROM b_video_resources WHERE Video_ID=@@Video_ID@@,Video_Name_CH=@@Video_Name_CH@@,Video_Name_HK=@@Video_Name_HK@@,Video_URL=@@Video_URL@@,Video_Location=@@Video_Location@@,Video_Status=@@Video_Status@@,Video_Seq=@@Video_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@;
-                SELECT Video_ID,Video_Name_CH,Video_Name_HK,Video_URL,Video_Location,Video_Status,Video_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_video_resources WHERE Video_ID=@@Video_ID@@,Video_Name_CH=@@Video_Name_CH@@,Video_Name_HK=@@Video_Name_HK@@,Video_URL=@@Video_URL@@,Video_Location=@@Video_Location@@,Video_Status=@@Video_Status@@,Video_Seq=@@Video_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@ LIMIT <R%= @@StartIndex@@, @@SelectCount@@ %R> ;
+                SELECT Video_ID,Video_Name_CH,Video_Name_HK,Video_URL,Video_Location,Video_Status,Video_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_video_resources WHERE 1=1 <%= AND Video_ID=@@Video_ID@@%> <%= AND Video_Name_CH=@@Video_Name_CH@@%> <%= AND Video_Name_HK=@@Video_Name_HK@@%> <%= AND Video_URL=@@Video_URL@@%> <%= AND Video_Location=@@Video_Location@@%> <%= AND Video_Status=@@Video_Status@@%> <%= AND Video_Seq=@@Video_Seq@@%> <%= AND Create_Time=@@Create_Time@@%> <%= AND Create_UserId=@@Create_UserId@@%> <%= AND Create_User=@@Create_User@@%> <%= AND Update_Time=@@Update_Time@@%> <%= AND Update_UserId=@@Update_UserId@@%> <%= AND Update_User=@@Update_User@@%> LIMIT <R%= @@StartIndex@@, @@SelectCount@@ %R> ;
+                SELECT COUNT(0) AS row_count FROM b_video_resources WHERE 1=1 <%= AND Video_ID=@@Video_ID@@%> <%= AND Video_Name_CH=@@Video_Name_CH@@%> <%= AND Video_Name_HK=@@Video_Name_HK@@%> <%= AND Video_URL=@@Video_URL@@%> <%= AND Video_Location=@@Video_Location@@%> <%= AND Video_Status=@@Video_Status@@%> <%= AND Video_Seq=@@Video_Seq@@%> <%= AND Create_Time=@@Create_Time@@%> <%= AND Create_UserId=@@Create_UserId@@%> <%= AND Create_User=@@Create_User@@%> <%= AND Update_Time=@@Update_Time@@%> <%= AND Update_UserId=@@Update_UserId@@%> <%= AND Update_User=@@Update_User@@%>;
                 ]]>
             </SqlCommand>
         </SqlDefinition>

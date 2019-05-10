@@ -105,6 +105,8 @@ namespace Hoshino.Repository
             dic["Update_Time"] = model.Update_Time;
             dic["Update_UserId"] = model.Update_UserId;
             dic["Update_User"] = model.Update_User;
+            dic["StartIndex"] = pageindex == 0 ? 0 : pageindex * pagesize + 1;
+            dic["SelectCount"] = pagesize;
             var list = SQLHelperFactory.Instance.QueryMultipleByPage<sys_user_Entity>("Select_sys_user_List", dic,out int total);
             return (list,total);
         }

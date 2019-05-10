@@ -29,7 +29,7 @@ namespace Hoshino.Repository
             dic["Update_Time"] = model.Update_Time;
             dic["Update_UserId"] = model.Update_UserId;
             dic["Update_User"] = model.Update_User;
-            return SQLHelperFactory.Instance.ExecuteNonQuery("Insert_b_product", dic) >0 ;
+            return SQLHelperFactory.Instance.ExecuteNonQuery("Insert_b_product", dic) > 0;
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Hoshino.Repository
             dic["Update_Time"] = model.Update_Time;
             dic["Update_UserId"] = model.Update_UserId;
             dic["Update_User"] = model.Update_User;
-            return SQLHelperFactory.Instance.ExecuteNonQuery("Update_b_product", dic) >0 ;
+            return SQLHelperFactory.Instance.ExecuteNonQuery("Update_b_product", dic) > 0;
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Hoshino.Repository
             dic["Update_Time"] = model.Update_Time;
             dic["Update_UserId"] = model.Update_UserId;
             dic["Update_User"] = model.Update_User;
-            return SQLHelperFactory.Instance.ExecuteNonQuery("Delete_b_product", dic) >0 ;
+            return SQLHelperFactory.Instance.ExecuteNonQuery("Delete_b_product", dic) > 0;
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Hoshino.Repository
         /// <summary>
         /// 获取列表
         /// <summary>
-        public (IEnumerable<b_product_Entity>,int) GetList(b_product_Entity model,int pageindex,int pagesize)
+        public (IEnumerable<b_product_Entity>, int) GetList(b_product_Entity model, int pageindex, int pagesize)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic["Product_ID"] = model.Product_ID;
@@ -125,9 +125,30 @@ namespace Hoshino.Repository
             dic["Update_Time"] = model.Update_Time;
             dic["Update_UserId"] = model.Update_UserId;
             dic["Update_User"] = model.Update_User;
-            var list = SQLHelperFactory.Instance.QueryMultipleByPage<b_product_Entity>("Select_b_product_List", dic,out int total);
-            return (list,total);
+            dic["StartIndex"] = pageindex == 0 ? 0 : pageindex * pagesize + 1;
+            dic["SelectCount"] = pagesize;
+            var list = SQLHelperFactory.Instance.QueryMultipleByPage<b_product_Entity>("Select_b_product_List", dic, out int total);
+            return (list, total);
         }
 
+        public (IEnumerable<T>, int) GetNewProductList<T>()
+        {
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic["Product_New"] = 1;
+            dic["StartIndex"] = 0;
+            dic["SelectCount"] = 24;
+            var list = SQLHelperFactory.Instance.QueryMultipleByPage<T>("Select_b_product_List", dic, out int total);
+            return (list, total);
+        }
+
+        public (IEnumerable<T>, int) GetHotProductList<T>()
+        {
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic["Product_Hot"] = 1;
+            dic["StartIndex"] = 0;
+            dic["SelectCount"] = 24;
+            var list = SQLHelperFactory.Instance.QueryMultipleByPage<T>("Select_b_product_List", dic, out int total);
+            return (list, total);
+        }
     }
 }

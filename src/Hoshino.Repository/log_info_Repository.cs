@@ -85,6 +85,8 @@ namespace Hoshino.Repository
             dic["type"] = model.type;
             dic["creation_time"] = model.creation_time;
             dic["ip"] = model.ip;
+            dic["StartIndex"] = pageindex == 0 ? 0 : pageindex * pagesize + 1;
+            dic["SelectCount"] = pagesize;
             var list = SQLHelperFactory.Instance.QueryMultipleByPage<log_info_Entity>("Select_log_info_List", dic,out int total);
             return (list,total);
         }

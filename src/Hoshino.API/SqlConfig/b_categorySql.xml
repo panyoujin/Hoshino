@@ -13,7 +13,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                UPDATE b_category SET Category_ID=@@Category_ID@@,Parent_Category_ID=@@Parent_Category_ID@@,Category_Name_CH=@@Category_Name_CH@@,Category_Name_HK=@@Category_Name_HK@@,Category_Status=@@Category_Status@@,Category_Seq=@@Category_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@ WHERE Category_ID=@@Category_ID@@;
+                UPDATE b_category SET Category_ID=@@Category_ID@@% <%=,Parent_Category_ID=@@Parent_Category_ID@@%>,<%=,Category_Name_CH=@@Category_Name_CH@@%>,<%=,Category_Name_HK=@@Category_Name_HK@@%>,<%=,Category_Status=@@Category_Status@@%>,<%=,Category_Seq=@@Category_Seq@@%>,<%=,Create_Time=@@Create_Time@@%>,<%=,Create_UserId=@@Create_UserId@@%>,<%=,Create_User=@@Create_User@@%>,<%=,Update_Time=@@Update_Time@@%>,<%=,Update_UserId=@@Update_UserId@@%>,<%=,Update_User=@@Update_User@@%> WHERE Category_ID=@@Category_ID@@%;
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -22,7 +22,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                DELETE FROM b_category WHERE Category_ID=@@Category_ID@@;
+                DELETE FROM b_category WHERE Category_ID=@@Category_ID@@%;
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -31,7 +31,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                SELECT Category_ID,Parent_Category_ID,Category_Name_CH,Category_Name_HK,Category_Status,Category_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_category WHERE Category_ID=@@Category_ID@@;
+                SELECT Category_ID,Parent_Category_ID,Category_Name_CH,Category_Name_HK,Category_Status,Category_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_category WHERE 1=1 <%= AND Category_ID=@@Category_ID@@%> <%= AND Parent_Category_ID=@@Parent_Category_ID@@%> <%= AND Category_Name_CH=@@Category_Name_CH@@%> <%= AND Category_Name_HK=@@Category_Name_HK@@%> <%= AND Category_Status=@@Category_Status@@%> <%= AND Category_Seq=@@Category_Seq@@%> <%= AND Create_Time=@@Create_Time@@%> <%= AND Create_UserId=@@Create_UserId@@%> <%= AND Create_User=@@Create_User@@%> <%= AND Update_Time=@@Update_Time@@%> <%= AND Update_UserId=@@Update_UserId@@%> <%= AND Update_User=@@Update_User@@%>;
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -40,8 +40,8 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                SELECT COUNT(0) AS row_count FROM b_category WHERE Category_ID=@@Category_ID@@,Parent_Category_ID=@@Parent_Category_ID@@,Category_Name_CH=@@Category_Name_CH@@,Category_Name_HK=@@Category_Name_HK@@,Category_Status=@@Category_Status@@,Category_Seq=@@Category_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@;
-                SELECT Category_ID,Parent_Category_ID,Category_Name_CH,Category_Name_HK,Category_Status,Category_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_category WHERE Category_ID=@@Category_ID@@,Parent_Category_ID=@@Parent_Category_ID@@,Category_Name_CH=@@Category_Name_CH@@,Category_Name_HK=@@Category_Name_HK@@,Category_Status=@@Category_Status@@,Category_Seq=@@Category_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@ LIMIT <R%= @@StartIndex@@, @@SelectCount@@ %R> ;
+                SELECT Category_ID,Parent_Category_ID,Category_Name_CH,Category_Name_HK,Category_Status,Category_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_category WHERE 1=1 <%= AND Category_ID=@@Category_ID@@%> <%= AND Parent_Category_ID=@@Parent_Category_ID@@%> <%= AND Category_Name_CH=@@Category_Name_CH@@%> <%= AND Category_Name_HK=@@Category_Name_HK@@%> <%= AND Category_Status=@@Category_Status@@%> <%= AND Category_Seq=@@Category_Seq@@%> <%= AND Create_Time=@@Create_Time@@%> <%= AND Create_UserId=@@Create_UserId@@%> <%= AND Create_User=@@Create_User@@%> <%= AND Update_Time=@@Update_Time@@%> <%= AND Update_UserId=@@Update_UserId@@%> <%= AND Update_User=@@Update_User@@%> LIMIT <R%= @@StartIndex@@, @@SelectCount@@ %R> ;
+                SELECT COUNT(0) AS row_count FROM b_category WHERE 1=1 <%= AND Category_ID=@@Category_ID@@%> <%= AND Parent_Category_ID=@@Parent_Category_ID@@%> <%= AND Category_Name_CH=@@Category_Name_CH@@%> <%= AND Category_Name_HK=@@Category_Name_HK@@%> <%= AND Category_Status=@@Category_Status@@%> <%= AND Category_Seq=@@Category_Seq@@%> <%= AND Create_Time=@@Create_Time@@%> <%= AND Create_UserId=@@Create_UserId@@%> <%= AND Create_User=@@Create_User@@%> <%= AND Update_Time=@@Update_Time@@%> <%= AND Update_UserId=@@Update_UserId@@%> <%= AND Update_User=@@Update_User@@%>;
                 ]]>
             </SqlCommand>
         </SqlDefinition>

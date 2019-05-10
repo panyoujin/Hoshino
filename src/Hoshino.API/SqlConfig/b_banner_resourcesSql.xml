@@ -13,7 +13,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                UPDATE b_banner_resources SET Banner_ID=@@Banner_ID@@,Banner_Name_CH=@@Banner_Name_CH@@,Banner_Name_HK=@@Banner_Name_HK@@,Banner_URL=@@Banner_URL@@,Banner_Type=@@Banner_Type@@,Banner_Location=@@Banner_Location@@,Banner_Status=@@Banner_Status@@,Banner_Seq=@@Banner_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@ WHERE Banner_ID=@@Banner_ID@@;
+                UPDATE b_banner_resources SET Banner_ID=@@Banner_ID@@% <%=,Banner_Name_CH=@@Banner_Name_CH@@%>,<%=,Banner_Name_HK=@@Banner_Name_HK@@%>,<%=,Banner_URL=@@Banner_URL@@%>,<%=,Banner_Type=@@Banner_Type@@%>,<%=,Banner_Location=@@Banner_Location@@%>,<%=,Banner_Status=@@Banner_Status@@%>,<%=,Banner_Seq=@@Banner_Seq@@%>,<%=,Create_Time=@@Create_Time@@%>,<%=,Create_UserId=@@Create_UserId@@%>,<%=,Create_User=@@Create_User@@%>,<%=,Update_Time=@@Update_Time@@%>,<%=,Update_UserId=@@Update_UserId@@%>,<%=,Update_User=@@Update_User@@%> WHERE Banner_ID=@@Banner_ID@@%;
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -22,7 +22,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                DELETE FROM b_banner_resources WHERE Banner_ID=@@Banner_ID@@;
+                DELETE FROM b_banner_resources WHERE Banner_ID=@@Banner_ID@@%;
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -31,7 +31,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                SELECT Banner_ID,Banner_Name_CH,Banner_Name_HK,Banner_URL,Banner_Type,Banner_Location,Banner_Status,Banner_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_banner_resources WHERE Banner_ID=@@Banner_ID@@;
+                SELECT Banner_ID,Banner_Name_CH,Banner_Name_HK,Banner_URL,Banner_Type,Banner_Location,Banner_Status,Banner_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_banner_resources WHERE 1=1 <%= AND Banner_ID=@@Banner_ID@@%> <%= AND Banner_Name_CH=@@Banner_Name_CH@@%> <%= AND Banner_Name_HK=@@Banner_Name_HK@@%> <%= AND Banner_URL=@@Banner_URL@@%> <%= AND Banner_Type=@@Banner_Type@@%> <%= AND Banner_Location=@@Banner_Location@@%> <%= AND Banner_Status=@@Banner_Status@@%> <%= AND Banner_Seq=@@Banner_Seq@@%> <%= AND Create_Time=@@Create_Time@@%> <%= AND Create_UserId=@@Create_UserId@@%> <%= AND Create_User=@@Create_User@@%> <%= AND Update_Time=@@Update_Time@@%> <%= AND Update_UserId=@@Update_UserId@@%> <%= AND Update_User=@@Update_User@@%>;
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -40,8 +40,8 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                SELECT COUNT(0) AS row_count FROM b_banner_resources WHERE Banner_ID=@@Banner_ID@@,Banner_Name_CH=@@Banner_Name_CH@@,Banner_Name_HK=@@Banner_Name_HK@@,Banner_URL=@@Banner_URL@@,Banner_Type=@@Banner_Type@@,Banner_Location=@@Banner_Location@@,Banner_Status=@@Banner_Status@@,Banner_Seq=@@Banner_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@;
-                SELECT Banner_ID,Banner_Name_CH,Banner_Name_HK,Banner_URL,Banner_Type,Banner_Location,Banner_Status,Banner_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_banner_resources WHERE Banner_ID=@@Banner_ID@@,Banner_Name_CH=@@Banner_Name_CH@@,Banner_Name_HK=@@Banner_Name_HK@@,Banner_URL=@@Banner_URL@@,Banner_Type=@@Banner_Type@@,Banner_Location=@@Banner_Location@@,Banner_Status=@@Banner_Status@@,Banner_Seq=@@Banner_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@ LIMIT <R%= @@StartIndex@@, @@SelectCount@@ %R> ;
+                SELECT Banner_ID,Banner_Name_CH,Banner_Name_HK,Banner_URL,Banner_Type,Banner_Location,Banner_Status,Banner_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_banner_resources WHERE 1=1 <%= AND Banner_ID=@@Banner_ID@@%> <%= AND Banner_Name_CH=@@Banner_Name_CH@@%> <%= AND Banner_Name_HK=@@Banner_Name_HK@@%> <%= AND Banner_URL=@@Banner_URL@@%> <%= AND Banner_Type=@@Banner_Type@@%> <%= AND Banner_Location=@@Banner_Location@@%> <%= AND Banner_Status=@@Banner_Status@@%> <%= AND Banner_Seq=@@Banner_Seq@@%> <%= AND Create_Time=@@Create_Time@@%> <%= AND Create_UserId=@@Create_UserId@@%> <%= AND Create_User=@@Create_User@@%> <%= AND Update_Time=@@Update_Time@@%> <%= AND Update_UserId=@@Update_UserId@@%> <%= AND Update_User=@@Update_User@@%> LIMIT <R%= @@StartIndex@@, @@SelectCount@@ %R> ;
+                SELECT COUNT(0) AS row_count FROM b_banner_resources WHERE 1=1 <%= AND Banner_ID=@@Banner_ID@@%> <%= AND Banner_Name_CH=@@Banner_Name_CH@@%> <%= AND Banner_Name_HK=@@Banner_Name_HK@@%> <%= AND Banner_URL=@@Banner_URL@@%> <%= AND Banner_Type=@@Banner_Type@@%> <%= AND Banner_Location=@@Banner_Location@@%> <%= AND Banner_Status=@@Banner_Status@@%> <%= AND Banner_Seq=@@Banner_Seq@@%> <%= AND Create_Time=@@Create_Time@@%> <%= AND Create_UserId=@@Create_UserId@@%> <%= AND Create_User=@@Create_User@@%> <%= AND Update_Time=@@Update_Time@@%> <%= AND Update_UserId=@@Update_UserId@@%> <%= AND Update_User=@@Update_User@@%>;
                 ]]>
             </SqlCommand>
         </SqlDefinition>

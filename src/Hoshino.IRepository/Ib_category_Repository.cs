@@ -31,5 +31,6 @@ namespace Hoshino.IRepository
         /// <summary>
         (IEnumerable<b_category_Entity>,int) GetList(b_category_Entity model,int pageindex,int pagesize);
 
+
     }
 }

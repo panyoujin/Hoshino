@@ -13,7 +13,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                UPDATE b_product SET Product_ID=@@Product_ID@@,Category_ID=@@Category_ID@@,Product_Name_CH=@@Product_Name_CH@@,Product_Name_HK=@@Product_Name_HK@@,Product_New=@@Product_New@@,Product_Hot=@@Product_Hot@@,Product_Recommend=@@Product_Recommend@@,Product_Status=@@Product_Status@@,Product_Seq=@@Product_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@ WHERE Product_ID=@@Product_ID@@;
+                UPDATE b_product SET Product_ID=@@Product_ID@@% <%=,Category_ID=@@Category_ID@@%>,<%=,Product_Name_CH=@@Product_Name_CH@@%>,<%=,Product_Name_HK=@@Product_Name_HK@@%>,<%=,Product_New=@@Product_New@@%>,<%=,Product_Hot=@@Product_Hot@@%>,<%=,Product_Recommend=@@Product_Recommend@@%>,<%=,Product_Status=@@Product_Status@@%>,<%=,Product_Seq=@@Product_Seq@@%>,<%=,Create_Time=@@Create_Time@@%>,<%=,Create_UserId=@@Create_UserId@@%>,<%=,Create_User=@@Create_User@@%>,<%=,Update_Time=@@Update_Time@@%>,<%=,Update_UserId=@@Update_UserId@@%>,<%=,Update_User=@@Update_User@@%> WHERE Product_ID=@@Product_ID@@%;
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -22,7 +22,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                DELETE FROM b_product WHERE Product_ID=@@Product_ID@@;
+                DELETE FROM b_product WHERE Product_ID=@@Product_ID@@%;
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -31,7 +31,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                SELECT Product_ID,Category_ID,Product_Name_CH,Product_Name_HK,Product_New,Product_Hot,Product_Recommend,Product_Status,Product_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_product WHERE Product_ID=@@Product_ID@@;
+                SELECT Product_ID,Category_ID,Product_Name_CH,Product_Name_HK,Product_New,Product_Hot,Product_Recommend,Product_Status,Product_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_product WHERE 1=1 <%= AND Product_ID=@@Product_ID@@%> <%= AND Category_ID=@@Category_ID@@%> <%= AND Product_Name_CH=@@Product_Name_CH@@%> <%= AND Product_Name_HK=@@Product_Name_HK@@%> <%= AND Product_New=@@Product_New@@%> <%= AND Product_Hot=@@Product_Hot@@%> <%= AND Product_Recommend=@@Product_Recommend@@%> <%= AND Product_Status=@@Product_Status@@%> <%= AND Product_Seq=@@Product_Seq@@%> <%= AND Create_Time=@@Create_Time@@%> <%= AND Create_UserId=@@Create_UserId@@%> <%= AND Create_User=@@Create_User@@%> <%= AND Update_Time=@@Update_Time@@%> <%= AND Update_UserId=@@Update_UserId@@%> <%= AND Update_User=@@Update_User@@%>;
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -40,8 +40,8 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                SELECT COUNT(0) AS row_count FROM b_product WHERE Product_ID=@@Product_ID@@,Category_ID=@@Category_ID@@,Product_Name_CH=@@Product_Name_CH@@,Product_Name_HK=@@Product_Name_HK@@,Product_New=@@Product_New@@,Product_Hot=@@Product_Hot@@,Product_Recommend=@@Product_Recommend@@,Product_Status=@@Product_Status@@,Product_Seq=@@Product_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@;
-                SELECT Product_ID,Category_ID,Product_Name_CH,Product_Name_HK,Product_New,Product_Hot,Product_Recommend,Product_Status,Product_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_product WHERE Product_ID=@@Product_ID@@,Category_ID=@@Category_ID@@,Product_Name_CH=@@Product_Name_CH@@,Product_Name_HK=@@Product_Name_HK@@,Product_New=@@Product_New@@,Product_Hot=@@Product_Hot@@,Product_Recommend=@@Product_Recommend@@,Product_Status=@@Product_Status@@,Product_Seq=@@Product_Seq@@,Create_Time=@@Create_Time@@,Create_UserId=@@Create_UserId@@,Create_User=@@Create_User@@,Update_Time=@@Update_Time@@,Update_UserId=@@Update_UserId@@,Update_User=@@Update_User@@ LIMIT <R%= @@StartIndex@@, @@SelectCount@@ %R> ;
+                SELECT Product_ID,Category_ID,Product_Name_CH,Product_Name_HK,Product_New,Product_Hot,Product_Recommend,Product_Status,Product_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_product WHERE 1=1 <%= AND Product_ID=@@Product_ID@@%> <%= AND Category_ID=@@Category_ID@@%> <%= AND Product_Name_CH=@@Product_Name_CH@@%> <%= AND Product_Name_HK=@@Product_Name_HK@@%> <%= AND Product_New=@@Product_New@@%> <%= AND Product_Hot=@@Product_Hot@@%> <%= AND Product_Recommend=@@Product_Recommend@@%> <%= AND Product_Status=@@Product_Status@@%> <%= AND Product_Seq=@@Product_Seq@@%> <%= AND Create_Time=@@Create_Time@@%> <%= AND Create_UserId=@@Create_UserId@@%> <%= AND Create_User=@@Create_User@@%> <%= AND Update_Time=@@Update_Time@@%> <%= AND Update_UserId=@@Update_UserId@@%> <%= AND Update_User=@@Update_User@@%> LIMIT <R%= @@StartIndex@@, @@SelectCount@@ %R> ;
+                SELECT COUNT(0) AS row_count FROM b_product WHERE 1=1 <%= AND Product_ID=@@Product_ID@@%> <%= AND Category_ID=@@Category_ID@@%> <%= AND Product_Name_CH=@@Product_Name_CH@@%> <%= AND Product_Name_HK=@@Product_Name_HK@@%> <%= AND Product_New=@@Product_New@@%> <%= AND Product_Hot=@@Product_Hot@@%> <%= AND Product_Recommend=@@Product_Recommend@@%> <%= AND Product_Status=@@Product_Status@@%> <%= AND Product_Seq=@@Product_Seq@@%> <%= AND Create_Time=@@Create_Time@@%> <%= AND Create_UserId=@@Create_UserId@@%> <%= AND Create_User=@@Create_User@@%> <%= AND Update_Time=@@Update_Time@@%> <%= AND Update_UserId=@@Update_UserId@@%> <%= AND Update_User=@@Update_User@@%>;
                 ]]>
             </SqlCommand>
         </SqlDefinition>
