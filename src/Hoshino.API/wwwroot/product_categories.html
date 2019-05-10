@@ -36,10 +36,17 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="buttons.html#">
                             <i class="fa fa-wrench"></i>
                         </a>
-                        <!--<ul class="dropdown-menu dropdown-user">
-                            <li><a href="buttons.html#">选项1</a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#categoryAlert">新增</a>
                             </li>
-                        </ul>-->
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#categoryAlert">编辑</a>
+                            </li>
+                            <li>
+                                <a href="#" id="deleteMenu" >删除</a>
+                            </li>
+                        </ul>
                         <a class="close-link">
                             <i class="fa fa-times"></i>
                         </a>
@@ -50,9 +57,35 @@
                 </div>
             </div>
         </div>
-        
 
     </div>
+
+    <!-- 弹出窗口 开始-->
+    <div class="modal inmodal fade" id="categoryAlert" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <select class="form-control m-b" name="account">
+                        <option>所有分类</option>
+                        <option>分类 1</option>
+                    </select>
+                    <input type="text" placeholder="分类名称" class="form-control m-b">
+                </div>
+                <!--<div class="modal-body">
+                    <select class="form-control m-b" name="account">
+                        <option>所有分类</option>
+                        <option>分类 1</option>
+                    </select>
+                </div>-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹出窗口 结束-->
+
     <script src="js/jquery.min.js?v=2.1.4"></script>
     <script src="js/bootstrap.min.js?v=3.3.6"></script>
     <script src="js/content.min.js?v=1.0.0"></script>
