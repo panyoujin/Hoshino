@@ -14,19 +14,58 @@ namespace Hoshino.Repository
         public bool Insert(b_video_resources_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["Video_ID"] = model.Video_ID;
-            dic["Video_Name_CH"] = model.Video_Name_CH;
-            dic["Video_Name_HK"] = model.Video_Name_HK;
-            dic["Video_URL"] = model.Video_URL;
-            dic["Video_Location"] = model.Video_Location;
-            dic["Video_Status"] = model.Video_Status;
-            dic["Video_Seq"] = model.Video_Seq;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.Video_ID != 0)
+            {
+                dic["Video_ID"] = model.Video_ID;
+            }
+            if(model.Video_Name_CH != null)
+            {
+                dic["Video_Name_CH"] = model.Video_Name_CH;
+            }
+            if(model.Video_Name_HK != null)
+            {
+                dic["Video_Name_HK"] = model.Video_Name_HK;
+            }
+            if(model.Video_URL != null)
+            {
+                dic["Video_URL"] = model.Video_URL;
+            }
+            if(model.Video_Location != null)
+            {
+                dic["Video_Location"] = model.Video_Location;
+            }
+            if(model.Video_Status != null && model.Video_Status.HasValue)
+            {
+                dic["Video_Status"] = model.Video_Status;
+            }
+            
+            {
+                dic["Video_Seq"] = model.Video_Seq;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Insert_b_video_resources", dic) >0 ;
         }
 
@@ -36,19 +75,58 @@ namespace Hoshino.Repository
         public bool Update(b_video_resources_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["Video_ID"] = model.Video_ID;
-            dic["Video_Name_CH"] = model.Video_Name_CH;
-            dic["Video_Name_HK"] = model.Video_Name_HK;
-            dic["Video_URL"] = model.Video_URL;
-            dic["Video_Location"] = model.Video_Location;
-            dic["Video_Status"] = model.Video_Status;
-            dic["Video_Seq"] = model.Video_Seq;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.Video_ID != 0)
+            {
+                dic["Video_ID"] = model.Video_ID;
+            }
+            if(model.Video_Name_CH != null)
+            {
+                dic["Video_Name_CH"] = model.Video_Name_CH;
+            }
+            if(model.Video_Name_HK != null)
+            {
+                dic["Video_Name_HK"] = model.Video_Name_HK;
+            }
+            if(model.Video_URL != null)
+            {
+                dic["Video_URL"] = model.Video_URL;
+            }
+            if(model.Video_Location != null)
+            {
+                dic["Video_Location"] = model.Video_Location;
+            }
+            if(model.Video_Status != null && model.Video_Status.HasValue)
+            {
+                dic["Video_Status"] = model.Video_Status;
+            }
+            
+            {
+                dic["Video_Seq"] = model.Video_Seq;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Update_b_video_resources", dic) >0 ;
         }
 
@@ -58,19 +136,58 @@ namespace Hoshino.Repository
         public bool Delete(b_video_resources_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["Video_ID"] = model.Video_ID;
-            dic["Video_Name_CH"] = model.Video_Name_CH;
-            dic["Video_Name_HK"] = model.Video_Name_HK;
-            dic["Video_URL"] = model.Video_URL;
-            dic["Video_Location"] = model.Video_Location;
-            dic["Video_Status"] = model.Video_Status;
-            dic["Video_Seq"] = model.Video_Seq;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.Video_ID != 0)
+            {
+                dic["Video_ID"] = model.Video_ID;
+            }
+            if(model.Video_Name_CH != null)
+            {
+                dic["Video_Name_CH"] = model.Video_Name_CH;
+            }
+            if(model.Video_Name_HK != null)
+            {
+                dic["Video_Name_HK"] = model.Video_Name_HK;
+            }
+            if(model.Video_URL != null)
+            {
+                dic["Video_URL"] = model.Video_URL;
+            }
+            if(model.Video_Location != null)
+            {
+                dic["Video_Location"] = model.Video_Location;
+            }
+            if(model.Video_Status != null && model.Video_Status.HasValue)
+            {
+                dic["Video_Status"] = model.Video_Status;
+            }
+            
+            {
+                dic["Video_Seq"] = model.Video_Seq;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Delete_b_video_resources", dic) >0 ;
         }
 
@@ -80,19 +197,58 @@ namespace Hoshino.Repository
         public b_video_resources_Entity Get(b_video_resources_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["Video_ID"] = model.Video_ID;
-            dic["Video_Name_CH"] = model.Video_Name_CH;
-            dic["Video_Name_HK"] = model.Video_Name_HK;
-            dic["Video_URL"] = model.Video_URL;
-            dic["Video_Location"] = model.Video_Location;
-            dic["Video_Status"] = model.Video_Status;
-            dic["Video_Seq"] = model.Video_Seq;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.Video_ID != 0)
+            {
+                dic["Video_ID"] = model.Video_ID;
+            }
+            if(model.Video_Name_CH != null)
+            {
+                dic["Video_Name_CH"] = model.Video_Name_CH;
+            }
+            if(model.Video_Name_HK != null)
+            {
+                dic["Video_Name_HK"] = model.Video_Name_HK;
+            }
+            if(model.Video_URL != null)
+            {
+                dic["Video_URL"] = model.Video_URL;
+            }
+            if(model.Video_Location != null)
+            {
+                dic["Video_Location"] = model.Video_Location;
+            }
+            if(model.Video_Status != null && model.Video_Status.HasValue)
+            {
+                dic["Video_Status"] = model.Video_Status;
+            }
+            
+            {
+                dic["Video_Seq"] = model.Video_Seq;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.QueryForObjectByT<b_video_resources_Entity>("Select_b_video_resources", dic);
         }
 
@@ -102,20 +258,59 @@ namespace Hoshino.Repository
         public (IEnumerable<b_video_resources_Entity>,int) GetList(b_video_resources_Entity model,int pageindex,int pagesize)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["Video_ID"] = model.Video_ID;
-            dic["Video_Name_CH"] = model.Video_Name_CH;
-            dic["Video_Name_HK"] = model.Video_Name_HK;
-            dic["Video_URL"] = model.Video_URL;
-            dic["Video_Location"] = model.Video_Location;
-            dic["Video_Status"] = model.Video_Status;
-            dic["Video_Seq"] = model.Video_Seq;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
-            dic["StartIndex"] = pageindex == 0 ? 0 : pageindex * pagesize + 1;
+            if(model.Video_ID != 0)
+            {
+                dic["Video_ID"] = model.Video_ID;
+            }
+            if(model.Video_Name_CH != null)
+            {
+                dic["Video_Name_CH"] = model.Video_Name_CH;
+            }
+            if(model.Video_Name_HK != null)
+            {
+                dic["Video_Name_HK"] = model.Video_Name_HK;
+            }
+            if(model.Video_URL != null)
+            {
+                dic["Video_URL"] = model.Video_URL;
+            }
+            if(model.Video_Location != null)
+            {
+                dic["Video_Location"] = model.Video_Location;
+            }
+            if(model.Video_Status != null && model.Video_Status.HasValue)
+            {
+                dic["Video_Status"] = model.Video_Status;
+            }
+            
+            {
+                dic["Video_Seq"] = model.Video_Seq;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
+            dic["StartIndex"] = pageindex == 1 ? 0 : (pageindex-1) * pagesize + 1;
             dic["SelectCount"] = pagesize;
             var list = SQLHelperFactory.Instance.QueryMultipleByPage<b_video_resources_Entity>("Select_b_video_resources_List", dic,out int total);
             return (list,total);

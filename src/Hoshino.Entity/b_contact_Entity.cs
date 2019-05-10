@@ -47,7 +47,7 @@ namespace Hoshino.Entity
         /// <summary>
         /// 0 未处理,1 已处理
         /// <summary>
-        public int AC_Status { get; set; }
+        public int Contact_Status { get; set; }
 
         /// <summary>
         /// 处理结果
@@ -57,7 +57,7 @@ namespace Hoshino.Entity
         /// <summary>
         /// 
         /// <summary>
-        public DateTime Create_Time { get; set; }
+        public DateTime? Create_Time { get; set; }
 
         /// <summary>
         /// 用户ID
@@ -72,7 +72,7 @@ namespace Hoshino.Entity
         /// <summary>
         /// 
         /// <summary>
-        public DateTime Update_Time { get; set; }
+        public DateTime? Update_Time { get; set; }
 
         /// <summary>
         /// 用户ID

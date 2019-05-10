@@ -27,22 +27,22 @@ namespace Hoshino.Entity
         /// <summary>
         /// 1:最新; 0:非最新
         /// <summary>
-        public int Product_New { get; set; }
+        public int? Product_New { get; set; }
 
         /// <summary>
         /// 1:热门; 0:非热门
         /// <summary>
-        public int Product_Hot { get; set; }
+        public int? Product_Hot { get; set; }
 
         /// <summary>
         /// 1:推荐; 0:非推荐
         /// <summary>
-        public int Product_Recommend { get; set; }
+        public int? Product_Recommend { get; set; }
 
         /// <summary>
         /// 1:有效; 0:无效
         /// <summary>
-        public int Product_Status { get; set; }
+        public int? Product_Status { get; set; }
 
         /// <summary>
         /// 排序：倒序
@@ -52,7 +52,7 @@ namespace Hoshino.Entity
         /// <summary>
         /// 
         /// <summary>
-        public DateTime Create_Time { get; set; }
+        public DateTime? Create_Time { get; set; }
 
         /// <summary>
         /// 用户ID
@@ -67,7 +67,7 @@ namespace Hoshino.Entity
         /// <summary>
         /// 
         /// <summary>
-        public DateTime Update_Time { get; set; }
+        public DateTime? Update_Time { get; set; }
 
         /// <summary>
         /// 用户ID

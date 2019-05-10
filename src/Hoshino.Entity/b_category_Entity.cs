@@ -12,7 +12,7 @@ namespace Hoshino.Entity
         /// <summary>
         /// 父级分类 0 第一级
         /// <summary>
-        public int Parent_Category_ID { get; set; }
+        public int? Parent_Category_ID { get; set; }
 
         /// <summary>
         /// 分类名称简体
@@ -27,7 +27,7 @@ namespace Hoshino.Entity
         /// <summary>
         /// 1:有效; 0:无效
         /// <summary>
-        public int Category_Status { get; set; }
+        public int? Category_Status { get; set; }
 
         /// <summary>
         /// 排序：倒序
@@ -37,7 +37,7 @@ namespace Hoshino.Entity
         /// <summary>
         /// 
         /// <summary>
-        public DateTime Create_Time { get; set; }
+        public DateTime? Create_Time { get; set; }
 
         /// <summary>
         /// 用户ID
@@ -52,7 +52,7 @@ namespace Hoshino.Entity
         /// <summary>
         /// 
         /// <summary>
-        public DateTime Update_Time { get; set; }
+        public DateTime? Update_Time { get; set; }
 
         /// <summary>
         /// 用户ID

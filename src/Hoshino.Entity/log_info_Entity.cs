@@ -27,12 +27,12 @@ namespace Hoshino.Entity
         /// <summary>
         /// 
         /// <summary>
-        public int type { get; set; }
+        public int? type { get; set; }
 
         /// <summary>
         /// 
         /// <summary>
-        public DateTime creation_time { get; set; }
+        public DateTime? creation_time { get; set; }
 
         /// <summary>
         /// 

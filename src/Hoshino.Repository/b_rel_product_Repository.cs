@@ -14,17 +14,50 @@ namespace Hoshino.Repository
         public bool Insert(b_rel_product_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["P_Relevant_ID"] = model.P_Relevant_ID;
-            dic["Source_Product_ID"] = model.Source_Product_ID;
-            dic["Rel_Product_ID"] = model.Rel_Product_ID;
-            dic["P_Relevant_Status"] = model.P_Relevant_Status;
-            dic["P_Relevant_Seq"] = model.P_Relevant_Seq;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.P_Relevant_ID != 0)
+            {
+                dic["P_Relevant_ID"] = model.P_Relevant_ID;
+            }
+            if(model.Source_Product_ID != 0)
+            {
+                dic["Source_Product_ID"] = model.Source_Product_ID;
+            }
+            if(model.Rel_Product_ID != 0)
+            {
+                dic["Rel_Product_ID"] = model.Rel_Product_ID;
+            }
+            if(model.P_Relevant_Status != null && model.P_Relevant_Status.HasValue)
+            {
+                dic["P_Relevant_Status"] = model.P_Relevant_Status;
+            }
+            
+            {
+                dic["P_Relevant_Seq"] = model.P_Relevant_Seq;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Insert_b_rel_product", dic) >0 ;
         }
 
@@ -34,17 +67,50 @@ namespace Hoshino.Repository
         public bool Update(b_rel_product_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["P_Relevant_ID"] = model.P_Relevant_ID;
-            dic["Source_Product_ID"] = model.Source_Product_ID;
-            dic["Rel_Product_ID"] = model.Rel_Product_ID;
-            dic["P_Relevant_Status"] = model.P_Relevant_Status;
-            dic["P_Relevant_Seq"] = model.P_Relevant_Seq;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.P_Relevant_ID != 0)
+            {
+                dic["P_Relevant_ID"] = model.P_Relevant_ID;
+            }
+            if(model.Source_Product_ID != 0)
+            {
+                dic["Source_Product_ID"] = model.Source_Product_ID;
+            }
+            if(model.Rel_Product_ID != 0)
+            {
+                dic["Rel_Product_ID"] = model.Rel_Product_ID;
+            }
+            if(model.P_Relevant_Status != null && model.P_Relevant_Status.HasValue)
+            {
+                dic["P_Relevant_Status"] = model.P_Relevant_Status;
+            }
+            
+            {
+                dic["P_Relevant_Seq"] = model.P_Relevant_Seq;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Update_b_rel_product", dic) >0 ;
         }
 
@@ -54,17 +120,50 @@ namespace Hoshino.Repository
         public bool Delete(b_rel_product_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["P_Relevant_ID"] = model.P_Relevant_ID;
-            dic["Source_Product_ID"] = model.Source_Product_ID;
-            dic["Rel_Product_ID"] = model.Rel_Product_ID;
-            dic["P_Relevant_Status"] = model.P_Relevant_Status;
-            dic["P_Relevant_Seq"] = model.P_Relevant_Seq;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.P_Relevant_ID != 0)
+            {
+                dic["P_Relevant_ID"] = model.P_Relevant_ID;
+            }
+            if(model.Source_Product_ID != 0)
+            {
+                dic["Source_Product_ID"] = model.Source_Product_ID;
+            }
+            if(model.Rel_Product_ID != 0)
+            {
+                dic["Rel_Product_ID"] = model.Rel_Product_ID;
+            }
+            if(model.P_Relevant_Status != null && model.P_Relevant_Status.HasValue)
+            {
+                dic["P_Relevant_Status"] = model.P_Relevant_Status;
+            }
+            
+            {
+                dic["P_Relevant_Seq"] = model.P_Relevant_Seq;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Delete_b_rel_product", dic) >0 ;
         }
 
@@ -74,17 +173,50 @@ namespace Hoshino.Repository
         public b_rel_product_Entity Get(b_rel_product_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["P_Relevant_ID"] = model.P_Relevant_ID;
-            dic["Source_Product_ID"] = model.Source_Product_ID;
-            dic["Rel_Product_ID"] = model.Rel_Product_ID;
-            dic["P_Relevant_Status"] = model.P_Relevant_Status;
-            dic["P_Relevant_Seq"] = model.P_Relevant_Seq;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.P_Relevant_ID != 0)
+            {
+                dic["P_Relevant_ID"] = model.P_Relevant_ID;
+            }
+            if(model.Source_Product_ID != 0)
+            {
+                dic["Source_Product_ID"] = model.Source_Product_ID;
+            }
+            if(model.Rel_Product_ID != 0)
+            {
+                dic["Rel_Product_ID"] = model.Rel_Product_ID;
+            }
+            if(model.P_Relevant_Status != null && model.P_Relevant_Status.HasValue)
+            {
+                dic["P_Relevant_Status"] = model.P_Relevant_Status;
+            }
+            
+            {
+                dic["P_Relevant_Seq"] = model.P_Relevant_Seq;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.QueryForObjectByT<b_rel_product_Entity>("Select_b_rel_product", dic);
         }
 
@@ -94,18 +226,51 @@ namespace Hoshino.Repository
         public (IEnumerable<b_rel_product_Entity>,int) GetList(b_rel_product_Entity model,int pageindex,int pagesize)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["P_Relevant_ID"] = model.P_Relevant_ID;
-            dic["Source_Product_ID"] = model.Source_Product_ID;
-            dic["Rel_Product_ID"] = model.Rel_Product_ID;
-            dic["P_Relevant_Status"] = model.P_Relevant_Status;
-            dic["P_Relevant_Seq"] = model.P_Relevant_Seq;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
-            dic["StartIndex"] = pageindex == 0 ? 0 : pageindex * pagesize + 1;
+            if(model.P_Relevant_ID != 0)
+            {
+                dic["P_Relevant_ID"] = model.P_Relevant_ID;
+            }
+            if(model.Source_Product_ID != 0)
+            {
+                dic["Source_Product_ID"] = model.Source_Product_ID;
+            }
+            if(model.Rel_Product_ID != 0)
+            {
+                dic["Rel_Product_ID"] = model.Rel_Product_ID;
+            }
+            if(model.P_Relevant_Status != null && model.P_Relevant_Status.HasValue)
+            {
+                dic["P_Relevant_Status"] = model.P_Relevant_Status;
+            }
+            
+            {
+                dic["P_Relevant_Seq"] = model.P_Relevant_Seq;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
+            dic["StartIndex"] = pageindex == 1 ? 0 : (pageindex-1) * pagesize + 1;
             dic["SelectCount"] = pagesize;
             var list = SQLHelperFactory.Instance.QueryMultipleByPage<b_rel_product_Entity>("Select_b_rel_product_List", dic,out int total);
             return (list,total);

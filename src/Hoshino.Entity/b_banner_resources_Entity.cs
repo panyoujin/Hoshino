@@ -37,7 +37,7 @@ namespace Hoshino.Entity
         /// <summary>
         /// 1:有效; 0:无效
         /// <summary>
-        public int Banner_Status { get; set; }
+        public int? Banner_Status { get; set; }
 
         /// <summary>
         /// 排序：倒序
@@ -47,7 +47,7 @@ namespace Hoshino.Entity
         /// <summary>
         /// 
         /// <summary>
-        public DateTime Create_Time { get; set; }
+        public DateTime? Create_Time { get; set; }
 
         /// <summary>
         /// 用户ID
@@ -62,7 +62,7 @@ namespace Hoshino.Entity
         /// <summary>
         /// 
         /// <summary>
-        public DateTime Update_Time { get; set; }
+        public DateTime? Update_Time { get; set; }
 
         /// <summary>
         /// 用户ID

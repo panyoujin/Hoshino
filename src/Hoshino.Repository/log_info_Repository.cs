@@ -14,13 +14,34 @@ namespace Hoshino.Repository
         public bool Insert(log_info_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["id"] = model.id;
-            dic["chain_id"] = model.chain_id;
-            dic["content"] = model.content;
-            dic["interface_name"] = model.interface_name;
-            dic["type"] = model.type;
-            dic["creation_time"] = model.creation_time;
-            dic["ip"] = model.ip;
+            if(model.id != 0)
+            {
+                dic["id"] = model.id;
+            }
+            if(model.chain_id != null)
+            {
+                dic["chain_id"] = model.chain_id;
+            }
+            if(model.content != null)
+            {
+                dic["content"] = model.content;
+            }
+            if(model.interface_name != null)
+            {
+                dic["interface_name"] = model.interface_name;
+            }
+            if(model.type != null && model.type.HasValue)
+            {
+                dic["type"] = model.type;
+            }
+            if(model.creation_time != null && model.creation_time.HasValue)
+            {
+                dic["creation_time"] = model.creation_time;
+            }
+            if(model.ip != null)
+            {
+                dic["ip"] = model.ip;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Insert_log_info", dic) >0 ;
         }
 
@@ -30,13 +51,34 @@ namespace Hoshino.Repository
         public bool Update(log_info_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["id"] = model.id;
-            dic["chain_id"] = model.chain_id;
-            dic["content"] = model.content;
-            dic["interface_name"] = model.interface_name;
-            dic["type"] = model.type;
-            dic["creation_time"] = model.creation_time;
-            dic["ip"] = model.ip;
+            if(model.id != 0)
+            {
+                dic["id"] = model.id;
+            }
+            if(model.chain_id != null)
+            {
+                dic["chain_id"] = model.chain_id;
+            }
+            if(model.content != null)
+            {
+                dic["content"] = model.content;
+            }
+            if(model.interface_name != null)
+            {
+                dic["interface_name"] = model.interface_name;
+            }
+            if(model.type != null && model.type.HasValue)
+            {
+                dic["type"] = model.type;
+            }
+            if(model.creation_time != null && model.creation_time.HasValue)
+            {
+                dic["creation_time"] = model.creation_time;
+            }
+            if(model.ip != null)
+            {
+                dic["ip"] = model.ip;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Update_log_info", dic) >0 ;
         }
 
@@ -46,13 +88,34 @@ namespace Hoshino.Repository
         public bool Delete(log_info_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["id"] = model.id;
-            dic["chain_id"] = model.chain_id;
-            dic["content"] = model.content;
-            dic["interface_name"] = model.interface_name;
-            dic["type"] = model.type;
-            dic["creation_time"] = model.creation_time;
-            dic["ip"] = model.ip;
+            if(model.id != 0)
+            {
+                dic["id"] = model.id;
+            }
+            if(model.chain_id != null)
+            {
+                dic["chain_id"] = model.chain_id;
+            }
+            if(model.content != null)
+            {
+                dic["content"] = model.content;
+            }
+            if(model.interface_name != null)
+            {
+                dic["interface_name"] = model.interface_name;
+            }
+            if(model.type != null && model.type.HasValue)
+            {
+                dic["type"] = model.type;
+            }
+            if(model.creation_time != null && model.creation_time.HasValue)
+            {
+                dic["creation_time"] = model.creation_time;
+            }
+            if(model.ip != null)
+            {
+                dic["ip"] = model.ip;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Delete_log_info", dic) >0 ;
         }
 
@@ -62,13 +125,34 @@ namespace Hoshino.Repository
         public log_info_Entity Get(log_info_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["id"] = model.id;
-            dic["chain_id"] = model.chain_id;
-            dic["content"] = model.content;
-            dic["interface_name"] = model.interface_name;
-            dic["type"] = model.type;
-            dic["creation_time"] = model.creation_time;
-            dic["ip"] = model.ip;
+            if(model.id != 0)
+            {
+                dic["id"] = model.id;
+            }
+            if(model.chain_id != null)
+            {
+                dic["chain_id"] = model.chain_id;
+            }
+            if(model.content != null)
+            {
+                dic["content"] = model.content;
+            }
+            if(model.interface_name != null)
+            {
+                dic["interface_name"] = model.interface_name;
+            }
+            if(model.type != null && model.type.HasValue)
+            {
+                dic["type"] = model.type;
+            }
+            if(model.creation_time != null && model.creation_time.HasValue)
+            {
+                dic["creation_time"] = model.creation_time;
+            }
+            if(model.ip != null)
+            {
+                dic["ip"] = model.ip;
+            }
             return SQLHelperFactory.Instance.QueryForObjectByT<log_info_Entity>("Select_log_info", dic);
         }
 
@@ -78,14 +162,35 @@ namespace Hoshino.Repository
         public (IEnumerable<log_info_Entity>,int) GetList(log_info_Entity model,int pageindex,int pagesize)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["id"] = model.id;
-            dic["chain_id"] = model.chain_id;
-            dic["content"] = model.content;
-            dic["interface_name"] = model.interface_name;
-            dic["type"] = model.type;
-            dic["creation_time"] = model.creation_time;
-            dic["ip"] = model.ip;
-            dic["StartIndex"] = pageindex == 0 ? 0 : pageindex * pagesize + 1;
+            if(model.id != 0)
+            {
+                dic["id"] = model.id;
+            }
+            if(model.chain_id != null)
+            {
+                dic["chain_id"] = model.chain_id;
+            }
+            if(model.content != null)
+            {
+                dic["content"] = model.content;
+            }
+            if(model.interface_name != null)
+            {
+                dic["interface_name"] = model.interface_name;
+            }
+            if(model.type != null && model.type.HasValue)
+            {
+                dic["type"] = model.type;
+            }
+            if(model.creation_time != null && model.creation_time.HasValue)
+            {
+                dic["creation_time"] = model.creation_time;
+            }
+            if(model.ip != null)
+            {
+                dic["ip"] = model.ip;
+            }
+            dic["StartIndex"] = pageindex == 1 ? 0 : (pageindex-1) * pagesize + 1;
             dic["SelectCount"] = pagesize;
             var list = SQLHelperFactory.Instance.QueryMultipleByPage<log_info_Entity>("Select_log_info_List", dic,out int total);
             return (list,total);

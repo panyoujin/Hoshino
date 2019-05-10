@@ -14,22 +14,70 @@ namespace Hoshino.Repository
         public bool Insert(b_contact_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["Contact_ID"] = model.Contact_ID;
-            dic["Company"] = model.Company;
-            dic["Contacts"] = model.Contacts;
-            dic["Phone"] = model.Phone;
-            dic["Email"] = model.Email;
-            dic["Matter"] = model.Matter;
-            dic["Wechat"] = model.Wechat;
-            dic["WhatsApp"] = model.WhatsApp;
-            dic["AC_Status"] = model.AC_Status;
-            dic["Processing_Result"] = model.Processing_Result;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.Contact_ID != 0)
+            {
+                dic["Contact_ID"] = model.Contact_ID;
+            }
+            if(model.Company != null)
+            {
+                dic["Company"] = model.Company;
+            }
+            if(model.Contacts != null)
+            {
+                dic["Contacts"] = model.Contacts;
+            }
+            if(model.Phone != null)
+            {
+                dic["Phone"] = model.Phone;
+            }
+            if(model.Email != null)
+            {
+                dic["Email"] = model.Email;
+            }
+            if(model.Matter != null)
+            {
+                dic["Matter"] = model.Matter;
+            }
+            if(model.Wechat != null)
+            {
+                dic["Wechat"] = model.Wechat;
+            }
+            if(model.WhatsApp != null)
+            {
+                dic["WhatsApp"] = model.WhatsApp;
+            }
+            
+            {
+                dic["Contact_Status"] = model.Contact_Status;
+            }
+            if(model.Processing_Result != null)
+            {
+                dic["Processing_Result"] = model.Processing_Result;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Insert_b_contact", dic) >0 ;
         }
 
@@ -39,22 +87,70 @@ namespace Hoshino.Repository
         public bool Update(b_contact_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["Contact_ID"] = model.Contact_ID;
-            dic["Company"] = model.Company;
-            dic["Contacts"] = model.Contacts;
-            dic["Phone"] = model.Phone;
-            dic["Email"] = model.Email;
-            dic["Matter"] = model.Matter;
-            dic["Wechat"] = model.Wechat;
-            dic["WhatsApp"] = model.WhatsApp;
-            dic["AC_Status"] = model.AC_Status;
-            dic["Processing_Result"] = model.Processing_Result;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.Contact_ID != 0)
+            {
+                dic["Contact_ID"] = model.Contact_ID;
+            }
+            if(model.Company != null)
+            {
+                dic["Company"] = model.Company;
+            }
+            if(model.Contacts != null)
+            {
+                dic["Contacts"] = model.Contacts;
+            }
+            if(model.Phone != null)
+            {
+                dic["Phone"] = model.Phone;
+            }
+            if(model.Email != null)
+            {
+                dic["Email"] = model.Email;
+            }
+            if(model.Matter != null)
+            {
+                dic["Matter"] = model.Matter;
+            }
+            if(model.Wechat != null)
+            {
+                dic["Wechat"] = model.Wechat;
+            }
+            if(model.WhatsApp != null)
+            {
+                dic["WhatsApp"] = model.WhatsApp;
+            }
+            
+            {
+                dic["Contact_Status"] = model.Contact_Status;
+            }
+            if(model.Processing_Result != null)
+            {
+                dic["Processing_Result"] = model.Processing_Result;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Update_b_contact", dic) >0 ;
         }
 
@@ -64,22 +160,70 @@ namespace Hoshino.Repository
         public bool Delete(b_contact_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["Contact_ID"] = model.Contact_ID;
-            dic["Company"] = model.Company;
-            dic["Contacts"] = model.Contacts;
-            dic["Phone"] = model.Phone;
-            dic["Email"] = model.Email;
-            dic["Matter"] = model.Matter;
-            dic["Wechat"] = model.Wechat;
-            dic["WhatsApp"] = model.WhatsApp;
-            dic["AC_Status"] = model.AC_Status;
-            dic["Processing_Result"] = model.Processing_Result;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.Contact_ID != 0)
+            {
+                dic["Contact_ID"] = model.Contact_ID;
+            }
+            if(model.Company != null)
+            {
+                dic["Company"] = model.Company;
+            }
+            if(model.Contacts != null)
+            {
+                dic["Contacts"] = model.Contacts;
+            }
+            if(model.Phone != null)
+            {
+                dic["Phone"] = model.Phone;
+            }
+            if(model.Email != null)
+            {
+                dic["Email"] = model.Email;
+            }
+            if(model.Matter != null)
+            {
+                dic["Matter"] = model.Matter;
+            }
+            if(model.Wechat != null)
+            {
+                dic["Wechat"] = model.Wechat;
+            }
+            if(model.WhatsApp != null)
+            {
+                dic["WhatsApp"] = model.WhatsApp;
+            }
+            
+            {
+                dic["Contact_Status"] = model.Contact_Status;
+            }
+            if(model.Processing_Result != null)
+            {
+                dic["Processing_Result"] = model.Processing_Result;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Delete_b_contact", dic) >0 ;
         }
 
@@ -89,22 +233,70 @@ namespace Hoshino.Repository
         public b_contact_Entity Get(b_contact_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["Contact_ID"] = model.Contact_ID;
-            dic["Company"] = model.Company;
-            dic["Contacts"] = model.Contacts;
-            dic["Phone"] = model.Phone;
-            dic["Email"] = model.Email;
-            dic["Matter"] = model.Matter;
-            dic["Wechat"] = model.Wechat;
-            dic["WhatsApp"] = model.WhatsApp;
-            dic["AC_Status"] = model.AC_Status;
-            dic["Processing_Result"] = model.Processing_Result;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.Contact_ID != 0)
+            {
+                dic["Contact_ID"] = model.Contact_ID;
+            }
+            if(model.Company != null)
+            {
+                dic["Company"] = model.Company;
+            }
+            if(model.Contacts != null)
+            {
+                dic["Contacts"] = model.Contacts;
+            }
+            if(model.Phone != null)
+            {
+                dic["Phone"] = model.Phone;
+            }
+            if(model.Email != null)
+            {
+                dic["Email"] = model.Email;
+            }
+            if(model.Matter != null)
+            {
+                dic["Matter"] = model.Matter;
+            }
+            if(model.Wechat != null)
+            {
+                dic["Wechat"] = model.Wechat;
+            }
+            if(model.WhatsApp != null)
+            {
+                dic["WhatsApp"] = model.WhatsApp;
+            }
+            
+            {
+                dic["Contact_Status"] = model.Contact_Status;
+            }
+            if(model.Processing_Result != null)
+            {
+                dic["Processing_Result"] = model.Processing_Result;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.QueryForObjectByT<b_contact_Entity>("Select_b_contact", dic);
         }
 
@@ -114,23 +306,71 @@ namespace Hoshino.Repository
         public (IEnumerable<b_contact_Entity>,int) GetList(b_contact_Entity model,int pageindex,int pagesize)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["Contact_ID"] = model.Contact_ID;
-            dic["Company"] = model.Company;
-            dic["Contacts"] = model.Contacts;
-            dic["Phone"] = model.Phone;
-            dic["Email"] = model.Email;
-            dic["Matter"] = model.Matter;
-            dic["Wechat"] = model.Wechat;
-            dic["WhatsApp"] = model.WhatsApp;
-            dic["AC_Status"] = model.AC_Status;
-            dic["Processing_Result"] = model.Processing_Result;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
-            dic["StartIndex"] = pageindex == 0 ? 0 : pageindex * pagesize + 1;
+            if(model.Contact_ID != 0)
+            {
+                dic["Contact_ID"] = model.Contact_ID;
+            }
+            if(model.Company != null)
+            {
+                dic["Company"] = model.Company;
+            }
+            if(model.Contacts != null)
+            {
+                dic["Contacts"] = model.Contacts;
+            }
+            if(model.Phone != null)
+            {
+                dic["Phone"] = model.Phone;
+            }
+            if(model.Email != null)
+            {
+                dic["Email"] = model.Email;
+            }
+            if(model.Matter != null)
+            {
+                dic["Matter"] = model.Matter;
+            }
+            if(model.Wechat != null)
+            {
+                dic["Wechat"] = model.Wechat;
+            }
+            if(model.WhatsApp != null)
+            {
+                dic["WhatsApp"] = model.WhatsApp;
+            }
+            
+            {
+                dic["Contact_Status"] = model.Contact_Status;
+            }
+            if(model.Processing_Result != null)
+            {
+                dic["Processing_Result"] = model.Processing_Result;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
+            dic["StartIndex"] = pageindex == 1 ? 0 : (pageindex-1) * pagesize + 1;
             dic["SelectCount"] = pagesize;
             var list = SQLHelperFactory.Instance.QueryMultipleByPage<b_contact_Entity>("Select_b_contact_List", dic,out int total);
             return (list,total);

@@ -46,6 +46,7 @@ namespace Hoshino.API.Controllers
             var (list, total) = this._repository.GetNewProductList<b_product_Entity>();
             return list.ResponseSuccess("", total);
         }
+
     }
 }
 

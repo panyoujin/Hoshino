@@ -14,17 +14,50 @@ namespace Hoshino.Repository
         public bool Insert(sys_user_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["User_ID"] = model.User_ID;
-            dic["User_Account"] = model.User_Account;
-            dic["Password"] = model.Password;
-            dic["User_Name"] = model.User_Name;
-            dic["User_Status"] = model.User_Status;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.User_ID != 0)
+            {
+                dic["User_ID"] = model.User_ID;
+            }
+            if(model.User_Account != null)
+            {
+                dic["User_Account"] = model.User_Account;
+            }
+            if(model.Password != null)
+            {
+                dic["Password"] = model.Password;
+            }
+            if(model.User_Name != null)
+            {
+                dic["User_Name"] = model.User_Name;
+            }
+            if(model.User_Status != null && model.User_Status.HasValue)
+            {
+                dic["User_Status"] = model.User_Status;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Insert_sys_user", dic) >0 ;
         }
 
@@ -34,17 +67,50 @@ namespace Hoshino.Repository
         public bool Update(sys_user_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["User_ID"] = model.User_ID;
-            dic["User_Account"] = model.User_Account;
-            dic["Password"] = model.Password;
-            dic["User_Name"] = model.User_Name;
-            dic["User_Status"] = model.User_Status;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.User_ID != 0)
+            {
+                dic["User_ID"] = model.User_ID;
+            }
+            if(model.User_Account != null)
+            {
+                dic["User_Account"] = model.User_Account;
+            }
+            if(model.Password != null)
+            {
+                dic["Password"] = model.Password;
+            }
+            if(model.User_Name != null)
+            {
+                dic["User_Name"] = model.User_Name;
+            }
+            if(model.User_Status != null && model.User_Status.HasValue)
+            {
+                dic["User_Status"] = model.User_Status;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Update_sys_user", dic) >0 ;
         }
 
@@ -54,17 +120,50 @@ namespace Hoshino.Repository
         public bool Delete(sys_user_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["User_ID"] = model.User_ID;
-            dic["User_Account"] = model.User_Account;
-            dic["Password"] = model.Password;
-            dic["User_Name"] = model.User_Name;
-            dic["User_Status"] = model.User_Status;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.User_ID != 0)
+            {
+                dic["User_ID"] = model.User_ID;
+            }
+            if(model.User_Account != null)
+            {
+                dic["User_Account"] = model.User_Account;
+            }
+            if(model.Password != null)
+            {
+                dic["Password"] = model.Password;
+            }
+            if(model.User_Name != null)
+            {
+                dic["User_Name"] = model.User_Name;
+            }
+            if(model.User_Status != null && model.User_Status.HasValue)
+            {
+                dic["User_Status"] = model.User_Status;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Delete_sys_user", dic) >0 ;
         }
 
@@ -74,17 +173,50 @@ namespace Hoshino.Repository
         public sys_user_Entity Get(sys_user_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["User_ID"] = model.User_ID;
-            dic["User_Account"] = model.User_Account;
-            dic["Password"] = model.Password;
-            dic["User_Name"] = model.User_Name;
-            dic["User_Status"] = model.User_Status;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.User_ID != 0)
+            {
+                dic["User_ID"] = model.User_ID;
+            }
+            if(model.User_Account != null)
+            {
+                dic["User_Account"] = model.User_Account;
+            }
+            if(model.Password != null)
+            {
+                dic["Password"] = model.Password;
+            }
+            if(model.User_Name != null)
+            {
+                dic["User_Name"] = model.User_Name;
+            }
+            if(model.User_Status != null && model.User_Status.HasValue)
+            {
+                dic["User_Status"] = model.User_Status;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.QueryForObjectByT<sys_user_Entity>("Select_sys_user", dic);
         }
 
@@ -94,18 +226,51 @@ namespace Hoshino.Repository
         public (IEnumerable<sys_user_Entity>,int) GetList(sys_user_Entity model,int pageindex,int pagesize)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["User_ID"] = model.User_ID;
-            dic["User_Account"] = model.User_Account;
-            dic["Password"] = model.Password;
-            dic["User_Name"] = model.User_Name;
-            dic["User_Status"] = model.User_Status;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
-            dic["StartIndex"] = pageindex == 0 ? 0 : pageindex * pagesize + 1;
+            if(model.User_ID != 0)
+            {
+                dic["User_ID"] = model.User_ID;
+            }
+            if(model.User_Account != null)
+            {
+                dic["User_Account"] = model.User_Account;
+            }
+            if(model.Password != null)
+            {
+                dic["Password"] = model.Password;
+            }
+            if(model.User_Name != null)
+            {
+                dic["User_Name"] = model.User_Name;
+            }
+            if(model.User_Status != null && model.User_Status.HasValue)
+            {
+                dic["User_Status"] = model.User_Status;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
+            dic["StartIndex"] = pageindex == 1 ? 0 : (pageindex-1) * pagesize + 1;
             dic["SelectCount"] = pagesize;
             var list = SQLHelperFactory.Instance.QueryMultipleByPage<sys_user_Entity>("Select_sys_user_List", dic,out int total);
             return (list,total);

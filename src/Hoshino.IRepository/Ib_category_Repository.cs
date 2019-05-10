@@ -24,12 +24,12 @@ namespace Hoshino.IRepository
         /// <summary>
         /// 获取单个
         /// <summary>
-        b_category_Entity Get(b_category_Entity model);
+        b_category_Entity Get(int categoryID);
 
         /// <summary>
         /// 获取列表
         /// <summary>
-        (IEnumerable<b_category_Entity>,int) GetList(b_category_Entity model,int pageindex,int pagesize);
+        (IEnumerable<b_category_Entity>,int) GetList(int pageindex,int pagesize);
 
 
     }

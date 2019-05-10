@@ -40,7 +40,7 @@ namespace Hoshino.Entity
         public string Material { get; set; }
 
         /// <summary>
-        /// 未处理
+        /// 0 未处理,1 已处理
         /// <summary>
         public int AC_Status { get; set; }
 
@@ -52,7 +52,7 @@ namespace Hoshino.Entity
         /// <summary>
         /// 
         /// <summary>
-        public DateTime Create_Time { get; set; }
+        public DateTime? Create_Time { get; set; }
 
         /// <summary>
         /// 用户ID
@@ -67,7 +67,7 @@ namespace Hoshino.Entity
         /// <summary>
         /// 
         /// <summary>
-        public DateTime Update_Time { get; set; }
+        public DateTime? Update_Time { get; set; }
 
         /// <summary>
         /// 用户ID

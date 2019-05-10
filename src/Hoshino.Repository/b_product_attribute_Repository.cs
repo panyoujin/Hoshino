@@ -14,20 +14,62 @@ namespace Hoshino.Repository
         public bool Insert(b_product_attribute_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["P_Attribute_ID"] = model.P_Attribute_ID;
-            dic["Product_ID"] = model.Product_ID;
-            dic["P_Attribute_Name_CH"] = model.P_Attribute_Name_CH;
-            dic["P_Attribute_Name_HK"] = model.P_Attribute_Name_HK;
-            dic["P_Attribute_Value_CH"] = model.P_Attribute_Value_CH;
-            dic["P_Attribute_Value_EN"] = model.P_Attribute_Value_EN;
-            dic["P_Attribute_Status"] = model.P_Attribute_Status;
-            dic["P_Attribute_Seq"] = model.P_Attribute_Seq;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.P_Attribute_ID != 0)
+            {
+                dic["P_Attribute_ID"] = model.P_Attribute_ID;
+            }
+            if(model.Product_ID != 0)
+            {
+                dic["Product_ID"] = model.Product_ID;
+            }
+            if(model.P_Attribute_Name_CH != null)
+            {
+                dic["P_Attribute_Name_CH"] = model.P_Attribute_Name_CH;
+            }
+            if(model.P_Attribute_Name_HK != null)
+            {
+                dic["P_Attribute_Name_HK"] = model.P_Attribute_Name_HK;
+            }
+            if(model.P_Attribute_Value_CH != null)
+            {
+                dic["P_Attribute_Value_CH"] = model.P_Attribute_Value_CH;
+            }
+            if(model.P_Attribute_Value_EN != null)
+            {
+                dic["P_Attribute_Value_EN"] = model.P_Attribute_Value_EN;
+            }
+            if(model.P_Attribute_Status != null && model.P_Attribute_Status.HasValue)
+            {
+                dic["P_Attribute_Status"] = model.P_Attribute_Status;
+            }
+            
+            {
+                dic["P_Attribute_Seq"] = model.P_Attribute_Seq;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Insert_b_product_attribute", dic) >0 ;
         }
 
@@ -37,20 +79,62 @@ namespace Hoshino.Repository
         public bool Update(b_product_attribute_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["P_Attribute_ID"] = model.P_Attribute_ID;
-            dic["Product_ID"] = model.Product_ID;
-            dic["P_Attribute_Name_CH"] = model.P_Attribute_Name_CH;
-            dic["P_Attribute_Name_HK"] = model.P_Attribute_Name_HK;
-            dic["P_Attribute_Value_CH"] = model.P_Attribute_Value_CH;
-            dic["P_Attribute_Value_EN"] = model.P_Attribute_Value_EN;
-            dic["P_Attribute_Status"] = model.P_Attribute_Status;
-            dic["P_Attribute_Seq"] = model.P_Attribute_Seq;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.P_Attribute_ID != 0)
+            {
+                dic["P_Attribute_ID"] = model.P_Attribute_ID;
+            }
+            if(model.Product_ID != 0)
+            {
+                dic["Product_ID"] = model.Product_ID;
+            }
+            if(model.P_Attribute_Name_CH != null)
+            {
+                dic["P_Attribute_Name_CH"] = model.P_Attribute_Name_CH;
+            }
+            if(model.P_Attribute_Name_HK != null)
+            {
+                dic["P_Attribute_Name_HK"] = model.P_Attribute_Name_HK;
+            }
+            if(model.P_Attribute_Value_CH != null)
+            {
+                dic["P_Attribute_Value_CH"] = model.P_Attribute_Value_CH;
+            }
+            if(model.P_Attribute_Value_EN != null)
+            {
+                dic["P_Attribute_Value_EN"] = model.P_Attribute_Value_EN;
+            }
+            if(model.P_Attribute_Status != null && model.P_Attribute_Status.HasValue)
+            {
+                dic["P_Attribute_Status"] = model.P_Attribute_Status;
+            }
+            
+            {
+                dic["P_Attribute_Seq"] = model.P_Attribute_Seq;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Update_b_product_attribute", dic) >0 ;
         }
 
@@ -60,20 +144,62 @@ namespace Hoshino.Repository
         public bool Delete(b_product_attribute_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["P_Attribute_ID"] = model.P_Attribute_ID;
-            dic["Product_ID"] = model.Product_ID;
-            dic["P_Attribute_Name_CH"] = model.P_Attribute_Name_CH;
-            dic["P_Attribute_Name_HK"] = model.P_Attribute_Name_HK;
-            dic["P_Attribute_Value_CH"] = model.P_Attribute_Value_CH;
-            dic["P_Attribute_Value_EN"] = model.P_Attribute_Value_EN;
-            dic["P_Attribute_Status"] = model.P_Attribute_Status;
-            dic["P_Attribute_Seq"] = model.P_Attribute_Seq;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.P_Attribute_ID != 0)
+            {
+                dic["P_Attribute_ID"] = model.P_Attribute_ID;
+            }
+            if(model.Product_ID != 0)
+            {
+                dic["Product_ID"] = model.Product_ID;
+            }
+            if(model.P_Attribute_Name_CH != null)
+            {
+                dic["P_Attribute_Name_CH"] = model.P_Attribute_Name_CH;
+            }
+            if(model.P_Attribute_Name_HK != null)
+            {
+                dic["P_Attribute_Name_HK"] = model.P_Attribute_Name_HK;
+            }
+            if(model.P_Attribute_Value_CH != null)
+            {
+                dic["P_Attribute_Value_CH"] = model.P_Attribute_Value_CH;
+            }
+            if(model.P_Attribute_Value_EN != null)
+            {
+                dic["P_Attribute_Value_EN"] = model.P_Attribute_Value_EN;
+            }
+            if(model.P_Attribute_Status != null && model.P_Attribute_Status.HasValue)
+            {
+                dic["P_Attribute_Status"] = model.P_Attribute_Status;
+            }
+            
+            {
+                dic["P_Attribute_Seq"] = model.P_Attribute_Seq;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Delete_b_product_attribute", dic) >0 ;
         }
 
@@ -83,20 +209,62 @@ namespace Hoshino.Repository
         public b_product_attribute_Entity Get(b_product_attribute_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["P_Attribute_ID"] = model.P_Attribute_ID;
-            dic["Product_ID"] = model.Product_ID;
-            dic["P_Attribute_Name_CH"] = model.P_Attribute_Name_CH;
-            dic["P_Attribute_Name_HK"] = model.P_Attribute_Name_HK;
-            dic["P_Attribute_Value_CH"] = model.P_Attribute_Value_CH;
-            dic["P_Attribute_Value_EN"] = model.P_Attribute_Value_EN;
-            dic["P_Attribute_Status"] = model.P_Attribute_Status;
-            dic["P_Attribute_Seq"] = model.P_Attribute_Seq;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.P_Attribute_ID != 0)
+            {
+                dic["P_Attribute_ID"] = model.P_Attribute_ID;
+            }
+            if(model.Product_ID != 0)
+            {
+                dic["Product_ID"] = model.Product_ID;
+            }
+            if(model.P_Attribute_Name_CH != null)
+            {
+                dic["P_Attribute_Name_CH"] = model.P_Attribute_Name_CH;
+            }
+            if(model.P_Attribute_Name_HK != null)
+            {
+                dic["P_Attribute_Name_HK"] = model.P_Attribute_Name_HK;
+            }
+            if(model.P_Attribute_Value_CH != null)
+            {
+                dic["P_Attribute_Value_CH"] = model.P_Attribute_Value_CH;
+            }
+            if(model.P_Attribute_Value_EN != null)
+            {
+                dic["P_Attribute_Value_EN"] = model.P_Attribute_Value_EN;
+            }
+            if(model.P_Attribute_Status != null && model.P_Attribute_Status.HasValue)
+            {
+                dic["P_Attribute_Status"] = model.P_Attribute_Status;
+            }
+            
+            {
+                dic["P_Attribute_Seq"] = model.P_Attribute_Seq;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.QueryForObjectByT<b_product_attribute_Entity>("Select_b_product_attribute", dic);
         }
 
@@ -106,21 +274,63 @@ namespace Hoshino.Repository
         public (IEnumerable<b_product_attribute_Entity>,int) GetList(b_product_attribute_Entity model,int pageindex,int pagesize)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["P_Attribute_ID"] = model.P_Attribute_ID;
-            dic["Product_ID"] = model.Product_ID;
-            dic["P_Attribute_Name_CH"] = model.P_Attribute_Name_CH;
-            dic["P_Attribute_Name_HK"] = model.P_Attribute_Name_HK;
-            dic["P_Attribute_Value_CH"] = model.P_Attribute_Value_CH;
-            dic["P_Attribute_Value_EN"] = model.P_Attribute_Value_EN;
-            dic["P_Attribute_Status"] = model.P_Attribute_Status;
-            dic["P_Attribute_Seq"] = model.P_Attribute_Seq;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
-            dic["StartIndex"] = pageindex == 0 ? 0 : pageindex * pagesize + 1;
+            if(model.P_Attribute_ID != 0)
+            {
+                dic["P_Attribute_ID"] = model.P_Attribute_ID;
+            }
+            if(model.Product_ID != 0)
+            {
+                dic["Product_ID"] = model.Product_ID;
+            }
+            if(model.P_Attribute_Name_CH != null)
+            {
+                dic["P_Attribute_Name_CH"] = model.P_Attribute_Name_CH;
+            }
+            if(model.P_Attribute_Name_HK != null)
+            {
+                dic["P_Attribute_Name_HK"] = model.P_Attribute_Name_HK;
+            }
+            if(model.P_Attribute_Value_CH != null)
+            {
+                dic["P_Attribute_Value_CH"] = model.P_Attribute_Value_CH;
+            }
+            if(model.P_Attribute_Value_EN != null)
+            {
+                dic["P_Attribute_Value_EN"] = model.P_Attribute_Value_EN;
+            }
+            if(model.P_Attribute_Status != null && model.P_Attribute_Status.HasValue)
+            {
+                dic["P_Attribute_Status"] = model.P_Attribute_Status;
+            }
+            
+            {
+                dic["P_Attribute_Seq"] = model.P_Attribute_Seq;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
+            dic["StartIndex"] = pageindex == 1 ? 0 : (pageindex-1) * pagesize + 1;
             dic["SelectCount"] = pagesize;
             var list = SQLHelperFactory.Instance.QueryMultipleByPage<b_product_attribute_Entity>("Select_b_product_attribute_List", dic,out int total);
             return (list,total);

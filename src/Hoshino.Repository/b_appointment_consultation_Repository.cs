@@ -14,21 +14,66 @@ namespace Hoshino.Repository
         public bool Insert(b_appointment_consultation_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["AC_ID"] = model.AC_ID;
-            dic["Company"] = model.Company;
-            dic["Contacts"] = model.Contacts;
-            dic["Phone"] = model.Phone;
-            dic["Email"] = model.Email;
-            dic["Matter"] = model.Matter;
-            dic["Material"] = model.Material;
-            dic["AC_Status"] = model.AC_Status;
-            dic["Processing_Result"] = model.Processing_Result;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.AC_ID != 0)
+            {
+                dic["AC_ID"] = model.AC_ID;
+            }
+            if(model.Company != null)
+            {
+                dic["Company"] = model.Company;
+            }
+            if(model.Contacts != null)
+            {
+                dic["Contacts"] = model.Contacts;
+            }
+            if(model.Phone != null)
+            {
+                dic["Phone"] = model.Phone;
+            }
+            if(model.Email != null)
+            {
+                dic["Email"] = model.Email;
+            }
+            if(model.Matter != null)
+            {
+                dic["Matter"] = model.Matter;
+            }
+            if(model.Material != null)
+            {
+                dic["Material"] = model.Material;
+            }
+            
+            {
+                dic["AC_Status"] = model.AC_Status;
+            }
+            if(model.Processing_Result != null)
+            {
+                dic["Processing_Result"] = model.Processing_Result;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Insert_b_appointment_consultation", dic) >0 ;
         }
 
@@ -38,21 +83,66 @@ namespace Hoshino.Repository
         public bool Update(b_appointment_consultation_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["AC_ID"] = model.AC_ID;
-            dic["Company"] = model.Company;
-            dic["Contacts"] = model.Contacts;
-            dic["Phone"] = model.Phone;
-            dic["Email"] = model.Email;
-            dic["Matter"] = model.Matter;
-            dic["Material"] = model.Material;
-            dic["AC_Status"] = model.AC_Status;
-            dic["Processing_Result"] = model.Processing_Result;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.AC_ID != 0)
+            {
+                dic["AC_ID"] = model.AC_ID;
+            }
+            if(model.Company != null)
+            {
+                dic["Company"] = model.Company;
+            }
+            if(model.Contacts != null)
+            {
+                dic["Contacts"] = model.Contacts;
+            }
+            if(model.Phone != null)
+            {
+                dic["Phone"] = model.Phone;
+            }
+            if(model.Email != null)
+            {
+                dic["Email"] = model.Email;
+            }
+            if(model.Matter != null)
+            {
+                dic["Matter"] = model.Matter;
+            }
+            if(model.Material != null)
+            {
+                dic["Material"] = model.Material;
+            }
+            
+            {
+                dic["AC_Status"] = model.AC_Status;
+            }
+            if(model.Processing_Result != null)
+            {
+                dic["Processing_Result"] = model.Processing_Result;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Update_b_appointment_consultation", dic) >0 ;
         }
 
@@ -62,21 +152,66 @@ namespace Hoshino.Repository
         public bool Delete(b_appointment_consultation_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["AC_ID"] = model.AC_ID;
-            dic["Company"] = model.Company;
-            dic["Contacts"] = model.Contacts;
-            dic["Phone"] = model.Phone;
-            dic["Email"] = model.Email;
-            dic["Matter"] = model.Matter;
-            dic["Material"] = model.Material;
-            dic["AC_Status"] = model.AC_Status;
-            dic["Processing_Result"] = model.Processing_Result;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.AC_ID != 0)
+            {
+                dic["AC_ID"] = model.AC_ID;
+            }
+            if(model.Company != null)
+            {
+                dic["Company"] = model.Company;
+            }
+            if(model.Contacts != null)
+            {
+                dic["Contacts"] = model.Contacts;
+            }
+            if(model.Phone != null)
+            {
+                dic["Phone"] = model.Phone;
+            }
+            if(model.Email != null)
+            {
+                dic["Email"] = model.Email;
+            }
+            if(model.Matter != null)
+            {
+                dic["Matter"] = model.Matter;
+            }
+            if(model.Material != null)
+            {
+                dic["Material"] = model.Material;
+            }
+            
+            {
+                dic["AC_Status"] = model.AC_Status;
+            }
+            if(model.Processing_Result != null)
+            {
+                dic["Processing_Result"] = model.Processing_Result;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Delete_b_appointment_consultation", dic) >0 ;
         }
 
@@ -86,21 +221,66 @@ namespace Hoshino.Repository
         public b_appointment_consultation_Entity Get(b_appointment_consultation_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["AC_ID"] = model.AC_ID;
-            dic["Company"] = model.Company;
-            dic["Contacts"] = model.Contacts;
-            dic["Phone"] = model.Phone;
-            dic["Email"] = model.Email;
-            dic["Matter"] = model.Matter;
-            dic["Material"] = model.Material;
-            dic["AC_Status"] = model.AC_Status;
-            dic["Processing_Result"] = model.Processing_Result;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
+            if(model.AC_ID != 0)
+            {
+                dic["AC_ID"] = model.AC_ID;
+            }
+            if(model.Company != null)
+            {
+                dic["Company"] = model.Company;
+            }
+            if(model.Contacts != null)
+            {
+                dic["Contacts"] = model.Contacts;
+            }
+            if(model.Phone != null)
+            {
+                dic["Phone"] = model.Phone;
+            }
+            if(model.Email != null)
+            {
+                dic["Email"] = model.Email;
+            }
+            if(model.Matter != null)
+            {
+                dic["Matter"] = model.Matter;
+            }
+            if(model.Material != null)
+            {
+                dic["Material"] = model.Material;
+            }
+            
+            {
+                dic["AC_Status"] = model.AC_Status;
+            }
+            if(model.Processing_Result != null)
+            {
+                dic["Processing_Result"] = model.Processing_Result;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.QueryForObjectByT<b_appointment_consultation_Entity>("Select_b_appointment_consultation", dic);
         }
 
@@ -110,22 +290,67 @@ namespace Hoshino.Repository
         public (IEnumerable<b_appointment_consultation_Entity>,int) GetList(b_appointment_consultation_Entity model,int pageindex,int pagesize)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["AC_ID"] = model.AC_ID;
-            dic["Company"] = model.Company;
-            dic["Contacts"] = model.Contacts;
-            dic["Phone"] = model.Phone;
-            dic["Email"] = model.Email;
-            dic["Matter"] = model.Matter;
-            dic["Material"] = model.Material;
-            dic["AC_Status"] = model.AC_Status;
-            dic["Processing_Result"] = model.Processing_Result;
-            dic["Create_Time"] = model.Create_Time;
-            dic["Create_UserId"] = model.Create_UserId;
-            dic["Create_User"] = model.Create_User;
-            dic["Update_Time"] = model.Update_Time;
-            dic["Update_UserId"] = model.Update_UserId;
-            dic["Update_User"] = model.Update_User;
-            dic["StartIndex"] = pageindex == 0 ? 0 : pageindex * pagesize + 1;
+            if(model.AC_ID != 0)
+            {
+                dic["AC_ID"] = model.AC_ID;
+            }
+            if(model.Company != null)
+            {
+                dic["Company"] = model.Company;
+            }
+            if(model.Contacts != null)
+            {
+                dic["Contacts"] = model.Contacts;
+            }
+            if(model.Phone != null)
+            {
+                dic["Phone"] = model.Phone;
+            }
+            if(model.Email != null)
+            {
+                dic["Email"] = model.Email;
+            }
+            if(model.Matter != null)
+            {
+                dic["Matter"] = model.Matter;
+            }
+            if(model.Material != null)
+            {
+                dic["Material"] = model.Material;
+            }
+            
+            {
+                dic["AC_Status"] = model.AC_Status;
+            }
+            if(model.Processing_Result != null)
+            {
+                dic["Processing_Result"] = model.Processing_Result;
+            }
+            if(model.Create_Time != null && model.Create_Time.HasValue)
+            {
+                dic["Create_Time"] = model.Create_Time;
+            }
+            if(model.Create_UserId != null)
+            {
+                dic["Create_UserId"] = model.Create_UserId;
+            }
+            if(model.Create_User != null)
+            {
+                dic["Create_User"] = model.Create_User;
+            }
+            if(model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if(model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if(model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
+            dic["StartIndex"] = pageindex == 1 ? 0 : (pageindex-1) * pagesize + 1;
             dic["SelectCount"] = pagesize;
             var list = SQLHelperFactory.Instance.QueryMultipleByPage<b_appointment_consultation_Entity>("Select_b_appointment_consultation_List", dic,out int total);
             return (list,total);

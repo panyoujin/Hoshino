@@ -40,7 +40,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                SELECT id,chain_id,content,interface_name,type,creation_time,ip FROM log_info WHERE 1=1 <%= AND id=@@id@@%> <%= AND chain_id=@@chain_id@@%> <%= AND content=@@content@@%> <%= AND interface_name=@@interface_name@@%> <%= AND type=@@type@@%> <%= AND creation_time=@@creation_time@@%> <%= AND ip=@@ip@@%> LIMIT <R%= @@StartIndex@@, @@SelectCount@@ %R> ;
+                SELECT id,chain_id,content,interface_name,type,creation_time,ip FROM log_info WHERE 1=1 <%= AND id=@@id@@%> <%= AND chain_id=@@chain_id@@%> <%= AND content=@@content@@%> <%= AND interface_name=@@interface_name@@%> <%= AND type=@@type@@%> <%= AND creation_time=@@creation_time@@%> <%= AND ip=@@ip@@%> <R%= LIMIT   @@StartIndex@@, @@SelectCount@@ %R> ;
                 SELECT COUNT(0) AS row_count FROM log_info WHERE 1=1 <%= AND id=@@id@@%> <%= AND chain_id=@@chain_id@@%> <%= AND content=@@content@@%> <%= AND interface_name=@@interface_name@@%> <%= AND type=@@type@@%> <%= AND creation_time=@@creation_time@@%> <%= AND ip=@@ip@@%>;
                 ]]>
             </SqlCommand>
