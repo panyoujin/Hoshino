@@ -3919,7 +3919,8 @@ a.close-canvas-menu {
 }
 
 .m-t-xs {
-    margin-top: 5px
+    margin-top: 5px;
+    margin-left: 7px
 }
 
 .m-t-sm {
