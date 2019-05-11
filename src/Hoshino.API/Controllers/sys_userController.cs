@@ -10,6 +10,9 @@ using Hoshino.IRepository;
 
 namespace Hoshino.API.Controllers
 {
+    /// <summary>
+    /// 系统用户
+    /// </summary>
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class sys_userController : ControllerBase
@@ -23,7 +26,7 @@ namespace Hoshino.API.Controllers
         }
         /// <summary>
         /// 新增
-        /// <summary>
+        /// </summary>
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Post([FromBody]sys_user_Entity model)
@@ -33,7 +36,7 @@ namespace Hoshino.API.Controllers
 
         /// <summary>
         /// 修改
-        /// <summary>
+        /// </summary>
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Update([FromBody]sys_user_Entity model)
@@ -43,7 +46,7 @@ namespace Hoshino.API.Controllers
 
         /// <summary>
         /// 删除
-        /// <summary>
+        /// </summary>
         [HttpDelete]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Delete(int User_ID)
@@ -53,7 +56,7 @@ namespace Hoshino.API.Controllers
 
         /// <summary>
         /// 获取单个
-        /// <summary>
+        /// </summary>
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<sys_user_Entity>))]
         public ActionResult<object> Get(int User_ID)
@@ -63,7 +66,7 @@ namespace Hoshino.API.Controllers
 
         /// <summary>
         /// 获取列表
-        /// <summary>
+        /// </summary>
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<sys_user_Entity>>))]
         public ActionResult<object> GetList([FromBody]sys_user_Entity model,int pageindex,int pagesize)

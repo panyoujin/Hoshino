@@ -10,6 +10,9 @@ using Hoshino.IRepository;
 
 namespace Hoshino.API.Controllers
 {
+    /// <summary>
+    /// 产品
+    /// </summary>
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class b_productController : ControllerBase
@@ -23,7 +26,7 @@ namespace Hoshino.API.Controllers
         }
         /// <summary>
         /// 新增
-        /// <summary>
+        /// </summary>
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Post([FromBody]b_product_Entity model)
@@ -33,7 +36,7 @@ namespace Hoshino.API.Controllers
 
         /// <summary>
         /// 修改
-        /// <summary>
+        /// </summary>
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Update([FromBody]b_product_Entity model)
@@ -43,7 +46,7 @@ namespace Hoshino.API.Controllers
 
         /// <summary>
         /// 删除
-        /// <summary>
+        /// </summary>
         [HttpDelete]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Delete(int Product_ID)
@@ -53,7 +56,7 @@ namespace Hoshino.API.Controllers
 
         /// <summary>
         /// 获取单个
-        /// <summary>
+        /// </summary>
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<b_product_Entity>))]
         public ActionResult<object> Get(int Product_ID)
@@ -63,7 +66,7 @@ namespace Hoshino.API.Controllers
 
         /// <summary>
         /// 获取列表
-        /// <summary>
+        /// </summary>
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_product_Entity>>))]
         public ActionResult<object> GetList([FromBody]b_product_Entity model,int pageindex,int pagesize)
@@ -73,8 +76,8 @@ namespace Hoshino.API.Controllers
         }
 
         /// <summary>
-        /// 获取最新产品列表
-        /// <summary>
+        /// 获取首页最新产品列表
+        /// </summary>
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_product_Entity>>))]
         public ActionResult<object> GetNewProductList()
@@ -84,8 +87,8 @@ namespace Hoshino.API.Controllers
         }
 
         /// <summary>
-        /// 获取热门产品列表
-        /// <summary>
+        /// 获取首页热门产品列表
+        /// </summary>
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_product_Entity>>))]
         public ActionResult<object> GetHotProductList()

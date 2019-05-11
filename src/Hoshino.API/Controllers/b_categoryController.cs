@@ -12,6 +12,9 @@ using System.Linq;
 
 namespace Hoshino.API.Controllers
 {
+    /// <summary>
+    /// 产品类型
+    /// </summary>
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class b_categoryController : ControllerBase
@@ -25,7 +28,7 @@ namespace Hoshino.API.Controllers
         }
         /// <summary>
         /// 新增
-        /// <summary>
+        /// </summary>
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Post([FromBody]b_category_Entity model)
@@ -35,7 +38,7 @@ namespace Hoshino.API.Controllers
 
         /// <summary>
         /// 修改
-        /// <summary>
+        /// </summary>
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Update([FromBody]b_category_Entity model)
@@ -45,7 +48,7 @@ namespace Hoshino.API.Controllers
 
         /// <summary>
         /// 删除
-        /// <summary>
+        /// </summary>
         [HttpDelete]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Delete(int Category_ID)
@@ -55,7 +58,7 @@ namespace Hoshino.API.Controllers
 
         /// <summary>
         /// 获取单个
-        /// <summary>
+        /// </summary>
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<b_category_Entity>))]
         public ActionResult<object> Get(int Category_ID)
@@ -65,7 +68,7 @@ namespace Hoshino.API.Controllers
 
         /// <summary>
         /// 获取列表
-        /// <summary>
+        /// </summary>
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_category_Entity>>))]
         public ActionResult<object> GetList(int pageindex, int pagesize)
@@ -74,10 +77,10 @@ namespace Hoshino.API.Controllers
             return list.ResponseSuccess("", total);
         }
 
-
         /// <summary>
-        /// 获取列表
-        /// <summary>
+        /// 获取所有分类
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<ALLCategoryVM>>))]
         public ActionResult<object> GetAllCategory()

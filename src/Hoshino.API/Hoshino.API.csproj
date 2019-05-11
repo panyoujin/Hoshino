@@ -5,6 +5,10 @@
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <UserSecretsId>8da61aa1-c069-438d-a06e-33783f96f9ff</UserSecretsId>
     </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <DocumentationFile>bin\Debug\netcoreapp2.2\SwaggerDemo.xml</DocumentationFile>
+      <NoWarn>1701;1702:1591</NoWarn>
+    </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.App" />
         <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
