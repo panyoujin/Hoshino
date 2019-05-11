@@ -13,7 +13,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                UPDATE b_video_resources SET Video_ID=@@Video_ID@@% <%=,Video_Name_CH=@@Video_Name_CH@@%> <%=,Video_Name_HK=@@Video_Name_HK@@%> <%=,Video_URL=@@Video_URL@@%> <%=,Video_Location=@@Video_Location@@%> <%=,Video_Status=@@Video_Status@@%> <%=,Video_Seq=@@Video_Seq@@%>    <%=,Update_Time=@@Update_Time@@%> <%=,Update_UserId=@@Update_UserId@@%> <%=,Update_User=@@Update_User@@%> WHERE Video_ID=@@Video_ID@@;
+                UPDATE b_video_resources SET Video_ID=@@Video_ID@@ <%=,Video_Name_CH=@@Video_Name_CH@@%> <%=,Video_Name_HK=@@Video_Name_HK@@%> <%=,Video_URL=@@Video_URL@@%> <%=,Video_Location=@@Video_Location@@%> <%=,Video_Status=@@Video_Status@@%> <%=,Video_Seq=@@Video_Seq@@%>    <%=,Update_Time=@@Update_Time@@%> <%=,Update_UserId=@@Update_UserId@@%> <%=,Update_User=@@Update_User@@%> WHERE Video_ID=@@Video_ID@@;
                 ]]>
             </SqlCommand>
         </SqlDefinition>

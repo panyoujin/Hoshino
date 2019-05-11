@@ -48,10 +48,37 @@ namespace Hoshino.Repository
         /// <summary>
         /// 修改
         /// <summary>
-        public bool Update(int id)
+        public bool Update(log_info_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["id"] = id;
+            if (model.id != 0)
+            {
+                dic["id"] = model.id;
+            }
+            if (model.chain_id != null)
+            {
+                dic["chain_id"] = model.chain_id;
+            }
+            if (model.content != null)
+            {
+                dic["content"] = model.content;
+            }
+            if (model.interface_name != null)
+            {
+                dic["interface_name"] = model.interface_name;
+            }
+            if (model.type != null && model.type.HasValue)
+            {
+                dic["type"] = model.type;
+            }
+            if (model.creation_time != null && model.creation_time.HasValue)
+            {
+                dic["creation_time"] = model.creation_time;
+            }
+            if (model.ip != null)
+            {
+                dic["ip"] = model.ip;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Update_log_info", dic) >0 ;
         }
 
@@ -111,7 +138,7 @@ namespace Hoshino.Repository
             }
             if (pageindex >= 0)
             {
-                dic["StartIndex"] = pageindex == 0 ? 0 : pageindex * pagesize + 1;
+                dic["StartIndex"] = pageindex <= 1 ? 0 : (pageindex - 1) * pagesize + 1;
             }
             if (pagesize > 0)
             {

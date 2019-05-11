@@ -64,10 +64,53 @@ namespace Hoshino.Repository
         /// <summary>
         /// 修改
         /// <summary>
-        public bool Update(int P_Attribute_ID)
+        public bool Update(b_product_attribute_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["P_Attribute_ID"] = P_Attribute_ID;
+            if (model.P_Attribute_ID != 0)
+            {
+                dic["P_Attribute_ID"] = model.P_Attribute_ID;
+            }
+            if (model.Product_ID != 0)
+            {
+                dic["Product_ID"] = model.Product_ID;
+            }
+            if (model.P_Attribute_Name_CH != null)
+            {
+                dic["P_Attribute_Name_CH"] = model.P_Attribute_Name_CH;
+            }
+            if (model.P_Attribute_Name_HK != null)
+            {
+                dic["P_Attribute_Name_HK"] = model.P_Attribute_Name_HK;
+            }
+            if (model.P_Attribute_Value_CH != null)
+            {
+                dic["P_Attribute_Value_CH"] = model.P_Attribute_Value_CH;
+            }
+            if (model.P_Attribute_Value_EN != null)
+            {
+                dic["P_Attribute_Value_EN"] = model.P_Attribute_Value_EN;
+            }
+            if (model.P_Attribute_Status != null && model.P_Attribute_Status.HasValue)
+            {
+                dic["P_Attribute_Status"] = model.P_Attribute_Status;
+            }
+            if (model.P_Attribute_Seq >= 0)
+            {
+                dic["P_Attribute_Seq"] = model.P_Attribute_Seq;
+            }
+            if (model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if (model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if (model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Update_b_product_attribute", dic) >0 ;
         }
 
@@ -131,7 +174,7 @@ namespace Hoshino.Repository
             }
             if (pageindex >= 0)
             {
-                dic["StartIndex"] = pageindex == 0 ? 0 : pageindex * pagesize + 1;
+                dic["StartIndex"] = pageindex <= 1 ? 0 : (pageindex - 1) * pagesize + 1;
             }
             if (pagesize > 0)
             {

@@ -36,9 +36,9 @@ namespace Hoshino.API.Controllers
         /// <summary>
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update(int Video_ID)
+        public ActionResult<object> Update([FromBody]b_video_resources_Entity model)
         {
-            return this._repository.Update(Video_ID).ResponseSuccess();
+            return this._repository.Update(model).ResponseSuccess();
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Hoshino.API.Controllers
             b_video_resources_Entity model = new b_video_resources_Entity();
             model.Video_Location = Video_Location.Index.ToString();
             model.Video_Status = (int)Table_Status.Effective;
-            var (list, total) = this._repository.GetList(model, -1, -1);
+            var (list, total) = this._repository.GetList(model, 1, 1);
             return list.ResponseSuccess("", total);
         }
 

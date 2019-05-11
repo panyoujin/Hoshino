@@ -14,7 +14,7 @@ namespace Hoshino.IRepository
         /// <summary>
         /// 修改
         /// <summary>
-        bool Update(int Product_ID);
+        bool Update(b_product_Entity model);
 
         /// <summary>
         /// 删除

@@ -52,10 +52,41 @@ namespace Hoshino.Repository
         /// <summary>
         /// 修改
         /// <summary>
-        public bool Update(int P_Relevant_ID)
+        public bool Update(b_rel_product_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["P_Relevant_ID"] = P_Relevant_ID;
+            if (model.P_Relevant_ID != 0)
+            {
+                dic["P_Relevant_ID"] = model.P_Relevant_ID;
+            }
+            if (model.Source_Product_ID != 0)
+            {
+                dic["Source_Product_ID"] = model.Source_Product_ID;
+            }
+            if (model.Rel_Product_ID != 0)
+            {
+                dic["Rel_Product_ID"] = model.Rel_Product_ID;
+            }
+            if (model.P_Relevant_Status != null && model.P_Relevant_Status.HasValue)
+            {
+                dic["P_Relevant_Status"] = model.P_Relevant_Status;
+            }
+            if (model.P_Relevant_Seq >= 0)
+            {
+                dic["P_Relevant_Seq"] = model.P_Relevant_Seq;
+            }
+            if (model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if (model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if (model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Update_b_rel_product", dic) >0 ;
         }
 
@@ -107,7 +138,7 @@ namespace Hoshino.Repository
             }
             if (pageindex >= 0)
             {
-                dic["StartIndex"] = pageindex == 0 ? 0 : pageindex * pagesize + 1;
+                dic["StartIndex"] = pageindex <= 1 ? 0 : (pageindex - 1) * pagesize + 1;
             }
             if (pagesize > 0)
             {

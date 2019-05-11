@@ -13,7 +13,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                UPDATE sys_user SET User_ID=@@User_ID@@% <%=,User_Account=@@User_Account@@%> <%=,Password=@@Password@@%> <%=,User_Name=@@User_Name@@%> <%=,User_Status=@@User_Status@@%>    <%=,Update_Time=@@Update_Time@@%> <%=,Update_UserId=@@Update_UserId@@%> <%=,Update_User=@@Update_User@@%> WHERE User_ID=@@User_ID@@;
+                UPDATE sys_user SET User_ID=@@User_ID@@ <%=,User_Account=@@User_Account@@%> <%=,Password=@@Password@@%> <%=,User_Name=@@User_Name@@%> <%=,User_Status=@@User_Status@@%>    <%=,Update_Time=@@Update_Time@@%> <%=,Update_UserId=@@Update_UserId@@%> <%=,Update_User=@@Update_User@@%> WHERE User_ID=@@User_ID@@;
                 ]]>
             </SqlCommand>
         </SqlDefinition>

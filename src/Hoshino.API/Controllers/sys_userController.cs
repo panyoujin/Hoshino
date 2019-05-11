@@ -36,9 +36,9 @@ namespace Hoshino.API.Controllers
         /// <summary>
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update(int User_ID)
+        public ActionResult<object> Update([FromBody]sys_user_Entity model)
         {
-            return this._repository.Update(User_ID).ResponseSuccess();
+            return this._repository.Update(model).ResponseSuccess();
         }
 
         /// <summary>

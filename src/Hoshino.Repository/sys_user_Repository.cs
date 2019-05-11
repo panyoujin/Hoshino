@@ -52,10 +52,41 @@ namespace Hoshino.Repository
         /// <summary>
         /// 修改
         /// <summary>
-        public bool Update(int User_ID)
+        public bool Update(sys_user_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["User_ID"] = User_ID;
+            if (model.User_ID != 0)
+            {
+                dic["User_ID"] = model.User_ID;
+            }
+            if (model.User_Account != null)
+            {
+                dic["User_Account"] = model.User_Account;
+            }
+            if (model.Password != null)
+            {
+                dic["Password"] = model.Password;
+            }
+            if (model.User_Name != null)
+            {
+                dic["User_Name"] = model.User_Name;
+            }
+            if (model.User_Status != null && model.User_Status.HasValue)
+            {
+                dic["User_Status"] = model.User_Status;
+            }
+            if (model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if (model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if (model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Update_sys_user", dic) >0 ;
         }
 
@@ -107,7 +138,7 @@ namespace Hoshino.Repository
             }
             if (pageindex >= 0)
             {
-                dic["StartIndex"] = pageindex == 0 ? 0 : pageindex * pagesize + 1;
+                dic["StartIndex"] = pageindex <= 1 ? 0 : (pageindex - 1) * pagesize + 1;
             }
             if (pagesize > 0)
             {

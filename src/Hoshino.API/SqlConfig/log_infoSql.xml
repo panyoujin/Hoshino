@@ -13,7 +13,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                UPDATE log_info SET id=@@id@@% <%=,chain_id=@@chain_id@@%> <%=,content=@@content@@%> <%=,interface_name=@@interface_name@@%> <%=,type=@@type@@%> <%=,creation_time=@@creation_time@@%> <%=,ip=@@ip@@%> WHERE id=@@id@@;
+                UPDATE log_info SET id=@@id@@ <%=,chain_id=@@chain_id@@%> <%=,content=@@content@@%> <%=,interface_name=@@interface_name@@%> <%=,type=@@type@@%> <%=,creation_time=@@creation_time@@%> <%=,ip=@@ip@@%> WHERE id=@@id@@;
                 ]]>
             </SqlCommand>
         </SqlDefinition>

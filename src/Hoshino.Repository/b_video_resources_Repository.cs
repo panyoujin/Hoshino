@@ -60,10 +60,49 @@ namespace Hoshino.Repository
         /// <summary>
         /// 修改
         /// <summary>
-        public bool Update(int Video_ID)
+        public bool Update(b_video_resources_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["Video_ID"] = Video_ID;
+            if (model.Video_ID != 0)
+            {
+                dic["Video_ID"] = model.Video_ID;
+            }
+            if (model.Video_Name_CH != null)
+            {
+                dic["Video_Name_CH"] = model.Video_Name_CH;
+            }
+            if (model.Video_Name_HK != null)
+            {
+                dic["Video_Name_HK"] = model.Video_Name_HK;
+            }
+            if (model.Video_URL != null)
+            {
+                dic["Video_URL"] = model.Video_URL;
+            }
+            if (model.Video_Location != null)
+            {
+                dic["Video_Location"] = model.Video_Location;
+            }
+            if (model.Video_Status != null && model.Video_Status.HasValue)
+            {
+                dic["Video_Status"] = model.Video_Status;
+            }
+            if (model.Video_Seq >= 0)
+            {
+                dic["Video_Seq"] = model.Video_Seq;
+            }
+            if (model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if (model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if (model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Update_b_video_resources", dic) >0 ;
         }
 
@@ -123,7 +162,7 @@ namespace Hoshino.Repository
             }
             if (pageindex >= 0)
             {
-                dic["StartIndex"] = pageindex == 0 ? 0 : pageindex * pagesize + 1;
+                dic["StartIndex"] = pageindex <= 1 ? 0 : (pageindex - 1) * pagesize + 1;
             }
             if (pagesize > 0)
             {

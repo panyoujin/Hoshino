@@ -64,10 +64,53 @@ namespace Hoshino.Repository
         /// <summary>
         /// 修改
         /// <summary>
-        public bool Update(int P_Resources_ID)
+        public bool Update(b_product_resources_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["P_Resources_ID"] = P_Resources_ID;
+            if (model.P_Resources_ID != 0)
+            {
+                dic["P_Resources_ID"] = model.P_Resources_ID;
+            }
+            if (model.Product_ID != 0)
+            {
+                dic["Product_ID"] = model.Product_ID;
+            }
+            if (model.P_Resources_Name_CH != null)
+            {
+                dic["P_Resources_Name_CH"] = model.P_Resources_Name_CH;
+            }
+            if (model.P_Resources_Name_HK != null)
+            {
+                dic["P_Resources_Name_HK"] = model.P_Resources_Name_HK;
+            }
+            if (model.P_Resources_URL != null)
+            {
+                dic["P_Resources_URL"] = model.P_Resources_URL;
+            }
+            if (model.P_Resources_Type != null)
+            {
+                dic["P_Resources_Type"] = model.P_Resources_Type;
+            }
+            if (model.P_Resources_Status != null && model.P_Resources_Status.HasValue)
+            {
+                dic["P_Resources_Status"] = model.P_Resources_Status;
+            }
+            if (model.P_Resources_Seq >= 0)
+            {
+                dic["P_Resources_Seq"] = model.P_Resources_Seq;
+            }
+            if (model.Update_Time != null && model.Update_Time.HasValue)
+            {
+                dic["Update_Time"] = model.Update_Time;
+            }
+            if (model.Update_UserId != null)
+            {
+                dic["Update_UserId"] = model.Update_UserId;
+            }
+            if (model.Update_User != null)
+            {
+                dic["Update_User"] = model.Update_User;
+            }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Update_b_product_resources", dic) >0 ;
         }
 
@@ -131,7 +174,7 @@ namespace Hoshino.Repository
             }
             if (pageindex >= 0)
             {
-                dic["StartIndex"] = pageindex == 0 ? 0 : pageindex * pagesize + 1;
+                dic["StartIndex"] = pageindex <= 1 ? 0 : (pageindex - 1) * pagesize + 1;
             }
             if (pagesize > 0)
             {

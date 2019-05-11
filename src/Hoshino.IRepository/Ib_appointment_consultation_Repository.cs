@@ -14,7 +14,7 @@ namespace Hoshino.IRepository
         /// <summary>
         /// 修改
         /// <summary>
-        bool Update(int AC_ID);
+        bool Update(b_appointment_consultation_Entity model);
 
         /// <summary>
         /// 删除

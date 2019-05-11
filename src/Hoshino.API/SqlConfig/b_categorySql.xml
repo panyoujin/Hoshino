@@ -13,7 +13,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                UPDATE b_category SET Category_ID=@@Category_ID@@% <%=,Parent_Category_ID=@@Parent_Category_ID@@%> <%=,Category_Name_CH=@@Category_Name_CH@@%> <%=,Category_Name_HK=@@Category_Name_HK@@%> <%=,Category_Status=@@Category_Status@@%> <%=,Category_Seq=@@Category_Seq@@%>    <%=,Update_Time=@@Update_Time@@%> <%=,Update_UserId=@@Update_UserId@@%> <%=,Update_User=@@Update_User@@%> WHERE Category_ID=@@Category_ID@@;
+                UPDATE b_category SET Category_ID=@@Category_ID@@ <%=,Parent_Category_ID=@@Parent_Category_ID@@%> <%=,Category_Name_CH=@@Category_Name_CH@@%> <%=,Category_Name_HK=@@Category_Name_HK@@%> <%=,Category_Status=@@Category_Status@@%> <%=,Category_Seq=@@Category_Seq@@%>    <%=,Update_Time=@@Update_Time@@%> <%=,Update_UserId=@@Update_UserId@@%> <%=,Update_User=@@Update_User@@%> WHERE Category_ID=@@Category_ID@@;
                 ]]>
             </SqlCommand>
         </SqlDefinition>
