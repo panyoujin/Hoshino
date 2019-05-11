@@ -36,9 +36,9 @@ namespace Hoshino.API.Controllers
         /// <summary>
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]b_video_resources_Entity model)
+        public ActionResult<object> Update(int Video_ID)
         {
-            return this._repository.Update(model).ResponseSuccess();
+            return this._repository.Update(Video_ID).ResponseSuccess();
         }
 
         /// <summary>
@@ -46,9 +46,9 @@ namespace Hoshino.API.Controllers
         /// <summary>
         [HttpDelete]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Delete([FromBody]b_video_resources_Entity model)
+        public ActionResult<object> Delete(int Video_ID)
         {
-            return this._repository.Delete(model).ResponseSuccess();
+            return this._repository.Delete(Video_ID).ResponseSuccess();
         }
 
         /// <summary>
@@ -58,20 +58,32 @@ namespace Hoshino.API.Controllers
         [ProducesResponseType(200, Type = typeof(ApiResult<b_video_resources_Entity>))]
         public ActionResult<object> Get(int Video_ID)
         {
-            b_video_resources_Entity model = new b_video_resources_Entity();
-            model.Video_ID = Video_ID;
-            return this._repository.Get(model).ResponseSuccess();
+            return this._repository.Get(Video_ID).ResponseSuccess();
         }
 
         /// <summary>
         /// 获取列表
         /// <summary>
-        [HttpGet]
+        [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_video_resources_Entity>>))]
         public ActionResult<object> GetList([FromBody]b_video_resources_Entity model,int pageindex,int pagesize)
         {
             var (list,total) = this._repository.GetList(model, pageindex, pagesize) ;
             return list.ResponseSuccess("",total);
+        }
+
+        /// <summary>
+        /// 获取首页Video列表
+        /// <summary>
+        [HttpGet]
+        [ProducesResponseType(200, Type = typeof(ApiResult<List<b_video_resources_Entity>>))]
+        public ActionResult<object> GetIndexList()
+        {
+            b_video_resources_Entity model = new b_video_resources_Entity();
+            model.Video_Location = Video_Location.Index.ToString();
+            model.Video_Status = (int)Table_Status.Effective;
+            var (list, total) = this._repository.GetList(model, -1, -1);
+            return list.ResponseSuccess("", total);
         }
 
     }

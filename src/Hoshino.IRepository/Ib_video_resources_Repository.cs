@@ -14,17 +14,17 @@ namespace Hoshino.IRepository
         /// <summary>
         /// 修改
         /// <summary>
-        bool Update(b_video_resources_Entity model);
+        bool Update(int Video_ID);
 
         /// <summary>
         /// 删除
         /// <summary>
-        bool Delete(b_video_resources_Entity model);
+        bool Delete(int Video_ID);
 
         /// <summary>
         /// 获取单个
         /// <summary>
-        b_video_resources_Entity Get(b_video_resources_Entity model);
+        b_video_resources_Entity Get(int Video_ID);
 
         /// <summary>
         /// 获取列表

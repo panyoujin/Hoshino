@@ -14,23 +14,22 @@ namespace Hoshino.IRepository
         /// <summary>
         /// 修改
         /// <summary>
-        bool Update(b_product_Entity model);
+        bool Update(int Product_ID);
 
         /// <summary>
         /// 删除
         /// <summary>
-        bool Delete(b_product_Entity model);
+        bool Delete(int Product_ID);
 
         /// <summary>
         /// 获取单个
         /// <summary>
-        b_product_Entity Get(b_product_Entity model);
+        b_product_Entity Get(int Product_ID);
 
         /// <summary>
         /// 获取列表
         /// <summary>
         (IEnumerable<b_product_Entity>,int) GetList(b_product_Entity model,int pageindex,int pagesize);
-
 
         /// <summary>
         /// 获取最新产品列表
@@ -42,5 +41,6 @@ namespace Hoshino.IRepository
         /// 获取热门產品列表
         /// <summary>
         (IEnumerable<T>, int) GetHotProductList<T>();
+		
     }
 }

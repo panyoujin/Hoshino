@@ -38,9 +38,9 @@ namespace Hoshino.API.Controllers
         /// <summary>
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]b_category_Entity model)
+        public ActionResult<object> Update(int Category_ID)
         {
-            return this._repository.Update(model).ResponseSuccess();
+            return this._repository.Update(Category_ID).ResponseSuccess();
         }
 
         /// <summary>
@@ -48,9 +48,9 @@ namespace Hoshino.API.Controllers
         /// <summary>
         [HttpDelete]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Delete([FromBody]b_category_Entity model)
+        public ActionResult<object> Delete(int Category_ID)
         {
-            return this._repository.Delete(model).ResponseSuccess();
+            return this._repository.Delete(Category_ID).ResponseSuccess();
         }
 
         /// <summary>
@@ -58,15 +58,15 @@ namespace Hoshino.API.Controllers
         /// <summary>
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<b_category_Entity>))]
-        public ActionResult<object> Get(int categoryID)
+        public ActionResult<object> Get(int Category_ID)
         {
-            return this._repository.Get(categoryID).ResponseSuccess();
+            return this._repository.Get(Category_ID).ResponseSuccess();
         }
 
         /// <summary>
         /// 获取列表
         /// <summary>
-        [HttpGet]
+        [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_category_Entity>>))]
         public ActionResult<object> GetList(int pageindex, int pagesize)
         {

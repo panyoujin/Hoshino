@@ -36,9 +36,9 @@ namespace Hoshino.API.Controllers
         /// <summary>
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]b_contact_Entity model)
+        public ActionResult<object> Update(int Contact_ID)
         {
-            return this._repository.Update(model).ResponseSuccess();
+            return this._repository.Update(Contact_ID).ResponseSuccess();
         }
 
         /// <summary>
@@ -46,9 +46,9 @@ namespace Hoshino.API.Controllers
         /// <summary>
         [HttpDelete]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Delete([FromBody]b_contact_Entity model)
+        public ActionResult<object> Delete(int Contact_ID)
         {
-            return this._repository.Delete(model).ResponseSuccess();
+            return this._repository.Delete(Contact_ID).ResponseSuccess();
         }
 
         /// <summary>
@@ -58,15 +58,13 @@ namespace Hoshino.API.Controllers
         [ProducesResponseType(200, Type = typeof(ApiResult<b_contact_Entity>))]
         public ActionResult<object> Get(int Contact_ID)
         {
-            b_contact_Entity model = new b_contact_Entity();
-            model.Contact_ID = Contact_ID;
-            return this._repository.Get(model).ResponseSuccess();
+            return this._repository.Get(Contact_ID).ResponseSuccess();
         }
 
         /// <summary>
         /// 获取列表
         /// <summary>
-        [HttpGet]
+        [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_contact_Entity>>))]
         public ActionResult<object> GetList([FromBody]b_contact_Entity model,int pageindex,int pagesize)
         {

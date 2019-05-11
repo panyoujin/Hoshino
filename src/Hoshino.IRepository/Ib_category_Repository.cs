@@ -14,23 +14,22 @@ namespace Hoshino.IRepository
         /// <summary>
         /// 修改
         /// <summary>
-        bool Update(b_category_Entity model);
+        bool Update(int Category_ID);
 
         /// <summary>
         /// 删除
         /// <summary>
-        bool Delete(b_category_Entity model);
+        bool Delete(int Category_ID);
 
         /// <summary>
         /// 获取单个
         /// <summary>
-        b_category_Entity Get(int categoryID);
+        b_category_Entity Get(int Category_ID);
 
         /// <summary>
         /// 获取列表
         /// <summary>
         (IEnumerable<b_category_Entity>,int) GetList(int pageindex,int pagesize);
-
 
     }
 }

@@ -36,9 +36,9 @@ namespace Hoshino.API.Controllers
         /// <summary>
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]sys_user_Entity model)
+        public ActionResult<object> Update(int User_ID)
         {
-            return this._repository.Update(model).ResponseSuccess();
+            return this._repository.Update(User_ID).ResponseSuccess();
         }
 
         /// <summary>
@@ -46,9 +46,9 @@ namespace Hoshino.API.Controllers
         /// <summary>
         [HttpDelete]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Delete([FromBody]sys_user_Entity model)
+        public ActionResult<object> Delete(int User_ID)
         {
-            return this._repository.Delete(model).ResponseSuccess();
+            return this._repository.Delete(User_ID).ResponseSuccess();
         }
 
         /// <summary>
@@ -58,15 +58,13 @@ namespace Hoshino.API.Controllers
         [ProducesResponseType(200, Type = typeof(ApiResult<sys_user_Entity>))]
         public ActionResult<object> Get(int User_ID)
         {
-            sys_user_Entity model = new sys_user_Entity();
-            model.User_ID = User_ID;
-            return this._repository.Get(model).ResponseSuccess();
+            return this._repository.Get(User_ID).ResponseSuccess();
         }
 
         /// <summary>
         /// 获取列表
         /// <summary>
-        [HttpGet]
+        [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<sys_user_Entity>>))]
         public ActionResult<object> GetList([FromBody]sys_user_Entity model,int pageindex,int pagesize)
         {

@@ -4,7 +4,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                INSERT INTO sys_user (User_ID,User_Account,Password,User_Name,User_Status,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User) VALUES(@@User_ID@@,@@User_Account@@,@@Password@@,@@User_Name@@,@@User_Status@@,@@Create_Time@@,@@Create_UserId@@,@@Create_User@@,@@Update_Time@@,@@Update_UserId@@,@@Update_User@@);
+                INSERT INTO sys_user (User_Account,Password,User_Name,User_Status,Create_Time,Create_UserId,Create_User) VALUES(@@User_Account@@,@@Password@@,@@User_Name@@,@@User_Status@@,@@Create_Time@@,@@Create_UserId@@,@@Create_User@@);
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -13,7 +13,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                UPDATE sys_user SET User_ID=@@User_ID@@% <%=,User_Account=@@User_Account@@%>,<%=,Password=@@Password@@%>,<%=,User_Name=@@User_Name@@%>,<%=,User_Status=@@User_Status@@%>,<%=,Create_Time=@@Create_Time@@%>,<%=,Create_UserId=@@Create_UserId@@%>,<%=,Create_User=@@Create_User@@%>,<%=,Update_Time=@@Update_Time@@%>,<%=,Update_UserId=@@Update_UserId@@%>,<%=,Update_User=@@Update_User@@%> WHERE User_ID=@@User_ID@@%;
+                UPDATE sys_user SET User_ID=@@User_ID@@% <%=,User_Account=@@User_Account@@%> <%=,Password=@@Password@@%> <%=,User_Name=@@User_Name@@%> <%=,User_Status=@@User_Status@@%>    <%=,Update_Time=@@Update_Time@@%> <%=,Update_UserId=@@Update_UserId@@%> <%=,Update_User=@@Update_User@@%> WHERE User_ID=@@User_ID@@;
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -22,7 +22,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                DELETE FROM sys_user WHERE User_ID=@@User_ID@@%;
+                DELETE FROM sys_user WHERE User_ID=@@User_ID@@;
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -31,7 +31,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                SELECT User_ID,User_Account,Password,User_Name,User_Status,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM sys_user WHERE 1=1 <%= AND User_ID=@@User_ID@@%> <%= AND User_Account=@@User_Account@@%> <%= AND Password=@@Password@@%> <%= AND User_Name=@@User_Name@@%> <%= AND User_Status=@@User_Status@@%> <%= AND Create_Time=@@Create_Time@@%> <%= AND Create_UserId=@@Create_UserId@@%> <%= AND Create_User=@@Create_User@@%> <%= AND Update_Time=@@Update_Time@@%> <%= AND Update_UserId=@@Update_UserId@@%> <%= AND Update_User=@@Update_User@@%>;
+                SELECT User_ID,User_Account,Password,User_Name,User_Status,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM sys_user WHERE User_ID=@@User_ID@@;
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -40,8 +40,8 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                SELECT User_ID,User_Account,Password,User_Name,User_Status,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM sys_user WHERE 1=1 <%= AND User_ID=@@User_ID@@%> <%= AND User_Account=@@User_Account@@%> <%= AND Password=@@Password@@%> <%= AND User_Name=@@User_Name@@%> <%= AND User_Status=@@User_Status@@%> <%= AND Create_Time=@@Create_Time@@%> <%= AND Create_UserId=@@Create_UserId@@%> <%= AND Create_User=@@Create_User@@%> <%= AND Update_Time=@@Update_Time@@%> <%= AND Update_UserId=@@Update_UserId@@%> <%= AND Update_User=@@Update_User@@%> <R%= LIMIT   @@StartIndex@@, @@SelectCount@@ %R> ;
-                SELECT COUNT(0) AS row_count FROM sys_user WHERE 1=1 <%= AND User_ID=@@User_ID@@%> <%= AND User_Account=@@User_Account@@%> <%= AND Password=@@Password@@%> <%= AND User_Name=@@User_Name@@%> <%= AND User_Status=@@User_Status@@%> <%= AND Create_Time=@@Create_Time@@%> <%= AND Create_UserId=@@Create_UserId@@%> <%= AND Create_User=@@Create_User@@%> <%= AND Update_Time=@@Update_Time@@%> <%= AND Update_UserId=@@Update_UserId@@%> <%= AND Update_User=@@Update_User@@%>;
+                SELECT User_ID,User_Account,Password,User_Name,User_Status,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM sys_user WHERE 1=1 <%= AND User_ID=@@User_ID@@%> <%= AND User_Account=@@User_Account@@%> <%= AND Password=@@Password@@%> <%= AND User_Name=@@User_Name@@%> <%= AND User_Status=@@User_Status@@%>       <R%= LIMIT @@StartIndex@@, @@SelectCount@@ %R> ;
+                SELECT COUNT(0) AS row_count FROM sys_user WHERE 1=1 <%= AND User_ID=@@User_ID@@%> <%= AND User_Account=@@User_Account@@%> <%= AND Password=@@Password@@%> <%= AND User_Name=@@User_Name@@%> <%= AND User_Status=@@User_Status@@%>      ;
                 ]]>
             </SqlCommand>
         </SqlDefinition>

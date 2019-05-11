@@ -4,7 +4,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                INSERT INTO b_rel_product (P_Relevant_ID,Source_Product_ID,Rel_Product_ID,P_Relevant_Status,P_Relevant_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User) VALUES(@@P_Relevant_ID@@,@@Source_Product_ID@@,@@Rel_Product_ID@@,@@P_Relevant_Status@@,@@P_Relevant_Seq@@,@@Create_Time@@,@@Create_UserId@@,@@Create_User@@,@@Update_Time@@,@@Update_UserId@@,@@Update_User@@);
+                INSERT INTO b_rel_product (Source_Product_ID,Rel_Product_ID,P_Relevant_Status,P_Relevant_Seq,Create_Time,Create_UserId,Create_User) VALUES(@@Source_Product_ID@@,@@Rel_Product_ID@@,@@P_Relevant_Status@@,@@P_Relevant_Seq@@,@@Create_Time@@,@@Create_UserId@@,@@Create_User@@);
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -13,7 +13,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                UPDATE b_rel_product SET P_Relevant_ID=@@P_Relevant_ID@@% <%=,Source_Product_ID=@@Source_Product_ID@@%>,<%=,Rel_Product_ID=@@Rel_Product_ID@@%>,<%=,P_Relevant_Status=@@P_Relevant_Status@@%>,<%=,P_Relevant_Seq=@@P_Relevant_Seq@@%>,<%=,Create_Time=@@Create_Time@@%>,<%=,Create_UserId=@@Create_UserId@@%>,<%=,Create_User=@@Create_User@@%>,<%=,Update_Time=@@Update_Time@@%>,<%=,Update_UserId=@@Update_UserId@@%>,<%=,Update_User=@@Update_User@@%> WHERE P_Relevant_ID=@@P_Relevant_ID@@%;
+                UPDATE b_rel_product SET P_Relevant_ID=@@P_Relevant_ID@@% <%=,Source_Product_ID=@@Source_Product_ID@@%> <%=,Rel_Product_ID=@@Rel_Product_ID@@%> <%=,P_Relevant_Status=@@P_Relevant_Status@@%> <%=,P_Relevant_Seq=@@P_Relevant_Seq@@%>    <%=,Update_Time=@@Update_Time@@%> <%=,Update_UserId=@@Update_UserId@@%> <%=,Update_User=@@Update_User@@%> WHERE P_Relevant_ID=@@P_Relevant_ID@@;
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -22,7 +22,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                DELETE FROM b_rel_product WHERE P_Relevant_ID=@@P_Relevant_ID@@%;
+                DELETE FROM b_rel_product WHERE P_Relevant_ID=@@P_Relevant_ID@@;
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -31,7 +31,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                SELECT P_Relevant_ID,Source_Product_ID,Rel_Product_ID,P_Relevant_Status,P_Relevant_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_rel_product WHERE 1=1 <%= AND P_Relevant_ID=@@P_Relevant_ID@@%> <%= AND Source_Product_ID=@@Source_Product_ID@@%> <%= AND Rel_Product_ID=@@Rel_Product_ID@@%> <%= AND P_Relevant_Status=@@P_Relevant_Status@@%> <%= AND P_Relevant_Seq=@@P_Relevant_Seq@@%> <%= AND Create_Time=@@Create_Time@@%> <%= AND Create_UserId=@@Create_UserId@@%> <%= AND Create_User=@@Create_User@@%> <%= AND Update_Time=@@Update_Time@@%> <%= AND Update_UserId=@@Update_UserId@@%> <%= AND Update_User=@@Update_User@@%>;
+                SELECT P_Relevant_ID,Source_Product_ID,Rel_Product_ID,P_Relevant_Status,P_Relevant_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_rel_product WHERE P_Relevant_ID=@@P_Relevant_ID@@;
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -40,8 +40,8 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                SELECT P_Relevant_ID,Source_Product_ID,Rel_Product_ID,P_Relevant_Status,P_Relevant_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_rel_product WHERE 1=1 <%= AND P_Relevant_ID=@@P_Relevant_ID@@%> <%= AND Source_Product_ID=@@Source_Product_ID@@%> <%= AND Rel_Product_ID=@@Rel_Product_ID@@%> <%= AND P_Relevant_Status=@@P_Relevant_Status@@%> <%= AND P_Relevant_Seq=@@P_Relevant_Seq@@%> <%= AND Create_Time=@@Create_Time@@%> <%= AND Create_UserId=@@Create_UserId@@%> <%= AND Create_User=@@Create_User@@%> <%= AND Update_Time=@@Update_Time@@%> <%= AND Update_UserId=@@Update_UserId@@%> <%= AND Update_User=@@Update_User@@%> <R%= LIMIT   @@StartIndex@@, @@SelectCount@@ %R> ;
-                SELECT COUNT(0) AS row_count FROM b_rel_product WHERE 1=1 <%= AND P_Relevant_ID=@@P_Relevant_ID@@%> <%= AND Source_Product_ID=@@Source_Product_ID@@%> <%= AND Rel_Product_ID=@@Rel_Product_ID@@%> <%= AND P_Relevant_Status=@@P_Relevant_Status@@%> <%= AND P_Relevant_Seq=@@P_Relevant_Seq@@%> <%= AND Create_Time=@@Create_Time@@%> <%= AND Create_UserId=@@Create_UserId@@%> <%= AND Create_User=@@Create_User@@%> <%= AND Update_Time=@@Update_Time@@%> <%= AND Update_UserId=@@Update_UserId@@%> <%= AND Update_User=@@Update_User@@%>;
+                SELECT P_Relevant_ID,Source_Product_ID,Rel_Product_ID,P_Relevant_Status,P_Relevant_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_rel_product WHERE 1=1 <%= AND P_Relevant_ID=@@P_Relevant_ID@@%> <%= AND Source_Product_ID=@@Source_Product_ID@@%> <%= AND Rel_Product_ID=@@Rel_Product_ID@@%> <%= AND P_Relevant_Status=@@P_Relevant_Status@@%> <%= AND P_Relevant_Seq=@@P_Relevant_Seq@@%>       <R%= LIMIT @@StartIndex@@, @@SelectCount@@ %R> ;
+                SELECT COUNT(0) AS row_count FROM b_rel_product WHERE 1=1 <%= AND P_Relevant_ID=@@P_Relevant_ID@@%> <%= AND Source_Product_ID=@@Source_Product_ID@@%> <%= AND Rel_Product_ID=@@Rel_Product_ID@@%> <%= AND P_Relevant_Status=@@P_Relevant_Status@@%> <%= AND P_Relevant_Seq=@@P_Relevant_Seq@@%>      ;
                 ]]>
             </SqlCommand>
         </SqlDefinition>

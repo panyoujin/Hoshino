@@ -36,9 +36,9 @@ namespace Hoshino.API.Controllers
         /// <summary>
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]b_product_Entity model)
+        public ActionResult<object> Update(int Product_ID)
         {
-            return this._repository.Update(model).ResponseSuccess();
+            return this._repository.Update(Product_ID).ResponseSuccess();
         }
 
         /// <summary>
@@ -46,9 +46,9 @@ namespace Hoshino.API.Controllers
         /// <summary>
         [HttpDelete]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Delete([FromBody]b_product_Entity model)
+        public ActionResult<object> Delete(int Product_ID)
         {
-            return this._repository.Delete(model).ResponseSuccess();
+            return this._repository.Delete(Product_ID).ResponseSuccess();
         }
 
         /// <summary>
@@ -58,15 +58,13 @@ namespace Hoshino.API.Controllers
         [ProducesResponseType(200, Type = typeof(ApiResult<b_product_Entity>))]
         public ActionResult<object> Get(int Product_ID)
         {
-            b_product_Entity model = new b_product_Entity();
-            model.Product_ID = Product_ID;
-            return this._repository.Get(model).ResponseSuccess();
+            return this._repository.Get(Product_ID).ResponseSuccess();
         }
 
         /// <summary>
         /// 获取列表
         /// <summary>
-        [HttpGet]
+        [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_product_Entity>>))]
         public ActionResult<object> GetList([FromBody]b_product_Entity model,int pageindex,int pagesize)
         {
@@ -74,5 +72,26 @@ namespace Hoshino.API.Controllers
             return list.ResponseSuccess("",total);
         }
 
+        /// <summary>
+        /// 获取最新产品列表
+        /// <summary>
+        [HttpGet]
+        [ProducesResponseType(200, Type = typeof(ApiResult<List<b_product_Entity>>))]
+        public ActionResult<object> GetNewProductList()
+        {
+            var (list, total) = this._repository.GetNewProductList<b_product_Entity>();
+            return list.ResponseSuccess("", total);
+        }
+
+        /// <summary>
+        /// 获取热门产品列表
+        /// <summary>
+        [HttpGet]
+        [ProducesResponseType(200, Type = typeof(ApiResult<List<b_product_Entity>>))]
+        public ActionResult<object> GetHotProductList()
+        {
+            var (list, total) = this._repository.GetNewProductList<b_product_Entity>();
+            return list.ResponseSuccess("", total);
+        }
     }
 }

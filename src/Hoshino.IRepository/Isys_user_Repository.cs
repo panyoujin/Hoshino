@@ -14,17 +14,17 @@ namespace Hoshino.IRepository
         /// <summary>
         /// 修改
         /// <summary>
-        bool Update(sys_user_Entity model);
+        bool Update(int User_ID);
 
         /// <summary>
         /// 删除
         /// <summary>
-        bool Delete(sys_user_Entity model);
+        bool Delete(int User_ID);
 
         /// <summary>
         /// 获取单个
         /// <summary>
-        sys_user_Entity Get(sys_user_Entity model);
+        sys_user_Entity Get(int User_ID);
 
         /// <summary>
         /// 获取列表

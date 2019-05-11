@@ -36,9 +36,9 @@ namespace Hoshino.API.Controllers
         /// <summary>
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]b_banner_resources_Entity model)
+        public ActionResult<object> Update(int Banner_ID)
         {
-            return this._repository.Update(model).ResponseSuccess();
+            return this._repository.Update(Banner_ID).ResponseSuccess();
         }
 
         /// <summary>
@@ -46,9 +46,9 @@ namespace Hoshino.API.Controllers
         /// <summary>
         [HttpDelete]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Delete([FromBody]b_banner_resources_Entity model)
+        public ActionResult<object> Delete(int Banner_ID)
         {
-            return this._repository.Delete(model).ResponseSuccess();
+            return this._repository.Delete(Banner_ID).ResponseSuccess();
         }
 
         /// <summary>
@@ -58,15 +58,13 @@ namespace Hoshino.API.Controllers
         [ProducesResponseType(200, Type = typeof(ApiResult<b_banner_resources_Entity>))]
         public ActionResult<object> Get(int Banner_ID)
         {
-            b_banner_resources_Entity model = new b_banner_resources_Entity();
-            model.Banner_ID = Banner_ID;
-            return this._repository.Get(model).ResponseSuccess();
+            return this._repository.Get(Banner_ID).ResponseSuccess();
         }
 
         /// <summary>
         /// 获取列表
         /// <summary>
-        [HttpGet]
+        [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_banner_resources_Entity>>))]
         public ActionResult<object> GetList([FromBody]b_banner_resources_Entity model,int pageindex,int pagesize)
         {
@@ -74,5 +72,18 @@ namespace Hoshino.API.Controllers
             return list.ResponseSuccess("",total);
         }
 
+        /// <summary>
+        /// 获取首页Banner列表
+        /// <summary>
+        [HttpGet]
+        [ProducesResponseType(200, Type = typeof(ApiResult<List<b_banner_resources_Entity>>))]
+        public ActionResult<object> GetIndexList()
+        {
+            b_banner_resources_Entity model = new b_banner_resources_Entity();
+            model.Banner_Location = Banner_Location.Index.ToString();
+            model.Banner_Status = (int)Table_Status.Effective; ; 
+            var (list, total) = this._repository.GetList(model, -1, -1);
+            return list.ResponseSuccess("", total);
+        }
     }
 }

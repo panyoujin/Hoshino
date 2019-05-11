@@ -14,17 +14,17 @@ namespace Hoshino.IRepository
         /// <summary>
         /// 修改
         /// <summary>
-        bool Update(b_appointment_consultation_Entity model);
+        bool Update(int AC_ID);
 
         /// <summary>
         /// 删除
         /// <summary>
-        bool Delete(b_appointment_consultation_Entity model);
+        bool Delete(int AC_ID);
 
         /// <summary>
         /// 获取单个
         /// <summary>
-        b_appointment_consultation_Entity Get(b_appointment_consultation_Entity model);
+        b_appointment_consultation_Entity Get(int AC_ID);
 
         /// <summary>
         /// 获取列表

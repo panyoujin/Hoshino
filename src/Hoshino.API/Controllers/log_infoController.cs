@@ -36,9 +36,9 @@ namespace Hoshino.API.Controllers
         /// <summary>
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]log_info_Entity model)
+        public ActionResult<object> Update(int id)
         {
-            return this._repository.Update(model).ResponseSuccess();
+            return this._repository.Update(id).ResponseSuccess();
         }
 
         /// <summary>
@@ -46,9 +46,9 @@ namespace Hoshino.API.Controllers
         /// <summary>
         [HttpDelete]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Delete([FromBody]log_info_Entity model)
+        public ActionResult<object> Delete(int id)
         {
-            return this._repository.Delete(model).ResponseSuccess();
+            return this._repository.Delete(id).ResponseSuccess();
         }
 
         /// <summary>
@@ -58,15 +58,13 @@ namespace Hoshino.API.Controllers
         [ProducesResponseType(200, Type = typeof(ApiResult<log_info_Entity>))]
         public ActionResult<object> Get(int id)
         {
-            log_info_Entity model = new log_info_Entity();
-            model.id = id;
-            return this._repository.Get(model).ResponseSuccess();
+            return this._repository.Get(id).ResponseSuccess();
         }
 
         /// <summary>
         /// 获取列表
         /// <summary>
-        [HttpGet]
+        [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<log_info_Entity>>))]
         public ActionResult<object> GetList([FromBody]log_info_Entity model,int pageindex,int pagesize)
         {

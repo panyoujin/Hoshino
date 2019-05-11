@@ -25,27 +25,6 @@ namespace Hoshino.API.Controllers
         }
 
 
-        /// <summary>
-        /// 获取最新产品列表
-        /// <summary>
-        [HttpGet]
-        [ProducesResponseType(200, Type = typeof(ApiResult<List<b_product_Entity>>))]
-        public ActionResult<object> GetNewProductList()
-        {
-            var (list, total) = this._repository.GetNewProductList<b_product_Entity>();
-            return list.ResponseSuccess("", total);
-        }
-
-        /// <summary>
-        /// 获取热门产品列表
-        /// <summary>
-        [HttpGet]
-        [ProducesResponseType(200, Type = typeof(ApiResult<List<b_product_Entity>>))]
-        public ActionResult<object> GetHotProductList()
-        {
-            var (list, total) = this._repository.GetNewProductList<b_product_Entity>();
-            return list.ResponseSuccess("", total);
-        }
 
     }
 }
