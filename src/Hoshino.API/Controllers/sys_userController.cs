@@ -75,7 +75,9 @@ namespace Hoshino.API.Controllers
             var (list,total) = this._repository.GetList(model, pageindex, pagesize) ;
             return list.ResponseSuccess("",total);
         }
-
+        /// <summary>
+        /// 后台登录接口
+        /// </summary>
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<ResLogin>))]
         public ActionResult<object> Login([FromBody]sys_user_Entity model)
