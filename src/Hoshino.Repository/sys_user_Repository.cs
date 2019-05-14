@@ -109,6 +109,12 @@ namespace Hoshino.Repository
             dic["User_ID"] = User_ID;
             return SQLHelperFactory.Instance.QueryForObjectByT<sys_user_Entity>("Select_sys_user", dic);
         }
+        public sys_user_Entity GetUserByAccount(string Account)
+        {
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic["User_Account"] = Account;
+            return SQLHelperFactory.Instance.QueryForObjectByT<sys_user_Entity>("Select_sys_user_by_account", dic);
+        }
 
         /// <summary>
         /// 获取列表

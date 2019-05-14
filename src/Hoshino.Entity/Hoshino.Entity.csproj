@@ -6,5 +6,8 @@
     <ItemGroup>
         <PackageReference Include="Pan.Code" Version="1.0.0" />
     </ItemGroup>
+    <ItemGroup>
+      <Folder Include="RequestModel\" />
+    </ItemGroup>
 </Project>
 

@@ -26,6 +26,7 @@ namespace Hoshino.IRepository
         /// <summary>
         sys_user_Entity Get(int User_ID);
 
+        sys_user_Entity GetUserByAccount(string Account);
         /// <summary>
         /// 获取列表
         /// <summary>

@@ -7,6 +7,7 @@ using Pan.Code.Extentions;
 using Hoshino.API.Filters;
 using Hoshino.Entity;
 using Hoshino.IRepository;
+using Microsoft.AspNetCore.Http;
 
 namespace Hoshino.API.Controllers
 {
@@ -75,5 +76,22 @@ namespace Hoshino.API.Controllers
             return list.ResponseSuccess("",total);
         }
 
+        [HttpPost]
+        [ProducesResponseType(200, Type = typeof(ApiResult<ResLogin>))]
+        public ActionResult<object> Login([FromBody]sys_user_Entity model)
+        {
+            ResLogin login = new ResLogin();
+            sys_user_Entity user = this._repository.GetUserByAccount(model.User_Account);
+            if (user != null)
+            {
+                if (!model.Password.Equals(user.Password))
+                {
+                    login.ResponseNotLogin("登录失败");
+                }
+                login.token = Guid.NewGuid().ToString("N");
+                HttpContext.Session.SetString(login.token, user.ToJson());
+            }
+            return login.ResponseSuccess();
+        }
     }
 }

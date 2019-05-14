@@ -36,6 +36,15 @@
             </SqlCommand>
         </SqlDefinition>
     </Data>
+  <Data name="Select_sys_user_by_account">
+    <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+      <SqlCommand>
+        <![CDATA[
+                SELECT User_ID,User_Account,Password,User_Name,User_Status,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM sys_user WHERE User_Account=@@User_Account@@;
+                ]]>
+      </SqlCommand>
+    </SqlDefinition>
+  </Data>
     <Data name="Select_sys_user_List">
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>

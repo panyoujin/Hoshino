@@ -27,6 +27,8 @@ namespace Hoshino.API
             {
                 DBHelper.SQLHelper.SQLHelperFactory.Instance.ConnectionStringsDic[con] = Configuration.GetConnectionString(con);
             }
+            services.AddCors();
+            services.AddSession();
             services.AddMvc(config => { }).AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();//设置时间格式
@@ -41,6 +43,7 @@ namespace Hoshino.API
                 var xmlPath = Path.Combine(basePath, "SwaggerDemo.xml");
                 c.IncludeXmlComments(xmlPath);
             });
+
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -57,6 +60,13 @@ namespace Hoshino.API
             app.UseStaticFiles();
             app.UseSwagger();
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"); });
+
+            app.UseCors(builder => builder
+                                   .AllowAnyOrigin()
+                                   .AllowAnyMethod()
+                                   .AllowAnyHeader()
+                                   .AllowCredentials());
+            app.UseSession();
             app.UseMvc();
         }
     }
