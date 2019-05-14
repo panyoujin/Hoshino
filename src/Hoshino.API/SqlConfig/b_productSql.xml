@@ -4,7 +4,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                INSERT INTO b_product (Category_ID,Product_Name_CH,Product_Name_HK,Product_New,Product_Hot,Product_Recommend,Product_Status,Product_Seq,Create_Time,Create_UserId,Create_User) VALUES(@@Category_ID@@,@@Product_Name_CH@@,@@Product_Name_HK@@,@@Product_New@@,@@Product_Hot@@,@@Product_Recommend@@,@@Product_Status@@,@@Product_Seq@@,@@Create_Time@@,@@Create_UserId@@,@@Create_User@@);
+                INSERT INTO b_product (Category_ID,Product_Name_CH,Product_Name_HK,Product_New,Product_Hot,Product_Recommend,Product_Status,Product_Seq,Create_Time,Create_UserId,Create_User) VALUES(@@Category_ID@@,@@Product_Name_CH@@,@@Product_Name_HK@@,@@Product_New@@,@@Product_Hot@@,@@Product_Recommend@@,@@Product_Status@@,@@Product_Seq@@,NOW(),@@Create_UserId@@,@@Create_User@@);
                 ]]>
             </SqlCommand>
         </SqlDefinition>

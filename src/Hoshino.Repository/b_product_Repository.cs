@@ -14,55 +14,51 @@ namespace Hoshino.Repository
         public bool Insert(b_product_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            if(model.Product_ID != 0)
+            if (model.Product_ID != 0)
             {
                 dic["Product_ID"] = model.Product_ID;
             }
-            if(model.Category_ID != 0)
+            if (model.Category_ID != 0)
             {
                 dic["Category_ID"] = model.Category_ID;
             }
-            if(model.Product_Name_CH != null)
+            if (model.Product_Name_CH != null)
             {
                 dic["Product_Name_CH"] = model.Product_Name_CH;
             }
-            if(model.Product_Name_HK != null)
+            if (model.Product_Name_HK != null)
             {
                 dic["Product_Name_HK"] = model.Product_Name_HK;
             }
-            if(model.Product_New != null && model.Product_New.HasValue)
+            if (model.Product_New != null && model.Product_New.HasValue)
             {
                 dic["Product_New"] = model.Product_New;
             }
-            if(model.Product_Hot != null && model.Product_Hot.HasValue)
+            if (model.Product_Hot != null && model.Product_Hot.HasValue)
             {
                 dic["Product_Hot"] = model.Product_Hot;
             }
-            if(model.Product_Recommend != null && model.Product_Recommend.HasValue)
+            if (model.Product_Recommend != null && model.Product_Recommend.HasValue)
             {
                 dic["Product_Recommend"] = model.Product_Recommend;
             }
-            if(model.Product_Status != null && model.Product_Status.HasValue)
+            if (model.Product_Status != null && model.Product_Status.HasValue)
             {
                 dic["Product_Status"] = model.Product_Status;
             }
-            if(model.Product_Seq >= 0)
+            if (model.Product_Seq >= 0)
             {
                 dic["Product_Seq"] = model.Product_Seq;
             }
-            if(model.Create_Time != null && model.Create_Time.HasValue)
-            {
-                dic["Create_Time"] = model.Create_Time;
-            }
-            if(model.Create_UserId != null)
+            if (model.Create_UserId != null)
             {
                 dic["Create_UserId"] = model.Create_UserId;
             }
-            if(model.Create_User != null)
+            if (model.Create_User != null)
             {
                 dic["Create_User"] = model.Create_User;
             }
-            return SQLHelperFactory.Instance.ExecuteNonQuery("Insert_b_product", dic) >0 ;
+            return SQLHelperFactory.Instance.ExecuteNonQuery("Insert_b_product", dic) > 0;
         }
 
         /// <summary>
@@ -119,7 +115,7 @@ namespace Hoshino.Repository
             {
                 dic["Update_User"] = model.Update_User;
             }
-            return SQLHelperFactory.Instance.ExecuteNonQuery("Update_b_product", dic) >0 ;
+            return SQLHelperFactory.Instance.ExecuteNonQuery("Update_b_product", dic) > 0;
         }
 
         /// <summary>
@@ -129,7 +125,7 @@ namespace Hoshino.Repository
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic["Video_ID"] = Product_ID;
-            return SQLHelperFactory.Instance.ExecuteNonQuery("Delete_b_product", dic) >0 ;
+            return SQLHelperFactory.Instance.ExecuteNonQuery("Delete_b_product", dic) > 0;
         }
 
         /// <summary>
@@ -145,42 +141,42 @@ namespace Hoshino.Repository
         /// <summary>
         /// 获取列表
         /// <summary>
-        public (IEnumerable<b_product_Entity>,int) GetList(b_product_Entity model,int pageindex,int pagesize)
+        public (IEnumerable<b_product_Entity>, int) GetList(b_product_Entity model, int pageindex, int pagesize)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            if(model.Product_ID != 0)
+            if (model.Product_ID != 0)
             {
                 dic["Product_ID"] = model.Product_ID;
             }
-            if(model.Category_ID != 0)
+            if (model.Category_ID != 0)
             {
                 dic["Category_ID"] = model.Category_ID;
             }
-            if(model.Product_Name_CH != null)
+            if (model.Product_Name_CH != null)
             {
                 dic["Product_Name_CH"] = model.Product_Name_CH;
             }
-            if(model.Product_Name_HK != null)
+            if (model.Product_Name_HK != null)
             {
                 dic["Product_Name_HK"] = model.Product_Name_HK;
             }
-            if(model.Product_New != null && model.Product_New.HasValue)
+            if (model.Product_New != null && model.Product_New.HasValue)
             {
                 dic["Product_New"] = model.Product_New;
             }
-            if(model.Product_Hot != null && model.Product_Hot.HasValue)
+            if (model.Product_Hot != null && model.Product_Hot.HasValue)
             {
                 dic["Product_Hot"] = model.Product_Hot;
             }
-            if(model.Product_Recommend != null && model.Product_Recommend.HasValue)
+            if (model.Product_Recommend != null && model.Product_Recommend.HasValue)
             {
                 dic["Product_Recommend"] = model.Product_Recommend;
             }
-            if(model.Product_Status != null && model.Product_Status.HasValue)
+            if (model.Product_Status != null && model.Product_Status.HasValue)
             {
                 dic["Product_Status"] = model.Product_Status;
             }
-            if(model.Product_Seq >= 0)
+            if (model.Product_Seq >= 0)
             {
                 dic["Product_Seq"] = model.Product_Seq;
             }
@@ -192,28 +188,68 @@ namespace Hoshino.Repository
             {
                 dic["SelectCount"] = pagesize;
             }
-            var list = SQLHelperFactory.Instance.QueryMultipleByPage<b_product_Entity>("Select_b_product_List", dic,out int total);
-            return (list,total);
+            var list = SQLHelperFactory.Instance.QueryMultipleByPage<b_product_Entity>("Select_b_product_List", dic, out int total);
+            return (list, total);
         }
 
-		
-		
-        public (IEnumerable<T>, int) GetNewProductList<T>()
+
+
+        public (IEnumerable<T>, int) GetNewProductList<T>(int Category_ID, int pageindex, int pagesize)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic["Product_New"] = 1;
-            dic["StartIndex"] = 0;
-            dic["SelectCount"] = 24;
+            if (Category_ID >= 0)
+            {
+                dic["Category_ID"] = Category_ID;
+            }
+            if (pageindex >= 0)
+            {
+                dic["StartIndex"] = pageindex <= 1 ? 0 : (pageindex - 1) * pagesize + 1;
+            }
+            if (pagesize > 0)
+            {
+                dic["SelectCount"] = pagesize;
+            }
             var list = SQLHelperFactory.Instance.QueryMultipleByPage<T>("Select_b_product_List", dic, out int total);
             return (list, total);
         }
 
-        public (IEnumerable<T>, int) GetHotProductList<T>()
+        public (IEnumerable<T>, int) GetHotProductList<T>(int Category_ID, int pageindex, int pagesize)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic["Product_Hot"] = 1;
-            dic["StartIndex"] = 0;
-            dic["SelectCount"] = 24;
+            if (Category_ID >= 0)
+            {
+                dic["Category_ID"] = Category_ID;
+            }
+            if (pageindex >= 0)
+            {
+                dic["StartIndex"] = pageindex <= 1 ? 0 : (pageindex - 1) * pagesize + 1;
+            }
+            if (pagesize > 0)
+            {
+                dic["SelectCount"] = pagesize;
+            }
+            var list = SQLHelperFactory.Instance.QueryMultipleByPage<T>("Select_b_product_List", dic, out int total);
+            return (list, total);
+        }
+
+        public (IEnumerable<T>, int) GetRecommendProductList<T>(int Category_ID, int pageindex, int pagesize)
+        {
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic["Product_Recommend"] = 1;
+            if (Category_ID >= 0)
+            {
+                dic["Category_ID"] = Category_ID;
+            }
+            if (pageindex >= 0)
+            {
+                dic["StartIndex"] = pageindex <= 1 ? 0 : (pageindex - 1) * pagesize + 1;
+            }
+            if (pagesize > 0)
+            {
+                dic["SelectCount"] = pagesize;
+            }
             var list = SQLHelperFactory.Instance.QueryMultipleByPage<T>("Select_b_product_List", dic, out int total);
             return (list, total);
         }

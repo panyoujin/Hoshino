@@ -1,7 +1,9 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
-using Hoshino.Repository;using Hoshino.IRepository;
-namespace Hoshino.API.Extentions{
+using Hoshino.Repository;
+using Hoshino.IRepository;
+namespace Hoshino.API.Extentions
+{
     public static class DependencyExtention
     {
         public static void RegisDependency(this IServiceCollection services)
