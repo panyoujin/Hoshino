@@ -103,26 +103,23 @@ namespace Hoshino.API.Controllers
         [AllowAnonymous]
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<LoginVM>))]
-        public ActionResult<object> Login([FromBody]sys_user_Entity model)
+        public ActionResult<object> Login([FromBody]LoginVM model)
         {
             LoginVM login = new LoginVM();
             sys_user_Entity user = this._repository.GetUserByAccount(model.User_Account);
-            if (user != null)
+            if (user == null || !model.Password.Equals(user.Password))
             {
-                if (!model.Password.Equals(user.Password))
-                {
-                    return login.ResponseNotLogin("登录失败");
-                }
-                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this._configuration["JWT:SecurityKey"]));
-                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-                var claims = new[] { new Claim(ClaimTypes.Name, user.ToJson()) };
-
-                var authTime = DateTime.UtcNow;
-                var expiresAt = authTime.AddDays(7);
-                var token = new JwtSecurityToken(issuer: "*", audience: "*", claims: claims, expires: expiresAt, signingCredentials: creds);
-                login.token = "Bearer " + new JwtSecurityTokenHandler().WriteToken(token);
-                HttpContext.Session.SetString(login.token, user.ToJson());
+                return login.ResponseNotLogin("登录失败");
             }
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this._configuration["JWT:SecurityKey"]));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var claims = new[] { new Claim(ClaimTypes.Name, user.ToJson()) };
+
+            var authTime = DateTime.UtcNow;
+            var expiresAt = authTime.AddDays(7);
+            var token = new JwtSecurityToken(issuer: "*", audience: "*", claims: claims, expires: expiresAt, signingCredentials: creds);
+            HttpContext.Session.SetString("Bearer " + new JwtSecurityTokenHandler().WriteToken(token), user.ToJson());
+
             return login.ResponseSuccess();
         }
     }
