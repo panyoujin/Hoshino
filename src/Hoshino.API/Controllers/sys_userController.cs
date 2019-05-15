@@ -14,6 +14,7 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.Extensions.Configuration;
+using Hoshino.API.ViewModels;
 
 namespace Hoshino.API.Controllers
 {
@@ -26,7 +27,13 @@ namespace Hoshino.API.Controllers
     {
         private readonly ILogger<sys_userController> _logger;
         private readonly Isys_user_Repository _repository;
-        public IConfiguration _configuration { get; }
+        private readonly IConfiguration _configuration;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="repository"></param>
+        /// <param name="configuration"></param>
         public sys_userController(ILogger<sys_userController> logger, Isys_user_Repository repository, IConfiguration configuration)
         {
             this._logger = logger;
@@ -39,9 +46,10 @@ namespace Hoshino.API.Controllers
         [Authorize]
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Post([FromBody]sys_user_Entity model)
+        public ActionResult<object> Post([FromBody]sys_userVM model)
         {
-            return this._repository.Insert(model).ResponseSuccess();
+            sys_user_Entity entity = model.ConvertToT<sys_user_Entity>();
+            return this._repository.Insert(entity).ResponseSuccess();
         }
 
         /// <summary>
@@ -50,9 +58,10 @@ namespace Hoshino.API.Controllers
         [Authorize]
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]sys_user_Entity model)
+        public ActionResult<object> Update([FromBody]sys_userVM model)
         {
-            return this._repository.Update(model).ResponseSuccess();
+            sys_user_Entity entity = model.ConvertToT<sys_user_Entity>();
+            return this._repository.Update(entity).ResponseSuccess();
         }
 
         /// <summary>
@@ -80,12 +89,12 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 获取列表
         /// </summary>
-        [Authorize]
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<sys_user_Entity>>))]
-        public ActionResult<object> GetList([FromBody]sys_user_Entity model, int pageindex, int pagesize)
+        public ActionResult<object> GetList([FromBody]sys_userVM model, int pageindex, int pagesize)
         {
-            var (list, total) = this._repository.GetList(model, pageindex, pagesize);
+            sys_user_Entity entity = model.ConvertToT<sys_user_Entity>();
+            var (list, total) = this._repository.GetList(entity, pageindex, pagesize);
             return list.ResponseSuccess("", total);
         }
         /// <summary>
@@ -106,7 +115,7 @@ namespace Hoshino.API.Controllers
                 }
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this._configuration["JWT:SecurityKey"]));
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-                var claims = new[] {new Claim(ClaimTypes.Name,user.ToJson())};
+                var claims = new[] { new Claim(ClaimTypes.Name, user.ToJson()) };
 
                 var authTime = DateTime.UtcNow;
                 var expiresAt = authTime.AddDays(7);

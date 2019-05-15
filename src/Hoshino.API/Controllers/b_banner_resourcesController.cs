@@ -8,6 +8,7 @@ using Hoshino.API.Filters;
 using Hoshino.Entity;
 using Hoshino.IRepository;
 using Microsoft.AspNetCore.Authorization;
+using Hoshino.API.ViewModels;
 
 namespace Hoshino.API.Controllers
 {
@@ -20,7 +21,10 @@ namespace Hoshino.API.Controllers
     {
         private readonly ILogger<b_banner_resourcesController> _logger;
         private readonly Ib_banner_resources_Repository _repository;
-        public b_banner_resourcesController(ILogger<b_banner_resourcesController> logger,Ib_banner_resources_Repository repository)
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        public b_banner_resourcesController(ILogger<b_banner_resourcesController> logger, Ib_banner_resources_Repository repository)
         {
             this._logger = logger;
             this._repository = repository;
@@ -31,9 +35,10 @@ namespace Hoshino.API.Controllers
         [Authorize]
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Post([FromBody]b_banner_resources_Entity model)
+        public ActionResult<object> Post([FromBody]b_banner_resourcesVM model)
         {
-            return this._repository.Insert(model).ResponseSuccess();
+            b_banner_resources_Entity entity = model.ConvertToT<b_banner_resources_Entity>();
+            return this._repository.Insert(entity).ResponseSuccess();
         }
 
         /// <summary>
@@ -42,20 +47,10 @@ namespace Hoshino.API.Controllers
         [Authorize]
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]b_banner_resources_Entity model)
+        public ActionResult<object> Update([FromBody]b_banner_resourcesVM model)
         {
-            return this._repository.Update(model).ResponseSuccess();
-        }
-
-        /// <summary>
-        /// 删除
-        /// </summary>
-        [Authorize]
-        [HttpDelete]
-        [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Delete(int Banner_ID)
-        {
-            return this._repository.Delete(Banner_ID).ResponseSuccess();
+            b_banner_resources_Entity entity = model.ConvertToT<b_banner_resources_Entity>();
+            return this._repository.Update(entity).ResponseSuccess();
         }
 
         /// <summary>
@@ -73,10 +68,11 @@ namespace Hoshino.API.Controllers
         /// </summary>
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_banner_resources_Entity>>))]
-        public ActionResult<object> GetList([FromBody]b_banner_resources_Entity model,int pageindex,int pagesize)
+        public ActionResult<object> GetList([FromBody]b_banner_resourcesVM model, int pageindex, int pagesize)
         {
-            var (list,total) = this._repository.GetList(model, pageindex, pagesize) ;
-            return list.ResponseSuccess("",total);
+            b_banner_resources_Entity entity = model.ConvertToT<b_banner_resources_Entity>();
+            var (list, total) = this._repository.GetList(entity, pageindex, pagesize);
+            return list.ResponseSuccess("", total);
         }
 
         /// <summary>

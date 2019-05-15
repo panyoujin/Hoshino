@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Hoshino.API.Controllers
 {
     /// <summary>
-    /// 产品类型
+    /// b_category
     /// </summary>
     [Route("api/[controller]/[action]")]
     [ApiController]
@@ -22,6 +22,9 @@ namespace Hoshino.API.Controllers
     {
         private readonly ILogger<b_categoryController> _logger;
         private readonly Ib_category_Repository _repository;
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public b_categoryController(ILogger<b_categoryController> logger, Ib_category_Repository repository)
         {
             this._logger = logger;
@@ -33,9 +36,10 @@ namespace Hoshino.API.Controllers
         [Authorize]
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Post([FromBody]b_category_Entity model)
+        public ActionResult<object> Post([FromBody]b_categoryVM model)
         {
-            return this._repository.Insert(model).ResponseSuccess();
+            b_category_Entity entity = model.ConvertToT<b_category_Entity>();
+            return this._repository.Insert(entity).ResponseSuccess();
         }
 
         /// <summary>
@@ -44,9 +48,10 @@ namespace Hoshino.API.Controllers
         [Authorize]
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]b_category_Entity model)
+        public ActionResult<object> Update([FromBody]b_categoryVM model)
         {
-            return this._repository.Update(model).ResponseSuccess();
+            b_category_Entity entity = model.ConvertToT<b_category_Entity>();
+            return this._repository.Update(entity).ResponseSuccess();
         }
 
         /// <summary>
@@ -63,6 +68,7 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 获取单个
         /// </summary>
+        [Authorize]
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<b_category_Entity>))]
         public ActionResult<object> Get(int Category_ID)

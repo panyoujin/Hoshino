@@ -8,11 +8,12 @@ using Hoshino.API.Filters;
 using Hoshino.Entity;
 using Hoshino.IRepository;
 using Microsoft.AspNetCore.Authorization;
+using Hoshino.API.ViewModels;
 
 namespace Hoshino.API.Controllers
 {
     /// <summary>
-    /// 预约询价
+    /// b_appointment_consultation
     /// </summary>
     [Route("api/[controller]/[action]")]
     [ApiController]
@@ -20,6 +21,9 @@ namespace Hoshino.API.Controllers
     {
         private readonly ILogger<b_appointment_consultationController> _logger;
         private readonly Ib_appointment_consultation_Repository _repository;
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public b_appointment_consultationController(ILogger<b_appointment_consultationController> logger,Ib_appointment_consultation_Repository repository)
         {
             this._logger = logger;
@@ -31,9 +35,10 @@ namespace Hoshino.API.Controllers
         [Authorize]
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Post([FromBody]b_appointment_consultation_Entity model)
+        public ActionResult<object> Post([FromBody]b_appointment_consultationVM model)
         {
-            return this._repository.Insert(model).ResponseSuccess();
+            b_appointment_consultation_Entity entity = model.ConvertToT<b_appointment_consultation_Entity>();
+            return this._repository.Insert(entity).ResponseSuccess();
         }
 
         /// <summary>
@@ -42,9 +47,10 @@ namespace Hoshino.API.Controllers
         [Authorize]
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]b_appointment_consultation_Entity model)
+        public ActionResult<object> Update([FromBody]b_appointment_consultationVM model)
         {
-            return this._repository.Update(model).ResponseSuccess();
+            b_appointment_consultation_Entity entity = model.ConvertToT<b_appointment_consultation_Entity>();
+            return this._repository.Update(entity).ResponseSuccess();
         }
 
         /// <summary>
@@ -61,6 +67,7 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 获取单个
         /// </summary>
+        [Authorize]
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<b_appointment_consultation_Entity>))]
         public ActionResult<object> Get(int AC_ID)
@@ -73,9 +80,10 @@ namespace Hoshino.API.Controllers
         /// </summary>
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_appointment_consultation_Entity>>))]
-        public ActionResult<object> GetList([FromBody]b_appointment_consultation_Entity model,int pageindex,int pagesize)
+        public ActionResult<object> GetList([FromBody]b_appointment_consultationVM model,int pageindex,int pagesize)
         {
-            var (list,total) = this._repository.GetList(model, pageindex, pagesize) ;
+            b_appointment_consultation_Entity entity = model.ConvertToT<b_appointment_consultation_Entity>();
+            var (list,total) = this._repository.GetList(entity, pageindex, pagesize) ;
             return list.ResponseSuccess("",total);
         }
 

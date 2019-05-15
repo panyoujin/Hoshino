@@ -8,11 +8,12 @@ using Hoshino.API.Filters;
 using Hoshino.Entity;
 using Hoshino.IRepository;
 using Microsoft.AspNetCore.Authorization;
+using Hoshino.API.ViewModels;
 
 namespace Hoshino.API.Controllers
 {
     /// <summary>
-    /// 关联产品
+    /// b_rel_product
     /// </summary>
     [Route("api/[controller]/[action]")]
     [ApiController]
@@ -20,6 +21,9 @@ namespace Hoshino.API.Controllers
     {
         private readonly ILogger<b_rel_productController> _logger;
         private readonly Ib_rel_product_Repository _repository;
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public b_rel_productController(ILogger<b_rel_productController> logger,Ib_rel_product_Repository repository)
         {
             this._logger = logger;
@@ -31,9 +35,10 @@ namespace Hoshino.API.Controllers
         [Authorize]
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Post([FromBody]b_rel_product_Entity model)
+        public ActionResult<object> Post([FromBody]b_rel_productVM model)
         {
-            return this._repository.Insert(model).ResponseSuccess();
+            b_rel_product_Entity entity = model.ConvertToT<b_rel_product_Entity>();
+            return this._repository.Insert(entity).ResponseSuccess();
         }
 
         /// <summary>
@@ -42,9 +47,10 @@ namespace Hoshino.API.Controllers
         [Authorize]
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]b_rel_product_Entity model)
+        public ActionResult<object> Update([FromBody]b_rel_productVM model)
         {
-            return this._repository.Update(model).ResponseSuccess();
+            b_rel_product_Entity entity = model.ConvertToT<b_rel_product_Entity>();
+            return this._repository.Update(entity).ResponseSuccess();
         }
 
         /// <summary>
@@ -61,6 +67,7 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 获取单个
         /// </summary>
+        [Authorize]
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<b_rel_product_Entity>))]
         public ActionResult<object> Get(int P_Relevant_ID)
@@ -73,9 +80,10 @@ namespace Hoshino.API.Controllers
         /// </summary>
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_rel_product_Entity>>))]
-        public ActionResult<object> GetList([FromBody]b_rel_product_Entity model,int pageindex,int pagesize)
+        public ActionResult<object> GetList([FromBody]b_rel_productVM model,int pageindex,int pagesize)
         {
-            var (list,total) = this._repository.GetList(model, pageindex, pagesize) ;
+            b_rel_product_Entity entity = model.ConvertToT<b_rel_product_Entity>();
+            var (list,total) = this._repository.GetList(entity, pageindex, pagesize) ;
             return list.ResponseSuccess("",total);
         }
 
