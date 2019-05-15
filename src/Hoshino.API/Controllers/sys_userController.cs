@@ -118,7 +118,8 @@ namespace Hoshino.API.Controllers
             var authTime = DateTime.UtcNow;
             var expiresAt = authTime.AddDays(7);
             var token = new JwtSecurityToken(issuer: "*", audience: "*", claims: claims, expires: expiresAt, signingCredentials: creds);
-            HttpContext.Session.SetString("Bearer " + new JwtSecurityTokenHandler().WriteToken(token), user.ToJson());
+            login.token = "Bearer " + new JwtSecurityTokenHandler().WriteToken(token);
+            HttpContext.Session.SetString(login.token, user.ToJson());
 
             return login.ResponseSuccess();
         }
