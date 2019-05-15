@@ -10,6 +10,7 @@ using Hoshino.IRepository;
 using Hoshino.API.ViewModels;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace Hoshino.API.Controllers
 {
@@ -35,6 +36,10 @@ namespace Hoshino.API.Controllers
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Post([FromBody]b_category_Entity model)
         {
+            if (string.IsNullOrWhiteSpace(model.Create_UserId))
+                model.Create_UserId = "1";
+            if (string.IsNullOrWhiteSpace(model.Create_User))
+                model.Create_User = "admin";
             return this._repository.Insert(model).ResponseSuccess();
         }
 
@@ -46,6 +51,11 @@ namespace Hoshino.API.Controllers
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Update([FromBody]b_category_Entity model)
         {
+            if (string.IsNullOrWhiteSpace(model.Update_UserId))
+                model.Update_UserId = "1";
+            if (string.IsNullOrWhiteSpace(model.Update_User))
+                model.Update_User = "admin";
+            model.Update_Time = DateTime.Now;
             return this._repository.Update(model).ResponseSuccess();
         }
 

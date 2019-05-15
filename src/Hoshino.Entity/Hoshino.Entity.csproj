@@ -4,10 +4,12 @@
         <LangVersion>7.3</LangVersion>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Pan.Code" Version="1.0.1" />
+      <Compile Remove="RequestModel\**" />
+      <EmbeddedResource Remove="RequestModel\**" />
+      <None Remove="RequestModel\**" />
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="RequestModel\" />
+        <PackageReference Include="Pan.Code" Version="1.0.1" />
     </ItemGroup>
 </Project>
 

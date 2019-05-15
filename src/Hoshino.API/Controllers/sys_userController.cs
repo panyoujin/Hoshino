@@ -14,6 +14,7 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.Extensions.Configuration;
+using Hoshino.API.ViewModels;
 
 namespace Hoshino.API.Controllers
 {
@@ -93,10 +94,10 @@ namespace Hoshino.API.Controllers
         /// </summary>
         [AllowAnonymous]
         [HttpPost]
-        [ProducesResponseType(200, Type = typeof(ApiResult<ResLogin>))]
+        [ProducesResponseType(200, Type = typeof(ApiResult<LoginVM>))]
         public ActionResult<object> Login([FromBody]sys_user_Entity model)
         {
-            ResLogin login = new ResLogin();
+            LoginVM login = new LoginVM();
             sys_user_Entity user = this._repository.GetUserByAccount(model.User_Account);
             if (user != null)
             {

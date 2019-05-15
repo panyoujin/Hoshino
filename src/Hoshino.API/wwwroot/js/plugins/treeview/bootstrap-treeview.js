@@ -308,7 +308,7 @@
 				}
 				else {
 					// otherwise just text
-					treeItem
+					treeItem.attr('categoryId', node.categoryId)
 						.append(node.text);
 				}
 
