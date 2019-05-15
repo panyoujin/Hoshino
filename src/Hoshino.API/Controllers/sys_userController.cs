@@ -102,7 +102,7 @@ namespace Hoshino.API.Controllers
             {
                 if (!model.Password.Equals(user.Password))
                 {
-                    login.ResponseNotLogin("登录失败");
+                    return login.ResponseNotLogin("登录失败");
                 }
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this._configuration["JWT:SecurityKey"]));
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
