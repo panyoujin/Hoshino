@@ -1,9 +1,10 @@
 ﻿$(function () {
     // var req = { User_Account: "admin", Password: "202cb962ac59075b964b07152d234b70" };
-    var req = { User_Account: "admin", Password: "202cb962ac59075b964b07152d234b70" };
-    requestUrl("/api/sys_user/Login", function (obj) {
-        console.info(obj);
-    }, JSON.stringify(req));
+    // var req = { User_Account: "admin", Password: "202cb962ac59075b964b07152d234b70" };
+    // requestUrl("/api/sys_user/Login", function (obj) {
+    //     console.info(obj);
+    // }, JSON.stringify(req));
+
 });
 
 //var domain = "http://www.hosinowt.com";

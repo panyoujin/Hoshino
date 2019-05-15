@@ -10,6 +10,7 @@ using Hoshino.IRepository;
 using Hoshino.API.ViewModels;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace Hoshino.API.Controllers
 {
@@ -39,6 +40,9 @@ namespace Hoshino.API.Controllers
         public ActionResult<object> Post([FromBody]b_categoryVM model)
         {
             b_category_Entity entity = model.ConvertToT<b_category_Entity>();
+
+            entity.Create_UserId = "1";
+            entity.Create_User = "admin";
             return this._repository.Insert(entity).ResponseSuccess();
         }
 
@@ -51,6 +55,8 @@ namespace Hoshino.API.Controllers
         public ActionResult<object> Update([FromBody]b_categoryVM model)
         {
             b_category_Entity entity = model.ConvertToT<b_category_Entity>();
+            entity.Create_UserId = "1";
+            entity.Create_User = "admin";
             return this._repository.Update(entity).ResponseSuccess();
         }
 

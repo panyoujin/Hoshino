@@ -102,16 +102,16 @@ namespace Hoshino.API.Controllers
         /// </summary>
         [AllowAnonymous]
         [HttpPost]
-        [ProducesResponseType(200, Type = typeof(ApiResult<ResLogin>))]
+        [ProducesResponseType(200, Type = typeof(ApiResult<LoginVM>))]
         public ActionResult<object> Login([FromBody]sys_user_Entity model)
         {
-            ResLogin login = new ResLogin();
+            LoginVM login = new LoginVM();
             sys_user_Entity user = this._repository.GetUserByAccount(model.User_Account);
             if (user != null)
             {
                 if (!model.Password.Equals(user.Password))
                 {
-                    login.ResponseNotLogin("登录失败");
+                    return login.ResponseNotLogin("登录失败");
                 }
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this._configuration["JWT:SecurityKey"]));
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

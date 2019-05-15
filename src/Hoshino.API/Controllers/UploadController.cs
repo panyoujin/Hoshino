@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Hoshino.API.ViewModels;
 using Hoshino.Entity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -32,7 +33,7 @@ namespace Hoshino.API.Controllers
         [ProducesResponseType(200, Type = typeof(IFormCollection))]
         public ActionResult<object> Post([FromForm] IFormCollection formCollection)
         {
-            ResUpload upload = new ResUpload();
+            UploadVM upload = new UploadVM();
             try
             {
                 string baseDirectory= AppContext.BaseDirectory;
