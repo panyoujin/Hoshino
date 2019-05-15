@@ -14,10 +14,6 @@ namespace Hoshino.Repository
         public bool Insert(sys_user_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            if(model.User_ID != 0)
-            {
-                dic["User_ID"] = model.User_ID;
-            }
             if(model.User_Account != null)
             {
                 dic["User_Account"] = model.User_Account;
@@ -33,10 +29,6 @@ namespace Hoshino.Repository
             if(model.User_Status != null && model.User_Status.HasValue)
             {
                 dic["User_Status"] = model.User_Status;
-            }
-            if(model.Create_Time != null && model.Create_Time.HasValue)
-            {
-                dic["Create_Time"] = model.Create_Time;
             }
             if(model.Create_UserId != null)
             {
@@ -74,10 +66,6 @@ namespace Hoshino.Repository
             if (model.User_Status != null && model.User_Status.HasValue)
             {
                 dic["User_Status"] = model.User_Status;
-            }
-            if (model.Update_Time != null && model.Update_Time.HasValue)
-            {
-                dic["Update_Time"] = model.Update_Time;
             }
             if (model.Update_UserId != null)
             {

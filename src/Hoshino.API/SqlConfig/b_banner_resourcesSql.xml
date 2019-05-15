@@ -4,7 +4,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                INSERT INTO b_banner_resources (Banner_Name_CH,Banner_Name_HK,Banner_URL,Banner_Type,Banner_Location,Banner_Status,Banner_Seq,Create_Time,Create_UserId,Create_User) VALUES(@@Banner_Name_CH@@,@@Banner_Name_HK@@,@@Banner_URL@@,@@Banner_Type@@,@@Banner_Location@@,@@Banner_Status@@,@@Banner_Seq@@,@@Create_Time@@,@@Create_UserId@@,@@Create_User@@);
+                INSERT INTO b_banner_resources (Banner_Name_CH,Banner_Name_HK,Banner_URL,Banner_Type,Banner_Location,Banner_Status,Banner_Seq,Create_Time,Create_UserId,Create_User) VALUES(@@Banner_Name_CH@@,@@Banner_Name_HK@@,@@Banner_URL@@,@@Banner_Type@@,@@Banner_Location@@,@@Banner_Status@@,@@Banner_Seq@@,NOW(),@@Create_UserId@@,@@Create_User@@);
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -13,7 +13,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                UPDATE b_banner_resources SET Banner_ID=@@Banner_ID@@ <%=,Banner_Name_CH=@@Banner_Name_CH@@%> <%=,Banner_Name_HK=@@Banner_Name_HK@@%> <%=,Banner_URL=@@Banner_URL@@%> <%=,Banner_Type=@@Banner_Type@@%> <%=,Banner_Location=@@Banner_Location@@%> <%=,Banner_Status=@@Banner_Status@@%> <%=,Banner_Seq=@@Banner_Seq@@%>    <%=,Update_Time=@@Update_Time@@%> <%=,Update_UserId=@@Update_UserId@@%> <%=,Update_User=@@Update_User@@%> WHERE Banner_ID=@@Banner_ID@@;
+                UPDATE b_banner_resources SET Update_Time=NOW() <%=,Banner_Name_CH=@@Banner_Name_CH@@%> <%=,Banner_Name_HK=@@Banner_Name_HK@@%> <%=,Banner_URL=@@Banner_URL@@%> <%=,Banner_Type=@@Banner_Type@@%> <%=,Banner_Location=@@Banner_Location@@%> <%=,Banner_Status=@@Banner_Status@@%> <%=,Banner_Seq=@@Banner_Seq@@%>    <%=,Update_UserId=@@Update_UserId@@%> <%=,Update_User=@@Update_User@@%> WHERE Banner_ID=@@Banner_ID@@;
                 ]]>
             </SqlCommand>
         </SqlDefinition>

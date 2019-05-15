@@ -4,7 +4,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                INSERT INTO b_product_resources (Product_ID,P_Resources_Name_CH,P_Resources_Name_HK,P_Resources_URL,P_Resources_Type,P_Resources_Status,P_Resources_Seq,Create_Time,Create_UserId,Create_User) VALUES(@@Product_ID@@,@@P_Resources_Name_CH@@,@@P_Resources_Name_HK@@,@@P_Resources_URL@@,@@P_Resources_Type@@,@@P_Resources_Status@@,@@P_Resources_Seq@@,@@Create_Time@@,@@Create_UserId@@,@@Create_User@@);
+                INSERT INTO b_product_resources (Product_ID,P_Resources_Name_CH,P_Resources_Name_HK,P_Resources_URL,P_Resources_Type,P_Resources_Status,P_Resources_Seq,Create_Time,Create_UserId,Create_User) VALUES(@@Product_ID@@,@@P_Resources_Name_CH@@,@@P_Resources_Name_HK@@,@@P_Resources_URL@@,@@P_Resources_Type@@,@@P_Resources_Status@@,@@P_Resources_Seq@@,NOW(),@@Create_UserId@@,@@Create_User@@);
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -13,7 +13,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                UPDATE b_product_resources SET P_Resources_ID=@@P_Resources_ID@@ <%=,Product_ID=@@Product_ID@@%> <%=,P_Resources_Name_CH=@@P_Resources_Name_CH@@%> <%=,P_Resources_Name_HK=@@P_Resources_Name_HK@@%> <%=,P_Resources_URL=@@P_Resources_URL@@%> <%=,P_Resources_Type=@@P_Resources_Type@@%> <%=,P_Resources_Status=@@P_Resources_Status@@%> <%=,P_Resources_Seq=@@P_Resources_Seq@@%>    <%=,Update_Time=@@Update_Time@@%> <%=,Update_UserId=@@Update_UserId@@%> <%=,Update_User=@@Update_User@@%> WHERE P_Resources_ID=@@P_Resources_ID@@;
+                UPDATE b_product_resources SET Update_Time=NOW() <%=,Product_ID=@@Product_ID@@%> <%=,P_Resources_Name_CH=@@P_Resources_Name_CH@@%> <%=,P_Resources_Name_HK=@@P_Resources_Name_HK@@%> <%=,P_Resources_URL=@@P_Resources_URL@@%> <%=,P_Resources_Type=@@P_Resources_Type@@%> <%=,P_Resources_Status=@@P_Resources_Status@@%> <%=,P_Resources_Seq=@@P_Resources_Seq@@%>    <%=,Update_UserId=@@Update_UserId@@%> <%=,Update_User=@@Update_User@@%> WHERE P_Resources_ID=@@P_Resources_ID@@;
                 ]]>
             </SqlCommand>
         </SqlDefinition>

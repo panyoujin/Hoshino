@@ -4,7 +4,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                INSERT INTO log_info (id,chain_id,content,interface_name,type,creation_time,ip) VALUES(@@id@@,@@chain_id@@,@@content@@,@@interface_name@@,@@type@@,@@creation_time@@,@@ip@@);
+                INSERT INTO log_info (id,chain_id,content,interface_name,type,creation_time,ip) VALUES(@@id@@,@@chain_id@@,@@content@@,@@interface_name@@,@@type@@,NOW(),@@ip@@);
                 ]]>
             </SqlCommand>
         </SqlDefinition>

@@ -7,6 +7,7 @@ using Pan.Code.Extentions;
 using Hoshino.API.Filters;
 using Hoshino.Entity;
 using Hoshino.IRepository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Hoshino.API.Controllers
 {
@@ -27,6 +28,7 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 新增
         /// </summary>
+        [Authorize]
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Post([FromBody]b_product_attribute_Entity model)
@@ -37,6 +39,7 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 修改
         /// </summary>
+        [Authorize]
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Update([FromBody]b_product_attribute_Entity model)
@@ -47,6 +50,7 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 删除
         /// </summary>
+        [Authorize]
         [HttpDelete]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Delete(int P_Attribute_ID)

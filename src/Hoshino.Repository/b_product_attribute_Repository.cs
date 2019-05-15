@@ -14,10 +14,6 @@ namespace Hoshino.Repository
         public bool Insert(b_product_attribute_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            if(model.P_Attribute_ID != 0)
-            {
-                dic["P_Attribute_ID"] = model.P_Attribute_ID;
-            }
             if(model.Product_ID != 0)
             {
                 dic["Product_ID"] = model.Product_ID;

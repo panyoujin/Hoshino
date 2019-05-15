@@ -14,10 +14,6 @@ namespace Hoshino.Repository
         public bool Insert(b_banner_resources_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            if(model.Banner_ID != 0)
-            {
-                dic["Banner_ID"] = model.Banner_ID;
-            }
             if(model.Banner_Name_CH != null)
             {
                 dic["Banner_Name_CH"] = model.Banner_Name_CH;
@@ -45,10 +41,6 @@ namespace Hoshino.Repository
             if(model.Banner_Seq >= 0)
             {
                 dic["Banner_Seq"] = model.Banner_Seq;
-            }
-            if(model.Create_Time != null && model.Create_Time.HasValue)
-            {
-                dic["Create_Time"] = model.Create_Time;
             }
             if(model.Create_UserId != null)
             {

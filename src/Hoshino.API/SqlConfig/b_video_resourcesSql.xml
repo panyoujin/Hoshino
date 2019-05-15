@@ -4,7 +4,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                INSERT INTO b_video_resources (Video_Name_CH,Video_Name_HK,Video_URL,Video_Location,Video_Status,Video_Seq,Create_Time,Create_UserId,Create_User) VALUES(@@Video_Name_CH@@,@@Video_Name_HK@@,@@Video_URL@@,@@Video_Location@@,@@Video_Status@@,@@Video_Seq@@,@@Create_Time@@,@@Create_UserId@@,@@Create_User@@);
+                INSERT INTO b_video_resources (Video_Name_CH,Video_Name_HK,Video_URL,Video_Location,Video_Status,Video_Seq,Create_Time,Create_UserId,Create_User) VALUES(@@Video_Name_CH@@,@@Video_Name_HK@@,@@Video_URL@@,@@Video_Location@@,@@Video_Status@@,@@Video_Seq@@,NOW(),@@Create_UserId@@,@@Create_User@@);
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -13,7 +13,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                UPDATE b_video_resources SET Video_ID=@@Video_ID@@ <%=,Video_Name_CH=@@Video_Name_CH@@%> <%=,Video_Name_HK=@@Video_Name_HK@@%> <%=,Video_URL=@@Video_URL@@%> <%=,Video_Location=@@Video_Location@@%> <%=,Video_Status=@@Video_Status@@%> <%=,Video_Seq=@@Video_Seq@@%>    <%=,Update_Time=@@Update_Time@@%> <%=,Update_UserId=@@Update_UserId@@%> <%=,Update_User=@@Update_User@@%> WHERE Video_ID=@@Video_ID@@;
+                UPDATE b_video_resources SET Update_Time=NOW() <%=,Video_Name_CH=@@Video_Name_CH@@%> <%=,Video_Name_HK=@@Video_Name_HK@@%> <%=,Video_URL=@@Video_URL@@%> <%=,Video_Location=@@Video_Location@@%> <%=,Video_Status=@@Video_Status@@%> <%=,Video_Seq=@@Video_Seq@@%>    <%=,Update_UserId=@@Update_UserId@@%> <%=,Update_User=@@Update_User@@%> WHERE Video_ID=@@Video_ID@@;
                 ]]>
             </SqlCommand>
         </SqlDefinition>

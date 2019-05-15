@@ -14,10 +14,6 @@ namespace Hoshino.Repository
         public bool Insert(b_category_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            if (model.Category_ID != 0)
-            {
-                dic["Category_ID"] = model.Category_ID;
-            }
             if (model.Parent_Category_ID != null && model.Parent_Category_ID.HasValue)
             {
                 dic["Parent_Category_ID"] = model.Parent_Category_ID;
@@ -37,10 +33,6 @@ namespace Hoshino.Repository
             if (model.Category_Seq >= 0)
             {
                 dic["Category_Seq"] = model.Category_Seq;
-            }
-            if (model.Create_Time != null && model.Create_Time.HasValue)
-            {
-                dic["Create_Time"] = model.Create_Time;
             }
             if (model.Create_UserId != null)
             {

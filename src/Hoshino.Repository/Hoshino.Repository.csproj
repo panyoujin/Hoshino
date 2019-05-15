@@ -4,7 +4,7 @@
         <LangVersion>7.3</LangVersion>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Pan.Code" Version="1.0.0" />
+        <PackageReference Include="Pan.Code" Version="1.0.1" />
         <PackageReference Include="CoreDBHelper" Version="1.0.2" />
     </ItemGroup>
     <ItemGroup>

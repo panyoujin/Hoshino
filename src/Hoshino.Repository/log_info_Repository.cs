@@ -14,10 +14,6 @@ namespace Hoshino.Repository
         public bool Insert(log_info_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            if(model.id != 0)
-            {
-                dic["id"] = model.id;
-            }
             if(model.chain_id != null)
             {
                 dic["chain_id"] = model.chain_id;
@@ -33,10 +29,6 @@ namespace Hoshino.Repository
             if(model.type != null && model.type.HasValue)
             {
                 dic["type"] = model.type;
-            }
-            if(model.creation_time != null && model.creation_time.HasValue)
-            {
-                dic["creation_time"] = model.creation_time;
             }
             if(model.ip != null)
             {
@@ -70,10 +62,6 @@ namespace Hoshino.Repository
             if (model.type != null && model.type.HasValue)
             {
                 dic["type"] = model.type;
-            }
-            if (model.creation_time != null && model.creation_time.HasValue)
-            {
-                dic["creation_time"] = model.creation_time;
             }
             if (model.ip != null)
             {

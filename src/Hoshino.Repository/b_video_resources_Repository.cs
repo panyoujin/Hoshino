@@ -14,10 +14,6 @@ namespace Hoshino.Repository
         public bool Insert(b_video_resources_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            if(model.Video_ID != 0)
-            {
-                dic["Video_ID"] = model.Video_ID;
-            }
             if(model.Video_Name_CH != null)
             {
                 dic["Video_Name_CH"] = model.Video_Name_CH;
@@ -41,10 +37,6 @@ namespace Hoshino.Repository
             if(model.Video_Seq >= 0)
             {
                 dic["Video_Seq"] = model.Video_Seq;
-            }
-            if(model.Create_Time != null && model.Create_Time.HasValue)
-            {
-                dic["Create_Time"] = model.Create_Time;
             }
             if(model.Create_UserId != null)
             {
@@ -90,10 +82,6 @@ namespace Hoshino.Repository
             if (model.Video_Seq >= 0)
             {
                 dic["Video_Seq"] = model.Video_Seq;
-            }
-            if (model.Update_Time != null && model.Update_Time.HasValue)
-            {
-                dic["Update_Time"] = model.Update_Time;
             }
             if (model.Update_UserId != null)
             {

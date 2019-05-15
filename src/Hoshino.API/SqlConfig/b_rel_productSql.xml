@@ -4,7 +4,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                INSERT INTO b_rel_product (Source_Product_ID,Rel_Product_ID,P_Relevant_Status,P_Relevant_Seq,Create_Time,Create_UserId,Create_User) VALUES(@@Source_Product_ID@@,@@Rel_Product_ID@@,@@P_Relevant_Status@@,@@P_Relevant_Seq@@,@@Create_Time@@,@@Create_UserId@@,@@Create_User@@);
+                INSERT INTO b_rel_product (Source_Product_ID,Rel_Product_ID,P_Relevant_Status,P_Relevant_Seq,Create_Time,Create_UserId,Create_User) VALUES(@@Source_Product_ID@@,@@Rel_Product_ID@@,@@P_Relevant_Status@@,@@P_Relevant_Seq@@,NOW(),@@Create_UserId@@,@@Create_User@@);
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -13,7 +13,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                UPDATE b_rel_product SET P_Relevant_ID=@@P_Relevant_ID@@ <%=,Source_Product_ID=@@Source_Product_ID@@%> <%=,Rel_Product_ID=@@Rel_Product_ID@@%> <%=,P_Relevant_Status=@@P_Relevant_Status@@%> <%=,P_Relevant_Seq=@@P_Relevant_Seq@@%>    <%=,Update_Time=@@Update_Time@@%> <%=,Update_UserId=@@Update_UserId@@%> <%=,Update_User=@@Update_User@@%> WHERE P_Relevant_ID=@@P_Relevant_ID@@;
+                UPDATE b_rel_product SET Update_Time=NOW() <%=,Source_Product_ID=@@Source_Product_ID@@%> <%=,Rel_Product_ID=@@Rel_Product_ID@@%> <%=,P_Relevant_Status=@@P_Relevant_Status@@%> <%=,P_Relevant_Seq=@@P_Relevant_Seq@@%>    <%=,Update_UserId=@@Update_UserId@@%> <%=,Update_User=@@Update_User@@%> WHERE P_Relevant_ID=@@P_Relevant_ID@@;
                 ]]>
             </SqlCommand>
         </SqlDefinition>

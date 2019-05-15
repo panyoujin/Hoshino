@@ -14,10 +14,6 @@ namespace Hoshino.Repository
         public bool Insert(b_rel_product_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            if(model.P_Relevant_ID != 0)
-            {
-                dic["P_Relevant_ID"] = model.P_Relevant_ID;
-            }
             if(model.Source_Product_ID != 0)
             {
                 dic["Source_Product_ID"] = model.Source_Product_ID;
@@ -33,10 +29,6 @@ namespace Hoshino.Repository
             if(model.P_Relevant_Seq >= 0)
             {
                 dic["P_Relevant_Seq"] = model.P_Relevant_Seq;
-            }
-            if(model.Create_Time != null && model.Create_Time.HasValue)
-            {
-                dic["Create_Time"] = model.Create_Time;
             }
             if(model.Create_UserId != null)
             {
@@ -74,10 +66,6 @@ namespace Hoshino.Repository
             if (model.P_Relevant_Seq >= 0)
             {
                 dic["P_Relevant_Seq"] = model.P_Relevant_Seq;
-            }
-            if (model.Update_Time != null && model.Update_Time.HasValue)
-            {
-                dic["Update_Time"] = model.Update_Time;
             }
             if (model.Update_UserId != null)
             {

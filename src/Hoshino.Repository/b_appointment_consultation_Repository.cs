@@ -14,10 +14,6 @@ namespace Hoshino.Repository
         public bool Insert(b_appointment_consultation_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            if(model.AC_ID != 0)
-            {
-                dic["AC_ID"] = model.AC_ID;
-            }
             if(model.Company != null)
             {
                 dic["Company"] = model.Company;
@@ -49,10 +45,6 @@ namespace Hoshino.Repository
             if(model.Processing_Result != null)
             {
                 dic["Processing_Result"] = model.Processing_Result;
-            }
-            if(model.Create_Time != null && model.Create_Time.HasValue)
-            {
-                dic["Create_Time"] = model.Create_Time;
             }
             if(model.Create_UserId != null)
             {
