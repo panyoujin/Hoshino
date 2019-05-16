@@ -36,16 +36,14 @@
             </div>
             <h3>欢迎使用星野官网后台</h3>
 
-            <form class="m-t" role="form" action="index.html">
+            <form class="m-t" role="form" id="form">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="用户名" required="">
+                    <input type="text" id="txAccount" class="form-control" placeholder="用户名" required="">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="密码" required="">
+                    <input type="password" id="txPassword" class="form-control" placeholder="密码" required="">
                 </div>
-                <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
-
-
+                <button type="submit" id="btnLogin" class="btn btn-primary block full-width m-b">登 录</button>
                 <!-- <p class="text-muted text-center"> <a href="login.html#"><small>忘记密码了？</small></a> | <a href="register.html">注册一个新账号</a></p> -->
 
             </form>
@@ -53,7 +51,10 @@
     </div>
     <script src="js/jquery.min.js?v=2.1.4"></script>
     <script src="js/bootstrap.min.js?v=3.3.6"></script>
-    <!-- <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script> -->
+    <script src="js/jquery.md5.js?v=3.3.6"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/hoshino/common.js"></script>
+    <script src="js/hoshino/login.js"></script>
 </body>
 
 

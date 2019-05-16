@@ -1,4 +1,13 @@
 ﻿$(function () {
+    var token = $.cookie('token');
+    if (!window.location.pathname.indexOf("login.html") &&$.isEmptyObject(token)) {
+        window.location.href = "login.html";
+        return;
+    }
+    $("#btnOutLogin").click(function(){
+        $.cookie('token', '');
+        window.location.href = "login.html";
+    });
     // var req = { User_Account: "admin", Password: "202cb962ac59075b964b07152d234b70" };
     // var req = { User_Account: "admin", Password: "202cb962ac59075b964b07152d234b70" };
     // requestUrl("/api/sys_user/Login", function (obj) {
