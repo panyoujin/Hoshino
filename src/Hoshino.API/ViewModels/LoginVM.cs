@@ -7,7 +7,7 @@ namespace Hoshino.API.ViewModels
         /// <summary>
         /// 登录名
         /// </summary>
-        public string Account { get; set; }
+        public string User_Account { get; set; }
         /// <summary>
         /// 密码
         /// </summary>
@@ -16,6 +16,8 @@ namespace Hoshino.API.ViewModels
         /// 验证码
         /// </summary>
         public string VerificationCode { get; set; }
+
+        public string token {get;set;}
 
     }
 }
