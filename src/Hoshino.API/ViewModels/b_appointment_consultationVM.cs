@@ -8,10 +8,6 @@ namespace Hoshino.API.ViewModels
     /// </summary>
     public class b_appointment_consultationVM
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        public int AC_ID { get; set; }
 
         /// <summary>
         /// 公司名称
