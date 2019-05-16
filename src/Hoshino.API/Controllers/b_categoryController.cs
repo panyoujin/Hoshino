@@ -49,14 +49,14 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 修改
         /// </summary>
-        [Authorize]
-        [HttpPut]
+        //[Authorize]
+        [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Update([FromBody]b_categoryVM model)
         {
             b_category_Entity entity = model.ConvertToT<b_category_Entity>();
-            entity.Create_UserId = "1";
-            entity.Create_User = "admin";
+            entity.Update_UserId = "1";
+            entity.Update_User = "admin";
             return this._repository.Update(entity).ResponseSuccess();
         }
 
@@ -74,7 +74,7 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 获取单个
         /// </summary>
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<b_category_Entity>))]
         public ActionResult<object> Get(int Category_ID)

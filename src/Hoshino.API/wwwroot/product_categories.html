@@ -39,13 +39,16 @@
                         </a>
                         <ul class="dropdown-menu dropdown-user">
                             <li>
-                                <a href="#" data-toggle="modal" data-target="#categoryInsert">新增</a>
+                                <a href="#"  id="insertCategory" >新增</a>
                             </li>
                             <li>
-                                <a href="#" data-toggle="modal" data-target="#categoryAlert">编辑</a>
+                                <a href="#"  id="updateCategory" >编辑</a>
                             </li>
                             <li>
                                 <a href="#" id="deleteMenu" >删除</a>
+                            </li>
+                            <li style="display:none">
+                                <a href="#" data-toggle="modal"  id="hiEventShowDialog" data-target="#categoryDetail"></a>
                             </li>
                         </ul>
                         <a class="close-link">
@@ -62,7 +65,7 @@
     </div>
 
     <!-- 弹出窗口 开始-->
-    <div class="modal inmodal fade" id="categoryInsert" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal inmodal fade" id="categoryDetail" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
@@ -82,7 +85,7 @@
                 </div>-->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-white" id="btnCategoryClose" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary" id="btnCategoryInsert">保存</button>
+                    <button type="button" class="btn btn-primary" id="btnCategorySave">保存</button>
                 </div>
             </div>
         </div>
