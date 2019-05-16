@@ -34,7 +34,7 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 新增
         /// </summary>
-        [Authorize]
+        //[Authorize]
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Post([FromBody]b_categoryVM model)
@@ -63,12 +63,12 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 删除
         /// </summary>
-        [Authorize]
-        [HttpDelete]
+        //[Authorize]
+        [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Delete(int Category_ID)
+        public ActionResult<object> Delete([FromBody]b_categoryVM model)
         {
-            return this._repository.Delete(Category_ID).ResponseSuccess();
+            return this._repository.Delete(model.Category_ID).ResponseSuccess();
         }
 
         /// <summary>
