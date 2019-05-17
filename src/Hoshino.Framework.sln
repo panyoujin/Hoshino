@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.168
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{56215841-F520-4EF4-9DB6-200B8534DB2E}") = "Hoshino.API", "Hoshino.API\Hoshino.API.csproj", "{985A6B13-C307-4C8E-A04C-7C08FE5F172C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hoshino.API", "Hoshino.API\Hoshino.API.csproj", "{985A6B13-C307-4C8E-A04C-7C08FE5F172C}"
 EndProject
-Project("{56215841-F520-4EF4-9DB6-200B8534DB2E}") = "Hoshino.Entity", "Hoshino.Entity\Hoshino.Entity.csproj", "{A93874FC-AD4D-4B89-8FED-6C0374D25A04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hoshino.Entity", "Hoshino.Entity\Hoshino.Entity.csproj", "{A93874FC-AD4D-4B89-8FED-6C0374D25A04}"
 EndProject
-Project("{56215841-F520-4EF4-9DB6-200B8534DB2E}") = "Hoshino.IRepository", "Hoshino.IRepository\Hoshino.IRepository.csproj", "{61CB2D9B-2912-4B92-9EBE-EA67E1723EA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hoshino.IRepository", "Hoshino.IRepository\Hoshino.IRepository.csproj", "{61CB2D9B-2912-4B92-9EBE-EA67E1723EA7}"
 EndProject
-Project("{56215841-F520-4EF4-9DB6-200B8534DB2E}") = "Hoshino.Repository", "Hoshino.Repository\Hoshino.Repository.csproj", "{2178EBA0-1F80-4460-81DC-CBE195E6198D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hoshino.Repository", "Hoshino.Repository\Hoshino.Repository.csproj", "{2178EBA0-1F80-4460-81DC-CBE195E6198D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hoshino.Util", "Hoshino.Util\Hoshino.Util.csproj", "{A853966E-67C2-4A36-876A-2A624A5112CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{2178EBA0-1F80-4460-81DC-CBE195E6198D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2178EBA0-1F80-4460-81DC-CBE195E6198D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2178EBA0-1F80-4460-81DC-CBE195E6198D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A853966E-67C2-4A36-876A-2A624A5112CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A853966E-67C2-4A36-876A-2A624A5112CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A853966E-67C2-4A36-876A-2A624A5112CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A853966E-67C2-4A36-876A-2A624A5112CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,4 +47,3 @@ Global
 		SolutionGuid = {20F40DFC-E857-4ED3-9E2F-35CC6DF6B72C}
 	EndGlobalSection
 EndGlobal
-

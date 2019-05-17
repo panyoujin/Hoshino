@@ -25,6 +25,7 @@
         <ProjectReference Include="..\Hoshino.Entity\Hoshino.Entity.csproj" />
         <ProjectReference Include="..\Hoshino.IRepository\Hoshino.IRepository.csproj" />
         <ProjectReference Include="..\Hoshino.Repository\Hoshino.Repository.csproj" />
+        <ProjectReference Include="..\Hoshino.Util\Hoshino.Util.csproj" />
     </ItemGroup>
     <ItemGroup>
         <None Include="SqlConfig\b_appointment_consultationSql.xml">

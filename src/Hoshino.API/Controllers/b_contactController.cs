@@ -10,6 +10,7 @@ using Hoshino.IRepository;
 using Microsoft.AspNetCore.Authorization;
 using Hoshino.API.ViewModels;
 using Hoshino.API.Extentions;
+using Microsoft.AspNetCore.Http;
 
 namespace Hoshino.API.Controllers
 {
@@ -36,8 +37,13 @@ namespace Hoshino.API.Controllers
         [Authorize]
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Post([FromBody]b_contactVM model)
+        public ActionResult<object> Post([FromBody]b_contactVM model, string code)
         {
+            if (string.IsNullOrWhiteSpace(code) || string.IsNullOrWhiteSpace(HttpContext.Session.GetString(Constant.Session_CheckCode)) || !code.ToLower().Equals(HttpContext.Session.GetString(Constant.Session_CheckCode).ToLower()))
+            {
+                return this.ResponseUnknown("验证码错误");
+            }
+            HttpContext.Session.Remove(Constant.Session_CheckCode);
             b_contact_Entity entity = model.ConvertToT<b_contact_Entity>();
             this.SetCreateUserInfo(entity);
             return this._repository.Insert(entity).ResponseSuccess();

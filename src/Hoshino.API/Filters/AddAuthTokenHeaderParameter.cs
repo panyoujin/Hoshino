@@ -32,7 +32,7 @@ namespace Hoshino.API.Filters
                 //非匿名的方法,链接中添加accesstoken值
                 operation.Parameters.Add(new NonBodyParameter()
                 {
-                    Name = Constant.LoginToken,
+                    Name = Constant.LoginToken_Key,
                     In = "header",//query header body path formData
                     Type = "string",
                     Required = isAuthorize //是否必选

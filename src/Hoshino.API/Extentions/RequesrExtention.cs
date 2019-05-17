@@ -22,7 +22,7 @@ namespace Hoshino.API.Extentions
         {
             try
             {
-                var token = controller.Request.Headers[Constant.LoginToken].ToString();
+                var token = controller.Request.Headers[Constant.LoginToken_Key].ToString();
                 if (!string.IsNullOrWhiteSpace(token))
                 {
                     var temp = new JwtSecurityTokenHandler().ReadJwtToken(token.Replace(Constant.JwtTokenPrefix, ""));
