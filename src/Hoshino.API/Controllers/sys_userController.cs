@@ -29,7 +29,7 @@ namespace Hoshino.API.Controllers
         private readonly ILogger<sys_userController> _logger;
         private readonly Isys_user_Repository _repository;
         private readonly IConfiguration _configuration;
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -61,11 +61,11 @@ namespace Hoshino.API.Controllers
         [Authorize]
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]sys_userVM model)
+        public ActionResult<object> Update([FromBody]sys_userVM model, int User_ID)
         {
             sys_user_Entity entity = model.ConvertToT<sys_user_Entity>();
             this.SetUpdateUserInfo(entity);
-            return this._repository.Update(entity).ResponseSuccess();
+            return this._repository.Update(entity, User_ID).ResponseSuccess();
         }
 
         /// <summary>
@@ -76,6 +76,9 @@ namespace Hoshino.API.Controllers
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Delete(int User_ID)
         {
+            sys_user_Entity entity = new sys_user_Entity();
+            this.SetUpdateUserInfo(entity);
+            this._repository.Update(entity, User_ID);
             return this._repository.Delete(User_ID).ResponseSuccess();
         }
 

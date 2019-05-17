@@ -14,7 +14,7 @@ namespace Hoshino.IRepository
         /// <summary>
         /// 修改
         /// <summary>
-        bool Update(b_video_resources_Entity model);
+        bool Update(b_video_resources_Entity model, int Video_ID);
 
         /// <summary>
         /// 删除

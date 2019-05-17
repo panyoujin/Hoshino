@@ -14,7 +14,7 @@ namespace Hoshino.IRepository
         /// <summary>
         /// 修改
         /// <summary>
-        bool Update(b_category_Entity model);
+        bool Update(b_category_Entity model, int Category_ID);
 
         /// <summary>
         /// 删除

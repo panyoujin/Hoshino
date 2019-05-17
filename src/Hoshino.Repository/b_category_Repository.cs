@@ -48,13 +48,10 @@ namespace Hoshino.Repository
         /// <summary>
         /// 修改
         /// <summary>
-        public bool Update(b_category_Entity model)
+        public bool Update(b_category_Entity model, int Category_ID)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            if (model.Category_ID != 0)
-            {
-                dic["Category_ID"] = model.Category_ID;
-            }
+            dic["Category_ID"] = Category_ID;
             if (model.Parent_Category_ID != null && model.Parent_Category_ID.HasValue)
             {
                 dic["Parent_Category_ID"] = model.Parent_Category_ID;

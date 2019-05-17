@@ -49,11 +49,27 @@ namespace Hoshino.API.Controllers
         [Authorize]
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]b_banner_resourcesVM model)
+        public ActionResult<object> Update([FromBody]b_banner_resourcesVM model, int Banner_ID)
         {
             b_banner_resources_Entity entity = model.ConvertToT<b_banner_resources_Entity>();
-            return this._repository.Update(entity).ResponseSuccess();
+            this.SetUpdateUserInfo(entity);
+            return this._repository.Update(entity, Banner_ID).ResponseSuccess();
         }
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        [Authorize]
+        [HttpDelete]
+        [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
+        public ActionResult<object> Delete(int Banner_ID)
+        {
+            b_banner_resources_Entity entity = new b_banner_resources_Entity();
+            this.SetUpdateUserInfo(entity);
+            this._repository.Update(entity, Banner_ID);
+            return this._repository.Delete(Banner_ID).ResponseSuccess();
+        }
+
 
         /// <summary>
         /// 获取单个
@@ -62,6 +78,9 @@ namespace Hoshino.API.Controllers
         [ProducesResponseType(200, Type = typeof(ApiResult<b_banner_resources_Entity>))]
         public ActionResult<object> Get(int Banner_ID)
         {
+            b_banner_resources_Entity entity = new b_banner_resources_Entity();
+            this.SetUpdateUserInfo(entity);
+            this._repository.Update(entity, Banner_ID);
             return this._repository.Get(Banner_ID).ResponseSuccess();
         }
 
@@ -78,7 +97,7 @@ namespace Hoshino.API.Controllers
         }
 
         /// <summary>
-        /// 获取首页Banner列表
+        /// 获取首页Banner列表  前台API
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -87,7 +106,7 @@ namespace Hoshino.API.Controllers
         {
             b_banner_resources_Entity model = new b_banner_resources_Entity();
             model.Banner_Location = Banner_Location.Index.ToString();
-            model.Banner_Status = (int)Table_Status.Effective; ; 
+            model.Banner_Status = (int)Table_Status.Effective; ;
             var (list, total) = this._repository.GetList(model, -1, -1);
             return list.ResponseSuccess("", total);
         }

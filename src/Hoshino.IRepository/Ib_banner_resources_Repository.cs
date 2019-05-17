@@ -14,7 +14,7 @@ namespace Hoshino.IRepository
         /// <summary>
         /// 修改
         /// <summary>
-        bool Update(b_banner_resources_Entity model);
+        bool Update(b_banner_resources_Entity model, int Banner_ID);
 
         /// <summary>
         /// 删除

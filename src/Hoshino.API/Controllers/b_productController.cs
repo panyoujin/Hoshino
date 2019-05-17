@@ -49,11 +49,11 @@ namespace Hoshino.API.Controllers
         [Authorize]
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]b_productVM model)
+        public ActionResult<object> Update([FromBody]b_productVM model, int Product_ID)
         {
             b_product_Entity entity = model.ConvertToT<b_product_Entity>();
             this.SetUpdateUserInfo(entity);
-            return this._repository.Update(entity).ResponseSuccess();
+            return this._repository.Update(entity, Product_ID).ResponseSuccess();
         }
 
         /// <summary>
@@ -64,11 +64,14 @@ namespace Hoshino.API.Controllers
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Delete(int Product_ID)
         {
+            b_product_Entity entity = new b_product_Entity();
+            this.SetUpdateUserInfo(entity);
+            this._repository.Update(entity, Product_ID);
             return this._repository.Delete(Product_ID).ResponseSuccess();
         }
 
         /// <summary>
-        /// 获取单个
+        /// 获取单个  前台和后台API
         /// </summary>
         [Authorize]
         [HttpGet]
@@ -81,6 +84,7 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 获取列表
         /// </summary>
+        [Authorize]
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_product_Entity>>))]
         public ActionResult<object> GetList([FromBody]b_productVM model, int pageindex, int pagesize)
@@ -91,7 +95,7 @@ namespace Hoshino.API.Controllers
         }
 
         /// <summary>
-        /// 获取最新产品列表
+        /// 获取最新产品列表  前台API
         /// 首页调用参数：pageindex=1；pagesize=24
         /// </summary>
         /// <param name="categoryID">菜单ID，全部时传递-1</param>
@@ -106,7 +110,7 @@ namespace Hoshino.API.Controllers
             return list.ResponseSuccess("", total);
         }
         /// <summary>
-        /// 获取热门产品列表
+        /// 获取热门产品列表  前台API
         /// 首页调用参数：pageindex=1；pagesize=24
         /// </summary>
         /// <param name="categoryID">菜单ID，全部时传递-1</param>
@@ -121,7 +125,7 @@ namespace Hoshino.API.Controllers
             return list.ResponseSuccess("", total);
         }
         /// <summary>
-        /// 获取推荐产品列表
+        /// 获取推荐产品列表  前台API
         /// </summary>
         /// <param name="categoryID">菜单ID，全部时传递-1</param>
         /// <param name="pageindex">页码</param>

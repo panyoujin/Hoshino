@@ -60,10 +60,10 @@ namespace Hoshino.Repository
         /// <summary>
         /// 修改
         /// <summary>
-        public bool Update(b_product_Entity model)
+        public bool Update(b_product_Entity model, int Product_ID)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["Product_ID"] = model.Product_ID;
+            dic["Product_ID"] = Product_ID;
             if (model.Category_ID != 0)
             {
                 dic["Category_ID"] = model.Category_ID;

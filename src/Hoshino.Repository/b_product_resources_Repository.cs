@@ -14,55 +14,52 @@ namespace Hoshino.Repository
         public bool Insert(b_product_resources_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            if(model.Product_ID != 0)
+            if (model.Product_ID != 0)
             {
                 dic["Product_ID"] = model.Product_ID;
             }
-            if(model.P_Resources_Name_CH != null)
+            if (model.P_Resources_Name_CH != null)
             {
                 dic["P_Resources_Name_CH"] = model.P_Resources_Name_CH;
             }
-            if(model.P_Resources_Name_HK != null)
+            if (model.P_Resources_Name_HK != null)
             {
                 dic["P_Resources_Name_HK"] = model.P_Resources_Name_HK;
             }
-            if(model.P_Resources_URL != null)
+            if (model.P_Resources_URL != null)
             {
                 dic["P_Resources_URL"] = model.P_Resources_URL;
             }
-            if(model.P_Resources_Type != null)
+            if (model.P_Resources_Type != null)
             {
                 dic["P_Resources_Type"] = model.P_Resources_Type;
             }
-            if(model.P_Resources_Status != null && model.P_Resources_Status.HasValue)
+            if (model.P_Resources_Status != null && model.P_Resources_Status.HasValue)
             {
                 dic["P_Resources_Status"] = model.P_Resources_Status;
             }
-            if(model.P_Resources_Seq >= 0)
+            if (model.P_Resources_Seq >= 0)
             {
                 dic["P_Resources_Seq"] = model.P_Resources_Seq;
             }
-            if(model.Create_UserId != null)
+            if (model.Create_UserId != null)
             {
                 dic["Create_UserId"] = model.Create_UserId;
             }
-            if(model.Create_User != null)
+            if (model.Create_User != null)
             {
                 dic["Create_User"] = model.Create_User;
             }
-            return SQLHelperFactory.Instance.ExecuteNonQuery("Insert_b_product_resources", dic) >0 ;
+            return SQLHelperFactory.Instance.ExecuteNonQuery("Insert_b_product_resources", dic) > 0;
         }
 
         /// <summary>
         /// 修改
         /// <summary>
-        public bool Update(b_product_resources_Entity model)
+        public bool Update(b_product_resources_Entity model, int P_Resources_ID)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            if (model.P_Resources_ID != 0)
-            {
-                dic["P_Resources_ID"] = model.P_Resources_ID;
-            }
+            dic["P_Resources_ID"] = P_Resources_ID;
             if (model.Product_ID != 0)
             {
                 dic["Product_ID"] = model.Product_ID;
@@ -103,7 +100,7 @@ namespace Hoshino.Repository
             {
                 dic["Update_User"] = model.Update_User;
             }
-            return SQLHelperFactory.Instance.ExecuteNonQuery("Update_b_product_resources", dic) >0 ;
+            return SQLHelperFactory.Instance.ExecuteNonQuery("Update_b_product_resources", dic) > 0;
         }
 
         /// <summary>
@@ -113,7 +110,7 @@ namespace Hoshino.Repository
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic["P_Resources_ID"] = P_Resources_ID;
-            return SQLHelperFactory.Instance.ExecuteNonQuery("Delete_b_product_resources", dic) >0 ;
+            return SQLHelperFactory.Instance.ExecuteNonQuery("Delete_b_product_resources", dic) > 0;
         }
 
         /// <summary>
@@ -129,38 +126,38 @@ namespace Hoshino.Repository
         /// <summary>
         /// 获取列表
         /// <summary>
-        public (IEnumerable<b_product_resources_Entity>,int) GetList(b_product_resources_Entity model,int pageindex,int pagesize)
+        public (IEnumerable<b_product_resources_Entity>, int) GetList(b_product_resources_Entity model, int pageindex, int pagesize)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            if(model.P_Resources_ID != 0)
+            if (model.P_Resources_ID != 0)
             {
                 dic["P_Resources_ID"] = model.P_Resources_ID;
             }
-            if(model.Product_ID != 0)
+            if (model.Product_ID != 0)
             {
                 dic["Product_ID"] = model.Product_ID;
             }
-            if(model.P_Resources_Name_CH != null)
+            if (model.P_Resources_Name_CH != null)
             {
                 dic["P_Resources_Name_CH"] = model.P_Resources_Name_CH;
             }
-            if(model.P_Resources_Name_HK != null)
+            if (model.P_Resources_Name_HK != null)
             {
                 dic["P_Resources_Name_HK"] = model.P_Resources_Name_HK;
             }
-            if(model.P_Resources_URL != null)
+            if (model.P_Resources_URL != null)
             {
                 dic["P_Resources_URL"] = model.P_Resources_URL;
             }
-            if(model.P_Resources_Type != null)
+            if (model.P_Resources_Type != null)
             {
                 dic["P_Resources_Type"] = model.P_Resources_Type;
             }
-            if(model.P_Resources_Status != null && model.P_Resources_Status.HasValue)
+            if (model.P_Resources_Status != null && model.P_Resources_Status.HasValue)
             {
                 dic["P_Resources_Status"] = model.P_Resources_Status;
             }
-            if(model.P_Resources_Seq >= 0)
+            if (model.P_Resources_Seq >= 0)
             {
                 dic["P_Resources_Seq"] = model.P_Resources_Seq;
             }
@@ -172,8 +169,8 @@ namespace Hoshino.Repository
             {
                 dic["SelectCount"] = pagesize;
             }
-            var list = SQLHelperFactory.Instance.QueryMultipleByPage<b_product_resources_Entity>("Select_b_product_resources_List", dic,out int total);
-            return (list,total);
+            var list = SQLHelperFactory.Instance.QueryMultipleByPage<b_product_resources_Entity>("Select_b_product_resources_List", dic, out int total);
+            return (list, total);
         }
 
     }

@@ -51,11 +51,11 @@ namespace Hoshino.API.Controllers
         [Authorize]
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]b_categoryVM model)
+        public ActionResult<object> Update([FromBody]b_categoryVM model, int Category_ID)
         {
             b_category_Entity entity = model.ConvertToT<b_category_Entity>();
             this.SetUpdateUserInfo(entity);
-            return this._repository.Update(entity).ResponseSuccess();
+            return this._repository.Update(entity, Category_ID).ResponseSuccess();
         }
 
         /// <summary>
@@ -64,9 +64,12 @@ namespace Hoshino.API.Controllers
         [Authorize]
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Delete([FromBody]b_categoryVM model)
+        public ActionResult<object> Delete(int Category_ID)
         {
-            return this._repository.Delete(model.Category_ID).ResponseSuccess();
+            b_category_Entity entity = new b_category_Entity();
+            this.SetUpdateUserInfo(entity);
+            this._repository.Update(entity, Category_ID);
+            return this._repository.Delete(Category_ID).ResponseSuccess();
         }
 
         /// <summary>
@@ -92,7 +95,7 @@ namespace Hoshino.API.Controllers
         }
 
         /// <summary>
-        /// 获取所有分类
+        /// 获取所有分类 前台和后台公用API
         /// </summary>
         /// <returns></returns>
         [HttpGet]

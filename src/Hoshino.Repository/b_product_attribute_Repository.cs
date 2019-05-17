@@ -14,59 +14,56 @@ namespace Hoshino.Repository
         public bool Insert(b_product_attribute_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            if(model.Product_ID != 0)
+            if (model.Product_ID != 0)
             {
                 dic["Product_ID"] = model.Product_ID;
             }
-            if(model.P_Attribute_Name_CH != null)
+            if (model.P_Attribute_Name_CH != null)
             {
                 dic["P_Attribute_Name_CH"] = model.P_Attribute_Name_CH;
             }
-            if(model.P_Attribute_Name_HK != null)
+            if (model.P_Attribute_Name_HK != null)
             {
                 dic["P_Attribute_Name_HK"] = model.P_Attribute_Name_HK;
             }
-            if(model.P_Attribute_Value_CH != null)
+            if (model.P_Attribute_Value_CH != null)
             {
                 dic["P_Attribute_Value_CH"] = model.P_Attribute_Value_CH;
             }
-            if(model.P_Attribute_Value_EN != null)
+            if (model.P_Attribute_Value_EN != null)
             {
                 dic["P_Attribute_Value_EN"] = model.P_Attribute_Value_EN;
             }
-            if(model.P_Attribute_Status != null && model.P_Attribute_Status.HasValue)
+            if (model.P_Attribute_Status != null && model.P_Attribute_Status.HasValue)
             {
                 dic["P_Attribute_Status"] = model.P_Attribute_Status;
             }
-            if(model.P_Attribute_Seq >= 0)
+            if (model.P_Attribute_Seq >= 0)
             {
                 dic["P_Attribute_Seq"] = model.P_Attribute_Seq;
             }
-            if(model.Create_Time != null && model.Create_Time.HasValue)
+            if (model.Create_Time != null && model.Create_Time.HasValue)
             {
                 dic["Create_Time"] = model.Create_Time;
             }
-            if(model.Create_UserId != null)
+            if (model.Create_UserId != null)
             {
                 dic["Create_UserId"] = model.Create_UserId;
             }
-            if(model.Create_User != null)
+            if (model.Create_User != null)
             {
                 dic["Create_User"] = model.Create_User;
             }
-            return SQLHelperFactory.Instance.ExecuteNonQuery("Insert_b_product_attribute", dic) >0 ;
+            return SQLHelperFactory.Instance.ExecuteNonQuery("Insert_b_product_attribute", dic) > 0;
         }
 
         /// <summary>
         /// 修改
         /// <summary>
-        public bool Update(b_product_attribute_Entity model)
+        public bool Update(b_product_attribute_Entity model, int P_Attribute_ID)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            if (model.P_Attribute_ID != 0)
-            {
-                dic["P_Attribute_ID"] = model.P_Attribute_ID;
-            }
+            dic["P_Attribute_ID"] = P_Attribute_ID;
             if (model.Product_ID != 0)
             {
                 dic["Product_ID"] = model.Product_ID;
@@ -107,7 +104,7 @@ namespace Hoshino.Repository
             {
                 dic["Update_User"] = model.Update_User;
             }
-            return SQLHelperFactory.Instance.ExecuteNonQuery("Update_b_product_attribute", dic) >0 ;
+            return SQLHelperFactory.Instance.ExecuteNonQuery("Update_b_product_attribute", dic) > 0;
         }
 
         /// <summary>
@@ -117,7 +114,7 @@ namespace Hoshino.Repository
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic["P_Attribute_ID"] = P_Attribute_ID;
-            return SQLHelperFactory.Instance.ExecuteNonQuery("Delete_b_product_attribute", dic) >0 ;
+            return SQLHelperFactory.Instance.ExecuteNonQuery("Delete_b_product_attribute", dic) > 0;
         }
 
         /// <summary>
@@ -133,38 +130,38 @@ namespace Hoshino.Repository
         /// <summary>
         /// 获取列表
         /// <summary>
-        public (IEnumerable<b_product_attribute_Entity>,int) GetList(b_product_attribute_Entity model,int pageindex,int pagesize)
+        public (IEnumerable<b_product_attribute_Entity>, int) GetList(b_product_attribute_Entity model, int pageindex, int pagesize)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            if(model.P_Attribute_ID != 0)
+            if (model.P_Attribute_ID != 0)
             {
                 dic["P_Attribute_ID"] = model.P_Attribute_ID;
             }
-            if(model.Product_ID != 0)
+            if (model.Product_ID != 0)
             {
                 dic["Product_ID"] = model.Product_ID;
             }
-            if(model.P_Attribute_Name_CH != null)
+            if (model.P_Attribute_Name_CH != null)
             {
                 dic["P_Attribute_Name_CH"] = model.P_Attribute_Name_CH;
             }
-            if(model.P_Attribute_Name_HK != null)
+            if (model.P_Attribute_Name_HK != null)
             {
                 dic["P_Attribute_Name_HK"] = model.P_Attribute_Name_HK;
             }
-            if(model.P_Attribute_Value_CH != null)
+            if (model.P_Attribute_Value_CH != null)
             {
                 dic["P_Attribute_Value_CH"] = model.P_Attribute_Value_CH;
             }
-            if(model.P_Attribute_Value_EN != null)
+            if (model.P_Attribute_Value_EN != null)
             {
                 dic["P_Attribute_Value_EN"] = model.P_Attribute_Value_EN;
             }
-            if(model.P_Attribute_Status != null && model.P_Attribute_Status.HasValue)
+            if (model.P_Attribute_Status != null && model.P_Attribute_Status.HasValue)
             {
                 dic["P_Attribute_Status"] = model.P_Attribute_Status;
             }
-            if(model.P_Attribute_Seq >= 0)
+            if (model.P_Attribute_Seq >= 0)
             {
                 dic["P_Attribute_Seq"] = model.P_Attribute_Seq;
             }
@@ -176,8 +173,8 @@ namespace Hoshino.Repository
             {
                 dic["SelectCount"] = pagesize;
             }
-            var list = SQLHelperFactory.Instance.QueryMultipleByPage<b_product_attribute_Entity>("Select_b_product_attribute_List", dic,out int total);
-            return (list,total);
+            var list = SQLHelperFactory.Instance.QueryMultipleByPage<b_product_attribute_Entity>("Select_b_product_attribute_List", dic, out int total);
+            return (list, total);
         }
 
     }

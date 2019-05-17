@@ -14,7 +14,7 @@ namespace Hoshino.IRepository
         /// <summary>
         /// 修改
         /// <summary>
-        bool Update(sys_user_Entity model);
+        bool Update(sys_user_Entity model, int User_ID);
 
         /// <summary>
         /// 删除
@@ -30,7 +30,7 @@ namespace Hoshino.IRepository
         /// <summary>
         /// 获取列表
         /// <summary>
-        (IEnumerable<sys_user_Entity>,int) GetList(sys_user_Entity model,int pageindex,int pagesize);
+        (IEnumerable<sys_user_Entity>, int) GetList(sys_user_Entity model, int pageindex, int pagesize);
 
     }
 }

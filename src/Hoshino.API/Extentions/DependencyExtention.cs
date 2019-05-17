@@ -4,8 +4,15 @@ using Hoshino.Repository;
 using Hoshino.IRepository;
 namespace Hoshino.API.Extentions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class DependencyExtention
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="services"></param>
         public static void RegisDependency(this IServiceCollection services)
         {
             services.AddScoped<Ib_appointment_consultation_Repository, b_appointment_consultation_Repository>();

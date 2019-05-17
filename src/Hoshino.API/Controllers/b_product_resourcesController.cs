@@ -25,7 +25,7 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 构造函数
         /// </summary>
-        public b_product_resourcesController(ILogger<b_product_resourcesController> logger,Ib_product_resources_Repository repository)
+        public b_product_resourcesController(ILogger<b_product_resourcesController> logger, Ib_product_resources_Repository repository)
         {
             this._logger = logger;
             this._repository = repository;
@@ -49,11 +49,11 @@ namespace Hoshino.API.Controllers
         [Authorize]
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]b_product_resourcesVM model)
+        public ActionResult<object> Update([FromBody]b_product_resourcesVM model, int P_Resources_ID)
         {
             b_product_resources_Entity entity = model.ConvertToT<b_product_resources_Entity>();
             this.SetUpdateUserInfo(entity);
-            return this._repository.Update(entity).ResponseSuccess();
+            return this._repository.Update(entity, P_Resources_ID).ResponseSuccess();
         }
 
         /// <summary>
@@ -64,6 +64,9 @@ namespace Hoshino.API.Controllers
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Delete(int P_Resources_ID)
         {
+            b_product_resources_Entity entity = new b_product_resources_Entity();
+            this.SetUpdateUserInfo(entity);
+            this._repository.Update(entity, P_Resources_ID);
             return this._repository.Delete(P_Resources_ID).ResponseSuccess();
         }
 
@@ -83,11 +86,11 @@ namespace Hoshino.API.Controllers
         /// </summary>
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_product_resources_Entity>>))]
-        public ActionResult<object> GetList([FromBody]b_product_resourcesVM model,int pageindex,int pagesize)
+        public ActionResult<object> GetList([FromBody]b_product_resourcesVM model, int pageindex, int pagesize)
         {
             b_product_resources_Entity entity = model.ConvertToT<b_product_resources_Entity>();
-            var (list,total) = this._repository.GetList(entity, pageindex, pagesize) ;
-            return list.ResponseSuccess("",total);
+            var (list, total) = this._repository.GetList(entity, pageindex, pagesize);
+            return list.ResponseSuccess("", total);
         }
 
     }

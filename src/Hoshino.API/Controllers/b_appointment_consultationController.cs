@@ -31,7 +31,7 @@ namespace Hoshino.API.Controllers
             this._repository = repository;
         }
         /// <summary>
-        /// 新增
+        /// 新增 前台API
         /// </summary>
         [Authorize]
         [HttpPost]
@@ -42,19 +42,20 @@ namespace Hoshino.API.Controllers
             this.SetCreateUserInfo(entity);
             return this._repository.Insert(entity).ResponseSuccess();
         }
-
         /// <summary>
         /// 修改
         /// </summary>
+        /// <param name="model">修改实体</param>
+        /// <param name="AC_ID">主键ID</param>
+        /// <returns></returns>
         [Authorize]
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]b_appointment_consultationVM model,int acID)
+        public ActionResult<object> Update([FromBody]b_appointment_consultationVM model, int AC_ID)
         {
             b_appointment_consultation_Entity entity = model.ConvertToT<b_appointment_consultation_Entity>();
-            entity.AC_ID = acID;
             this.SetUpdateUserInfo(entity);
-            return this._repository.Update(entity).ResponseSuccess();
+            return this._repository.Update(entity, AC_ID).ResponseSuccess();
         }
 
         /// <summary>
@@ -65,6 +66,9 @@ namespace Hoshino.API.Controllers
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Delete(int AC_ID)
         {
+            b_appointment_consultation_Entity entity = new b_appointment_consultation_Entity();
+            this.SetUpdateUserInfo(entity);
+            this._repository.Update(entity, AC_ID);
             return this._repository.Delete(AC_ID).ResponseSuccess();
         }
 

@@ -24,7 +24,7 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 构造函数
         /// </summary>
-        public log_infoController(ILogger<log_infoController> logger,Ilog_info_Repository repository)
+        public log_infoController(ILogger<log_infoController> logger, Ilog_info_Repository repository)
         {
             this._logger = logger;
             this._repository = repository;
@@ -47,10 +47,10 @@ namespace Hoshino.API.Controllers
         [Authorize]
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]log_infoVM model)
+        public ActionResult<object> Update([FromBody]log_infoVM model, int id)
         {
             log_info_Entity entity = model.ConvertToT<log_info_Entity>();
-            return this._repository.Update(entity).ResponseSuccess();
+            return this._repository.Update(entity, id).ResponseSuccess();
         }
 
         /// <summary>
@@ -80,11 +80,11 @@ namespace Hoshino.API.Controllers
         /// </summary>
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<log_info_Entity>>))]
-        public ActionResult<object> GetList([FromBody]log_infoVM model,int pageindex,int pagesize)
+        public ActionResult<object> GetList([FromBody]log_infoVM model, int pageindex, int pagesize)
         {
             log_info_Entity entity = model.ConvertToT<log_info_Entity>();
-            var (list,total) = this._repository.GetList(entity, pageindex, pagesize) ;
-            return list.ResponseSuccess("",total);
+            var (list, total) = this._repository.GetList(entity, pageindex, pagesize);
+            return list.ResponseSuccess("", total);
         }
 
     }

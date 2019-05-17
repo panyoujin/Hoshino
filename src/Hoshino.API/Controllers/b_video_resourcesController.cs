@@ -49,11 +49,11 @@ namespace Hoshino.API.Controllers
         [Authorize]
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]b_video_resourcesVM model)
+        public ActionResult<object> Update([FromBody]b_video_resourcesVM model, int Video_ID)
         {
             b_video_resources_Entity entity = model.ConvertToT<b_video_resources_Entity>();
             this.SetUpdateUserInfo(entity);
-            return this._repository.Update(entity).ResponseSuccess();
+            return this._repository.Update(entity, Video_ID).ResponseSuccess();
         }
 
         /// <summary>
@@ -64,6 +64,9 @@ namespace Hoshino.API.Controllers
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Delete(int Video_ID)
         {
+            b_video_resources_Entity entity = new b_video_resources_Entity();
+            this.SetUpdateUserInfo(entity);
+            this._repository.Update(entity, Video_ID);
             return this._repository.Delete(Video_ID).ResponseSuccess();
         }
 
@@ -91,7 +94,7 @@ namespace Hoshino.API.Controllers
         }
 
         /// <summary>
-        /// 获取首页Video列表
+        /// 获取首页Video列表 前台API
         /// </summary>
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_video_resources_Entity>>))]
