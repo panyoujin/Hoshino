@@ -4,6 +4,7 @@ using System.Linq;
 using Hoshino.Entity;
 using Microsoft.AspNetCore.Mvc;
 using Pan.Code.Extentions;
+using Pan.Code.UserException;
 
 namespace Hoshino.API.Extentions
 {
@@ -34,7 +35,7 @@ namespace Hoshino.API.Extentions
             catch
             {
             }
-            throw new Exception("获取不到登录信息");
+            throw new NotLoginException();
         }
         /// <summary>
         /// 

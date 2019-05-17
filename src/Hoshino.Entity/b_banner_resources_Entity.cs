@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Hoshino.Entity
+﻿namespace Hoshino.Entity
 {
     public class b_banner_resources_Entity : BaseEntity
     {

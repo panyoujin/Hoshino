@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Hoshino.Entity
+﻿namespace Hoshino.Entity
 {
     public class sys_user_Entity : BaseEntity
     {

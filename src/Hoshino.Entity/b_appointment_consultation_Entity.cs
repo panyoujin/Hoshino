@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Hoshino.Entity
+﻿namespace Hoshino.Entity
 {
     public class b_appointment_consultation_Entity : BaseEntity
     {

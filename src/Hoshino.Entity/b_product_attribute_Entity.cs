@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Hoshino.Entity
+﻿namespace Hoshino.Entity
 {
     public class b_product_attribute_Entity : BaseEntity
     {
