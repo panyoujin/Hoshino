@@ -34,7 +34,7 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 新增
         /// </summary>
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Post([FromBody]b_categoryVM model)
@@ -49,7 +49,7 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 修改
         /// </summary>
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Update([FromBody]b_categoryVM model)
@@ -63,7 +63,7 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 删除
         /// </summary>
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Delete([FromBody]b_categoryVM model)
@@ -74,7 +74,7 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 获取单个
         /// </summary>
-        //[Authorize]
+        [Authorize]
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<b_category_Entity>))]
         public ActionResult<object> Get(int Category_ID)

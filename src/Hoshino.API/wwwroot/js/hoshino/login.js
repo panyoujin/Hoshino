@@ -1,5 +1,5 @@
 $(function () {
-    var token = $.cookie('token');
+    var token = $.cookie('Authorization');
 
     if (!$.isEmptyObject(token)) {
         window.location.href = "index.html";
@@ -20,7 +20,7 @@ $(function () {
         
         requestUrl("/api/sys_user/Login", function (obj) {
             if(obj.Code==200){
-                $.cookie('token', obj.Result.token, { expires: 7 });  
+                $.cookie('Authorization', obj.Result.token, { expires: 7 });  
                 window.location.href = "index.html";
             }   
         }, JSON.stringify(req));
