@@ -2,6 +2,9 @@
 
 namespace Hoshino.API.ViewModels
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class LoginVM
     {
         /// <summary>
@@ -17,6 +20,9 @@ namespace Hoshino.API.ViewModels
         /// </summary>
         public string VerificationCode { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string token {get;set;}
 
     }

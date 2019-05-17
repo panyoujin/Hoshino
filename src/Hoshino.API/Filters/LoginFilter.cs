@@ -8,6 +8,10 @@ namespace Hoshino.API.Filters
     /// </summary>
     public class LoginFilter : Attribute, IAuthorizationFilter
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
         public void OnAuthorization(AuthorizationFilterContext context)
         {
             //检查是否已登录

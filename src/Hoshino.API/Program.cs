@@ -1,4 +1,4 @@
-﻿using  System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,8 +12,14 @@ using DBHelper.SQLHelper;
 
 namespace Hoshino.API
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public static void Main(string[] args)
         {
             var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
@@ -21,6 +27,9 @@ namespace Hoshino.API
             CreateWebHostBuilder(args).Build().Run();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()

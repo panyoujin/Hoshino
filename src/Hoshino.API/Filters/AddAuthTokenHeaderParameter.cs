@@ -8,6 +8,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Hoshino.API.Filters
 {
+    /// <summary>
     /// 控制swagger中是否需要添加accesstoken验证
     /// </summary>
     public class AddAuthTokenHeaderParameter : IOperationFilter

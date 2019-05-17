@@ -143,7 +143,7 @@ namespace Hoshino.API.Controllers
                 string authorization = HttpContext.Request.Headers["Authorization"];
                 HttpContext.Session.Remove(authorization);
             }
-            catch (Exception ex)
+            catch
             {
                 return false.ResponseSuccess();
             }

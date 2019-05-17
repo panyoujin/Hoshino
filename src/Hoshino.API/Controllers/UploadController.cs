@@ -22,6 +22,9 @@ namespace Hoshino.API.Controllers
     {
         private readonly IHostingEnvironment _hostingEnvironment;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public UploadController(IHostingEnvironment hostingEnvironment)
         {
             _hostingEnvironment = hostingEnvironment;
@@ -68,7 +71,7 @@ namespace Hoshino.API.Controllers
                     upload.fileType = fileType;
                 }
             }
-            catch (Exception ex)
+            catch
             {
 
             }
