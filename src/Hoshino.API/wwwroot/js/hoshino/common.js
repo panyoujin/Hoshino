@@ -5,8 +5,14 @@
         return;
     }
     $("#btnOutLogin").click(function(){
-        $.cookie('Authorization', '');
-        window.location.href = "login.html";
+        requestUrl("/api/sys_user/Logout", function (obj) {
+            if(obj.Code==200){
+                $.cookie('Authorization', '');
+                window.location.href = "login.html";
+            }   
+        }, '');
+
+
     });
     // var req = { User_Account: "admin", Password: "202cb962ac59075b964b07152d234b70" };
     // var req = { User_Account: "admin", Password: "202cb962ac59075b964b07152d234b70" };

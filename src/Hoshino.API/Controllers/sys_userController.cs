@@ -28,6 +28,7 @@ namespace Hoshino.API.Controllers
         private readonly ILogger<sys_userController> _logger;
         private readonly Isys_user_Repository _repository;
         private readonly IConfiguration _configuration;
+        
         /// <summary>
         /// 
         /// </summary>
@@ -122,6 +123,27 @@ namespace Hoshino.API.Controllers
             HttpContext.Session.SetString(login.token, user.ToJson());
 
             return login.ResponseSuccess();
+        }
+        /// <summary>
+        /// 后台登出接口
+        /// </summary>
+        [Authorize]
+        [HttpPost]
+        [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
+        public ActionResult<object> Logout()
+        {
+            try
+            {
+                string authorization = HttpContext.Request.Headers["Authorization"];
+                HttpContext.Session.Remove(authorization);
+            }
+            catch (Exception ex)
+            {
+                return false.ResponseSuccess();
+            }
+
+
+            return true.ResponseSuccess();
         }
     }
 }
