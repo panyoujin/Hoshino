@@ -38,7 +38,7 @@ namespace Hoshino.Repository
             {
                 dic["Material"] = model.Material;
             }
-            if(model.AC_Status != 0)
+            if(model.AC_Status >= 0)
             {
                 dic["AC_Status"] = model.AC_Status;
             }

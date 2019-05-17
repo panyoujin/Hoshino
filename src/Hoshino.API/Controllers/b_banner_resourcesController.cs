@@ -9,6 +9,7 @@ using Hoshino.Entity;
 using Hoshino.IRepository;
 using Microsoft.AspNetCore.Authorization;
 using Hoshino.API.ViewModels;
+using Hoshino.API.Extentions;
 
 namespace Hoshino.API.Controllers
 {
@@ -38,6 +39,7 @@ namespace Hoshino.API.Controllers
         public ActionResult<object> Post([FromBody]b_banner_resourcesVM model)
         {
             b_banner_resources_Entity entity = model.ConvertToT<b_banner_resources_Entity>();
+            this.SetCreateUserInfo(entity);
             return this._repository.Insert(entity).ResponseSuccess();
         }
 

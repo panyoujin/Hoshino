@@ -2,7 +2,7 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
-    "iisExpress": { "applicationUrl": "http://localhost:60737" }
+    "iisExpress": { "applicationUrl": "http://localhost:82" }
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
@@ -17,7 +17,7 @@
       "launchBrowser": true,
       "launchUrl": "swagger/index.html",
       "environmentVariables": { "ASPNETCORE_ENVIRONMENT": "Development" },
-      "applicationUrl": "http://localhost:5000"
+      "applicationUrl": "http://localhost:82"
     },
     "Docker": {
       "commandName": "Docker",

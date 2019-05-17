@@ -9,6 +9,7 @@ using Hoshino.Entity;
 using Hoshino.IRepository;
 using Microsoft.AspNetCore.Authorization;
 using Hoshino.API.ViewModels;
+using Hoshino.API.Extentions;
 
 namespace Hoshino.API.Controllers
 {
@@ -24,7 +25,7 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 构造函数
         /// </summary>
-        public b_appointment_consultationController(ILogger<b_appointment_consultationController> logger,Ib_appointment_consultation_Repository repository)
+        public b_appointment_consultationController(ILogger<b_appointment_consultationController> logger, Ib_appointment_consultation_Repository repository)
         {
             this._logger = logger;
             this._repository = repository;
@@ -38,6 +39,7 @@ namespace Hoshino.API.Controllers
         public ActionResult<object> Post([FromBody]b_appointment_consultationVM model)
         {
             b_appointment_consultation_Entity entity = model.ConvertToT<b_appointment_consultation_Entity>();
+            this.SetCreateUserInfo(entity);
             return this._repository.Insert(entity).ResponseSuccess();
         }
 
@@ -47,9 +49,11 @@ namespace Hoshino.API.Controllers
         [Authorize]
         [HttpPut]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]b_appointment_consultationVM model)
+        public ActionResult<object> Update([FromBody]b_appointment_consultationVM model,int acID)
         {
             b_appointment_consultation_Entity entity = model.ConvertToT<b_appointment_consultation_Entity>();
+            entity.AC_ID = acID;
+            this.SetUpdateUserInfo(entity);
             return this._repository.Update(entity).ResponseSuccess();
         }
 
@@ -80,11 +84,11 @@ namespace Hoshino.API.Controllers
         /// </summary>
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_appointment_consultation_Entity>>))]
-        public ActionResult<object> GetList([FromBody]b_appointment_consultationVM model,int pageindex,int pagesize)
+        public ActionResult<object> GetList([FromBody]b_appointment_consultationVM model, int pageindex, int pagesize)
         {
             b_appointment_consultation_Entity entity = model.ConvertToT<b_appointment_consultation_Entity>();
-            var (list,total) = this._repository.GetList(entity, pageindex, pagesize) ;
-            return list.ResponseSuccess("",total);
+            var (list, total) = this._repository.GetList(entity, pageindex, pagesize);
+            return list.ResponseSuccess("", total);
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Hoshino.Entity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Swashbuckle.AspNetCore.Swagger;
@@ -30,7 +31,7 @@ namespace Hoshino.API.Filters
                 //非匿名的方法,链接中添加accesstoken值
                 operation.Parameters.Add(new NonBodyParameter()
                 {
-                    Name = "Authorization",
+                    Name = Constant.LoginToken,
                     In = "header",//query header body path formData
                     Type = "string",
                     Required = isAuthorize //是否必选

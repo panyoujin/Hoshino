@@ -8,7 +8,6 @@ namespace Hoshino.API.ViewModels
     /// </summary>
     public class b_appointment_consultationVM
     {
-
         /// <summary>
         /// 公司名称
         /// </summary>

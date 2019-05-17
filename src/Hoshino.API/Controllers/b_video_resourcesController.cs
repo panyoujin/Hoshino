@@ -9,6 +9,7 @@ using Hoshino.Entity;
 using Hoshino.IRepository;
 using Microsoft.AspNetCore.Authorization;
 using Hoshino.API.ViewModels;
+using Hoshino.API.Extentions;
 
 namespace Hoshino.API.Controllers
 {
@@ -38,6 +39,7 @@ namespace Hoshino.API.Controllers
         public ActionResult<object> Post([FromBody]b_video_resourcesVM model)
         {
             b_video_resources_Entity entity = model.ConvertToT<b_video_resources_Entity>();
+            this.SetCreateUserInfo(entity);
             return this._repository.Insert(entity).ResponseSuccess();
         }
 
@@ -50,6 +52,7 @@ namespace Hoshino.API.Controllers
         public ActionResult<object> Update([FromBody]b_video_resourcesVM model)
         {
             b_video_resources_Entity entity = model.ConvertToT<b_video_resources_Entity>();
+            this.SetUpdateUserInfo(entity);
             return this._repository.Update(entity).ResponseSuccess();
         }
 

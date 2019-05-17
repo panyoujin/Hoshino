@@ -15,6 +15,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Hoshino.API.ViewModels;
+using Hoshino.API.Extentions;
 
 namespace Hoshino.API.Controllers
 {
@@ -50,6 +51,7 @@ namespace Hoshino.API.Controllers
         public ActionResult<object> Post([FromBody]sys_userVM model)
         {
             sys_user_Entity entity = model.ConvertToT<sys_user_Entity>();
+            this.SetCreateUserInfo(entity);
             return this._repository.Insert(entity).ResponseSuccess();
         }
 
@@ -62,6 +64,7 @@ namespace Hoshino.API.Controllers
         public ActionResult<object> Update([FromBody]sys_userVM model)
         {
             sys_user_Entity entity = model.ConvertToT<sys_user_Entity>();
+            this.SetUpdateUserInfo(entity);
             return this._repository.Update(entity).ResponseSuccess();
         }
 
