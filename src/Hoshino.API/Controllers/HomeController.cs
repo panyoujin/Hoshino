@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Hoshino.Entity;
 using Hoshino.IRepository;
+using Hoshino.Util;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Pan.Code;
@@ -32,6 +34,18 @@ namespace Hoshino.API.Controllers
             this._repository = repository;
         }
 
+        /// <summary>
+        /// 获取验证码
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public FileResult GetValidateCode()
+        {
+            string code = string.Empty;
+            byte[] imageFile = VerificationCodeImage.CreateImage(out code);
+            HttpContext.Session.Set(Constant.Session_CheckCode, Encoding.UTF8.GetBytes(code));
+            return File(imageFile, @"image/gif");
+        }
 
 
     }
