@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Hoshino.API.ViewModels
@@ -54,6 +55,14 @@ namespace Hoshino.API.ViewModels
         /// 排序：倒序
         /// </summary>
         public int Product_Seq { get; set; }
+        /// <summary>
+        /// 属性列表
+        /// </summary>
+        public List<b_product_attributeVM> b_product_attributeVMList { set; get; }
+        /// <summary>
+        /// 附件列表
+        /// </summary>
+        public List<b_product_resourcesVM> b_product_resourcesVMList { set; get; }
 
     }
 }

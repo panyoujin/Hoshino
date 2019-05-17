@@ -61,8 +61,8 @@
                                         <th>操作</th>
                                     </tr>
                                 </thead>-->
-                                <tbody>
-                                    <tr>
+                                <tbody id="tableContent">
+                                    <!-- <tr>
                                         <td class="project-status">
                                             1
                                         </td>
@@ -88,62 +88,24 @@
                                             <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
                                             <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> 编辑 </a>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="project-status">
-                                            2
-                                        </td>
-                                        <td class="project-title">
-                                            <a href="project_detail.html">米莫说｜MiMO Show</a>
-                                            <br />
-                                            <small>创建于 2014.08.15</small>
-                                        </td>
-                                        <td class="project-completion">
-                                            <span class="label label-primary">热门</span>
-                                            <span class="label label-primary">最新</span>
-                                        </td>
-                                        <td class="project-people">
-                                            <a href="#"><img alt="image" class="img-circle" src="img/a1.jpg"></a>
-                                            <a href="#"><img alt="image" class="img-circle" src="img/a1.jpg"></a>
-                                            <a href="#"><img alt="image" class="img-circle" src="img/a1.jpg"></a>
-                                        </td>
-                                        <td class="project-actions">
-                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
-                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> 编辑 </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="project-status">
-                                            3
-                                        </td>
-                                        <td class="project-title">
-                                            <a href="project_detail.html">米莫说｜MiMO Show</a>
-                                            <br />
-                                            <small>创建于 2014.08.15</small>
-                                        </td>
-                                        <td class="project-completion">
-                                            <span class="label label-primary">热门</span>
-                                            <span class="label label-primary">最新</span>
-                                        </td>
-                                        <td class="project-people">
-                                            <a href="#"><img alt="image" class="img-circle" src="img/a1.jpg"></a>
-                                            <a href="#"><img alt="image" class="img-circle" src="img/a1.jpg"></a>
-                                            <a href="#"><img alt="image" class="img-circle" src="img/a1.jpg"></a>
-                                        </td>
-                                        <td class="project-actions">
-                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
-                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> 编辑 </a>
-                                        </td>
-                                    </tr>
+                                    </tr> -->
+                                  
+
                                 </tbody>
-                                <!--<tfoot>
-                                    <tr>
-                                        <td colspan="5">
-                                            <ul class="pagination pull-right"></ul>
-                                        </td>
-                                    </tr>
-                                </tfoot>-->
+              
                             </table>
+                            <div style="text-align: right;"> 
+                                <ul class="pagination" >
+                                    <li><a >&laquo;</a></li>
+                                    <li class="active"><a>1</a></li>
+                                    <li><a >2</a></li>
+                                    <li><a >3</a></li>
+                                    <li><a >4</a></li>
+                                    <li><a >5</a></li>
+                                    <li><a >&raquo;</a></li>
+                                </ul>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -153,12 +115,13 @@
     <script src="js/jquery.min.js?v=2.1.4"></script>
     <script src="js/bootstrap.min.js?v=3.3.6"></script>
     <script src="js/content.min.js?v=1.0.0"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/hoshino/common.js"></script>
+    <script src="js/hoshino/product_manage.js"></script>
     <script>
         $(document).ready(function () { $("#loading-example-btn").click(function () { btn = $(this); simpleLoad(btn, true); simpleLoad(btn, false) }) }); function simpleLoad(btn, state) { if (state) { btn.children().addClass("fa-spin"); btn.contents().last().replaceWith(" Loading") } else { setTimeout(function () { btn.children().removeClass("fa-spin"); btn.contents().last().replaceWith(" Refresh") }, 2000) } };
     </script>
 
 </body>
 
-
-<!-- Mirrored from www.zi-han.net/theme/hplus/table_basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:20:01 GMT -->
 </html>

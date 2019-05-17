@@ -22,6 +22,7 @@ namespace Hoshino.API.Controllers
     {
         private readonly ILogger<b_productController> _logger;
         private readonly Ib_product_Repository _repository;
+        //private readonly Ib_product_attribute_Repository _product_attribute;
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -86,11 +87,12 @@ namespace Hoshino.API.Controllers
         /// </summary>
         [Authorize]
         [HttpPost]
-        [ProducesResponseType(200, Type = typeof(ApiResult<List<b_product_Entity>>))]
+        [ProducesResponseType(200, Type = typeof(ApiResult<List<b_productVM>>))]
         public ActionResult<object> GetList([FromBody]b_productVM model, int pageindex, int pagesize)
         {
             b_product_Entity entity = model.ConvertToT<b_product_Entity>();
             var (list, total) = this._repository.GetList(entity, pageindex, pagesize);
+
             return list.ResponseSuccess("", total);
         }
 
