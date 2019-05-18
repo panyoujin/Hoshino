@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from www.zi-han.net/theme/hplus/table_basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:20:01 GMT -->
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>星野官网后台 - Banner管理</title>
+    <meta name="keywords" content="星野官网后台">
+    <meta name="description" content="星野官网后台是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min862f.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+
+    <div class="wrapper wrapper-content animated fadeInUp">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>Banner管理</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row m-b-sm m-t-sm">
+                            <div class="col-md-1">
+                                <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> 刷新</button>
+                            </div>
+                            <div class="col-md-11">
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-primary" id="btnSearch"> 搜索</button>
+                                        <button type="button" class="btn btn-sm btn-primary" id="btnAdd"> 新增</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-list">
+
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>图片</th>
+                                        <th>时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableContent"></tbody>
+
+                            </table>
+                            <div style="text-align: right;" id="pagination">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 弹出窗口 开始-->
+    <a href="#" data-toggle="modal" id="hiEventShowDialog" data-target="#Detail" style="display:none"></a>
+    <div class="modal inmodal fade" id="Detail" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+
+
+                    <input type="file" name="banner_image" class="form-control">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" id="btnClose" data-dismiss="modal">关闭</button>
+                    <button class="btn btn-primary" type="submit" id="btnSave">保存内容</button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- 弹出窗口 结束-->
+
+
+    <script src="js/jquery.min.js?v=2.1.4"></script>
+    <script src="js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="js/content.min.js?v=1.0.0"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/hoshino/common.js"></script>
+    <script src="js/hoshino/banner.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#loading-example-btn").click(function () {
+                btn = $(this);
+                simpleLoad(btn, true);
+                simpleLoad(btn, false)
+            })
+            //loadData();
+        });
+        function simpleLoad(btn, state) {
+            if (state) {
+                btn.children().addClass("fa-spin");
+                btn.contents().last().replaceWith(" Loading")
+            } else {
+                setTimeout(function () {
+                    btn.children().removeClass("fa-spin"); btn.contents().last().replaceWith(" Refresh")
+                }, 2000)
+            }
+        };
+
+    </script>
+
+</body>
+
+</html>

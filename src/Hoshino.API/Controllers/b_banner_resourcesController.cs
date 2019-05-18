@@ -87,11 +87,11 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 获取列表
         /// </summary>
-        [HttpPost]
+        [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_banner_resources_Entity>>))]
-        public ActionResult<object> GetList([FromBody]b_banner_resourcesVM model, int pageindex, int pagesize)
+        public ActionResult<object> GetList(int pageindex, int pagesize)
         {
-            b_banner_resources_Entity entity = model.ConvertToT<b_banner_resources_Entity>();
+            b_banner_resources_Entity entity = new b_banner_resources_Entity();
             var (list, total) = this._repository.GetList(entity, pageindex, pagesize);
             return list.ResponseSuccess("", total);
         }
