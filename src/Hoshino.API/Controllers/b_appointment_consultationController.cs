@@ -51,15 +51,19 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 修改
         /// </summary>
-        /// <param name="model">修改实体</param>
         /// <param name="AC_ID">主键ID</param>
+        /// <param name="Processing_Result"></param>
         /// <returns></returns>
         [Authorize]
-        [HttpPut]
+        [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]b_appointment_consultationVM model, int AC_ID)
+        public ActionResult<object> UpdateStatus([FromBody]b_appointment_consultationVM model, int AC_ID)
         {
-            b_appointment_consultation_Entity entity = model.ConvertToT<b_appointment_consultation_Entity>();
+            b_appointment_consultation_Entity entity = new b_appointment_consultation_Entity
+            {
+                AC_Status = 1,
+                Processing_Result = model.Processing_Result
+            };
             this.SetUpdateUserInfo(entity);
             return this._repository.Update(entity, AC_ID).ResponseSuccess();
         }
@@ -92,11 +96,17 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 获取列表
         /// </summary>
-        [HttpPost]
+        [Authorize]
+        [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_appointment_consultation_Entity>>))]
-        public ActionResult<object> GetList([FromBody]b_appointment_consultationVM model, int pageindex, int pagesize)
+        public ActionResult<object> GetList(string Company, string Phone, int AC_Status, int pageindex, int pagesize)
         {
-            b_appointment_consultation_Entity entity = model.ConvertToT<b_appointment_consultation_Entity>();
+            b_appointment_consultation_Entity entity = new b_appointment_consultation_Entity
+            {
+                Company = Company,
+                Phone = Phone,
+                AC_Status = AC_Status
+            };
             var (list, total) = this._repository.GetList(entity, pageindex, pagesize);
             return list.ResponseSuccess("", total);
         }

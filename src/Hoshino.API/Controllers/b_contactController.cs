@@ -48,16 +48,22 @@ namespace Hoshino.API.Controllers
             this.SetCreateUserInfo(entity);
             return this._repository.Insert(entity).ResponseSuccess();
         }
-
         /// <summary>
-        /// 修改
+        /// 
         /// </summary>
+        /// <param name="model"></param>
+        /// <param name="Contact_ID"></param>
+        /// <returns></returns>
         [Authorize]
-        [HttpPut]
+        [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]b_contactVM model, int Contact_ID)
+        public ActionResult<object> UpdateStatus([FromBody]b_contactVM model, int Contact_ID)
         {
-            b_contact_Entity entity = model.ConvertToT<b_contact_Entity>();
+            b_contact_Entity entity = new b_contact_Entity
+            {
+                Contact_Status = 1,
+                Processing_Result = model.Processing_Result
+            };
             this.SetUpdateUserInfo(entity);
             return this._repository.Update(entity, Contact_ID).ResponseSuccess();
         }
@@ -90,11 +96,17 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 获取列表
         /// </summary>
-        [HttpPost]
+        [Authorize]
+        [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_contact_Entity>>))]
-        public ActionResult<object> GetList([FromBody]b_contactVM model, int pageindex, int pagesize)
+        public ActionResult<object> GetList(string Company, string Phone, int Contact_Status, int pageindex, int pagesize)
         {
-            b_contact_Entity entity = model.ConvertToT<b_contact_Entity>();
+            b_contact_Entity entity = new b_contact_Entity
+            {
+                Company = Company,
+                Phone = Phone,
+                Contact_Status = Contact_Status
+            };
             var (list, total) = this._repository.GetList(entity, pageindex, pagesize);
             return list.ResponseSuccess("", total);
         }
