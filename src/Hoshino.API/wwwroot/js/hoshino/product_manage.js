@@ -2,11 +2,14 @@ $(function () {
     loadProduct();
 });
 
-var loadProduct=function(pageindex=1,pagesize=100000 ){
+var pageindex = 1;
+var pagesize = 10;
+var loadProduct=function(){
     var req = {pageindex: pageindex, pagesize: pagesize };
 
     requestUrl('/api/b_product/GetList', function (obj) {
         if(obj.Code==200){
+            $("#tableContent").empty();
             $.each(obj.Result,function(n,item) { 
                 n++;
                 var contentItem="<tr><td class='project-status'>"+n+"</td><td class='project-title'><a>"+item.Product_Name_CH+
@@ -27,6 +30,12 @@ var loadProduct=function(pageindex=1,pagesize=100000 ){
                 contentItem+="<a class='btn btn-white btn-sm'><i class='fa fa-pencil'></i> 编辑 </a></td></tr>";
 
                 $("#tableContent").append(contentItem);
+                pagination(pageindex, pagesize, obj.Total, function (index) {
+                    if (pageindex !== index) {
+                        pageindex = index;
+                        loadProduct();
+                    }
+                });
 
             });
             var total= obj.Total;
