@@ -107,3 +107,24 @@ var pagination = function (pageindex, pagesize, total, loaddata) {
 
     });
 }
+
+
+var ImportFile = function (uploadId, fileID, fileViewId, fileNameID) {
+    $("#" + uploadId).upload("api/Upload/Post?" + Math.random(), function (data) {
+        console.log(data.Code);
+        if (data.Code === 200 && data.Result !== null) {
+            console.log(data.Result.filePath);
+            console.log(data.Result.fileName);
+            $("#" + fileID).val(data.Result.filePath);
+            $("#" + fileViewId).attr("src", "/" + data.Result.filePath);
+            $("#" + fileNameID).val(data.Result.fileName);
+            console.log($("#" + fileID).val());
+            console.log($("#" + fileNameID).val());
+        } else {
+            $.alert(result.Message);
+        }
+    }, 'json');
+    window.setTimeout(function () {
+
+    }, 1);
+}

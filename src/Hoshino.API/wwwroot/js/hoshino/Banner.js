@@ -12,12 +12,12 @@ $(function () {
     });
 
     $("#btnSave").on('click', function () {
-        requestUrl("/api/Upload/Post", function (data) {
+        var json = { Banner_URL: $("#fileUrl").val(), Banner_Name_CH: $("#fileName").val(), Banner_Name_HK: $("#fileName").val(), Banner_Type: 'image', Banner_Location: "Index" };
+        requestUrl("/api/b_banner_resources/Post", function (data) {
             $("#btnClose").click();
             LoadData();
 
-        }, '', 'POST');
-
+        }, JSON.stringify(json), 'POST');
     });
 });
 

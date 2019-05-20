@@ -20,6 +20,28 @@
     <link href="css/animate.min.css" rel="stylesheet">
     <link href="css/style.min862f.css?v=4.1.0" rel="stylesheet">
 
+    <style type="text/css">
+        #ImportBox {
+            position: relative;
+            cursor: default;
+        }
+
+        #Import {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            font-size: 0px;
+            font-size: 200px\9;
+            overflow: hidden;
+            filter: alpha(opacity=0);
+            -moz-opacity: 0;
+            -khtml-opacity: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body class="gray-bg">
@@ -74,13 +96,18 @@
     <!-- 弹出窗口 开始-->
     <a href="#" data-toggle="modal" id="hiEventShowDialog" data-target="#Detail" style="display:none"></a>
     <div class="modal inmodal fade" id="Detail" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
+        <div class="modal-dialog modal-lm">
             <div class="modal-content">
                 <div class="modal-header">
 
-
-                    <input type="file" name="banner_image" class="form-control">
-
+                    <input id="fileUrl" maxlength="256" name="fileUrl" placeholder="" value="" type="text" style="float:left;display:none">
+                    <input id="fileName" maxlength="256" name="fileName" placeholder="" value="" type="text" style="float:left;display:none">
+                    <a href="javascript:;" style="font-size:12px;margin:auto 5px;margin-top:10px;color:#333333; " id="ImportBox">
+                        &nbsp;&nbsp;<i class="fa fa-upload"></i>上传文件
+                        <input type="file" id="Import" name="file" />
+                    </a>
+                    <br />
+                    <img style="width:400px;height:100px;" src="" class="img-thumbnail" id="imageurl">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-white" id="btnClose" data-dismiss="modal">关闭</button>
@@ -97,11 +124,15 @@
     <script src="js/jquery.min.js?v=2.1.4"></script>
     <script src="js/bootstrap.min.js?v=3.3.6"></script>
     <script src="js/content.min.js?v=1.0.0"></script>
+    <script src="js/jqueryupload.js?v=1.0.0"></script>
     <script src="js/jquery.cookie.js"></script>
     <script src="js/hoshino/common.js"></script>
     <script src="js/hoshino/banner.js"></script>
     <script>
         $(document).ready(function () {
+            $("#Import").change(function () {
+                ImportFile("Import", "fileUrl", "imageurl","fileName");
+            });
             $("#loading-example-btn").click(function () {
                 btn = $(this);
                 simpleLoad(btn, true);
