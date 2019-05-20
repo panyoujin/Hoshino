@@ -23,7 +23,7 @@
 });
 
 //var domain = "http://www.hosinowt.com";
-var domain = "http://localhost:11111";
+var domain = "http://www.hosinowt.com:81";
 var requestUrl = function (url, callBack, json, type = 'POST') {
     var urlFull = domain + url;
     $.ajax({
