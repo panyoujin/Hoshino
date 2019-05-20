@@ -3,6 +3,7 @@
 
 
 <!-- Mirrored from www.zi-han.net/theme/hplus/table_basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:20:01 GMT -->
+
 <head>
 
     <meta charset="utf-8">
@@ -14,7 +15,7 @@
     <meta name="description" content="星野官网后台是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
 
 
-    <link rel="shortcut icon" href="favicon.ico"> 
+    <link rel="shortcut icon" href="favicon.ico">
     <link href="css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
     <link href="css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet">
@@ -26,7 +27,7 @@
 
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-4">
 
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
@@ -40,34 +41,44 @@
                     <div class="ibox-content">
                         <form class="form-horizontal m-t" id="signupForm">
                             <div class="form-group">
-                                <label class="col-sm-1 control-label">姓氏：</label>
-                                <div class="col-sm-2">
+                                <a href="#" class="col-sm-4">
+                                    <img style="height: 200px; width: 171px; " src="./img/default.png" alt="展示图片">
+                                </a>
+                                <a href="#" class="col-sm-6">
+                                    <img style="height: 200px; width: 171px;display: block;float: right; "
+                                        src="./img/default.png" alt="展示图片">
+                                </a>
+                            </div>
+                            <div class="form-group">
+                                <a href="#" class="col-sm-4">
+                                    <img style="height: 200px; width: 171px; " src="./img/default.png" alt="展示图片">
+                                </a>
+                                <a href="#" class="col-sm-6">
+                                    <img style="height: 200px; width: 171px;display: block;float: right; "
+                                        src="./img/video.png" alt="展示图片">
+                                </a>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">产品名称(简体)：</label>
+                                <div class="col-sm-6">
                                     <input id="firstname" name="firstname" class="form-control" type="text">
-                                    <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 这里写点提示的内容</span>
+                                    <span class="help-block m-b-none"></span>
+                                    <!--<i class="fa fa-info-circle"></i> 这里写点提示的内容 -->
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-1 control-label">名字：</label>
-                                <div class="col-sm-2">
-                                    <input id="lastname" name="lastname" class="form-control" type="text" aria-required="true" aria-invalid="false" class="valid">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-1 control-label">用户名：</label>
-                                <div class="col-sm-2">
-                                    <input id="username" name="username" class="form-control" type="text" aria-required="true" aria-invalid="true" class="error">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-1 control-label">密码：</label>
-                                <div class="col-sm-2">
-                                    <input id="password" name="password" class="form-control" type="password">
+                                <label class="col-sm-4 control-label">产品名称(繁体)：</label>
+                                <div class="col-sm-6">
+                                    <input id="lastname" name="lastname" class="form-control" type="text"
+                                        aria-required="true" aria-invalid="false" class="valid">
                                 </div>
                             </div>
 
-               
+
+
                             <div class="form-group">
-                                <div class="col-sm-2 col-sm-offset-1">
+                                <div class="col-sm-4 col-sm-offset-8">
                                     <button class="btn btn-primary" type="submit">提交</button>
                                 </div>
                             </div>
@@ -75,7 +86,95 @@
                     </div>
                 </div>
             </div>
+            <div class="col-sm-6">
 
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>产品属性新增/编辑</h5>
+                        <div class="ibox-tools">
+                            <a href="#" class="btn btn-primary btn-xs">新增属性</a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <form class="form-horizontal m-t" id="signupForm">
+
+
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <input id="firstname" name="firstname" class="form-control" type="text"
+                                        placeholder="属性简体">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input id="firstname" name="firstname" class="form-control" type="text"
+                                        placeholder="简体内容">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <input id="lastname" name="lastname" class="form-control" type="text"
+                                        placeholder="属性繁体">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input id="lastname" name="lastname" class="form-control" type="text"
+                                        placeholder="繁体内容">
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-warning" >删除</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <input id="firstname" name="firstname" class="form-control" type="text"
+                                        placeholder="属性简体">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input id="firstname" name="firstname" class="form-control" type="text"
+                                        placeholder="简体内容">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <input id="lastname" name="lastname" class="form-control" type="text"
+                                        placeholder="属性繁体">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input id="lastname" name="lastname" class="form-control" type="text"
+                                        placeholder="繁体内容">
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-warning" >删除</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <input id="firstname" name="firstname" class="form-control" type="text"
+                                        placeholder="属性简体">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input id="firstname" name="firstname" class="form-control" type="text"
+                                        placeholder="简体内容">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <input id="lastname" name="lastname" class="form-control" type="text"
+                                        placeholder="属性繁体">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input id="lastname" name="lastname" class="form-control" type="text"
+                                        placeholder="繁体内容">
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-warning" >删除</button>
+                                </div>
+                            </div>
+
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
