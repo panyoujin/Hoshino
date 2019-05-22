@@ -20,6 +20,9 @@
     <link href="css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet">
     <link href="css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link href="css/plugins/cropper/cropper.min.css" rel="stylesheet">
+    <link href="css/style.min862f.css?v=4.1.0" rel="stylesheet">
+
 
 </head>
 
@@ -42,19 +45,21 @@
                         <form class="form-horizontal m-t" id="signupForm">
                             <div class="form-group">
                                 <a href="#" class="col-sm-4">
-                                    <img style="height: 200px; width: 171px; " src="./img/default.png" alt="展示图片">
+                                    <img id="imgPic1" data-toggle="modal" data-target="#picCropper"
+                                        style="height: 200px; width: 171px; " src="./img/default.png" alt="展示图片">
                                 </a>
                                 <a href="#" class="col-sm-6">
-                                    <img style="height: 200px; width: 171px;display: block;float: right; "
+                                    <img id="imgPic2" style="height: 200px; width: 171px;display: block;float: right; "
                                         src="./img/default.png" alt="展示图片">
                                 </a>
                             </div>
                             <div class="form-group">
                                 <a href="#" class="col-sm-4">
-                                    <img style="height: 200px; width: 171px; " src="./img/default.png" alt="展示图片">
+                                    <img id="imgPic3" style="height: 200px; width: 171px; " src="./img/default.png"
+                                        alt="展示图片">
                                 </a>
                                 <a href="#" class="col-sm-6">
-                                    <img style="height: 200px; width: 171px;display: block;float: right; "
+                                    <img id="imgVideo" style="height: 200px; width: 171px;display: block;float: right; "
                                         src="./img/video.png" alt="展示图片">
                                 </a>
                             </div>
@@ -64,17 +69,21 @@
                                 <div class="col-sm-6">
                                     <input id="firstname" name="firstname" class="form-control" type="text">
                                     <span class="help-block m-b-none"></span>
-                                    <!--<i class="fa fa-info-circle"></i> 这里写点提示的内容 -->
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">产品名称(繁体)：</label>
                                 <div class="col-sm-6">
                                     <input id="lastname" name="lastname" class="form-control" type="text"
-                                        aria-required="true" aria-invalid="false" class="valid">
+                                        aria-required="true" aria-invalid="false">
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">产品类别：</label>
+                                <div class="col-sm-6">
+                                    <select id="slCategory" class="form-control m-b" name="account"></select>
+                                </div>
+                            </div>
 
 
                             <div class="form-group">
@@ -119,7 +128,7 @@
                                         placeholder="繁体内容">
                                 </div>
                                 <div class="col-sm-2">
-                                    <button class="btn btn-warning" >删除</button>
+                                    <button class="btn btn-warning">删除</button>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -142,7 +151,7 @@
                                         placeholder="繁体内容">
                                 </div>
                                 <div class="col-sm-2">
-                                    <button class="btn btn-warning" >删除</button>
+                                    <button class="btn btn-warning">删除</button>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -165,7 +174,7 @@
                                         placeholder="繁体内容">
                                 </div>
                                 <div class="col-sm-2">
-                                    <button class="btn btn-warning" >删除</button>
+                                    <button class="btn btn-warning">删除</button>
                                 </div>
                             </div>
 
@@ -177,7 +186,47 @@
             </div>
         </div>
     </div>
+    <!-- 弹出窗口 开始-->
+    <div class="modal inmodal fade" tabindex="-1" id="picCropper" role="dialog" aria-hidden="true">
 
+        <div class="modal-dialog modal-lg">
+            <div class="ibox-title  back-change">
+                <h5>图片裁剪</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="image-crop" style="max-height:400px;"> 
+                            <img src="img/a3.jpg">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>图片预览：</h4>
+                        <div class="img-preview img-preview-sm"></div>
+                        <h4>说明：</h4>
+                        <p>
+                            你可以选择新图片上传
+                        </p>
+                        <div class="btn-group">
+                            <label title="上传图片" for="inputImage" class="btn btn-primary">
+                                <input type="file" accept="image/*" name="file" id="inputImage" class="hide"> 上传新图片
+                            </label>
+                            <label title="确定" id="download" class="btn btn-primary">确定</label>
+                        </div>
+                        <h4></h4>
+      
+                        <div class="btn-group">
+                            <button class="btn btn-white" id="zoomIn" type="button">放大</button>
+                            <button class="btn btn-white" id="zoomOut" type="button">缩小</button>
+                            <button class="btn btn-warning" id="setDrag" type="button">裁剪</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- 弹出窗口 结束-->
 
     <script src="js/jquery.min.js?v=2.1.4"></script>
     <script src="js/bootstrap.min.js?v=3.3.6"></script>
@@ -185,9 +234,13 @@
     <script src="js/plugins/validate/jquery.validate.min.js"></script>
     <script src="js/plugins/validate/messages_zh.min.js"></script>
     <script src="js/demo/form-validate-demo.min.js"></script>
+
+    <script src="js/plugins/cropper/cropper.min.js"></script>
+    <script src="js/demo/form-advanced-demo.min.js"></script>
+
     <script src="js/jquery.cookie.js"></script>
     <script src="js/hoshino/common.js"></script>
-
+    <script src="js/hoshino/product_detail.js"></script>
 </body>
 
 </html>
