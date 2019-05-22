@@ -10,6 +10,7 @@ using Hoshino.IRepository;
 using Microsoft.AspNetCore.Authorization;
 using Hoshino.API.ViewModels;
 using Hoshino.API.Extentions;
+using System.Linq;
 
 namespace Hoshino.API.Controllers
 {
@@ -74,12 +75,21 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 获取单个  前台和后台API
         /// </summary>
-        [Authorize]
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(ApiResult<b_product_Entity>))]
+        [ProducesResponseType(200, Type = typeof(ApiResult<b_productVM>))]
         public ActionResult<object> Get(int Product_ID)
         {
-            return this._repository.Get(Product_ID).ResponseSuccess();
+            var (pList, prList, paList, rpList) = this._repository.Get(Product_ID);
+            b_productVM productVM = null;
+            foreach (var p in pList)
+            {
+                productVM = p.ConvertToT<b_productVM>();
+                productVM.product_resourcesList = prList.Select(pr => pr.ConvertToT<b_product_resourcesVM>()).ToList();
+                productVM.product_attributeList = paList.Select(pa => pa.ConvertToT<b_product_attributeVM>()).ToList();
+                productVM.rel_productList = rpList.Select(rp => rp.ConvertToT<b_productVM>()).ToList();
+                break;
+            }
+            return productVM.ResponseSuccess();
         }
 
         /// <summary>
@@ -105,11 +115,19 @@ namespace Hoshino.API.Controllers
         /// <param name="pagesize">每页数量</param>
         /// <returns></returns>
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(ApiResult<List<b_product_Entity>>))]
+        [ProducesResponseType(200, Type = typeof(ApiResult<List<b_productVM>>))]
         public ActionResult<object> GetNewProductList(int categoryID = -1, int pageindex = 1, int pagesize = 24)
         {
-            var (list, total) = this._repository.GetNewProductList<b_product_Entity>(categoryID, pageindex, pagesize);
-            return list.ResponseSuccess("", total);
+            var (ids, total) = this._repository.GetProductIDList<int>(categoryID, "", 1, -1, -1, pageindex, pagesize);
+            var (pList, prList) = this._repository.GetProductListByIDs<b_product_Entity, b_product_resources_Entity>(ids);
+            List<b_productVM> vmList = new List<b_productVM>();
+            foreach (var p in pList)
+            {
+                b_productVM productVM = p.ConvertToT<b_productVM>();
+                productVM.product_resourcesList = prList.Where(pr => pr.Product_ID == p.Product_ID).Select(pr => pr.ConvertToT<b_product_resourcesVM>()).ToList();
+                vmList.Add(productVM);
+            }
+            return vmList.ResponseSuccess("", total);
         }
         /// <summary>
         /// 获取热门产品列表  前台API
@@ -120,11 +138,19 @@ namespace Hoshino.API.Controllers
         /// <param name="pagesize">每页数量</param>
         /// <returns></returns>
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(ApiResult<List<b_product_Entity>>))]
+        [ProducesResponseType(200, Type = typeof(ApiResult<List<b_productVM>>))]
         public ActionResult<object> GetHotProductList(int categoryID = -1, int pageindex = 1, int pagesize = 24)
         {
-            var (list, total) = this._repository.GetHotProductList<b_product_Entity>(categoryID, pageindex, pagesize);
-            return list.ResponseSuccess("", total);
+            var (ids, total) = this._repository.GetProductIDList<int>(categoryID, "", -1, 1, -1, pageindex, pagesize);
+            var (pList, prList) = this._repository.GetProductListByIDs<b_product_Entity, b_product_resources_Entity>(ids);
+            List<b_productVM> vmList = new List<b_productVM>();
+            foreach (var p in pList)
+            {
+                b_productVM productVM = p.ConvertToT<b_productVM>();
+                productVM.product_resourcesList = prList.Where(pr => pr.Product_ID == p.Product_ID).Select(pr => pr.ConvertToT<b_product_resourcesVM>()).ToList();
+                vmList.Add(productVM);
+            }
+            return vmList.ResponseSuccess("", total);
         }
         /// <summary>
         /// 获取推荐产品列表  前台API
@@ -134,11 +160,43 @@ namespace Hoshino.API.Controllers
         /// <param name="pagesize">每页数量</param>
         /// <returns></returns>
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(ApiResult<List<b_product_Entity>>))]
+        [ProducesResponseType(200, Type = typeof(ApiResult<List<b_productVM>>))]
         public ActionResult<object> GetRecommendProductList(int categoryID = -1, int pageindex = 1, int pagesize = 24)
         {
-            var (list, total) = this._repository.GetHotProductList<b_product_Entity>(categoryID, pageindex, pagesize);
-            return list.ResponseSuccess("", total);
+            var (ids, total) = this._repository.GetProductIDList<int>(categoryID, "", -1, -1, 1, pageindex, pagesize);
+            var (pList, prList) = this._repository.GetProductListByIDs<b_product_Entity, b_product_resources_Entity>(ids);
+            List<b_productVM> vmList = new List<b_productVM>();
+            foreach (var p in pList)
+            {
+                b_productVM productVM = p.ConvertToT<b_productVM>();
+                productVM.product_resourcesList = prList.Where(pr => pr.Product_ID == p.Product_ID).Select(pr => pr.ConvertToT<b_product_resourcesVM>()).ToList();
+                vmList.Add(productVM);
+            }
+            return vmList.ResponseSuccess("", total);
+        }
+
+        /// <summary>
+        /// 获取产品列表  前台API
+        /// </summary>
+        /// <param name="categoryID">菜单ID，全部时传递-1</param>
+        /// <param name="product_name"></param>
+        /// <param name="pageindex">页码</param>
+        /// <param name="pagesize">每页数量</param>
+        /// <returns></returns>
+        [HttpGet]
+        [ProducesResponseType(200, Type = typeof(ApiResult<List<b_productVM>>))]
+        public ActionResult<object> GetProductList(int categoryID = -1, string product_name = "", int pageindex = 1, int pagesize = 24)
+        {
+            var (ids, total) = this._repository.GetProductIDList<int>(categoryID, product_name, -1, -1, -1, pageindex, pagesize);
+            var (pList, prList) = this._repository.GetProductListByIDs<b_product_Entity, b_product_resources_Entity>(ids);
+            List<b_productVM> vmList = new List<b_productVM>();
+            foreach (var p in pList)
+            {
+                b_productVM productVM = p.ConvertToT<b_productVM>();
+                productVM.product_resourcesList = prList.Where(pr => pr.Product_ID == p.Product_ID).Select(pr => pr.ConvertToT<b_product_resourcesVM>()).ToList();
+                vmList.Add(productVM);
+            }
+            return vmList.ResponseSuccess("", total);
         }
 
     }

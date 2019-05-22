@@ -22,13 +22,13 @@ namespace Hoshino.API.ViewModels
         /// <summary>
         /// 产品名称简体
         /// </summary>
-        [MaxLength(length:50,ErrorMessage ="长度不能超过50字符")]
+        [MaxLength(length: 50, ErrorMessage = "长度不能超过50字符")]
         public string Product_Name_CH { get; set; }
 
         /// <summary>
         /// 产品名称繁体
         /// </summary>
-        [MaxLength(length:50,ErrorMessage ="长度不能超过50字符")]
+        [MaxLength(length: 50, ErrorMessage = "长度不能超过50字符")]
         public string Product_Name_HK { get; set; }
 
         /// <summary>
@@ -58,11 +58,15 @@ namespace Hoshino.API.ViewModels
         /// <summary>
         /// 属性列表
         /// </summary>
-        public List<b_product_attributeVM> b_product_attributeVMList { set; get; }
+        public List<b_product_attributeVM> product_attributeList { set; get; }
         /// <summary>
         /// 附件列表
         /// </summary>
-        public List<b_product_resourcesVM> b_product_resourcesVMList { set; get; }
+        public List<b_product_resourcesVM> product_resourcesList { set; get; }
+        /// <summary>
+        /// 关联产品列表
+        /// </summary>
+        public List<b_productVM> rel_productList { set; get; }
 
     }
 }

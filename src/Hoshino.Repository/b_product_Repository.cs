@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using DBHelper.SQLHelper;
 using Hoshino.Entity;
 using Hoshino.IRepository;
@@ -124,11 +125,11 @@ namespace Hoshino.Repository
         /// <summary>
         /// 获取单个
         /// <summary>
-        public b_product_Entity Get(int Product_ID)
+        public (IEnumerable<b_product_Entity>, IEnumerable<b_product_resources_Entity>, IEnumerable<b_product_attribute_Entity>, IEnumerable<b_product_Entity>) Get(int Product_ID)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic["Product_ID"] = Product_ID;
-            return SQLHelperFactory.Instance.QueryForObjectByT<b_product_Entity>("Select_b_product", dic);
+            return SQLHelperFactory.Instance.QueryMultiple<b_product_Entity, b_product_resources_Entity, b_product_attribute_Entity, b_product_Entity>("Select_b_product", dic);
         }
 
         /// <summary>
@@ -245,6 +246,55 @@ namespace Hoshino.Repository
             }
             var list = SQLHelperFactory.Instance.QueryMultipleByPage<T>("Select_b_product_List", dic, out int total);
             return (list, total);
+        }
+
+
+        public (IEnumerable<T>, int) GetProductIDList<T>(int Category_ID, string name, int IsNew, int IsHot, int IsRecommend, int pageindex, int pagesize)
+        {
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            if (Category_ID >= 0)
+            {
+                dic["Category_ID"] = Category_ID;
+            }
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                dic["Product_Name"] = name;
+            }
+            if (IsNew >= 0)
+            {
+                dic["Product_New"] = IsNew;
+            }
+            if (IsHot >= 0)
+            {
+                dic["Product_Hot"] = IsHot;
+            }
+            if (IsRecommend >= 0)
+            {
+                dic["Product_Recommend"] = IsRecommend;
+            }
+            if (pageindex >= 0)
+            {
+                dic["StartIndex"] = pageindex <= 1 ? 0 : (pageindex - 1) * pagesize + 1;
+            }
+            if (pagesize > 0)
+            {
+                dic["SelectCount"] = pagesize;
+            }
+            var list = SQLHelperFactory.Instance.QueryMultipleByPage<T>("Select_b_product_List", dic);
+            return list;
+        }
+
+        public (IEnumerable<P>, IEnumerable<PR>) GetProductListByIDs<P, PR>(IEnumerable<int> ids)
+        {
+            if (ids == null || ids.Count() <= 0)
+            {
+                return (null, null);
+            }
+
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic["Product_IDS"] = string.Join(",", ids);
+            var list = SQLHelperFactory.Instance.QueryMultiple<P, PR>("Select_b_product_List_by_ids", dic);
+            return list;
         }
     }
 }

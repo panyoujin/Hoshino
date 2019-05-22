@@ -1,50 +1,91 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <SqlSetting>
-    <Data name="Insert_b_product">
-        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
-            <SqlCommand>
-                <![CDATA[
+  <Data name="Insert_b_product">
+    <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+      <SqlCommand>
+        <![CDATA[
                 INSERT INTO b_product (Category_ID,Product_Name_CH,Product_Name_HK,Product_New,Product_Hot,Product_Recommend,Product_Status,Product_Seq,Create_Time,Create_UserId,Create_User) VALUES(@@Category_ID@@,@@Product_Name_CH@@,@@Product_Name_HK@@,@@Product_New@@,@@Product_Hot@@,@@Product_Recommend@@,@@Product_Status@@,@@Product_Seq@@,NOW(),@@Create_UserId@@,@@Create_User@@);
                 ]]>
-            </SqlCommand>
-        </SqlDefinition>
-    </Data>
-    <Data name="Update_b_product">
-        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
-            <SqlCommand>
-                <![CDATA[
+      </SqlCommand>
+    </SqlDefinition>
+  </Data>
+  <Data name="Update_b_product">
+    <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+      <SqlCommand>
+        <![CDATA[
                 UPDATE b_product SET Update_Time=NOW() <%=,Category_ID=@@Category_ID@@%> <%=,Product_Name_CH=@@Product_Name_CH@@%> <%=,Product_Name_HK=@@Product_Name_HK@@%> <%=,Product_New=@@Product_New@@%> <%=,Product_Hot=@@Product_Hot@@%> <%=,Product_Recommend=@@Product_Recommend@@%> <%=,Product_Status=@@Product_Status@@%> <%=,Product_Seq=@@Product_Seq@@%>    <%=,Update_UserId=@@Update_UserId@@%> <%=,Update_User=@@Update_User@@%> WHERE Product_ID=@@Product_ID@@;
                 ]]>
-            </SqlCommand>
-        </SqlDefinition>
-    </Data>
-    <Data name="Delete_b_product">
-        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
-            <SqlCommand>
-                <![CDATA[
+      </SqlCommand>
+    </SqlDefinition>
+  </Data>
+  <Data name="Delete_b_product">
+    <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+      <SqlCommand>
+        <![CDATA[
                 DELETE FROM b_product WHERE Product_ID=@@Product_ID@@;
                 ]]>
-            </SqlCommand>
-        </SqlDefinition>
-    </Data>
-    <Data name="Select_b_product">
-        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
-            <SqlCommand>
-                <![CDATA[
-                SELECT Product_ID,Category_ID,Product_Name_CH,Product_Name_HK,Product_New,Product_Hot,Product_Recommend,Product_Status,Product_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_product WHERE Product_ID=@@Product_ID@@;
+      </SqlCommand>
+    </SqlDefinition>
+  </Data>
+  <Data name="Select_b_product">
+    <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+      <SqlCommand>
+        <![CDATA[
+ SELECT p.`Product_ID`,p.`Product_Name_CH`,p.`Product_Name_HK`,p.`Product_Hot`,p.`Product_New`,p.`Product_Recommend`,p.`Product_Seq`  
+ FROM `b_product` p  WHERE p.`Product_ID` =@@Product_ID@@ AND p.`Product_Status`=1;
+ 
+ SELECT pr.`Product_ID`,pr.`P_Resources_ID`,pr.`P_Resources_URL`,pr.`P_Resources_Type`,pr.`P_Resources_Seq` 
+ FROM `b_product_resources` pr  WHERE pr.`Product_ID` = @@Product_ID@@ AND pr.`P_Resources_Status`=1
+ ORDER BY pr.`P_Resources_Seq`,pr.`P_Resources_ID`;
+
+ SELECT pa.`Product_ID`,pa.`P_Attribute_ID`,pa.`P_Attribute_Seq`,pa.`P_Attribute_Name_CH`,pa.`P_Attribute_Value_CH`,pa.`P_Attribute_Name_HK`,pa.`P_Attribute_Value_EN`
+ FROM `b_product_attribute` pa  WHERE pa.`Product_ID` = @@Product_ID@@ AND pa.`P_Attribute_Status`=1
+ ORDER BY pa.`P_Attribute_Seq`,pa.`P_Attribute_ID`;
+
+ SELECT p.`Product_ID`,p.`Product_Name_CH`,p.`Product_Name_HK`,p.`Product_Hot`,p.`Product_New`,p.`Product_Recommend`,p.`Product_Seq`  
+ FROM `b_rel_product` rp
+LEFT JOIN  `b_product` p ON rp.`Rel_Product_ID`=p.`Product_ID`
+ WHERE rp.`Source_Product_ID`=@@Product_ID@@ AND rp.`P_Relevant_Status`=1 AND p.`Product_Status` = 1;
+ 
                 ]]>
-            </SqlCommand>
-        </SqlDefinition>
-    </Data>
-    <Data name="Select_b_product_List">
-        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
-            <SqlCommand>
-                <![CDATA[
+      </SqlCommand>
+    </SqlDefinition>
+  </Data>
+  <Data name="Select_b_product_List">
+    <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+      <SqlCommand>
+        <![CDATA[
                 SELECT Product_ID,Category_ID,Product_Name_CH,Product_Name_HK,Product_New,Product_Hot,Product_Recommend,Product_Status,Product_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_product WHERE 1=1 <%= AND Product_ID=@@Product_ID@@%> <%= AND Category_ID=@@Category_ID@@%> <%= AND Product_Name_CH=@@Product_Name_CH@@%> <%= AND Product_Name_HK=@@Product_Name_HK@@%> <%= AND Product_New=@@Product_New@@%> <%= AND Product_Hot=@@Product_Hot@@%> <%= AND Product_Recommend=@@Product_Recommend@@%> <%= AND Product_Status=@@Product_Status@@%> <%= AND Product_Seq=@@Product_Seq@@%>       <R%= LIMIT @@StartIndex@@, @@SelectCount@@ %R> ;
                 SELECT COUNT(0) AS row_count FROM b_product WHERE 1=1 <%= AND Product_ID=@@Product_ID@@%> <%= AND Category_ID=@@Category_ID@@%> <%= AND Product_Name_CH=@@Product_Name_CH@@%> <%= AND Product_Name_HK=@@Product_Name_HK@@%> <%= AND Product_New=@@Product_New@@%> <%= AND Product_Hot=@@Product_Hot@@%> <%= AND Product_Recommend=@@Product_Recommend@@%> <%= AND Product_Status=@@Product_Status@@%> <%= AND Product_Seq=@@Product_Seq@@%>      ;
                 ]]>
-            </SqlCommand>
-        </SqlDefinition>
-    </Data>
+      </SqlCommand>
+    </SqlDefinition>
+  </Data>
+
+
+  <Data name="Select_b_product_id_List">
+    <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+      <SqlCommand>
+        <![CDATA[
+ SELECT p.`Product_ID` FROM `b_product` p  WHERE p.`Product_Status`=1 <%= AND Category_ID=@@Category_ID@@%> <%= AND Product_New=@@Product_New@@%> <%= AND Product_Hot=@@Product_Hot@@%> <%= AND Product_Recommend=@@Product_Recommend@@%> <R%= AND (Product_Name_CH LIKE '%@@Product_Name@@%' OR Product_Name_HK LIKE '%@@Product_Name@@%')%R> <R%= LIMIT @@StartIndex@@, @@SelectCount@@ %R> ;
+ SELECT count(p.`Product_ID`) AS row_count  FROM `b_product` p  WHERE p.`Product_Status`=1 <%= AND Category_ID=@@Category_ID@@%> <%= AND Product_New=@@Product_New@@%> <%= AND Product_Hot=@@Product_Hot@@%> <%= AND Product_Recommend=@@Product_Recommend@@%> <R%= AND (Product_Name_CH LIKE '%@@Product_Name@@%' OR Product_Name_HK LIKE '%@@Product_Name@@%')%R> ;
+                ]]>
+      </SqlCommand>
+    </SqlDefinition>
+  </Data>
+
+  <Data name="Select_b_product_List_by_ids">
+    <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+      <SqlCommand>
+        <![CDATA[
+ SELECT p.`Product_ID`,p.`Product_Name_CH`,p.`Product_Name_HK`,p.`Product_Hot`,p.`Product_New`,p.`Product_Recommend`,p.`Product_Seq`  FROM `b_product` p  WHERE p.`Product_Status`=1 <R%= AND p.`Product_ID` IN (@@Product_IDS@@) %R>;
+ 
+  SELECT pr2.`Product_ID`,pr2.`P_Resources_ID`,pr2.`P_Resources_URL`,pr2.`P_Resources_Type`,pr2.`P_Resources_Seq` FROM (
+ SELECT pr.`Product_ID`,pr.`P_Resources_ID`,pr.`P_Resources_URL`,pr.`P_Resources_Type`,pr.`P_Resources_Seq` FROM `b_product_resources` pr  WHERE  pr.`P_Resources_Status`=1 <R%= AND pr.`Product_ID` IN (@@Product_IDS@@) %R>
+ ORDER BY pr.`P_Resources_Seq`,pr.`P_Resources_ID`) pr2 GROUP BY pr2.Product_ID;
+                ]]>
+      </SqlCommand>
+    </SqlDefinition>
+  </Data>
 </SqlSetting>
 
