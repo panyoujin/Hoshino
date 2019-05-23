@@ -118,6 +118,7 @@ namespace Hoshino.API.Controllers
             {
                 return login.ResponseNotLogin("登录失败");
             }
+            user.Password = "";
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this._configuration["JWT:SecurityKey"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var claims = new[] { new Claim(ClaimTypes.Name, user.ToJson()) };
@@ -125,7 +126,7 @@ namespace Hoshino.API.Controllers
             var authTime = DateTime.UtcNow;
             var expiresAt = authTime.AddDays(7);
             var token = new JwtSecurityToken(issuer: "*", audience: "*", claims: claims, expires: expiresAt, signingCredentials: creds);
-            login.token = "Bearer " + new JwtSecurityTokenHandler().WriteToken(token);
+            login.token = Constant.JwtTokenPrefix + new JwtSecurityTokenHandler().WriteToken(token);
             //HttpContext.Session.SetString(login.token, user.ToJson());
 
             return login.ResponseSuccess();
@@ -140,7 +141,7 @@ namespace Hoshino.API.Controllers
         {
             try
             {
-                string authorization = HttpContext.Request.Headers["Authorization"];
+                string authorization = HttpContext.Request.Headers[Constant.LoginToken_Key];
                 HttpContext.Session.Remove(authorization);
             }
             catch

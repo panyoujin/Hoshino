@@ -41,10 +41,9 @@ namespace Hoshino.API.Controllers
         [HttpGet]
         public FileResult GetValidateCode()
         {
-            string code = string.Empty;
-            byte[] imageFile = VerificationCodeImage.CreateImage(out code);
+            byte[] imageFile = VerificationCodeImage.CreateImage(out string code);
             HttpContext.Session.Set(Constant.Session_CheckCode, Encoding.UTF8.GetBytes(code));
-            return File(imageFile, @"image/gif");
+            return File(imageFile, "image/gif");
         }
 
 

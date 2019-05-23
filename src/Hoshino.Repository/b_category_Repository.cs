@@ -115,7 +115,7 @@ namespace Hoshino.Repository
             Dictionary<string, object> dic = new Dictionary<string, object>();
             if (pageindex >= 0)
             {
-                dic["StartIndex"] = pageindex <= 1 ? 0 : (pageindex - 1) * pagesize + 1;
+                dic["StartIndex"] = pageindex <= 1 ? 0 : (pageindex - 1) * pagesize ;
             }
             if (pagesize > 0)
             {
