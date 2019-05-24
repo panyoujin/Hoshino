@@ -42,10 +42,15 @@
                         </div>
                     </div>
                     <div class="ibox-content">
+
+                        <a href="#" style="display:none" data-toggle="modal" id="hiEventShowDialog"
+                            data-target="#picCropper"></a>
+
+
                         <form class="form-horizontal m-t" id="signupForm">
                             <div class="form-group">
                                 <a href="#" class="col-sm-4">
-                                    <img id="imgPic1" data-toggle="modal" data-target="#picCropper"
+                                    <img id="imgPic1" 
                                         style="height: 200px; width: 171px; " src="./img/default.png" alt="展示图片">
                                 </a>
                                 <a href="#" class="col-sm-6">
@@ -196,13 +201,13 @@
             <div class="ibox-content">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="image-crop" style="max-height:400px;"> 
+                        <div class="image-crop" style="max-height:500px;">
                             <img src="img/a3.jpg">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <h4>图片预览：</h4>
-                        <div class="img-preview img-preview-sm"></div>
+                        <div class="img-preview" style=" height: 171px;width: 180px;"></div>
                         <h4>说明：</h4>
                         <p>
                             你可以选择新图片上传
@@ -214,7 +219,7 @@
                             <label title="确定" id="download" class="btn btn-primary">确定</label>
                         </div>
                         <h4></h4>
-      
+
                         <div class="btn-group">
                             <button class="btn btn-white" id="zoomIn" type="button">放大</button>
                             <button class="btn btn-white" id="zoomOut" type="button">缩小</button>

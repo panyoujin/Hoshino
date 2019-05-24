@@ -43,6 +43,24 @@ var requestUrl = function (url, callBack, json, type = 'POST') {
 
     });
 };
+var requestFromUrl = function (url, callBack, data, type = 'POST') {
+    var urlFull = domain + url;
+    $.ajax({
+        type: type,
+        processData: false,
+        contentType: false,
+        url: urlFull,
+        headers: {
+            "Authorization": $.cookie('Authorization'),
+        },
+        data: data,
+        success: callBack,
+        error: function (obj) {
+            console.info(obj);
+        }
+
+    });
+};
 
 var pagination = function (pageindex, pagesize, total, loaddata) {
     pageindex = Number(pageindex);

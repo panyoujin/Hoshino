@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Mvc;
+using Pan.Code;
 using Pan.Code.Extentions;
 
 namespace Hoshino.API.Controllers
@@ -82,43 +83,38 @@ namespace Hoshino.API.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(200, Type = typeof(IFormCollection))]
+        [ProducesResponseType(200, Type = typeof(ApiResult<UploadVM>))]
         public ActionResult<object> PostBase64([FromBody]ImageVM imageVM)
         {
             UploadVM upload = new UploadVM();
-            try
-            {
-
-                string baseDirectory = AppContext.BaseDirectory;
 
 
-                String Tpath = Path.Combine("resources", DateTime.Now.ToString("yyyyMMddHH"));
-                string name = "picBase64.jpg";
-                string FileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
-                string FilePath = Path.Combine(baseDirectory, Tpath);
-
-                string fileType = System.IO.Path.GetExtension(name);
-                DirectoryInfo di = new DirectoryInfo(FilePath);
+            string baseDirectory = AppContext.BaseDirectory;
 
 
-                if (!di.Exists) { di.Create(); }
+            String Tpath = Path.Combine("resources", DateTime.Now.ToString("yyyyMMddHH"));
+            string name = "picBase64.jpg";
+            string FileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+            string FilePath = Path.Combine(baseDirectory, Tpath);
 
-                byte[] bit = Convert.FromBase64String(imageVM.ImgBase64);
-                MemoryStream ms = new MemoryStream(bit);
-                Bitmap bmp = new Bitmap(ms);
-                
-                bmp.Save(Path.Combine(FilePath, FileName + fileType), ImageFormat.Jpeg);
+            string fileType = System.IO.Path.GetExtension(name);
+            DirectoryInfo di = new DirectoryInfo(FilePath);
 
 
-                upload.fileName = name;
-                upload.filePath = Path.Combine(Tpath, FileName + fileType);
-                upload.fileType = fileType;
+            if (!di.Exists) { di.Create(); }
 
-            }
-            catch
-            {
+            byte[] bit = Convert.FromBase64String(imageVM.ImgBase64);
+            MemoryStream ms = new MemoryStream(bit);
+            Bitmap bmp = new Bitmap(ms);
 
-            }
+            bmp.Save(Path.Combine(FilePath, FileName + fileType), ImageFormat.Jpeg);
+
+
+            upload.fileName = name;
+            upload.filePath = Path.Combine(Tpath, FileName + fileType);
+            upload.fileType = fileType;
+
+
 
             return upload.ResponseSuccess();
         }
