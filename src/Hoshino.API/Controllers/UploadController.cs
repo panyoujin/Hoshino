@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -39,7 +41,7 @@ namespace Hoshino.API.Controllers
             UploadVM upload = new UploadVM();
             try
             {
-                string baseDirectory= AppContext.BaseDirectory;
+                string baseDirectory = AppContext.BaseDirectory;
 
                 //string webRootPath = _hostingEnvironment.WebRootPath;
                 //string contentRootPath = _hostingEnvironment.ContentRootPath;
@@ -70,6 +72,48 @@ namespace Hoshino.API.Controllers
                     upload.filePath = Path.Combine(Tpath, FileName + fileType);
                     upload.fileType = fileType;
                 }
+            }
+            catch
+            {
+
+            }
+
+            return upload.ResponseSuccess();
+        }
+
+        [HttpPost]
+        [ProducesResponseType(200, Type = typeof(IFormCollection))]
+        public ActionResult<object> PostBase64([FromBody]ImageVM imageVM)
+        {
+            UploadVM upload = new UploadVM();
+            try
+            {
+
+                string baseDirectory = AppContext.BaseDirectory;
+
+
+                String Tpath = Path.Combine("resources", DateTime.Now.ToString("yyyyMMddHH"));
+                string name = "picBase64.jpg";
+                string FileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+                string FilePath = Path.Combine(baseDirectory, Tpath);
+
+                string fileType = System.IO.Path.GetExtension(name);
+                DirectoryInfo di = new DirectoryInfo(FilePath);
+
+
+                if (!di.Exists) { di.Create(); }
+
+                byte[] bit = Convert.FromBase64String(imageVM.ImgBase64);
+                MemoryStream ms = new MemoryStream(bit);
+                Bitmap bmp = new Bitmap(ms);
+                
+                bmp.Save(Path.Combine(FilePath, FileName + fileType), ImageFormat.Jpeg);
+
+
+                upload.fileName = name;
+                upload.filePath = Path.Combine(Tpath, FileName + fileType);
+                upload.fileType = fileType;
+
             }
             catch
             {
