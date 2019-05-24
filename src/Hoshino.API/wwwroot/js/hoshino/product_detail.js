@@ -9,37 +9,29 @@ $(function () {
 
     $("#download").click(function(){
         var dataURL=$(".image-crop > img").cropper("getDataURL");
-        // imagePicDocument.attr("src",url);
 
-        // var req = {ImgBase64:dataURL.substr(dataURL.indexOf(',') + 1)};
-        // console.info(req);
-        // requestUrl("/api/Upload/PostBase64", function (obj) {
-        //     console.info(obj);
-        //     if(obj.Code==200){
-        //         console.info(obj);
-        //     }
-        //     }, JSON.stringify(req),'POST');
-
-        // var req = {ImgBase64:dataURL.substr(dataURL.indexOf(',') + 1)};
         var file= dataURLtoFile(dataURL,"picBase64");
-        var formData = new FormData(file);
-      
-
+        // console.info(file);
+        var formData = new FormData();  
+        formData.append("file",file);  
 
         requestFromUrl("/api/Upload/Post", function (obj) {
-            console.info(obj);
             if(obj.Code==200){
+                imagePicDocument.attr("src",_Domain+obj.Result.filePath);
+                $("#closeDialog").click();
                 console.info(obj);
             }
             },formData);
 
+
     });
 });
 
-
+//图片base64转图片对象
 var dataURLtoFile= function (dataurl, filename) {
     var arr = dataurl.split(',');
     var mime = arr[0].match(/:(.*?);/)[1];
+    var suffix=mime.split('/')[1];
     var bstr = atob(arr[1]);
     var n = bstr.length; 
     var u8arr = new Uint8Array(n);
@@ -47,7 +39,7 @@ var dataURLtoFile= function (dataurl, filename) {
         u8arr[n] = bstr.charCodeAt(n);
     }
     //转换成file对象
-    return new File([u8arr], filename, {type:mime});
+    return new File([u8arr], filename+'.'+suffix, {type:mime});
     //转换成成blob对象
     //return new Blob([u8arr],{type:mime});
   }

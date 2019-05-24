@@ -23,9 +23,10 @@
 });
 
 //var domain = "http://www.hosinowt.com";
-var domain = "http://www.hosinowt.com:81";
+var _Domain = "http://www.hosinowt.com/";
+var api = "http://www.hosinowt.com:81";
 var requestUrl = function (url, callBack, json, type = 'POST') {
-    var urlFull = domain + url;
+    var urlFull = api + url;
     $.ajax({
         type: type,
         url: urlFull,
@@ -44,7 +45,7 @@ var requestUrl = function (url, callBack, json, type = 'POST') {
     });
 };
 var requestFromUrl = function (url, callBack, data, type = 'POST') {
-    var urlFull = domain + url;
+    var urlFull = api + url;
     $.ajax({
         type: type,
         processData: false,
