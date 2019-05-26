@@ -64,8 +64,16 @@
                                         alt="展示图片">
                                 </a>
                                 <a href="#" class="col-sm-6">
-                                    <img id="imgVideo" style="height: 200px; width: 171px;display: block;float: right; "
-                                        src="./img/video.png" alt="展示图片">
+                                    <div class="col-sm-10" id="imgVideo" style="height: 200px; width: 171px; display: block;float: right;">
+                                            <video  id="videoControl" 
+                                            controls="controls"  src=""></video>
+                                    </div>
+
+
+
+
+                                    <!-- <img id="imgVideo" style="height: 200px; width: 171px;display: block;float: right; "
+                                        src="./img/video.png" alt="展示图片"> -->
                                 </a>
                             </div>
 
@@ -232,6 +240,8 @@
         </div>
 
     </div>
+    <input type="file" id="imgVideoInput" accept=".mp4" name="file" style="display: none;" />
+
     <!-- 弹出窗口 结束-->
 
     <script src="js/jquery.min.js?v=2.1.4"></script>
@@ -244,8 +254,10 @@
     <script src="js/plugins/cropper/cropper.min.js"></script>
     <script src="js/demo/form-advanced-demo.min.js"></script>
 
+    <script src="js/jqueryupload.js?v=1.0.0"></script>
     <script src="js/jquery.cookie.js"></script>
     <script src="js/hoshino/common.js"></script>
+
     <script src="js/hoshino/product_detail.js"></script>
 </body>
 

@@ -1,11 +1,28 @@
 $(function () {
+    //三个图片详情
     $("#imgPic1,#imgPic2,#imgPic3").click(function(){
         $("#hiEventShowDialog").click();
         imagePicDocument=$(this);
-        // $(".image-crop > img").cropper("getDataURL");
-
-        //  alert($(this).attr("id"));
     });
+    $("#imgVideo").click(function(){
+        $("#imgVideoInput").click();
+    });
+    $("#imgVideoInput").change(function (e) {
+        // console.info(e.currentTarget.files[0]);
+        if(e.currentTarget.files.length<=0){
+            return;
+        }
+        var formData = new FormData();  
+        formData.append("file",e.currentTarget.files[0]);  
+        requestFromUrl("/api/Upload/Post", function (obj) {
+            if(obj.Code==200){
+                $("#videoControl").attr("src",_Domain+obj.Result.filePath);
+            }
+            },formData);
+    });
+
+    $("#videoControl")[0].videoHeight=171;
+    console.info($("#videoControl")[0].videoHeight);
 
     $("#download").click(function(){
         var dataURL=$(".image-crop > img").cropper("getDataURL");
