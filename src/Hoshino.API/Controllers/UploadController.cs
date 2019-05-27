@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Pan.Code;
 using Pan.Code.Extentions;
 
@@ -23,12 +24,13 @@ namespace Hoshino.API.Controllers
     [ApiController]
     public class UploadController : ControllerBase
     {
+        private readonly ILogger<UploadController> _logger;
         private readonly IHostingEnvironment _hostingEnvironment;
 
         /// <summary>
         /// 
         /// </summary>
-        public UploadController(IHostingEnvironment hostingEnvironment)
+        public UploadController(ILogger<UploadController> logger, IHostingEnvironment hostingEnvironment)
         {
             _hostingEnvironment = hostingEnvironment;
         }
@@ -87,35 +89,41 @@ namespace Hoshino.API.Controllers
         public ActionResult<object> PostBase64([FromBody]ImageVM imageVM)
         {
             UploadVM upload = new UploadVM();
+            try
+            {
+
+                string baseDirectory = AppContext.BaseDirectory;
 
 
-            string baseDirectory = AppContext.BaseDirectory;
+                String Tpath = Path.Combine("resources", DateTime.Now.ToString("yyyyMMddHH"));
+                string name = "picBase64.jpg";
+                string FileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+                string FilePath = Path.Combine(baseDirectory, Tpath);
+
+                string fileType = System.IO.Path.GetExtension(name);
+                DirectoryInfo di = new DirectoryInfo(FilePath);
 
 
-            String Tpath = Path.Combine("resources", DateTime.Now.ToString("yyyyMMddHH"));
-            string name = "picBase64.jpg";
-            string FileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
-            string FilePath = Path.Combine(baseDirectory, Tpath);
+                if (!di.Exists) { di.Create(); }
 
-            string fileType = System.IO.Path.GetExtension(name);
-            DirectoryInfo di = new DirectoryInfo(FilePath);
+                byte[] bit = Convert.FromBase64String(imageVM.ImgBase64);
+                MemoryStream ms = new MemoryStream(bit);
+                Bitmap bmp = new Bitmap(ms);
 
-
-            if (!di.Exists) { di.Create(); }
-
-            byte[] bit = Convert.FromBase64String(imageVM.ImgBase64);
-            MemoryStream ms = new MemoryStream(bit);
-            Bitmap bmp = new Bitmap(ms);
-
-            bmp.Save(Path.Combine(FilePath, FileName + fileType), ImageFormat.Jpeg);
+                bmp.Save(Path.Combine(FilePath, FileName + fileType), ImageFormat.Jpeg);
 
 
-            upload.fileName = name;
-            upload.filePath = Path.Combine(Tpath, FileName + fileType);
-            upload.fileType = fileType;
+                upload.fileName = name;
+                upload.filePath = Path.Combine(Tpath, FileName + fileType);
+                upload.fileType = fileType;
 
 
-
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToJson());
+                throw ex;
+            }
             return upload.ResponseSuccess();
         }
     }
