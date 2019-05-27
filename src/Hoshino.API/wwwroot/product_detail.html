@@ -47,57 +47,61 @@
                             data-target="#picCropper"></a>
 
 
-                        <form class="form-horizontal m-t" id="signupForm">
+                        <form class="form-horizontal m-t" id="signupForm_base">
+                            <!--产品图片 start-->
                             <div class="form-group">
                                 <a href="#" class="col-sm-4">
-                                    <img id="imgPic1" pic="" style="height: 200px; width: 171px; " src="./img/default.png"
-                                        alt="展示图片">
+                                    <img id="imgPic1" pic="" style="height: 200px; width: 171px; "
+                                        src="./img/default.png" alt="展示图片">
                                 </a>
                                 <a href="#" class="col-sm-6">
-                                    <img id="imgPic2" pic="" style="height: 200px; width: 171px;display: block;float: right; "
+                                    <img id="imgPic2" pic=""
+                                        style="height: 200px; width: 171px;display: block;float: right; "
                                         src="./img/default.png" alt="展示图片">
                                 </a>
                             </div>
                             <div class="form-group">
                                 <a href="#" class="col-sm-4">
-                                    <img id="imgPic3" pic="" style="height: 200px; width: 171px; " src="./img/default.png"
-                                        alt="展示图片">
+                                    <img id="imgPic3" pic="" style="height: 200px; width: 171px; "
+                                        src="./img/default.png" alt="展示图片">
                                 </a>
                                 <a href="#" class="col-sm-6">
-                                    <div class="col-sm-10" id="imgVideo" style="height: 200px; width: 171px; display: block;float: right;">
-                                        <video  id="videoControl" vic="" controls="controls"  src=""></video>
+                                    <div class="col-sm-10" id="imgVideo"
+                                        style="height: 200px; width: 171px; display: block;float: right;">
+                                        <video id="videoControl" vic="" controls="controls" src=""></video>
                                     </div>
 
                                     <!-- <img id="imgVideo" style="height: 200px; width: 171px;display: block;float: right; "
                                         src="./img/video.png" alt="展示图片"> -->
                                 </a>
                             </div>
+                            <!--产品图片 end-->
 
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">产品名称(简体)：</label>
                                 <div class="col-sm-6">
-                                    <input id="firstname" name="firstname" class="form-control" type="text">
-                                    <span class="help-block m-b-none"></span>
+                                    <input id="txtProduct_Name_CH" name="txtProduct_Name_CH" class="form-control"
+                                        type="text">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">产品名称(繁体)：</label>
                                 <div class="col-sm-6">
-                                    <input id="lastname" name="lastname" class="form-control" type="text"
-                                        aria-required="true" aria-invalid="false">
+                                    <input id="txtProduct_Name_HK" name="txtProduct_Name_HK" class="form-control"
+                                        type="text">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">产品类别：</label>
                                 <div class="col-sm-6">
-                                    <select id="slCategory" class="form-control m-b" name="account"></select>
+                                    <select id="slCategory" class="form-control m-b" name="slCategory"></select>
                                 </div>
                             </div>
 
 
                             <div class="form-group">
                                 <div class="col-sm-4 col-sm-offset-8">
-                                    <button class="btn btn-primary" type="submit">提交</button>
+                                    <button class="btn btn-primary" type="button" id="btnSubmit">提交</button>
                                 </div>
                             </div>
                         </form>
@@ -110,80 +114,60 @@
                     <div class="ibox-title">
                         <h5>产品属性新增/编辑</h5>
                         <div class="ibox-tools">
-                            <a href="#" class="btn btn-primary btn-xs">新增属性</a>
+                            <a href="#" class="btn btn-primary btn-xs" id="btnAddAttribute">新增属性</a>
                         </div>
                     </div>
                     <div class="ibox-content">
-                        <form class="form-horizontal m-t" id="signupForm">
+                        <form class="form-horizontal m-t" id="signupForm_attribute">
+                            <div class="attributeItem">
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <input id="txtP_Attribute_Name_CH1" name="txtP_Attribute_Name_CH"
+                                            class="form-control" type="text" placeholder="属性简体">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input id="txtP_Attribute_Value_CH1" name="txtP_Attribute_Value_CH"
+                                            class="form-control" type="text" placeholder="简体内容">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <input id="txtP_Attribute_Name_HK1" name="txtP_Attribute_Name_HK"
+                                            class="form-control" type="text" placeholder="属性繁体">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input id="txtP_Attribute_Value_EN1" name="txtP_Attribute_Value_EN"
+                                            class="form-control" type="text" placeholder="繁体内容">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button class="btn btn-warning btnAttributeDelete" type="button" >删除</button>
+                                    </div>
+                                </div>
+                            </div>
 
-
-                            <div class="form-group">
-                                <div class="col-sm-4">
-                                    <input id="firstname" name="firstname" class="form-control" type="text"
-                                        placeholder="属性简体">
+                            <div class="attributeItem">
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <input id="txtP_Attribute_Name_CH2" name="txtP_Attribute_Name_CH"
+                                            class="form-control" type="text" placeholder="属性简体">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input id="txtP_Attribute_Value_CH2" name="txtP_Attribute_Value_CH"
+                                            class="form-control" type="text" placeholder="简体内容">
+                                    </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <input id="firstname" name="firstname" class="form-control" type="text"
-                                        placeholder="简体内容">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-4">
-                                    <input id="lastname" name="lastname" class="form-control" type="text"
-                                        placeholder="属性繁体">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input id="lastname" name="lastname" class="form-control" type="text"
-                                        placeholder="繁体内容">
-                                </div>
-                                <div class="col-sm-2">
-                                    <button class="btn btn-warning">删除</button>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-4">
-                                    <input id="firstname" name="firstname" class="form-control" type="text"
-                                        placeholder="属性简体">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input id="firstname" name="firstname" class="form-control" type="text"
-                                        placeholder="简体内容">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-4">
-                                    <input id="lastname" name="lastname" class="form-control" type="text"
-                                        placeholder="属性繁体">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input id="lastname" name="lastname" class="form-control" type="text"
-                                        placeholder="繁体内容">
-                                </div>
-                                <div class="col-sm-2">
-                                    <button class="btn btn-warning">删除</button>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-4">
-                                    <input id="firstname" name="firstname" class="form-control" type="text"
-                                        placeholder="属性简体">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input id="firstname" name="firstname" class="form-control" type="text"
-                                        placeholder="简体内容">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-4">
-                                    <input id="lastname" name="lastname" class="form-control" type="text"
-                                        placeholder="属性繁体">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input id="lastname" name="lastname" class="form-control" type="text"
-                                        placeholder="繁体内容">
-                                </div>
-                                <div class="col-sm-2">
-                                    <button class="btn btn-warning">删除</button>
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <input id="txtP_Attribute_Name_HK2" name="txtP_Attribute_Name_HK"
+                                            class="form-control" type="text" placeholder="属性繁体">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input id="txtP_Attribute_Value_EN2" name="txtP_Attribute_Value_EN"
+                                            class="form-control" type="text" placeholder="繁体内容">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button class="btn btn-warning btnAttributeDelete" type="button" >删除</button>
+                                    </div>
                                 </div>
                             </div>
 

@@ -43,7 +43,69 @@ $(function () {
             }
             },formData);
     });
+
+    //提交表单
+    $("#btnSubmit").click(function(){
+        if (!$("#signupForm_base").valid()) {
+            return;
+         }
+         $("#signupForm_attribute .attributeItem").each(function(index){
+             //简体
+            var ch=$(this).children(".form-group").eq(0);
+            var ch_key=ch.find("div .form-control").eq(0).val();
+            var ch_value=ch.find("div .form-control").eq(1).val();
+
+             
+             //繁体
+             var hk=$(this).children(".form-group").eq(1);
+             var hk_key=hk.find("div .form-control").eq(0).val();
+             var hk_value=hk.find("div .form-control").eq(1).val();
+
+             if ($.isEmptyObject(ch_key)||$.isEmptyObject(ch_value)||$.isEmptyObject(hk_key)||$.isEmptyObject(hk_value)) {
+                parent.layer.confirm("产品属性不能为空", {
+                    btn: ['确定'], //按钮
+                    shade: false //不显示遮罩
+                });
+                return;
+            }
+
+         });
+
+    });
     
+    //属性删除 event
+    $(document).on("click",".btnAttributeDelete",function(){
+        $(this).parent().parent().parent().remove();
+   })
+    //属性删除 event
+    // $(".btnAttributeDelete").click(function(){
+    //      $(this).parent().parent().parent().remove();
+    // });
+    $("#btnAddAttribute").click(function(){
+        $("#signupForm_attribute").append("<div class='attributeItem'> \
+        <div class='form-group'>\
+            <div class='col-sm-4'>\
+                <input id='txtP_Attribute_Name_CH1' name='txtP_Attribute_Name_CH' class='form-control' type='text' placeholder='属性简体'> \
+            </div> \
+            <div class='col-sm-6'> \
+                <input id='txtP_Attribute_Value_CH1' name='txtP_Attribute_Value_CH'  class='form-control' type='text' placeholder='简体内容'> \
+            </div> \
+        </div> \
+        <div class='form-group'> \
+            <div class='col-sm-4'> \
+                <input id='txtP_Attribute_Name_HK1' name='txtP_Attribute_Name_HK' class='form-control' type='text' placeholder='属性繁体'> \
+            </div> \
+            <div class='col-sm-6'> \
+                <input id='txtP_Attribute_Value_EN1' name='txtP_Attribute_Value_EN' class='form-control' type='text' placeholder='繁体内容'> \
+            </div> \
+            <div class='col-sm-2'> \
+                <button class='btn btn-warning btnAttributeDelete' type='button' >删除</button> \
+            </div>\
+        </div>\
+    </div>");
+
+    })
+
 });
 
 //图片base64转图片对象
