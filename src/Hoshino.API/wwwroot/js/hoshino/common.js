@@ -24,7 +24,7 @@
 
 //var domain = "http://www.hosinowt.com";
 var _Domain = "http://www.hosinowt.com/";
-var api = "http://www.hosinowt.com:81";
+var api = 'http://www.hosinowt.com:82/'//"http://localhost:82";
 var requestUrl = function (url, callBack, json, type = 'POST') {
     var urlFull = api + url;
     $.ajax({
@@ -128,17 +128,25 @@ var pagination = function (pageindex, pagesize, total, loaddata) {
 }
 
 
-var ImportFile = function (uploadId, fileID, fileViewId, fileNameID) {
+var ImportFile = function (uploadId, fileID, fileViewId, fileNameID,callback) {
     $("#" + uploadId).upload("api/Upload/Post?" + Math.random(), function (data) {
         console.log(data.Code);
         if (data.Code === 200 && data.Result !== null) {
             console.log(data.Result.filePath);
             console.log(data.Result.fileName);
-            $("#" + fileID).val(data.Result.filePath);
-            $("#" + fileViewId).attr("src", "/" + data.Result.filePath);
-            $("#" + fileNameID).val(data.Result.fileName);
-            console.log($("#" + fileID).val());
-            console.log($("#" + fileNameID).val());
+            if ($("#" + fileID) !== undefined) {
+                $("#" + fileID).val(data.Result.filePath);
+            }
+            if ($("#" + fileViewId) !== undefined) {
+                $("#" + fileViewId).attr("src", "/" + data.Result.filePath);
+
+            }
+            if ($("#" + fileNameID) !== undefined) {
+                $("#" + fileNameID).val(data.Result.fileName);
+            }
+            if (callback !== undefined) {
+                callback(data.Result.filePath, data.Result.fileName, data.Result.fileType);
+            }
         } else {
             $.alert(result.Message);
         }

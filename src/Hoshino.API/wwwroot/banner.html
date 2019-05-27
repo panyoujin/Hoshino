@@ -53,17 +53,19 @@
                 <div class="ibox">
                     <div class="ibox-title">
                         <h5>Banner管理</h5>
+                        <div class="ibox-tools">
+                            <button type="button" class="btn btn-sm btn-primary" id="btnAdd"> 新增</button>
+                        </div>
                     </div>
                     <div class="ibox-content">
                         <div class="row m-b-sm m-t-sm">
-                            <div class="col-md-1">
+                            <!--<div class="col-md-1">
                                 <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> 刷新</button>
-                            </div>
+                            </div>-->
                             <div class="col-md-11">
                                 <div class="input-group">
                                     <span class="input-group-btn">
                                         <button type="button" class="btn btn-sm btn-primary" id="btnSearch"> 搜索</button>
-                                        <button type="button" class="btn btn-sm btn-primary" id="btnAdd"> 新增</button>
                                     </span>
                                 </div>
                             </div>
@@ -76,8 +78,8 @@
                                     <tr>
                                         <th>#</th>
                                         <th>图片</th>
-                                        <th>时间</th>
-                                        <th>操作</th>
+                                        <th>排序</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody id="tableContent"></tbody>
@@ -100,14 +102,17 @@
             <div class="modal-content">
                 <div class="modal-header">
 
-                    <input id="fileUrl" maxlength="256" name="fileUrl" placeholder="" value="" type="text" style="float:left;display:none">
-                    <input id="fileName" maxlength="256" name="fileName" placeholder="" value="" type="text" style="float:left;display:none">
+                    <img style="width:400px;height:100px;" src="" class="img-thumbnail" id="imageurl">
                     <a href="javascript:;" style="font-size:12px;margin:auto 5px;margin-top:10px;color:#333333; " id="ImportBox">
-                        &nbsp;&nbsp;<i class="fa fa-upload"></i>上传文件
+                        &nbsp;&nbsp;<i class="fa fa-upload"></i>选择图片
                         <input type="file" id="Import" name="file" />
+                        <input id="fileUrl" maxlength="256" name="fileUrl" placeholder="" value="" type="text" style="float:left;display:none">
+                        <input id="fileName" maxlength="256" name="fileName" placeholder="" value="" type="text" style="float:left;display:none">
                     </a>
                     <br />
-                    <img style="width:400px;height:100px;" src="" class="img-thumbnail" id="imageurl">
+
+                    <br />
+                    <input id="banner_seq" maxlength="256" placeholder="请输入排序值" value="" type="text">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-white" id="btnClose" data-dismiss="modal">关闭</button>
@@ -119,7 +124,28 @@
         </div>
     </div>
     <!-- 弹出窗口 结束-->
+    <!-- 弹出窗口 开始-->
+    <a href="#" data-toggle="modal" id="hiedit_EventShowDialog" data-target="#edit_Detail" style="display:none"></a>
+    <div class="modal inmodal fade" id="edit_Detail" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lm">
+            <div class="modal-content">
+                <div class="modal-header">
 
+                    <input id="banner_id" style="display:none">
+                    <img style="width:400px;height:100px;" src="" class="img-thumbnail" id="edit_imageurl">
+                    <br />
+                    <input id="edit_banner_seq" maxlength="256" placeholder="请输入排序值" value="" type="text">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" id="btnedit_Close" data-dismiss="modal">关闭</button>
+                    <button class="btn btn-primary" type="submit" id="btnedit_Save">保存内容</button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- 弹出窗口 结束-->
 
     <script src="js/jquery.min.js?v=2.1.4"></script>
     <script src="js/bootstrap.min.js?v=3.3.6"></script>
@@ -130,9 +156,6 @@
     <script src="js/hoshino/banner.js"></script>
     <script>
         $(document).ready(function () {
-            $("#Import").change(function () {
-                ImportFile("Import", "fileUrl", "imageurl","fileName");
-            });
             $("#loading-example-btn").click(function () {
                 btn = $(this);
                 simpleLoad(btn, true);

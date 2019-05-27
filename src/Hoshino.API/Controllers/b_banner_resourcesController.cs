@@ -47,22 +47,22 @@ namespace Hoshino.API.Controllers
         /// 修改
         /// </summary>
         [Authorize]
-        [HttpPut]
+        [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]b_banner_resourcesVM model, int Banner_ID)
+        public ActionResult<object> Update([FromBody]b_banner_resourcesVM model)
         {
             b_banner_resources_Entity entity = model.ConvertToT<b_banner_resources_Entity>();
             this.SetUpdateUserInfo(entity);
-            return this._repository.Update(entity, Banner_ID).ResponseSuccess();
+            return this._repository.Update(entity, model.Banner_ID).ResponseSuccess();
         }
 
         /// <summary>
         /// 删除
         /// </summary>
         [Authorize]
-        [HttpDelete]
+        [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Delete(int Banner_ID)
+        public ActionResult<object> Delete([FromBody]int Banner_ID)
         {
             b_banner_resources_Entity entity = new b_banner_resources_Entity();
             this.SetUpdateUserInfo(entity);

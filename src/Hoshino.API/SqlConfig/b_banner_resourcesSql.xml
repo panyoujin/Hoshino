@@ -40,8 +40,8 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                SELECT Banner_ID,Banner_Name_CH,Banner_Name_HK,Banner_URL,Banner_Type,Banner_Location,Banner_Status,Banner_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_banner_resources WHERE 1=1 <%= AND Banner_ID=@@Banner_ID@@%> <%= AND Banner_Name_CH=@@Banner_Name_CH@@%> <%= AND Banner_Name_HK=@@Banner_Name_HK@@%> <%= AND Banner_URL=@@Banner_URL@@%> <%= AND Banner_Type=@@Banner_Type@@%> <%= AND Banner_Location=@@Banner_Location@@%> <%= AND Banner_Status=@@Banner_Status@@%> <%= AND Banner_Seq=@@Banner_Seq@@%>       <R%= LIMIT @@StartIndex@@, @@SelectCount@@ %R> ;
-                SELECT COUNT(0) AS row_count FROM b_banner_resources WHERE 1=1 <%= AND Banner_ID=@@Banner_ID@@%> <%= AND Banner_Name_CH=@@Banner_Name_CH@@%> <%= AND Banner_Name_HK=@@Banner_Name_HK@@%> <%= AND Banner_URL=@@Banner_URL@@%> <%= AND Banner_Type=@@Banner_Type@@%> <%= AND Banner_Location=@@Banner_Location@@%> <%= AND Banner_Status=@@Banner_Status@@%> <%= AND Banner_Seq=@@Banner_Seq@@%>      ;
+                SELECT Banner_ID,Banner_Name_CH,Banner_Name_HK,Banner_URL,Banner_Type,Banner_Location,Banner_Status,Banner_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_banner_resources WHERE Banner_Status=1 <%= AND Banner_Name_CH=@@Banner_Name_CH@@%> <%= AND Banner_Name_HK=@@Banner_Name_HK@@%> <%= AND Banner_URL=@@Banner_URL@@%> <%= AND Banner_Type=@@Banner_Type@@%> <%= AND Banner_Location=@@Banner_Location@@%> ORDER BY Banner_Seq <R%= LIMIT @@StartIndex@@, @@SelectCount@@ %R> ;
+                SELECT COUNT(0) AS row_count FROM b_banner_resources WHERE Banner_Status=1 <%= AND Banner_Name_CH=@@Banner_Name_CH@@%> <%= AND Banner_Name_HK=@@Banner_Name_HK@@%> <%= AND Banner_URL=@@Banner_URL@@%> <%= AND Banner_Type=@@Banner_Type@@%> <%= AND Banner_Location=@@Banner_Location@@%>;
                 ]]>
             </SqlCommand>
         </SqlDefinition>
