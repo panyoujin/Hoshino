@@ -4,9 +4,11 @@ $(function () {
         $("#hiEventShowDialog").click();
         imagePicDocument=$(this);
     });
+    //video编辑
     $("#imgVideo").click(function(){
         $("#imgVideoInput").click();
     });
+    //上传video event
     $("#imgVideoInput").change(function (e) {
         // console.info(e.currentTarget.files[0]);
         if(e.currentTarget.files.length<=0){
@@ -17,15 +19,15 @@ $(function () {
         requestFromUrl("/api/Upload/Post", function (obj) {
             if(obj.Code==200){
                 $("#videoControl").attr("src",_Domain+obj.Result.filePath);
+                $("#videoControl").attr("vic",obj.Result.filePath);
             }
             },formData);
+        $("#imgVideoInput").clear(); 
     });
 
-    $("#videoControl")[0].videoHeight=171;
-    console.info($("#videoControl")[0].videoHeight);
-
+    //截图工具的确定 event
     $("#download").click(function(){
-        var dataURL=$(".image-crop > img").cropper("getDataURL");
+        var dataURL=$(".image-crop > img").cropper("getDataURL","image/jpeg");
 
         var file= dataURLtoFile(dataURL,"picBase64");
         // console.info(file);
@@ -35,13 +37,13 @@ $(function () {
         requestFromUrl("/api/Upload/Post", function (obj) {
             if(obj.Code==200){
                 imagePicDocument.attr("src",_Domain+obj.Result.filePath);
+                imagePicDocument.attr("pic",obj.Result.filePath);
                 $("#closeDialog").click();
                 console.info(obj);
             }
             },formData);
-
-
     });
+    
 });
 
 //图片base64转图片对象
