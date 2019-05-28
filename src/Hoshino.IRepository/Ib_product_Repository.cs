@@ -9,7 +9,7 @@ namespace Hoshino.IRepository
         /// <summary>
         /// 新增
         /// <summary>
-        bool Insert(b_product_Entity model);
+        int Insert(b_product_Entity model);
 
         /// <summary>
         /// 修改

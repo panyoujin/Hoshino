@@ -5,6 +5,7 @@
       <SqlCommand>
         <![CDATA[
                 INSERT INTO b_product (Category_ID,Product_Name_CH,Product_Name_HK,Product_New,Product_Hot,Product_Recommend,Product_Status,Product_Seq,Create_Time,Create_UserId,Create_User) VALUES(@@Category_ID@@,@@Product_Name_CH@@,@@Product_Name_HK@@,@@Product_New@@,@@Product_Hot@@,@@Product_Recommend@@,@@Product_Status@@,@@Product_Seq@@,NOW(),@@Create_UserId@@,@@Create_User@@);
+                SELECT LAST_INSERT_ID();
                 ]]>
       </SqlCommand>
     </SqlDefinition>
@@ -78,7 +79,7 @@ LEFT JOIN  `b_product` p ON rp.`Rel_Product_ID`=p.`Product_ID`
     <SqlDefinition type="MySql" ConnStringName="backstage_connection">
       <SqlCommand>
         <![CDATA[
- SELECT p.`Product_ID`,p.`Product_Name_CH`,p.`Product_Name_HK`,p.`Product_Hot`,p.`Product_New`,p.`Product_Recommend`,p.`Product_Seq`  FROM `b_product` p  WHERE p.`Product_Status`=1 <R%= AND p.`Product_ID` IN (@@Product_IDS@@) %R>;
+ SELECT p.`Product_ID`,p.Category_ID,p.`Product_Name_CH`,p.`Product_Name_HK`,p.`Product_Hot`,p.`Product_New`,p.`Product_Recommend`,p.`Product_Seq`  FROM `b_product` p  WHERE p.`Product_Status`=1 <R%= AND p.`Product_ID` IN (@@Product_IDS@@) %R>;
  
   SELECT pr2.`Product_ID`,pr2.`P_Resources_ID`,pr2.`P_Resources_URL`,pr2.`P_Resources_Type`,pr2.`P_Resources_Seq` FROM (
  SELECT pr.`Product_ID`,pr.`P_Resources_ID`,pr.`P_Resources_URL`,pr.`P_Resources_Type`,pr.`P_Resources_Seq` FROM `b_product_resources` pr  WHERE  pr.`P_Resources_Status`=1 <R%= AND pr.`Product_ID` IN (@@Product_IDS@@) %R>

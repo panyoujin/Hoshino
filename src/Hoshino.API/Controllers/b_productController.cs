@@ -37,7 +37,7 @@ namespace Hoshino.API.Controllers
         /// </summary>
         [Authorize]
         [HttpPost]
-        [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
+        [ProducesResponseType(200, Type = typeof(ApiResult<int>))]
         public ActionResult<object> Post([FromBody]b_productVM model)
         {
             b_product_Entity entity = model.ConvertToT<b_product_Entity>();

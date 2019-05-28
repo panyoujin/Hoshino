@@ -12,7 +12,7 @@ namespace Hoshino.Repository
         /// <summary>
         /// 新增
         /// <summary>
-        public bool Insert(b_product_Entity model)
+        public int Insert(b_product_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
             if (model.Category_ID != 0)
@@ -55,7 +55,7 @@ namespace Hoshino.Repository
             {
                 dic["Create_User"] = model.Create_User;
             }
-            return SQLHelperFactory.Instance.ExecuteNonQuery("Insert_b_product", dic) > 0;
+            return SQLHelperFactory.Instance.ExecuteScalarByT<int>("Insert_b_product", dic);
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace Hoshino.Repository
             }
             if (pageindex >= 0)
             {
-                dic["StartIndex"] = pageindex <= 1 ? 0 : (pageindex - 1) * pagesize ;
+                dic["StartIndex"] = pageindex <= 1 ? 0 : (pageindex - 1) * pagesize;
             }
             if (pagesize > 0)
             {
@@ -198,7 +198,7 @@ namespace Hoshino.Repository
             }
             if (pageindex >= 0)
             {
-                dic["StartIndex"] = pageindex <= 1 ? 0 : (pageindex - 1) * pagesize ;
+                dic["StartIndex"] = pageindex <= 1 ? 0 : (pageindex - 1) * pagesize;
             }
             if (pagesize > 0)
             {
@@ -218,7 +218,7 @@ namespace Hoshino.Repository
             }
             if (pageindex >= 0)
             {
-                dic["StartIndex"] = pageindex <= 1 ? 0 : (pageindex - 1) * pagesize ;
+                dic["StartIndex"] = pageindex <= 1 ? 0 : (pageindex - 1) * pagesize;
             }
             if (pagesize > 0)
             {
@@ -238,7 +238,7 @@ namespace Hoshino.Repository
             }
             if (pageindex >= 0)
             {
-                dic["StartIndex"] = pageindex <= 1 ? 0 : (pageindex - 1) * pagesize ;
+                dic["StartIndex"] = pageindex <= 1 ? 0 : (pageindex - 1) * pagesize;
             }
             if (pagesize > 0)
             {
@@ -274,7 +274,7 @@ namespace Hoshino.Repository
             }
             if (pageindex >= 0)
             {
-                dic["StartIndex"] = pageindex <= 1 ? 0 : (pageindex - 1) * pagesize ;
+                dic["StartIndex"] = pageindex <= 1 ? 0 : (pageindex - 1) * pagesize;
             }
             if (pagesize > 0)
             {
