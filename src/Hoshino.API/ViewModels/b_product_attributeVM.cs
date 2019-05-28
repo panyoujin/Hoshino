@@ -40,7 +40,7 @@ namespace Hoshino.API.ViewModels
         /// 属性值繁体
         /// </summary>
         [MaxLength(length:256,ErrorMessage ="长度不能超过256字符")]
-        public string P_Attribute_Value_EN { get; set; }
+        public string P_Attribute_Value_HK { get; set; }
 
         /// <summary>
         /// 1:有效; 0:无效

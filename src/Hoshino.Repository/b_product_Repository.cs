@@ -280,7 +280,7 @@ namespace Hoshino.Repository
             {
                 dic["SelectCount"] = pagesize;
             }
-            var list = SQLHelperFactory.Instance.QueryMultipleByPage<T>("Select_b_product_List", dic);
+            var list = SQLHelperFactory.Instance.QueryMultipleByPage<T>("Select_b_product_id_List", dic);
             return list;
         }
 

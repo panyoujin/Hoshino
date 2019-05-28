@@ -4,7 +4,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                INSERT INTO b_product_attribute (Product_ID,P_Attribute_Name_CH,P_Attribute_Name_HK,P_Attribute_Value_CH,P_Attribute_Value_EN,P_Attribute_Status,P_Attribute_Seq,Create_Time,Create_UserId,Create_User) VALUES(@@Product_ID@@,@@P_Attribute_Name_CH@@,@@P_Attribute_Name_HK@@,@@P_Attribute_Value_CH@@,@@P_Attribute_Value_EN@@,@@P_Attribute_Status@@,@@P_Attribute_Seq@@,NOW(),@@Create_UserId@@,@@Create_User@@);
+                INSERT INTO b_product_attribute (Product_ID,P_Attribute_Name_CH,P_Attribute_Name_HK,P_Attribute_Value_CH,P_Attribute_Value_HK,P_Attribute_Status,P_Attribute_Seq,Create_Time,Create_UserId,Create_User) VALUES(@@Product_ID@@,@@P_Attribute_Name_CH@@,@@P_Attribute_Name_HK@@,@@P_Attribute_Value_CH@@,@@P_Attribute_Value_HK@@,@@P_Attribute_Status@@,@@P_Attribute_Seq@@,NOW(),@@Create_UserId@@,@@Create_User@@);
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -13,7 +13,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                UPDATE b_product_attribute SET Update_Time=NOW() <%=,Product_ID=@@Product_ID@@%> <%=,P_Attribute_Name_CH=@@P_Attribute_Name_CH@@%> <%=,P_Attribute_Name_HK=@@P_Attribute_Name_HK@@%> <%=,P_Attribute_Value_CH=@@P_Attribute_Value_CH@@%> <%=,P_Attribute_Value_EN=@@P_Attribute_Value_EN@@%> <%=,P_Attribute_Status=@@P_Attribute_Status@@%> <%=,P_Attribute_Seq=@@P_Attribute_Seq@@%>    <%=,Update_UserId=@@Update_UserId@@%> <%=,Update_User=@@Update_User@@%> WHERE P_Attribute_ID=@@P_Attribute_ID@@;
+                UPDATE b_product_attribute SET Update_Time=NOW() <%=,Product_ID=@@Product_ID@@%> <%=,P_Attribute_Name_CH=@@P_Attribute_Name_CH@@%> <%=,P_Attribute_Name_HK=@@P_Attribute_Name_HK@@%> <%=,P_Attribute_Value_CH=@@P_Attribute_Value_CH@@%> <%=,P_Attribute_Value_HK=@@P_Attribute_Value_HK@@%> <%=,P_Attribute_Status=@@P_Attribute_Status@@%> <%=,P_Attribute_Seq=@@P_Attribute_Seq@@%>    <%=,Update_UserId=@@Update_UserId@@%> <%=,Update_User=@@Update_User@@%> WHERE P_Attribute_ID=@@P_Attribute_ID@@;
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -31,7 +31,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                SELECT P_Attribute_ID,Product_ID,P_Attribute_Name_CH,P_Attribute_Name_HK,P_Attribute_Value_CH,P_Attribute_Value_EN,P_Attribute_Status,P_Attribute_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_product_attribute WHERE P_Attribute_ID=@@P_Attribute_ID@@;
+                SELECT P_Attribute_ID,Product_ID,P_Attribute_Name_CH,P_Attribute_Name_HK,P_Attribute_Value_CH,P_Attribute_Value_HK,P_Attribute_Status,P_Attribute_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_product_attribute WHERE P_Attribute_ID=@@P_Attribute_ID@@;
                 ]]>
             </SqlCommand>
         </SqlDefinition>
@@ -40,7 +40,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                SELECT P_Attribute_ID,Product_ID,P_Attribute_Name_CH,P_Attribute_Name_HK,P_Attribute_Value_CH,P_Attribute_Value_EN,P_Attribute_Status,P_Attribute_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_product_attribute WHERE  P_Attribute_Status = 1 <%= AND Product_ID=@@Product_ID@@%> <R%= LIMIT @@StartIndex@@, @@SelectCount@@ %R> ;
+                SELECT P_Attribute_ID,Product_ID,P_Attribute_Name_CH,P_Attribute_Name_HK,P_Attribute_Value_CH,P_Attribute_Value_HK,P_Attribute_Status,P_Attribute_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_product_attribute WHERE  P_Attribute_Status = 1 <%= AND Product_ID=@@Product_ID@@%> ORDER BY P_Attribute_Seq,P_Attribute_ID <R%= LIMIT @@StartIndex@@, @@SelectCount@@ %R> ;
                 SELECT COUNT(0) AS row_count FROM b_product_attribute WHERE  P_Attribute_Status = 1 <%= AND Product_ID=@@Product_ID@@%> ;
                 ]]>
             </SqlCommand>

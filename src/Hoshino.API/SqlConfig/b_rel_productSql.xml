@@ -40,7 +40,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                SELECT P_Relevant_ID,Source_Product_ID,Rel_Product_ID,P_Relevant_Status,P_Relevant_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_rel_product WHERE P_Relevant_Status=1 <%= AND Source_Product_ID=@@Source_Product_ID@@%> <R%= LIMIT @@StartIndex@@, @@SelectCount@@ %R> ;
+                SELECT P_Relevant_ID,Source_Product_ID,Rel_Product_ID,P_Relevant_Status,P_Relevant_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_rel_product WHERE P_Relevant_Status=1 <%= AND Source_Product_ID=@@Source_Product_ID@@%> ORDER BY P_Relevant_Seq,P_Relevant_ID <R%= LIMIT @@StartIndex@@, @@SelectCount@@ %R> ;
                 SELECT COUNT(0) AS row_count FROM b_rel_product WHERE P_Relevant_Status=1 <%= AND Source_Product_ID=@@Source_Product_ID@@%>;
                 ]]>
             </SqlCommand>

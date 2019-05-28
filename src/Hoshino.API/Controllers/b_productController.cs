@@ -77,7 +77,7 @@ namespace Hoshino.API.Controllers
         /// </summary>
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<b_productVM>))]
-        public ActionResult<object> Get(int Product_ID)
+        public ActionResult<object> Get(Lang lang, int Product_ID)
         {
             var (pList, prList, paList, rpList) = this._repository.Get(Product_ID);
             b_productVM productVM = null;
@@ -87,6 +87,46 @@ namespace Hoshino.API.Controllers
                 productVM.product_resourcesList = prList.Select(pr => pr.ConvertToT<b_product_resourcesVM>()).ToList();
                 productVM.product_attributeList = paList.Select(pa => pa.ConvertToT<b_product_attributeVM>()).ToList();
                 productVM.rel_productList = rpList.Select(rp => rp.ConvertToT<b_productVM>()).ToList();
+
+                switch (lang)
+                {
+                    case Lang.CHS:
+                        productVM.Product_Name_HK = productVM.Product_Name_CH;
+                        if (productVM.product_attributeList != null)
+                        {
+                            foreach (var a in productVM.product_attributeList)
+                            {
+                                a.P_Attribute_Name_HK = a.P_Attribute_Name_CH;
+                                a.P_Attribute_Value_HK = a.P_Attribute_Value_CH;
+                            }
+                        }
+                        if (productVM.rel_productList != null)
+                        {
+                            foreach (var pr in productVM.rel_productList)
+                            {
+                                p.Product_Name_HK = p.Product_Name_CH;
+                            }
+                        }
+                        break;
+                    case Lang.CHT:
+                        productVM.Product_Name_CH = productVM.Product_Name_HK;
+                        if (productVM.product_attributeList != null)
+                        {
+                            foreach (var a in productVM.product_attributeList)
+                            {
+                                a.P_Attribute_Name_CH = a.P_Attribute_Name_HK;
+                                a.P_Attribute_Value_CH = a.P_Attribute_Value_HK;
+                            }
+                        }
+                        if (productVM.rel_productList != null)
+                        {
+                            foreach (var pr in productVM.rel_productList)
+                            {
+                                p.Product_Name_CH = p.Product_Name_HK;
+                            }
+                        }
+                        break;
+                }
                 break;
             }
             return productVM.ResponseSuccess();
@@ -116,7 +156,7 @@ namespace Hoshino.API.Controllers
         /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_productVM>>))]
-        public ActionResult<object> GetNewProductList(int categoryID = -1, int pageindex = 1, int pagesize = 24)
+        public ActionResult<object> GetNewProductList(Lang lang, int categoryID = -1, int pageindex = 1, int pagesize = 24)
         {
             var (ids, total) = this._repository.GetProductIDList<int>(categoryID, "", 1, -1, -1, pageindex, pagesize);
             var (pList, prList) = this._repository.GetProductListByIDs<b_product_Entity, b_product_resources_Entity>(ids);
@@ -124,6 +164,15 @@ namespace Hoshino.API.Controllers
             foreach (var p in pList)
             {
                 b_productVM productVM = p.ConvertToT<b_productVM>();
+                switch (lang)
+                {
+                    case Lang.CHS:
+                        productVM.Product_Name_HK = productVM.Product_Name_CH;
+                        break;
+                    case Lang.CHT:
+                        productVM.Product_Name_CH = productVM.Product_Name_HK;
+                        break;
+                }
                 productVM.product_resourcesList = prList.Where(pr => pr.Product_ID == p.Product_ID).Select(pr => pr.ConvertToT<b_product_resourcesVM>()).ToList();
                 vmList.Add(productVM);
             }
@@ -139,7 +188,7 @@ namespace Hoshino.API.Controllers
         /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_productVM>>))]
-        public ActionResult<object> GetHotProductList(int categoryID = -1, int pageindex = 1, int pagesize = 24)
+        public ActionResult<object> GetHotProductList(Lang lang, int categoryID = -1, int pageindex = 1, int pagesize = 24)
         {
             var (ids, total) = this._repository.GetProductIDList<int>(categoryID, "", -1, 1, -1, pageindex, pagesize);
             var (pList, prList) = this._repository.GetProductListByIDs<b_product_Entity, b_product_resources_Entity>(ids);
@@ -147,6 +196,15 @@ namespace Hoshino.API.Controllers
             foreach (var p in pList)
             {
                 b_productVM productVM = p.ConvertToT<b_productVM>();
+                switch (lang)
+                {
+                    case Lang.CHS:
+                        productVM.Product_Name_HK = productVM.Product_Name_CH;
+                        break;
+                    case Lang.CHT:
+                        productVM.Product_Name_CH = productVM.Product_Name_HK;
+                        break;
+                }
                 productVM.product_resourcesList = prList.Where(pr => pr.Product_ID == p.Product_ID).Select(pr => pr.ConvertToT<b_product_resourcesVM>()).ToList();
                 vmList.Add(productVM);
             }
@@ -161,7 +219,7 @@ namespace Hoshino.API.Controllers
         /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_productVM>>))]
-        public ActionResult<object> GetRecommendProductList(int categoryID = -1, int pageindex = 1, int pagesize = 24)
+        public ActionResult<object> GetRecommendProductList(Lang lang, int categoryID = -1, int pageindex = 1, int pagesize = 24)
         {
             var (ids, total) = this._repository.GetProductIDList<int>(categoryID, "", -1, -1, 1, pageindex, pagesize);
             var (pList, prList) = this._repository.GetProductListByIDs<b_product_Entity, b_product_resources_Entity>(ids);
@@ -169,6 +227,15 @@ namespace Hoshino.API.Controllers
             foreach (var p in pList)
             {
                 b_productVM productVM = p.ConvertToT<b_productVM>();
+                switch (lang)
+                {
+                    case Lang.CHS:
+                        productVM.Product_Name_HK = productVM.Product_Name_CH;
+                        break;
+                    case Lang.CHT:
+                        productVM.Product_Name_CH = productVM.Product_Name_HK;
+                        break;
+                }
                 productVM.product_resourcesList = prList.Where(pr => pr.Product_ID == p.Product_ID).Select(pr => pr.ConvertToT<b_product_resourcesVM>()).ToList();
                 vmList.Add(productVM);
             }
@@ -185,7 +252,7 @@ namespace Hoshino.API.Controllers
         /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_productVM>>))]
-        public ActionResult<object> GetProductList(int categoryID = -1, string product_name = "", int pageindex = 1, int pagesize = 24)
+        public ActionResult<object> GetProductList(Lang lang, int categoryID = -1, string product_name = "", int pageindex = 1, int pagesize = 24)
         {
             var (ids, total) = this._repository.GetProductIDList<int>(categoryID, product_name, -1, -1, -1, pageindex, pagesize);
             var (pList, prList) = this._repository.GetProductListByIDs<b_product_Entity, b_product_resources_Entity>(ids);
@@ -193,6 +260,15 @@ namespace Hoshino.API.Controllers
             foreach (var p in pList)
             {
                 b_productVM productVM = p.ConvertToT<b_productVM>();
+                switch (lang)
+                {
+                    case Lang.CHS:
+                        productVM.Product_Name_HK = productVM.Product_Name_CH;
+                        break;
+                    case Lang.CHT:
+                        productVM.Product_Name_CH = productVM.Product_Name_HK;
+                        break;
+                }
                 productVM.product_resourcesList = prList.Where(pr => pr.Product_ID == p.Product_ID).Select(pr => pr.ConvertToT<b_product_resourcesVM>()).ToList();
                 vmList.Add(productVM);
             }

@@ -33,9 +33,9 @@ namespace Hoshino.Repository
                 {
                     dic["P_Attribute_Value_CH"] = model.P_Attribute_Value_CH;
                 }
-                if (model.P_Attribute_Value_EN != null)
+                if (model.P_Attribute_Value_HK != null)
                 {
-                    dic["P_Attribute_Value_EN"] = model.P_Attribute_Value_EN;
+                    dic["P_Attribute_Value_HK"] = model.P_Attribute_Value_HK;
                 }
                 if (model.P_Attribute_Status != null && model.P_Attribute_Status.HasValue)
                 {
@@ -88,9 +88,9 @@ namespace Hoshino.Repository
                 {
                     dic["P_Attribute_Value_CH"] = model.P_Attribute_Value_CH;
                 }
-                if (model.P_Attribute_Value_EN != null)
+                if (model.P_Attribute_Value_HK != null)
                 {
-                    dic["P_Attribute_Value_EN"] = model.P_Attribute_Value_EN;
+                    dic["P_Attribute_Value_HK"] = model.P_Attribute_Value_HK;
                 }
                 if (model.P_Attribute_Status != null && model.P_Attribute_Status.HasValue)
                 {

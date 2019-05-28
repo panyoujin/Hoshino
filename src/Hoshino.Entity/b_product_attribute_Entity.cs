@@ -30,7 +30,7 @@
         /// <summary>
         /// 属性值繁体
         /// <summary>
-        public string P_Attribute_Value_EN { get; set; }
+        public string P_Attribute_Value_HK { get; set; }
 
         /// <summary>
         /// 1:有效; 0:无效

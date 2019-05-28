@@ -40,7 +40,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                SELECT Category_ID,Parent_Category_ID,Category_Name_CH,Category_Name_HK,Category_Status,Category_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_category WHERE 1=1 <%= AND Category_ID=@@Category_ID@@%> <%= AND Parent_Category_ID=@@Parent_Category_ID@@%> <%= AND Category_Name_CH=@@Category_Name_CH@@%> <%= AND Category_Name_HK=@@Category_Name_HK@@%> <%= AND Category_Status=@@Category_Status@@%> <%= AND Category_Seq=@@Category_Seq@@%> <R%= LIMIT @@StartIndex@@, @@SelectCount@@ %R> ;
+                SELECT Category_ID,Parent_Category_ID,Category_Name_CH,Category_Name_HK,Category_Status,Category_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_category WHERE 1=1 <%= AND Category_ID=@@Category_ID@@%> <%= AND Parent_Category_ID=@@Parent_Category_ID@@%> <%= AND Category_Name_CH=@@Category_Name_CH@@%> <%= AND Category_Name_HK=@@Category_Name_HK@@%> <%= AND Category_Status=@@Category_Status@@%> <%= AND Category_Seq=@@Category_Seq@@%> ORDER BY Category_Seq,Category_ID <R%= LIMIT @@StartIndex@@, @@SelectCount@@ %R> ;
                 SELECT COUNT(0) AS row_count FROM b_category WHERE 1=1 <%= AND Category_ID=@@Category_ID@@%> <%= AND Parent_Category_ID=@@Parent_Category_ID@@%> <%= AND Category_Name_CH=@@Category_Name_CH@@%> <%= AND Category_Name_HK=@@Category_Name_HK@@%> <%= AND Category_Status=@@Category_Status@@%> <%= AND Category_Seq=@@Category_Seq@@%>      ;
                 ]]>
             </SqlCommand>

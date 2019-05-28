@@ -100,25 +100,65 @@ namespace Hoshino.API.Controllers
         /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<ALLCategoryVM>>))]
-        public ActionResult<object> GetAllCategory()
+        public ActionResult<object> GetAllCategory(Lang lang)
         {
             var (list, total) = this._repository.GetList(-1, -1);
             List<ALLCategoryVM> categoryList = new List<ALLCategoryVM>();
             var firstID = list.Min(l => l.Parent_Category_ID);
-            foreach (var item in list.Where(l => l.Parent_Category_ID == firstID))
+            switch (lang)
             {
-                var child = new ALLCategoryVM() { ID = item.Category_ID, Name = item.Category_Name_CH, Name_CN = item.Category_Name_CH, Name_HK = item.Category_Name_HK, Child = new List<ALLCategoryVM>() };
-                foreach (var item2 in list.Where(l => l.Parent_Category_ID == child.ID))
-                {
-                    var child2 = new ALLCategoryVM() { ID = item2.Category_ID, Name = item2.Category_Name_CH, Name_CN = item2.Category_Name_CH, Name_HK = item2.Category_Name_HK, Child = new List<ALLCategoryVM>() };
-                    foreach (var item3 in list.Where(l => l.Parent_Category_ID == child2.ID))
+                case Lang.All:
+                    foreach (var item in list.Where(l => l.Parent_Category_ID == firstID))
                     {
-                        var child3 = new ALLCategoryVM() { ID = item3.Category_ID, Name = item3.Category_Name_CH, Name_CN = item3.Category_Name_CH, Name_HK = item3.Category_Name_HK, Child = new List<ALLCategoryVM>() };
-                        child2.Child.Add(child3);
+                        var child = new ALLCategoryVM() { ID = item.Category_ID, Name = item.Category_Name_CH, Name_CN = item.Category_Name_CH, Name_HK = item.Category_Name_HK, Child = new List<ALLCategoryVM>() };
+                        foreach (var item2 in list.Where(l => l.Parent_Category_ID == child.ID))
+                        {
+                            var child2 = new ALLCategoryVM() { ID = item2.Category_ID, Name = item2.Category_Name_CH, Name_CN = item2.Category_Name_CH, Name_HK = item2.Category_Name_HK, Child = new List<ALLCategoryVM>() };
+                            foreach (var item3 in list.Where(l => l.Parent_Category_ID == child2.ID))
+                            {
+                                var child3 = new ALLCategoryVM() { ID = item3.Category_ID, Name = item3.Category_Name_CH, Name_CN = item3.Category_Name_CH, Name_HK = item3.Category_Name_HK, Child = new List<ALLCategoryVM>() };
+                                child2.Child.Add(child3);
+                            }
+                            child.Child.Add(child2);
+                        }
+                        categoryList.Add(child);
                     }
-                    child.Child.Add(child2);
-                }
-                categoryList.Add(child);
+                    break;
+
+                case Lang.CHS:
+                    foreach (var item in list.Where(l => l.Parent_Category_ID == firstID))
+                    {
+                        var child = new ALLCategoryVM() { ID = item.Category_ID, Name = item.Category_Name_CH, Name_CN = item.Category_Name_CH, Name_HK = item.Category_Name_CH, Child = new List<ALLCategoryVM>() };
+                        foreach (var item2 in list.Where(l => l.Parent_Category_ID == child.ID))
+                        {
+                            var child2 = new ALLCategoryVM() { ID = item2.Category_ID, Name = item2.Category_Name_CH, Name_CN = item2.Category_Name_CH, Name_HK = item2.Category_Name_CH, Child = new List<ALLCategoryVM>() };
+                            foreach (var item3 in list.Where(l => l.Parent_Category_ID == child2.ID))
+                            {
+                                var child3 = new ALLCategoryVM() { ID = item3.Category_ID, Name = item3.Category_Name_CH, Name_CN = item3.Category_Name_CH, Name_HK = item3.Category_Name_CH, Child = new List<ALLCategoryVM>() };
+                                child2.Child.Add(child3);
+                            }
+                            child.Child.Add(child2);
+                        }
+                        categoryList.Add(child);
+                    }
+                    break;
+                case Lang.CHT:
+                    foreach (var item in list.Where(l => l.Parent_Category_ID == firstID))
+                    {
+                        var child = new ALLCategoryVM() { ID = item.Category_ID, Name = item.Category_Name_HK, Name_CN = item.Category_Name_HK, Name_HK = item.Category_Name_HK, Child = new List<ALLCategoryVM>() };
+                        foreach (var item2 in list.Where(l => l.Parent_Category_ID == child.ID))
+                        {
+                            var child2 = new ALLCategoryVM() { ID = item2.Category_ID, Name = item2.Category_Name_HK, Name_CN = item2.Category_Name_HK, Name_HK = item2.Category_Name_HK, Child = new List<ALLCategoryVM>() };
+                            foreach (var item3 in list.Where(l => l.Parent_Category_ID == child2.ID))
+                            {
+                                var child3 = new ALLCategoryVM() { ID = item3.Category_ID, Name = item3.Category_Name_HK, Name_CN = item3.Category_Name_HK, Name_HK = item3.Category_Name_HK, Child = new List<ALLCategoryVM>() };
+                                child2.Child.Add(child3);
+                            }
+                            child.Child.Add(child2);
+                        }
+                        categoryList.Add(child);
+                    }
+                    break;
             }
             return categoryList.ResponseSuccess("");
         }

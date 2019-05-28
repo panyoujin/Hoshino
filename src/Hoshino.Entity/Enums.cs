@@ -77,4 +77,23 @@ namespace Hoshino.Entity
         Effective = 1
     }
 
+    public enum Lang
+    {
+        /// <summary>
+        /// 全部
+        /// </summary>
+        [Description("全部")]
+        All = 0,
+        /// <summary>
+        /// 简体中文
+        /// </summary>
+        [Description("简体中文")]
+        CHS = 1,
+        /// <summary>
+        /// 繁体中文
+        /// </summary>
+        [Description("繁体中文")]
+        CHT = 2
+    }
+
 }
