@@ -89,7 +89,7 @@ namespace Hoshino.API.Controllers
         /// </summary>
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_banner_resources_Entity>>))]
-        public ActionResult<object> GetList(int pageindex, int pagesize)
+        public ActionResult<object> GetList(int pageindex = 1, int pagesize = 24)
         {
             b_banner_resources_Entity entity = new b_banner_resources_Entity();
             var (list, total) = this._repository.GetList(entity, pageindex, pagesize);

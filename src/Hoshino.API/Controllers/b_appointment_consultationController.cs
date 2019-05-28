@@ -99,7 +99,7 @@ namespace Hoshino.API.Controllers
         [Authorize]
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_appointment_consultation_Entity>>))]
-        public ActionResult<object> GetList(string Company, string Phone, int AC_Status, int pageindex, int pagesize)
+        public ActionResult<object> GetList(string Company, string Phone, int AC_Status, int pageindex = 1, int pagesize = 24)
         {
             b_appointment_consultation_Entity entity = new b_appointment_consultation_Entity
             {

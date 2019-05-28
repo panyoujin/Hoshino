@@ -36,60 +36,67 @@ namespace Hoshino.API.Controllers
         [Authorize]
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Post([FromBody]b_product_resourcesVM model)
+        public ActionResult<object> Post([FromBody]List<b_product_resourcesVM> modelList)
         {
-            b_product_resources_Entity entity = model.ConvertToT<b_product_resources_Entity>();
-            this.SetCreateUserInfo(entity);
-            return this._repository.Insert(entity).ResponseSuccess();
+            List<b_product_resources_Entity> list = new List<b_product_resources_Entity>();
+            foreach (var model in modelList)
+            {
+                b_product_resources_Entity entity = model.ConvertToT<b_product_resources_Entity>();
+                this.SetCreateUserInfo(entity);
+                list.Add(entity);
+            }
+            return this._repository.Insert(list).ResponseSuccess();
         }
 
         /// <summary>
         /// 修改
         /// </summary>
         [Authorize]
-        [HttpPut]
+        [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]b_product_resourcesVM model, int P_Resources_ID)
+        public ActionResult<object> Update([FromBody]List<b_product_resourcesVM> modelList)
         {
-            b_product_resources_Entity entity = model.ConvertToT<b_product_resources_Entity>();
-            this.SetUpdateUserInfo(entity);
-            return this._repository.Update(entity, P_Resources_ID).ResponseSuccess();
+            List<b_product_resources_Entity> list = new List<b_product_resources_Entity>();
+            foreach (var model in modelList)
+            {
+                b_product_resources_Entity entity = model.ConvertToT<b_product_resources_Entity>();
+                this.SetCreateUserInfo(entity);
+                list.Add(entity);
+            }
+            return this._repository.Update(list).ResponseSuccess();
         }
 
         /// <summary>
         /// 删除
         /// </summary>
         [Authorize]
-        [HttpDelete]
+        [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Delete(int P_Resources_ID)
+        public ActionResult<object> Delete([FromBody]List<int> idList)
         {
-            b_product_resources_Entity entity = new b_product_resources_Entity();
-            this.SetUpdateUserInfo(entity);
-            this._repository.Update(entity, P_Resources_ID);
-            return this._repository.Delete(P_Resources_ID).ResponseSuccess();
+            List<b_product_resources_Entity> list = new List<b_product_resources_Entity>();
+            foreach (var id in idList)
+            {
+                b_product_resources_Entity entity = new b_product_resources_Entity()
+                {
+                    P_Resources_ID = id
+                };
+                this.SetCreateUserInfo(entity);
+                list.Add(entity);
+            }
+            this._repository.Update(list);
+            return this._repository.Delete(idList).ResponseSuccess();
         }
 
-        /// <summary>
-        /// 获取单个
-        /// </summary>
-        [Authorize]
-        [HttpGet]
-        [ProducesResponseType(200, Type = typeof(ApiResult<b_product_resources_Entity>))]
-        public ActionResult<object> Get(int P_Resources_ID)
-        {
-            return this._repository.Get(P_Resources_ID).ResponseSuccess();
-        }
 
         /// <summary>
         /// 获取列表
         /// </summary>
-        [HttpPost]
+        [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_product_resources_Entity>>))]
-        public ActionResult<object> GetList([FromBody]b_product_resourcesVM model, int pageindex, int pagesize)
+        public ActionResult<object> GetList(int Product_ID, int pageindex = 1, int pagesize = 24)
         {
-            b_product_resources_Entity entity = model.ConvertToT<b_product_resources_Entity>();
-            var (list, total) = this._repository.GetList(entity, pageindex, pagesize);
+            var (list, total) = this._repository.GetList(Product_ID, pageindex, pagesize);
             return list.ResponseSuccess("", total);
         }
 

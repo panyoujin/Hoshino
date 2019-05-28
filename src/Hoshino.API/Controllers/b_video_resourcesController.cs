@@ -86,7 +86,7 @@ namespace Hoshino.API.Controllers
         /// </summary>
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_video_resources_Entity>>))]
-        public ActionResult<object> GetList([FromBody]b_video_resourcesVM model, int pageindex, int pagesize)
+        public ActionResult<object> GetList([FromBody]b_video_resourcesVM model, int pageindex = 1, int pagesize = 24)
         {
             b_video_resources_Entity entity = model.ConvertToT<b_video_resources_Entity>();
             var (list, total) = this._repository.GetList(entity, pageindex, pagesize);

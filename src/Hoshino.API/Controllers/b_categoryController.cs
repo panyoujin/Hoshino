@@ -88,7 +88,7 @@ namespace Hoshino.API.Controllers
         /// </summary>
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_category_Entity>>))]
-        public ActionResult<object> GetList(int pageindex, int pagesize)
+        public ActionResult<object> GetList(int pageindex = 1, int pagesize = 24)
         {
             var (list, total) = this._repository.GetList(pageindex, pagesize);
             return list.ResponseSuccess("", total);

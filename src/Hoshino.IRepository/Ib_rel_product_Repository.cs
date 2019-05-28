@@ -8,28 +8,28 @@ namespace Hoshino.IRepository
     {
         /// <summary>
         /// 新增
-        /// <summary>
-        bool Insert(b_rel_product_Entity model);
+        /// </summary>
+        bool Insert(List<b_rel_product_Entity> list);
 
         /// <summary>
         /// 修改
-        /// <summary>
-        bool Update(b_rel_product_Entity model, int P_Relevant_ID);
+        /// </summary>
+        bool Update(List<b_rel_product_Entity> list);
 
         /// <summary>
         /// 删除
-        /// <summary>
-        bool Delete(int P_Relevant_ID);
+        /// </summary>
+        bool Delete(List<int> idList);
 
         /// <summary>
         /// 获取单个
-        /// <summary>
+        /// </summary>
         b_rel_product_Entity Get(int P_Relevant_ID);
 
         /// <summary>
         /// 获取列表
-        /// <summary>
-        (IEnumerable<b_rel_product_Entity>,int) GetList(b_rel_product_Entity model,int pageindex,int pagesize);
+        /// </summary>
+        (IEnumerable<b_rel_product_Entity>, int) GetList(int Product_ID, int pageindex, int pagesize);
 
     }
 }
