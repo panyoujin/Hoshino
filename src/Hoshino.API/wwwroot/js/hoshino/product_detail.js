@@ -1,12 +1,22 @@
 $(function () {
     //菜单数据
     loadCategory();
+
+    //获取页面传值的id
+    var productId = getUrlParam("productId");
+    if (!$.isEmptyObject(productId)) {
+        //如果该产品不存在数据库，则返回上一级
+        loadProductEditData(productId);
+    }
+
+
     //提交产品基本信息 下一步
     $("#btnproduct_base_next").click(function () {
         if (!$("#signupForm_base").valid()) {
             return;
         }
         var productReq = {
+            Product_ID:$("#productId").val(),
             Product_Name_CH: $("#txtProduct_Name_CH").val(),
             Product_Name_HK: $("#txtProduct_Name_HK").val(),
             Category_ID: $("#slCategory").val(),
@@ -16,18 +26,30 @@ $(function () {
             Product_Status: $("#slProduct_Status").val(),
             Product_Seq: $("#txtProduct_Seq").val(),
         };
-        //保存产品
-        requestUrl("/api/b_product/Post", function (obj) {
-            if (obj.Code == 200) {
-                $("#productId").val(parseInt(obj.Rersult));
-                parent.layer.alert('保存产品信息成功');
-                console.info(obj);
-                console.info("产品id："+parseInt(obj.Rersult));
-                //跳到下一个页面  图片/视频
-                $("#product_base").css("display", "none");
-                $("#product_resources").css("display", "block");
-            }
-        }, JSON.stringify(productReq));
+
+        if ($.isEmptyObject(productReq.Product_ID)) {
+            //保存产品
+            requestUrl("/api/b_product/Post", function (obj) {
+                if (obj.Code == 200) {
+                    $("#productId").val(parseInt(obj.Result));
+                    parent.layer.alert('保存产品信息成功');
+                    //跳到下一个页面  图片/视频
+                    $("#product_base").css("display", "none");
+                    $("#product_resources").css("display", "block");
+                }
+            }, JSON.stringify(productReq));
+        }else{
+            requestUrl("/api/b_product/Update", function (obj) {
+                if (obj.Code == 200) {
+                    parent.layer.alert('修改产品信息成功');
+                    //跳到下一个页面  图片/视频
+                    $("#product_base").css("display", "none");
+                    $("#product_resources").css("display", "block");
+                }
+            }, JSON.stringify(productReq));
+        }
+
+
     });
 
 
@@ -84,31 +106,31 @@ $(function () {
     $("#btnproduct_resources_next").click(function () {
         var insertModel = [];
         var updateModel = [];
-        var pic1 = { P_Resources_ID: $("#resourcesId1").val(), Product_ID: $("#productId").val(), P_Resources_URL: $("#imgPic1").attr("pic"), P_Resources_Type: "image", P_Resources_Status: $("#slP_Resources_Status1").val(), P_Resources_Seq: $("#txtP_Resources_Seq1").val(),P_Resources_Name_CH:"默认名称",P_Resources_Name_HK:"默认名称" };
-        var pic2 = { P_Resources_ID: $("#resourcesId2").val(), Product_ID: $("#productId").val(), P_Resources_URL: $("#imgPic2").attr("pic"), P_Resources_Type: "image", P_Resources_Status: $("#slP_Resources_Status2").val(), P_Resources_Seq: $("#txtP_Resources_Seq2").val() ,P_Resources_Name_CH:"默认名称",P_Resources_Name_HK:"默认名称" };
-        var pic3 = { P_Resources_ID: $("#resourcesId3").val(), Product_ID: $("#productId").val(), P_Resources_URL: $("#imgPic3").attr("pic"), P_Resources_Type: "image", P_Resources_Status: $("#slP_Resources_Status3").val(), P_Resources_Seq: $("#txtP_Resources_Seq3").val() ,P_Resources_Name_CH:"默认名称",P_Resources_Name_HK:"默认名称" };
-        var pic4 = { P_Resources_ID: $("#resourcesId4").val(), Product_ID: $("#productId").val(), P_Resources_URL: $("#videoControl").attr("vic"), P_Resources_Type: "video", P_Resources_Status: $("#slP_Resources_Status4").val(), P_Resources_Seq: $("#txtP_Resources_Seq4").val() ,P_Resources_Name_CH:"默认名称",P_Resources_Name_HK:"默认名称" };
+        var pic1 = { P_Resources_ID: $("#resourcesId1").val(), Product_ID: $("#productId").val(), P_Resources_URL: $("#imgPic1").attr("pic"), P_Resources_Type: "image", P_Resources_Status: $("#slP_Resources_Status1").val(), P_Resources_Seq: $("#txtP_Resources_Seq1").val(), P_Resources_Name_CH: "默认名称", P_Resources_Name_HK: "默认名称" };
+        var pic2 = { P_Resources_ID: $("#resourcesId2").val(), Product_ID: $("#productId").val(), P_Resources_URL: $("#imgPic2").attr("pic"), P_Resources_Type: "image", P_Resources_Status: $("#slP_Resources_Status2").val(), P_Resources_Seq: $("#txtP_Resources_Seq2").val(), P_Resources_Name_CH: "默认名称", P_Resources_Name_HK: "默认名称" };
+        var pic3 = { P_Resources_ID: $("#resourcesId3").val(), Product_ID: $("#productId").val(), P_Resources_URL: $("#imgPic3").attr("pic"), P_Resources_Type: "image", P_Resources_Status: $("#slP_Resources_Status3").val(), P_Resources_Seq: $("#txtP_Resources_Seq3").val(), P_Resources_Name_CH: "默认名称", P_Resources_Name_HK: "默认名称" };
+        var pic4 = { P_Resources_ID: $("#resourcesId4").val(), Product_ID: $("#productId").val(), P_Resources_URL: $("#videoControl").attr("vic"), P_Resources_Type: "video", P_Resources_Status: $("#slP_Resources_Status4").val(), P_Resources_Seq: $("#txtP_Resources_Seq4").val(), P_Resources_Name_CH: "默认名称", P_Resources_Name_HK: "默认名称" };
         if (pic1.P_Resources_ID > 0) {
             updateModel.push(pic1);
-        } else if(!$.isEmptyObject(pic1.P_Resources_URL)){
+        } else if (!$.isEmptyObject(pic1.P_Resources_URL)) {
             insertModel.push(pic1);
         }
 
         if (pic2.P_Resources_ID > 0) {
             updateModel.push(pic2);
-        } else if(!$.isEmptyObject(pic2.P_Resources_URL)){
+        } else if (!$.isEmptyObject(pic2.P_Resources_URL)) {
             insertModel.push(pic2);
         }
 
         if (pic3.P_Resources_ID > 0) {
             updateModel.push(pic3);
-        } else if(!$.isEmptyObject(pic3.P_Resources_URL)){
+        } else if (!$.isEmptyObject(pic3.P_Resources_URL)) {
             insertModel.push(pic3);
         }
 
         if (pic4.P_Resources_ID > 0) {
             updateModel.push(pic4);
-        } else if(!$.isEmptyObject(pic4.P_Resources_URL)){
+        } else if (!$.isEmptyObject(pic4.P_Resources_URL)) {
             insertModel.push(pic4);
         }
 
@@ -146,9 +168,9 @@ $(function () {
     // });
     //提交产品属性 完成
     $("#btnproduct_attributes_complete").click(function () {
-        var product_attributes=[];
+        var product_attributes = [];
         $("#signupForm_attribute .attributeItem").each(function (index) {
-            
+
             //简体
             var ch = $(this).children(".form-group").eq(0);
             var ch_key = ch.find("div .form-control").eq(0).val();
@@ -165,12 +187,14 @@ $(function () {
             var Attribute_Status = third.find("div select").val();
             var Attribute_Seq = third.find("div .form-control").val();
 
-            if ($.isEmptyObject(ch_key) || $.isEmptyObject(ch_value) || $.isEmptyObject(hk_key) || $.isEmptyObject(hk_value)|| $.isEmptyObject(Attribute_Seq)) {
+            if ($.isEmptyObject(ch_key) || $.isEmptyObject(ch_value) || $.isEmptyObject(hk_key) || $.isEmptyObject(hk_value) || $.isEmptyObject(Attribute_Seq)) {
                 parent.layer.alert('产品属性/排序不能为空');
                 return;
             }
-            var attribute={Product_ID:$("#productId").val(),P_Attribute_Name_CH:ch_key,P_Attribute_Name_HK:hk_key,
-            P_Attribute_Value_CH:ch_value,P_Attribute_Value_HK:hk_value,P_Attribute_Status:Attribute_Status,P_Attribute_Seq:Attribute_Seq};
+            var attribute = {
+                Product_ID: $("#productId").val(), P_Attribute_Name_CH: ch_key, P_Attribute_Name_HK: hk_key,
+                P_Attribute_Value_CH: ch_value, P_Attribute_Value_HK: hk_value, P_Attribute_Status: Attribute_Status, P_Attribute_Seq: Attribute_Seq
+            };
             product_attributes.push(attribute);
         });
 
@@ -180,6 +204,7 @@ $(function () {
                 console.info(obj);
                 if (obj.Code == 200) {
                     parent.layer.alert('保存成功');
+                    window.location.href = "product_manage.html";
                 } else {
                     parent.layer.alert('保存失败');
                     return;
@@ -274,4 +299,96 @@ var loadCategory = function () {
     }, '', 'GET');
 }
 
+//编辑产品信息
+var loadProductEditData = function (productId) {
+    requestUrl("/api/b_product/GetBack?Product_ID=" + productId, function (obj) {
+        if (obj.Code == 200) {
+            $("#productId").val(parseInt(obj.Result.Product_ID));
+            $("#txtProduct_Name_CH").val(obj.Result.Product_Name_CH);
+            $("#txtProduct_Name_HK").val(obj.Result.Product_Name_HK);
+            $("#slCategory").val(obj.Result.Category_ID);
+            $("#slProduct_New").val(obj.Result.Product_New);
+            $("#slProduct_Hot").val(obj.Result.Product_Hot);
+            $("#slProduct_Recommend").val(obj.Result.Product_Recommend);
+            $("#slProduct_Status").val(obj.Result.Product_Status);
+            $("#txtProduct_Seq").val(obj.Result.Product_Seq);
 
+            if (obj.Result.product_resourcesList.length > 0) {
+                var picIndex = 1;
+                $.each(obj.Result.product_resourcesList, function (n, item) {
+                    if (item.P_Resources_Type == "image") {
+                        $("#resourcesId" + picIndex).val(item.P_Resources_ID);
+                        $("#imgPic" + picIndex).attr("pic", item.P_Resources_URL);
+                        $("#imgPic" + picIndex).attr("src", _Domain + item.P_Resources_URL);
+                        $("#slP_Resources_Status" + picIndex).val(item.P_Resources_Status);
+                        $("#txtP_Resources_Seq" + picIndex).val(item.P_Resources_Seq);
+
+                        picIndex++;
+                    } else if (item.P_Resources_Type == "video") {
+                        $("#resourcesId4").val(item.P_Resources_ID);
+                        $("#videoControl").attr("vic", item.P_Resources_URL);
+                        $("#videoControl").attr("src", _Domain + item.P_Resources_URL);
+                        $("#slP_Resources_Status4").val(item.P_Resources_Status);
+                        $("#txtP_Resources_Seq4").val(item.P_Resources_Seq);
+                    }
+                });
+            }
+
+            if (obj.Result.product_attributeList.length > 0) {
+                $("#signupForm_attribute").empty();
+                $.each(obj.Result.product_attributeList, function (n, item) {
+                    var attributeStatusStr = "";
+                    if (item.P_Attribute_Status == 1) {
+                        attributeStatusStr = "<option value='1' selected>是</option><option value='0'>否</option>";
+                    } else {
+                        attributeStatusStr = "<option value='1'>是</option><option value='0' selected>否</option>";
+                    }
+
+                    $("#signupForm_attribute").append("<div class='attributeItem'>\
+                    <div class='form-group'>\
+                        <div class='col-sm-4'>\
+                            <input  name='txtP_Attribute_Name_CH' value='"+ item.P_Attribute_Name_CH + "' class='form-control' type='text' placeholder='属性简体'>\
+                        </div>\
+                        <div class='col-sm-6'>\
+                            <input  name='txtP_Attribute_Value_CH' value='"+ item.P_Attribute_Value_CH + "' class='form-control' type='text' placeholder='简体内容'>\
+                        </div>\
+                    </div>\
+                    <div class='form-group'>\
+                        <div class='col-sm-4'>\
+                            <input  name='txtP_Attribute_Name_HK' value='"+ item.P_Attribute_Name_HK + "' class='form-control' type='text' placeholder='属性繁体'>\
+                        </div>\
+                        <div class='col-sm-6'>\
+                            <input  name='txtP_Attribute_Value_EN'class='form-control' value='"+ item.P_Attribute_Value_HK + "' type='text' placeholder='繁体内容'>\
+                        </div>\
+                    </div>\
+                    <div class='form-group'>\
+                        <label class='col-sm-2 control-label'>启用：</label>\
+                        <div class='col-sm-2'>\
+                            <select  class='form-control m-b'> \
+                            "+ attributeStatusStr + " </select>\
+                        </div>\
+                        <label class='col-sm-2 control-label'>排序：</label>\
+                        <div class='col-sm-4'>\
+                            <input name='txtP_Resources_Seq' value='"+ item.P_Attribute_Seq + "' class='form-control' value='0' type='text'>\
+                        </div>\
+                        <div class='col-sm-2'>\
+                            <button class='btn btn-warning btnAttributeDelete' type='button'>删除</button>\
+                        </div>\
+                    </div>\
+                </div>");
+                });
+            }
+
+        } else {
+            history.back(-1);
+        }
+    }, '', 'GET');
+
+}
+
+
+function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]); return null; //返回参数值
+}

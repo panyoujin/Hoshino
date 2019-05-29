@@ -3,6 +3,7 @@
 
 
 <!-- Mirrored from www.zi-han.net/theme/hplus/table_basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:20:01 GMT -->
+
 <head>
 
     <meta charset="utf-8">
@@ -37,13 +38,42 @@
                     </div>
                     <div class="ibox-content">
                         <div class="row m-b-sm m-t-sm">
+                            <div class="col-md-2">
+                                <select id="slCategory" class="input-md  form-control" name="slCategory"></select>
+                            </div>
                             <div class="col-md-1">
-                                <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> 刷新</button>
+                                <select id="slProduct_Status" class="input-md  form-control">
+                                    <option value="" selected>启用状态</option>
+                                    <option value="1">启用</option>
+                                    <option value="0">不启用</option>
+                                </select>
+                            </div>
+                            <div class="col-md-1">
+                                <select id="slProduct_New" class="input-md  form-control">
+                                    <option value="" selected>是否最新</option>
+                                    <option value="1">是</option>
+                                    <option value="0">否</option>
+                                </select>
+                            </div>
+                            <div class="col-md-1">
+                                <select id="slProduct_Hot" class="input-md  form-control">
+                                    <option value="" selected>是否热门</option>
+                                    <option value="1">是</option>
+                                    <option value="0">否</option>
+                                </select>
+                            </div>
+                            <div class="col-md-1">
+                                <select id="slProduct_Recommend" class="input-md  form-control">
+                                    <option value="" selected>是否推荐</option>
+                                    <option value="1">是</option>
+                                    <option value="0">否</option>
+                                </select>
                             </div>
                             <div class="col-md-3">
                                 <div class="input-group">
-                                    <input type="text" placeholder="请输入项目名称" class="input-sm form-control"> <span class="input-group-btn">
-                                        <button type="button" class="btn btn-sm btn-primary"> 搜索</button>
+                                    <input id="txtSearch" type="text" placeholder="请输入产品名称" class="input-md form-control"> <span
+                                        class="input-group-btn">
+                                        <button type="button" class="btn btn-md btn-primary" id="btnSearch"> 搜索</button>
                                     </span>
                                 </div>
                             </div>
@@ -89,10 +119,10 @@
                                             <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> 编辑 </a>
                                         </td>
                                     </tr> -->
-                                  
+
 
                                 </tbody>
-              
+
                             </table>
                             <div style="text-align: right;" id="pagination">
                             </div>
@@ -110,7 +140,7 @@
     <script src="js/hoshino/common.js"></script>
     <script src="js/hoshino/product_manage.js"></script>
     <script>
-        $(document).ready(function () { $("#loading-example-btn").click(function () { btn = $(this); simpleLoad(btn, true); simpleLoad(btn, false) }) }); function simpleLoad(btn, state) { if (state) { btn.children().addClass("fa-spin"); btn.contents().last().replaceWith(" Loading") } else { setTimeout(function () { btn.children().removeClass("fa-spin"); btn.contents().last().replaceWith(" Refresh") }, 2000) } };
+        // $(document).ready(function () { $("#loading-example-btn").click(function () { btn = $(this); simpleLoad(btn, true); simpleLoad(btn, false) }) }); function simpleLoad(btn, state) { if (state) { btn.children().addClass("fa-spin"); btn.contents().last().replaceWith(" Loading") } else { setTimeout(function () { btn.children().removeClass("fa-spin"); btn.contents().last().replaceWith(" Refresh") }, 2000) } };
     </script>
 
 </body>

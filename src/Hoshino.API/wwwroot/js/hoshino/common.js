@@ -107,8 +107,8 @@ var pagination = function (pageindex, pagesize, total, loaddata) {
             html += '<li class="' + (pageindex === index ? "active" : "") + '"><a data="' + index + '">' + index + '</a></li>';
         }
     }
-    console.log("pageindex:" + pageindex);
-    console.log("pagetotal:" + pagetotal);
+    // console.log("pageindex:" + pageindex);
+    // console.log("pagetotal:" + pagetotal);
     if (pageindex < pagetotal) {
         html += '<li><a data="' + (pageindex + 1) + '");">&raquo;</a></li></ul></div>';
     }
@@ -120,7 +120,7 @@ var pagination = function (pageindex, pagesize, total, loaddata) {
         var self = $(this);
         self.on('click', function () {
             var value = self.find('a').attr("data");
-            console.log(value);
+            // console.log(value);
             loaddata(value);
         });
 
