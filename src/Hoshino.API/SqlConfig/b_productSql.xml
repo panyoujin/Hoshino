@@ -61,7 +61,7 @@ LEFT JOIN  `b_product` p ON rp.`Rel_Product_ID`=p.`Product_ID`
     <SqlDefinition type="MySql" ConnStringName="backstage_connection">
       <SqlCommand>
         <![CDATA[
- SELECT p.`Product_ID`,p.`Product_Name_CH`,p.`Product_Name_HK`,p.`Product_Hot`,p.`Product_New`,p.`Product_Recommend`,p.`Product_Seq`,p.`Product_Status`  
+ SELECT p.`Product_ID`,p.Category_ID,p.`Product_Name_CH`,p.`Product_Name_HK`,p.`Product_Hot`,p.`Product_New`,p.`Product_Recommend`,p.`Product_Seq`,p.`Product_Status`  
  FROM `b_product` p  WHERE p.`Product_ID` =@@Product_ID@@;
  
  SELECT pr.`Product_ID`,pr.`P_Resources_ID`,pr.`P_Resources_URL`,pr.`P_Resources_Type`,pr.`P_Resources_Seq` ,pr.`P_Resources_Status`
