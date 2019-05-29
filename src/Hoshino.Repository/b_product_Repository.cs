@@ -170,10 +170,6 @@ namespace Hoshino.Repository
             {
                 dic["Product_Status"] = model.Product_Status;
             }
-            if (model.Product_Seq >= 0)
-            {
-                dic["Product_Seq"] = model.Product_Seq;
-            }
             if (pageindex >= 0)
             {
                 dic["StartIndex"] = pageindex <= 1 ? 0 : (pageindex - 1) * pagesize;

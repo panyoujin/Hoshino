@@ -27,10 +27,12 @@
 </head>
 
 <body class="gray-bg">
+    <input id="productId" type="text" style="display:none" value="">
 
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
-            <div class="col-sm-4">
+            <!--产品基本信息 start-->
+            <div class="col-sm-6"  id="product_base">
 
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
@@ -42,74 +44,206 @@
                         </div>
                     </div>
                     <div class="ibox-content">
-
-                        <a href="#" style="display:none" data-toggle="modal" id="hiEventShowDialog"
-                            data-target="#picCropper"></a>
-
-
                         <form class="form-horizontal m-t" id="signupForm_base">
-                            <!--产品图片 start-->
-                            <div class="form-group">
-                                <a href="#" class="col-sm-4">
-                                    <img id="imgPic1" pic="" style="height: 200px; width: 171px; "
-                                        src="./img/default.png" alt="展示图片">
-                                </a>
-                                <a href="#" class="col-sm-6">
-                                    <img id="imgPic2" pic=""
-                                        style="height: 200px; width: 171px;display: block;float: right; "
-                                        src="./img/default.png" alt="展示图片">
-                                </a>
-                            </div>
-                            <div class="form-group">
-                                <a href="#" class="col-sm-4">
-                                    <img id="imgPic3" pic="" style="height: 200px; width: 171px; "
-                                        src="./img/default.png" alt="展示图片">
-                                </a>
-                                <a href="#" class="col-sm-6">
-                                    <div class="col-sm-10" id="imgVideo"
-                                        style="height: 200px; width: 171px; display: block;float: right;">
-                                        <video id="videoControl" vic="" controls="controls" src=""></video>
-                                    </div>
-
-                                    <!-- <img id="imgVideo" style="height: 200px; width: 171px;display: block;float: right; "
-                                        src="./img/video.png" alt="展示图片"> -->
-                                </a>
-                            </div>
-                            <!--产品图片 end-->
 
                             <div class="form-group">
-                                <label class="col-sm-4 control-label">产品名称(简体)：</label>
-                                <div class="col-sm-6">
+                                <label class="col-sm-3 control-label">产品名称(简体)：</label>
+                                <div class="col-sm-7">
                                     <input id="txtProduct_Name_CH" name="txtProduct_Name_CH" class="form-control"
                                         type="text">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-4 control-label">产品名称(繁体)：</label>
-                                <div class="col-sm-6">
+                                <label class="col-sm-3 control-label">产品名称(繁体)：</label>
+                                <div class="col-sm-7">
                                     <input id="txtProduct_Name_HK" name="txtProduct_Name_HK" class="form-control"
                                         type="text">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-4 control-label">产品类别：</label>
-                                <div class="col-sm-6">
+                                <label class="col-sm-3 control-label">产品类别：</label>
+                                <div class="col-sm-7">
                                     <select id="slCategory" class="form-control m-b" name="slCategory"></select>
                                 </div>
                             </div>
-
-
                             <div class="form-group">
-                                <div class="col-sm-4 col-sm-offset-8">
-                                    <button class="btn btn-primary" type="button" id="btnSubmit">提交</button>
+                                <label class="col-sm-3 control-label">是否最新：</label>
+                                <div class="col-sm-7">
+                                    <select id="slProduct_New" class="form-control m-b" name="slProduct_New">
+                                        <option value="1">是</option>
+                                        <option value="0" selected>否</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">是否热门：</label>
+                                <div class="col-sm-7">
+                                    <select id="slProduct_Hot" class="form-control m-b" name="slProduct_Hot">
+                                        <option value="1">是</option>
+                                        <option value="0" selected>否</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">是否推荐：</label>
+                                <div class="col-sm-7">
+                                    <select id="slProduct_Recommend" class="form-control m-b"
+                                        name="slProduct_Recommend">
+                                        <option value="1">是</option>
+                                        <option value="0" selected>否</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">是否有效：</label>
+                                <div class="col-sm-7">
+                                    <select id="slProduct_Status" class="form-control m-b" name="slProduct_Status">
+                                        <option value="1" selected>是</option>
+                                        <option value="0">否</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">排序：</label>
+                                <div class="col-sm-7">
+                                    <input id="txtProduct_Seq" name="txtProduct_Seq" class="form-control" value="0"
+                                        type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-3 col-sm-offset-8">
+                                    <button class="btn btn-primary" type="button" id="btnproduct_base_next">下一步</button>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <!--产品基本信息 end-->
 
+            <!--产品图片视频 start-->
+            <div class="col-sm-6" style="display:none" id="product_resources">
+                <a href="#" style="display:none" data-toggle="modal" id="hiEventShowDialog"
+                    data-target="#picCropper"></a>
+
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>产品资源新增/编辑</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <form class="form-horizontal m-t">
+                            <!--产品图片 start-->
+                            <div class="form-group">
+                                <input id="resourcesId1" type="text" style="display:none" value="0">
+                                <a href="#" class="col-sm-3">
+                                    <img id="imgPic1" pic="" style="height: 200px; width: 171px; "
+                                        src="./img/default.png" alt="展示图片">
+                                </a>
+
+                                <label class="col-sm-2 control-label">启用：</label>
+                                <div class="col-sm-2">
+                                    <select id="slP_Resources_Status1" class="form-control m-b"
+                                        name="slP_Resources_Status">
+                                        <option value="1" selected>是</option>
+                                        <option value="0">否</option>
+                                    </select>
+                                </div>
+                                <label class="col-sm-2 control-label">排序：</label>
+                                <div class="col-sm-2">
+                                    <input id="txtP_Resources_Seq1" name="txtP_Resources_Seq" class="form-control"
+                                        value="0" type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input id="resourcesId2" type="text" style="display:none" value="0">
+                                <a href="#" class="col-sm-3">
+                                    <img id="imgPic2" pic=""
+                                        style="height: 200px; width: 171px;display: block;float: right; "
+                                        src="./img/default.png" alt="展示图片">
+                                </a>
+                                <label class="col-sm-2 control-label">启用：</label>
+                                <div class="col-sm-2">
+                                    <select id="slP_Resources_Status2" class="form-control m-b"
+                                        name="slP_Resources_Status">
+                                        <option value="1" selected>是</option>
+                                        <option value="0">否</option>
+                                    </select>
+                                </div>
+                                <label class="col-sm-2 control-label">排序：</label>
+                                <div class="col-sm-2">
+                                    <input id="txtP_Resources_Seq2" name="txtP_Resources_Seq" class="form-control"
+                                        value="0" type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input id="resourcesId3" type="text" style="display:none" value="0">
+                                <a href="#" class="col-sm-3">
+                                    <img id="imgPic3" pic="" style="height: 200px; width: 171px; "
+                                        src="./img/default.png" alt="展示图片">
+                                </a>
+                                <label class="col-sm-2 control-label">启用：</label>
+                                <div class="col-sm-2">
+                                    <select id="slP_Resources_Status3" class="form-control m-b"
+                                        name="slP_Resources_Status">
+                                        <option value="1" selected>是</option>
+                                        <option value="0">否</option>
+                                    </select>
+                                </div>
+                                <label class="col-sm-2 control-label">排序：</label>
+                                <div class="col-sm-2">
+                                    <input id="txtP_Resources_Seq3" name="txtP_Resources_Seq" class="form-control"
+                                        value="0" type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input id="resourcesId4" type="text" style="display:none" value="0">
+                                <a href="#" class="col-sm-3">
+                                    <div class="col-sm-10" id="imgVideo"
+                                        style="height: 200px; width: 171px; display: block;float: right;">
+                                        <video id="videoControl" vic="" controls="controls" src=""></video>
+                                    </div>
+                                </a>
+                                <label class="col-sm-2 control-label">启用：</label>
+                                <div class="col-sm-2">
+                                    <select id="slP_Resources_Status4" class="form-control m-b"
+                                        name="slP_Resources_Status">
+                                        <option value="1" selected>是</option>
+                                        <option value="0">否</option>
+                                    </select>
+                                </div>
+                                <label class="col-sm-2 control-label">排序：</label>
+                                <div class="col-sm-2">
+                                    <input id="txtP_Resources_Seq4" name="txtP_Resources_Seq" class="form-control"
+                                        value="0" type="text">
+                                </div>
+
+                            </div>
+
+                            <!--产品图片 end-->
+                            <div class="form-group">
+                                <div class="col-sm-offset-9">
+                                    <!-- <button class="btn btn-warning" type="button"
+                                        id="btnproduct_resources_back">上一步</button> -->
+                                    <button class="btn btn-primary" type="button"
+                                        id="btnproduct_resources_next">下一步</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--产品图片视频 end-->
+
+            <!--产品属性 start-->
+            <div class="col-sm-6" style="display:none" id="product_attributes">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>产品属性新增/编辑</h5>
@@ -122,63 +256,59 @@
                             <div class="attributeItem">
                                 <div class="form-group">
                                     <div class="col-sm-4">
-                                        <input id="txtP_Attribute_Name_CH1" name="txtP_Attribute_Name_CH"
-                                            class="form-control" type="text" placeholder="属性简体">
+                                        <input name="txtP_Attribute_Name_CH" class="form-control" type="text"
+                                            placeholder="属性简体">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input id="txtP_Attribute_Value_CH1" name="txtP_Attribute_Value_CH"
-                                            class="form-control" type="text" placeholder="简体内容">
+                                        <input name="txtP_Attribute_Value_CH" class="form-control" type="text"
+                                            placeholder="简体内容">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-4">
-                                        <input id="txtP_Attribute_Name_HK1" name="txtP_Attribute_Name_HK"
-                                            class="form-control" type="text" placeholder="属性繁体">
+                                        <input name="txtP_Attribute_Name_HK" class="form-control" type="text"
+                                            placeholder="属性繁体">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input id="txtP_Attribute_Value_EN1" name="txtP_Attribute_Value_EN"
-                                            class="form-control" type="text" placeholder="繁体内容">
+                                        <input name="txtP_Attribute_Value_EN" class="form-control" type="text"
+                                            placeholder="繁体内容">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">启用：</label>
+                                    <div class="col-sm-2">
+                                        <select class="form-control m-b">
+                                            <option value="1" selected>是</option>
+                                            <option value="0">否</option>
+                                        </select>
+                                    </div>
+
+                                    <label class="col-sm-2 control-label">排序：</label>
+                                    <div class="col-sm-4">
+                                        <input name="txtP_Resources_Seq" class="form-control" value="0" type="text">
                                     </div>
                                     <div class="col-sm-2">
-                                        <button class="btn btn-warning btnAttributeDelete" type="button" >删除</button>
+                                        <button class="btn btn-warning btnAttributeDelete" type="button">删除</button>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="attributeItem">
-                                <div class="form-group">
-                                    <div class="col-sm-4">
-                                        <input id="txtP_Attribute_Name_CH2" name="txtP_Attribute_Name_CH"
-                                            class="form-control" type="text" placeholder="属性简体">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input id="txtP_Attribute_Value_CH2" name="txtP_Attribute_Value_CH"
-                                            class="form-control" type="text" placeholder="简体内容">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-4">
-                                        <input id="txtP_Attribute_Name_HK2" name="txtP_Attribute_Name_HK"
-                                            class="form-control" type="text" placeholder="属性繁体">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input id="txtP_Attribute_Value_EN2" name="txtP_Attribute_Value_EN"
-                                            class="form-control" type="text" placeholder="繁体内容">
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <button class="btn btn-warning btnAttributeDelete" type="button" >删除</button>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
                         </form>
+                        <div class="form-group">
+                            <div class="col-sm-offset-10">
+                                <!-- <button class="btn btn-warning" type="button"
+                                        id="btnproduct_attributes_back">上一步</button> -->
+                                <button class="btn btn-primary" type="button"
+                                    id="btnproduct_attributes_complete">完成</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!--产品属性 end-->
         </div>
     </div>
+
+
     <!-- 弹出窗口 开始-->
     <div class="modal inmodal fade" tabindex="-1" id="picCropper" role="dialog" aria-hidden="true">
 
