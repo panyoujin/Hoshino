@@ -49,27 +49,27 @@ namespace Hoshino.API.Controllers
         /// 修改
         /// </summary>
         [Authorize]
-        [HttpPut]
+        [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]b_productVM model, int Product_ID)
+        public ActionResult<object> Update([FromBody]b_productVM model)
         {
             b_product_Entity entity = model.ConvertToT<b_product_Entity>();
             this.SetUpdateUserInfo(entity);
-            return this._repository.Update(entity, Product_ID).ResponseSuccess();
+            return this._repository.Update(entity, model.Product_ID).ResponseSuccess();
         }
 
         /// <summary>
         /// 删除
         /// </summary>
         [Authorize]
-        [HttpDelete]
+        [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Delete(int Product_ID)
+        public ActionResult<object> Delete([FromBody]b_productVM model)
         {
             b_product_Entity entity = new b_product_Entity();
             this.SetUpdateUserInfo(entity);
-            this._repository.Update(entity, Product_ID);
-            return this._repository.Delete(Product_ID).ResponseSuccess();
+            this._repository.Update(entity, model.Product_ID);
+            return this._repository.Delete(model.Product_ID).ResponseSuccess();
         }
 
         /// <summary>
