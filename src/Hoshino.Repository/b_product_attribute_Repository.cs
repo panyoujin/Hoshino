@@ -126,7 +126,7 @@ namespace Hoshino.Repository
             foreach (var id in idList)
             {
                 Dictionary<string, object> dic = new Dictionary<string, object>();
-                dic["P_Attribute_ID"] = id;
+                dic["Product_ID"] = id;
                 dicList.Add(dic);
             }
             return SQLHelperFactory.Instance.ExecuteNonQuery("Delete_b_product_attribute", dicList) > 0;

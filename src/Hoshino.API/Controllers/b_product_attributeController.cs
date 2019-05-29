@@ -87,7 +87,7 @@ namespace Hoshino.API.Controllers
             {
                 b_product_attribute_Entity entity = new b_product_attribute_Entity()
                 {
-                    P_Attribute_ID = id
+                    Product_ID = id
                 };
                 this.SetUpdateUserInfo(entity);
                 list.Add(entity);
