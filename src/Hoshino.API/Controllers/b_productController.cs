@@ -62,7 +62,7 @@ namespace Hoshino.API.Controllers
         /// 删除
         /// </summary>
         [Authorize]
-        [HttpDelete]
+        [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Delete(int Product_ID)
         {
