@@ -27,6 +27,11 @@ namespace Hoshino.IRepository
         (IEnumerable<b_product_Entity>, IEnumerable<b_product_resources_Entity>, IEnumerable<b_product_attribute_Entity>, IEnumerable<b_product_Entity>) Get(int Product_ID);
 
         /// <summary>
+        /// 获取单个
+        /// <summary>
+        (IEnumerable<b_product_Entity>, IEnumerable<b_product_resources_Entity>, IEnumerable<b_product_attribute_Entity>, IEnumerable<b_product_Entity>) GetBack(int Product_ID);
+
+        /// <summary>
         /// 获取列表
         /// <summary>
         (IEnumerable<b_product_Entity>, int) GetList(b_product_Entity model, int pageindex, int pagesize);

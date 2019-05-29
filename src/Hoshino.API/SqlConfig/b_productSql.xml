@@ -24,6 +24,9 @@
       <SqlCommand>
         <![CDATA[
                 DELETE FROM b_product WHERE Product_ID=@@Product_ID@@;
+                DELETE FROM b_product_resources WHERE Product_ID=@@Product_ID@@;
+                DELETE FROM b_product_attribute WHERE Product_ID=@@Product_ID@@;
+                DELETE FROM b_rel_product WHERE Rel_Product_ID=@@Product_ID@@ OR Source_Product_ID=@@Product_ID@@;
                 ]]>
       </SqlCommand>
     </SqlDefinition>
@@ -52,6 +55,33 @@ LEFT JOIN  `b_product` p ON rp.`Rel_Product_ID`=p.`Product_ID`
       </SqlCommand>
     </SqlDefinition>
   </Data>
+
+
+  <Data name="Select_b_product_back">
+    <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+      <SqlCommand>
+        <![CDATA[
+ SELECT p.`Product_ID`,p.`Product_Name_CH`,p.`Product_Name_HK`,p.`Product_Hot`,p.`Product_New`,p.`Product_Recommend`,p.`Product_Seq`,p.`Product_Status`  
+ FROM `b_product` p  WHERE p.`Product_ID` =@@Product_ID@@;
+ 
+ SELECT pr.`Product_ID`,pr.`P_Resources_ID`,pr.`P_Resources_URL`,pr.`P_Resources_Type`,pr.`P_Resources_Seq` ,pr.`P_Resources_Status`
+ FROM `b_product_resources` pr  WHERE pr.`Product_ID` = @@Product_ID@@
+ ORDER BY pr.`P_Resources_Seq`,pr.`P_Resources_ID`;
+
+ SELECT pa.`Product_ID`,pa.`P_Attribute_ID`,pa.`P_Attribute_Seq`,pa.`P_Attribute_Name_CH`,pa.`P_Attribute_Value_CH`,pa.`P_Attribute_Name_HK`,pa.`P_Attribute_Value_HK`,pa.`P_Attribute_Status`
+ FROM `b_product_attribute` pa  WHERE pa.`Product_ID` = @@Product_ID@@
+ ORDER BY pa.`P_Attribute_Seq`,pa.`P_Attribute_ID`;
+
+ SELECT p.`Product_ID`,p.`Product_Name_CH`,p.`Product_Name_HK`,p.`Product_Hot`,p.`Product_New`,p.`Product_Recommend`,p.`Product_Seq`,rp.`P_Relevant_Status`  
+ FROM `b_rel_product` rp
+LEFT JOIN  `b_product` p ON rp.`Rel_Product_ID`=p.`Product_ID`
+ WHERE rp.`Source_Product_ID`=@@Product_ID@@;
+ 
+                ]]>
+      </SqlCommand>
+    </SqlDefinition>
+  </Data>
+  
   <Data name="Select_b_product_List">
     <SqlDefinition type="MySql" ConnStringName="backstage_connection">
       <SqlCommand>

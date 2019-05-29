@@ -132,6 +132,13 @@ namespace Hoshino.Repository
             return SQLHelperFactory.Instance.QueryMultiple<b_product_Entity, b_product_resources_Entity, b_product_attribute_Entity, b_product_Entity>("Select_b_product", dic);
         }
 
+        public (IEnumerable<b_product_Entity>, IEnumerable<b_product_resources_Entity>, IEnumerable<b_product_attribute_Entity>, IEnumerable<b_product_Entity>) GetBack(int Product_ID)
+        {
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic["Product_ID"] = Product_ID;
+            return SQLHelperFactory.Instance.QueryMultiple<b_product_Entity, b_product_resources_Entity, b_product_attribute_Entity, b_product_Entity>("Select_b_product_back", dic);
+        }
+
         /// <summary>
         /// 获取列表
         /// <summary>
@@ -148,11 +155,11 @@ namespace Hoshino.Repository
             }
             if (model.Product_Name_CH != null)
             {
-                dic["Product_Name_CH"] = model.Product_Name_CH;
+                dic["Product_Name"] = model.Product_Name_CH;
             }
             if (model.Product_Name_HK != null)
             {
-                dic["Product_Name_HK"] = model.Product_Name_HK;
+                dic["Product_Name"] = model.Product_Name_HK;
             }
             if (model.Product_New != null && model.Product_New.HasValue)
             {

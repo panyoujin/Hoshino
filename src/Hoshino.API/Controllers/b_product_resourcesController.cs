@@ -60,7 +60,7 @@ namespace Hoshino.API.Controllers
             foreach (var model in modelList)
             {
                 b_product_resources_Entity entity = model.ConvertToT<b_product_resources_Entity>();
-                this.SetCreateUserInfo(entity);
+                this.SetUpdateUserInfo(entity);
                 list.Add(entity);
             }
             return this._repository.Update(list).ResponseSuccess();
@@ -81,7 +81,7 @@ namespace Hoshino.API.Controllers
                 {
                     P_Resources_ID = id
                 };
-                this.SetCreateUserInfo(entity);
+                this.SetUpdateUserInfo(entity);
                 list.Add(entity);
             }
             this._repository.Update(list);

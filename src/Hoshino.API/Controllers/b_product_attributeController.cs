@@ -10,6 +10,7 @@ using Hoshino.IRepository;
 using Microsoft.AspNetCore.Authorization;
 using Hoshino.API.ViewModels;
 using Hoshino.API.Extentions;
+using System.Linq;
 
 namespace Hoshino.API.Controllers
 {
@@ -39,12 +40,19 @@ namespace Hoshino.API.Controllers
         public ActionResult<object> Post([FromBody]List<b_product_attributeVM> modelList)
         {
             List<b_product_attribute_Entity> list = new List<b_product_attribute_Entity>();
+            var ids = new List<int>();
             foreach (var model in modelList)
             {
+                if (ids.Where(id => id != model.Product_ID).Count() <= 0)
+                {
+                    ids.Add(model.Product_ID);
+                }
+
                 b_product_attribute_Entity entity = model.ConvertToT<b_product_attribute_Entity>();
                 this.SetCreateUserInfo(entity);
                 list.Add(entity);
             }
+            this.Delete(ids);
             return this._repository.Insert(list).ResponseSuccess();
         }
 
@@ -60,7 +68,7 @@ namespace Hoshino.API.Controllers
             foreach (var model in modelList)
             {
                 b_product_attribute_Entity entity = model.ConvertToT<b_product_attribute_Entity>();
-                this.SetCreateUserInfo(entity);
+                this.SetUpdateUserInfo(entity);
                 list.Add(entity);
             }
             return this._repository.Update(list).ResponseSuccess();
@@ -81,7 +89,7 @@ namespace Hoshino.API.Controllers
                 {
                     P_Attribute_ID = id
                 };
-                this.SetCreateUserInfo(entity);
+                this.SetUpdateUserInfo(entity);
                 list.Add(entity);
             }
             this._repository.Update(list);

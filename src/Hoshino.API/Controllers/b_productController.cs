@@ -73,7 +73,7 @@ namespace Hoshino.API.Controllers
         }
 
         /// <summary>
-        /// 获取单个  前台和后台API
+        /// 获取单个  前台API
         /// </summary>
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<b_productVM>))]
@@ -133,12 +133,33 @@ namespace Hoshino.API.Controllers
         }
 
         /// <summary>
+        /// 获取单个  后台API
+        /// </summary>
+        [Authorize]
+        [HttpGet]
+        [ProducesResponseType(200, Type = typeof(ApiResult<b_productVM>))]
+        public ActionResult<object> GetBack(int Product_ID)
+        {
+            var (pList, prList, paList, rpList) = this._repository.GetBack(Product_ID);
+            b_productVM productVM = null;
+            foreach (var p in pList)
+            {
+                productVM = p.ConvertToT<b_productVM>();
+                productVM.product_resourcesList = prList.Select(pr => pr.ConvertToT<b_product_resourcesVM>()).ToList();
+                productVM.product_attributeList = paList.Select(pa => pa.ConvertToT<b_product_attributeVM>()).ToList();
+                productVM.rel_productList = rpList.Select(rp => rp.ConvertToT<b_productVM>()).ToList();
+
+                break;
+            }
+            return productVM.ResponseSuccess();
+        }
+        /// <summary>
         /// 获取列表
         /// </summary>
         [Authorize]
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_productVM>>))]
-        public ActionResult<object> GetList([FromBody]b_productVM model, int pageindex, int pagesize)
+        public ActionResult<object> GetList([FromBody]b_productVM model, int pageindex=1, int pagesize=24)
         {
             b_product_Entity entity = model.ConvertToT<b_product_Entity>();
             var (list, total) = this._repository.GetList(entity, pageindex, pagesize);
