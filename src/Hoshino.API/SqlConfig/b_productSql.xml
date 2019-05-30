@@ -46,7 +46,7 @@
  FROM `b_product_attribute` pa  WHERE pa.`Product_ID` = @@Product_ID@@ AND pa.`P_Attribute_Status`=1
  ORDER BY pa.`P_Attribute_Seq`,pa.`P_Attribute_ID`;
 
- SELECT p.`Product_ID`,p.`Product_Name_CH`,p.`Product_Name_HK`,p.`Product_Hot`,p.`Product_New`,p.`Product_Recommend`,p.`Product_Seq`  
+ SELECT p.`Product_ID`,p.`Product_Name_CH`,p.`Product_Name_HK`,p.`Product_Hot`,p.`Product_New`,p.`Product_Recommend`,rp.P_Relevant_Seq AS Product_Seq  
  FROM `b_rel_product` rp
 LEFT JOIN  `b_product` p ON rp.`Rel_Product_ID`=p.`Product_ID`
  WHERE rp.`Source_Product_ID`=@@Product_ID@@ AND rp.`P_Relevant_Status`=1 AND p.`Product_Status` = 1;
@@ -72,7 +72,7 @@ LEFT JOIN  `b_product` p ON rp.`Rel_Product_ID`=p.`Product_ID`
  FROM `b_product_attribute` pa  WHERE pa.`Product_ID` = @@Product_ID@@
  ORDER BY pa.`P_Attribute_Seq`,pa.`P_Attribute_ID`;
 
- SELECT p.`Product_ID`,p.`Product_Name_CH`,p.`Product_Name_HK`,p.`Product_Hot`,p.`Product_New`,p.`Product_Recommend`,p.`Product_Seq`,rp.`P_Relevant_Status`  
+ SELECT p.`Product_ID`,p.`Product_Name_CH`,p.`Product_Name_HK`,p.`Product_Hot`,p.`Product_New`,p.`Product_Recommend`,rp.P_Relevant_Seq AS Product_Seq,rp.`P_Relevant_Status`  
  FROM `b_rel_product` rp
 LEFT JOIN  `b_product` p ON rp.`Rel_Product_ID`=p.`Product_ID`
  WHERE rp.`Source_Product_ID`=@@Product_ID@@;
