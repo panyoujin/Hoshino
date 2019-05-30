@@ -9,6 +9,16 @@ $(function () {
         window.location.href = "product_detail.html?productId=" + $(this).parent().attr("productId");
         // alert($(this).parent().attr("productId"));
     })
+
+    //产品table item 选择事件
+    $(document).on("click", ".productItem", function () {
+        $(".productItem").css("background","");
+        $(this).css("background","#CAE1FF");
+        var productName= $(this).attr("productName");
+        var productId= $(this).attr("productId");
+        $.cookie('productName', productName);
+        $.cookie('productId', productId);
+    })
     
 
     //产品编辑删除
@@ -69,7 +79,7 @@ var loadProduct = function (categoryId = -1, productName = '', productNew = -1, 
             $("#tableContent").empty();
             $.each(obj.Result, function (n, item) {
                 n++;
-                var contentItem = "<tr ><td class='project-status'>" + n + "</td><td class='project-title'><a>" + item.Product_Name_CH +
+                var contentItem = "<tr class='productItem' productName='"+item.Product_Name_CH+"' productId='"+item.Product_ID +"'><td class='project-status'>" + n + "</td><td class='project-title'><a>" + item.Product_Name_CH +
                     "</a><br/><small>创建于 " + item.Create_Time + "</small></td>";
 
                 contentItem += "<td class='project-title'><a>" + item.Product_Name_HK + "</a></td> <td class='project-completion'>";
@@ -96,9 +106,8 @@ var loadProduct = function (categoryId = -1, productName = '', productNew = -1, 
                 } else {//非推荐
                     contentItem += "<span class='label label-default'>推荐</span>";
                 }
-                contentItem += "</td> ";
-                contentItem += "<td class='project-actions' productId='" + item.Product_ID + "'><a class='btn btn-white btn-sm productEdit' ><i class='fa fa-pencil'></i> 编辑 </a> ";
-                contentItem += " <a class='btn btn-white btn-sm productDelete' ><i class='fa fa-trash-o fa-fw'></i> 删除 </a></td></tr>";
+                contentItem += "</td> </tr>";
+
 
                 $("#tableContent").append(contentItem);
                 pagination(pageindex, pagesize, obj.Total, function (index) {

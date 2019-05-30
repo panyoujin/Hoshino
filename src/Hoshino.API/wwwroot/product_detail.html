@@ -298,13 +298,59 @@
                                 <!-- <button class="btn btn-warning" type="button"
                                         id="btnproduct_attributes_back">上一步</button> -->
                                 <button class="btn btn-primary" type="button"
-                                    id="btnproduct_attributes_complete">完成</button>
+                                    id="btnproduct_attributes_next">下一步</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!--产品属性 end-->
+
+            <!--产品关联 start-->
+            <div class="col-sm-6" style="display:none" id="product_rel">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5><a href="product_manage.html">产品管理</a> > 产品关联新增/编辑</h5>
+                        <div class="ibox-tools">
+                            <a  class="btn btn-primary btn-xs" data-toggle="modal"
+                                data-target="#productRefAdd">新增关联</a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+
+                        <div class="project-list">
+                            <table class="table table-hover">
+                                <tbody id="tableContent">
+                                    <!-- <tr>
+                                        <td class="project-status">
+                                            1
+                                        </td>
+                                        <td class="project-title">
+                                            米屋Mayu米潤酒粕大米麵膜（10片裝）
+                                        </td>
+                                        <td class="project-completion">排序：
+                                            <span class="label label-warning">1</span>
+                                        </td>
+                                        <td class="project-actions">
+                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-trash-o fa-fw"></i>
+                                                删除</a>
+                                        </td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="form-group">
+                                <div class="col-sm-offset-10">
+                                    <button class="btn btn-primary" type="button"
+                                        id="btnProductRef">返回</button>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <!--产品关联 end-->
+
         </div>
     </div>
 
@@ -353,6 +399,36 @@
     <input type="file" id="imgVideoInput" accept=".mp4" name="file" style="display: none;" />
 
     <!-- 弹出窗口 结束-->
+
+    <!-- 产品关联 弹出窗口 开始-->
+    <div class="modal inmodal fade" id="productRefAdd" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <input id="productRefId" style="display: none;"  type="text" >
+                    <label >请打开【产品关联管理】页面进行选择产品,然后点击【选择】按钮会自动填充数据</label>
+                    <div class="input-group">
+                        <input id="txtSearch" type="text" placeholder="请搜索相关产品名称" class="input-md form-control"> <span
+                            class="input-group-btn">
+                            <button type="button" class="btn btn-md btn-primary" id="btnSearchProcudt">选择</button>
+                        </span>
+                    </div>
+                    <div class="input-group" style="margin-top:15px;">
+                        <input type="text" id="productRefSort" placeholder="排序" class="input-md form-control" value="0"
+                            style="width:215px;">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal" id="btnProductRefClose">关闭</button>
+                    <button type="button" class="btn btn-primary" id="btnProductRefSave">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 产品关联 弹出窗口 结束-->
+
+
 
     <script src="js/jquery.min.js?v=2.1.4"></script>
     <script src="js/bootstrap.min.js?v=3.3.6"></script>
