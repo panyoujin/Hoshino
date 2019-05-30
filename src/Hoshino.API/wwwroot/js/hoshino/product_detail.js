@@ -32,7 +32,8 @@ $(function () {
             requestUrl("/api/b_product/Post", function (obj) {
                 if (obj.Code == 200) {
                     $("#productId").val(parseInt(obj.Result));
-                    parent.layer.alert('保存产品信息成功');
+                    parent.layer.msg('保存产品信息成功', { icon: 1 });
+                    // parent.layer.alert('保存产品信息成功');
                     //跳到下一个页面  图片/视频
                     $("#product_base").css("display", "none");
                     $("#product_resources").css("display", "block");
@@ -41,7 +42,7 @@ $(function () {
         }else{
             requestUrl("/api/b_product/Update", function (obj) {
                 if (obj.Code == 200) {
-                    parent.layer.alert('修改产品信息成功');
+                    parent.layer.msg('修改产品信息成功', { icon: 1 });
                     //跳到下一个页面  图片/视频
                     $("#product_base").css("display", "none");
                     $("#product_resources").css("display", "block");
@@ -138,9 +139,9 @@ $(function () {
             requestUrl("/api/b_product_resources/Post", function (obj) {
                 console.info(obj);
                 if (obj.Code == 200) {
-                    parent.layer.alert('保存图片/视频 成功');
+                    parent.layer.msg('保存图片/视频 成功', { icon: 1 });
                 } else {
-                    parent.layer.alert('保存图片/视频 失败');
+                    parent.layer.msg('保存图片/视频 失败', { icon: 1 });
                     return;
                 }
             }, JSON.stringify(insertModel));
@@ -149,9 +150,9 @@ $(function () {
         if (updateModel.length > 0) {
             requestUrl("/api/b_product_resources/Update", function (obj) {
                 if (obj.Code == 200) {
-                    parent.layer.alert('保存图片/视频 成功');
+                    parent.layer.msg('保存图片/视频 成功', { icon: 1 });
                 } else {
-                    parent.layer.alert('保存图片/视频 失败');
+                    parent.layer.msg('保存图片/视频 失败', { icon: 1 });
                     return;
                 }
             }, JSON.stringify(updateModel));
@@ -188,7 +189,7 @@ $(function () {
             var Attribute_Seq = third.find("div .form-control").val();
 
             if ($.isEmptyObject(ch_key) || $.isEmptyObject(ch_value) || $.isEmptyObject(hk_key) || $.isEmptyObject(hk_value) || $.isEmptyObject(Attribute_Seq)) {
-                parent.layer.alert('产品属性/排序不能为空');
+                parent.layer.msg('产品属性/排序不能为空', { icon: 1 });
                 return;
             }
             var attribute = {
@@ -203,10 +204,10 @@ $(function () {
             requestUrl("/api/b_product_attribute/Post", function (obj) {
                 console.info(obj);
                 if (obj.Code == 200) {
-                    parent.layer.alert('保存成功');
+                    parent.layer.msg('保存成功', { icon: 1 });
                     window.location.href = "product_manage.html";
                 } else {
-                    parent.layer.alert('保存失败');
+                    parent.layer.msg('保存失败', { icon: 1 });
                     return;
                 }
             }, JSON.stringify(product_attributes));
