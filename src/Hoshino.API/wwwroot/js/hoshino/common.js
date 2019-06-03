@@ -23,8 +23,8 @@
 });
 
 //var domain = "http://www.hosinowt.com";
-var _Domain = "http://47.92.196.208/";
-var api = 'http://47.92.196.208:81'//"http://localhost:82";
+var _Domain = "/";
+var api = ''//"http://localhost:82";
 var requestUrl = function (url, callBack, json, type = 'POST') {
     var urlFull = api + url;
     $.ajax({
