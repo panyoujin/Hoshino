@@ -19,7 +19,7 @@ namespace Hoshino.IRepository
         /// <summary>
         /// 删除
         /// </summary>
-        bool Delete(List<int> idList);
+        bool Delete(b_rel_product_Entity productMV);
 
         /// <summary>
         /// 获取单个

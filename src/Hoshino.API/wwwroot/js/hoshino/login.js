@@ -20,7 +20,7 @@ $(function () {
         requestUrl("/api/sys_user/Login", function (obj) {
             if(obj.Code==200){
                 $.cookie('Authorization', obj.Result.token, { expires: 7 });  
-                window.location.href = "login.html";
+                window.location.href = "index.html";
             }
             parent.layer.msg(obj.Message, { icon: 1 });
 

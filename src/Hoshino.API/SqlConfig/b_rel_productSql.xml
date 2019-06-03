@@ -22,7 +22,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                DELETE FROM b_rel_product WHERE P_Relevant_ID=@@P_Relevant_ID@@;
+                DELETE FROM b_rel_product WHERE Source_Product_ID=@@Source_Product_ID@@ and Rel_Product_ID=@@Rel_Product_ID@@;
                 ]]>
             </SqlCommand>
         </SqlDefinition>

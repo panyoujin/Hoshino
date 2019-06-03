@@ -44,14 +44,11 @@ namespace Hoshino.Repository
         /// <summary>
         /// 修改
         /// <summary>
-        public bool Update(sys_user_Entity model, int User_ID)
+        public bool Update(sys_user_Entity model)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic["User_ID"] = User_ID;
-            if (model.User_Account != null)
-            {
-                dic["User_Account"] = model.User_Account;
-            }
+            dic["User_ID"] = model.User_ID;
+
             if (model.Password != null)
             {
                 dic["Password"] = model.Password;

@@ -68,22 +68,13 @@ namespace Hoshino.API.Controllers
         /// 删除
         /// </summary>
         [Authorize]
-        [HttpDelete]
+        [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Delete(List<int> idList)
+        public ActionResult<object> Delete(b_rel_productVM productMV)
         {
-            List<b_rel_product_Entity> list = new List<b_rel_product_Entity>();
-            foreach (var id in idList)
-            {
-                b_rel_product_Entity entity = new b_rel_product_Entity()
-                {
-                    P_Relevant_ID = id
-                };
-                this.SetUpdateUserInfo(entity);
-                list.Add(entity);
-            }
-            this._repository.Update(list);
-            return this._repository.Delete(idList).ResponseSuccess();
+            b_rel_product_Entity entity = productMV.ConvertToT<b_rel_product_Entity>();
+            this.SetUpdateUserInfo(entity);
+            return this._repository.Delete(entity).ResponseSuccess();
         }
 
         /// <summary>

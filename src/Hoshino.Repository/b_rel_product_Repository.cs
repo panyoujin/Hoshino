@@ -89,16 +89,13 @@ namespace Hoshino.Repository
         /// <summary>
         /// 删除
         /// <summary>
-        public bool Delete(List<int> idList)
+        public bool Delete(b_rel_product_Entity model)
         {
-            List<Dictionary<string, object>> dicList = new List<Dictionary<string, object>>();
-            foreach (var id in idList)
-            {
-                Dictionary<string, object> dic = new Dictionary<string, object>();
-                dic["P_Relevant_ID"] = id;
-                dicList.Add(dic);
-            }
-            return SQLHelperFactory.Instance.ExecuteNonQuery("Delete_b_rel_product", dicList) > 0;
+
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic["Source_Product_ID"] = model.Source_Product_ID;
+            dic["Rel_Product_ID"] = model.Rel_Product_ID;
+            return SQLHelperFactory.Instance.ExecuteNonQuery("Delete_b_rel_product", dic) > 0;
         }
 
         /// <summary>

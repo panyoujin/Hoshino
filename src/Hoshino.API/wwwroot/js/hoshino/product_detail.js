@@ -16,7 +16,7 @@ $(function () {
             return;
         }
         var productReq = {
-            Product_ID:$("#productId").val(),
+            Product_ID: $("#productId").val(),
             Product_Name_CH: $("#txtProduct_Name_CH").val(),
             Product_Name_HK: $("#txtProduct_Name_HK").val(),
             Category_ID: $("#slCategory").val(),
@@ -39,7 +39,7 @@ $(function () {
                     $("#product_resources").css("display", "block");
                 }
             }, JSON.stringify(productReq));
-        }else{
+        } else {
             requestUrl("/api/b_product/Update", function (obj) {
                 if (obj.Code == 200) {
                     parent.layer.msg('修改产品信息成功', { icon: 1 });
@@ -265,18 +265,17 @@ $(function () {
     })
 
 
-    $("#btnSearchProcudt").click(function(){
+    $("#btnSearchProcudt").click(function () {
         $("#txtSearch").val($.cookie('productName'));
         $("#productRefId").val($.cookie('productId'));
     });
 
-    $("#btnProductRefSave").click(function(){
-        if($.isEmptyObject($("#productRefId").val())){
+    $("#btnProductRefSave").click(function () {
+        if ($.isEmptyObject($("#productRefId").val())) {
             parent.layer.msg('请先选择关联产品', { icon: 1 });
             return;
         }
-        var req=[{P_Relevant_Status:1,Source_Product_ID:$("#productId").val(),Rel_Product_ID:$("#productRefId").val(),P_Relevant_Seq:$("#productRefSort").val()}];
-        console.info(JSON.stringify(req));
+        var req = [{ P_Relevant_Status: 1, Source_Product_ID: $("#productId").val(), Rel_Product_ID: $("#productRefId").val(), P_Relevant_Seq: $("#productRefSort").val() }];
         requestUrl("/api/b_rel_product/Post", function (obj) {
             console.info(obj);
             if (obj.Code == 200) {
@@ -293,6 +292,22 @@ $(function () {
     $("#btnProductRef").click(function(){
         window.location.href = "product_manage.html";
     });
+    //关联产品删除 event
+    $(document).on("click", ".refProductDelete", function () {
+        var Source_Product_ID = $("#productId").val();
+        var Rel_Product_ID = $(this).attr("refId");
+        var req = { Source_Product_ID: Source_Product_ID, Rel_Product_ID: Rel_Product_ID};
+        requestUrl("/api/b_rel_product/Delete", function (obj) {
+            console.info(obj);
+            if (obj.Code == 200) {
+                parent.layer.msg('删除关联产品成功', { icon: 1 });
+                loadProductEditData($("#productId").val());
+            } else {
+                parent.layer.msg('保删除关联产品失败', { icon: 1 });
+            }
+        }, JSON.stringify(req));
+    })
+
 });
 
 //图片base64转图片对象
@@ -413,18 +428,19 @@ var loadProductEditData = function (productId) {
 
             if (obj.Result.rel_productList.length > 0) {
                 $("#tableContent").empty();
-                    $.each(obj.Result.rel_productList,function (n, item) {
-                        n++;
-                        $("#tableContent").append("  <tr> \
-                        <td class='project-status'>"+n+"</td>\
-                        <td class='project-title'>"+item.Product_Name_CH+"</td>\
-                        <td class='project-completion'>排序： <span class='label label-warning'>"+item.Product_Seq+"</span>\
+                console.info(obj.Result.rel_productList);
+                $.each(obj.Result.rel_productList, function (n, item) {
+                    n++;
+                    $("#tableContent").append("  <tr> \
+                        <td class='project-status'>"+ n + "</td>\
+                        <td class='project-title'>"+ item.Product_Name_CH + "</td>\
+                        <td class='project-completion'>排序： <span class='label label-warning'>"+ item.Product_Seq + "</span>\
                         </td>\
                         <td class='project-actions'>\
-                            <a href='#' class='btn btn-white btn-sm'><i class='fa fa-trash-o fa-fw'></i> 删除</a>\
+                            <a href='#' class='btn btn-white btn-sm refProductDelete' refId='"+ item.Product_ID + "'><i class='fa fa-trash-o fa-fw'></i> 删除</a>\
                         </td>\
                         </tr>");
-                    })
+                })
             }
         } else {
             history.back(-1);
