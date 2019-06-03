@@ -56,16 +56,17 @@ namespace Hoshino.API.Controllers
         }
 
         /// <summary>
-        /// 修改
+        /// 修改密码
         /// </summary>
         [Authorize]
-        [HttpPut]
+        [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Update([FromBody]sys_userVM model, int User_ID)
+        public ActionResult<object> UpdateUserPassword([FromBody]sys_userVM model)
         {
-            sys_user_Entity entity = model.ConvertToT<sys_user_Entity>();
+            sys_user_Entity entity = this.GetLoginUser();
             this.SetUpdateUserInfo(entity);
-            return this._repository.Update(entity, User_ID).ResponseSuccess();
+            entity.Password = model.Password;
+            return this._repository.Update(entity).ResponseSuccess();
         }
 
         /// <summary>
@@ -78,7 +79,7 @@ namespace Hoshino.API.Controllers
         {
             sys_user_Entity entity = new sys_user_Entity();
             this.SetUpdateUserInfo(entity);
-            this._repository.Update(entity, User_ID);
+            this._repository.Update(entity);
             return this._repository.Delete(User_ID).ResponseSuccess();
         }
 

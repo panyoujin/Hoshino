@@ -36,7 +36,7 @@
                 <ul class="nav" id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element">
-                            <span><img alt="image" class="img-circle" src="img/profile_small.jpg" /></span>
+                            <span><img alt="image" class="img-circle" style="width:70px;height:70px;" src="img/profile_small.jpg" /></span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
                                     <span class="block m-t-xs"><strong class="font-bold">Admin</strong></span>
@@ -45,7 +45,7 @@
                             </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                 <li>
-                                    <a class="J_menuItem" href="#">修改密码</a>
+                                    <a href="#"  data-toggle="modal"   data-target="#editUser">修改密码</a>
                                 </li>
                                 <!--<li class="divider"></li>
                 <li>
@@ -119,9 +119,10 @@
 
                         <li class="dropdown">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                                <i class="fa fa-bell"></i> <span class="label label-primary">8</span>
+                                <i class="fa fa-bell"></i> 
+                                <!-- <span class="label label-primary">8</span> -->
                             </a>
-                            <ul class="dropdown-menu dropdown-alerts">
+                            <!-- <ul class="dropdown-menu dropdown-alerts">
 
                                 <li>
                                     <a href="profile.html">
@@ -132,7 +133,7 @@
                                     </a>
                                 </li>
                                 <li class="divider"></li>
-                            </ul>
+                            </ul> -->
                         </li>
                     </ul>
                 </nav>
@@ -183,18 +184,39 @@
         </div>
         <!--右上角侧部分结束-->
 
-
     </div>
+
+        <!-- 弹出窗口 开始-->
+        <div class="modal inmodal fade" id="editUser" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <input id="txtAccount" type="text" placeholder="用户名" class="form-control m-b" disabled="disabled" value="admin">
+                        <input id="txtPassword" type="password" placeholder="密码" class="form-control m-b">
+                        <input id="txtPasswordAgain" type="password" placeholder="重新输入密码" class="form-control m-b">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" id="btnSave">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 弹出窗口 结束-->
+
     <script src="js/jquery.min.js?v=2.1.4"></script>
     <script src="js/bootstrap.min.js?v=3.3.6"></script>
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="js/plugins/layer/layer.min.js"></script>
     <script src="js/hplus.min.js?v=4.1.0"></script>
+    <script src="js/jquery.md5.js?v=3.3.6"></script>
     <script src="js/contabs.min.js"></script>
     <script src="js/plugins/pace/pace.min.js"></script>
     <script src="js/jquery.cookie.js"></script>
     <script src="js/hoshino/common.js"></script>
+    <script src="js/hoshino/index.js"></script>
 </body>
 
 

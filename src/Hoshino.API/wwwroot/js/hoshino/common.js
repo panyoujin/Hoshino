@@ -24,7 +24,7 @@
 
 //var domain = "http://www.hosinowt.com";
 var _Domain = "http://www.hosinowt.com/";
-var api = 'http://www.hosinowt.com:81'//"http://localhost:82";
+var api = 'http://localhost:1111'//"http://localhost:82";
 var requestUrl = function (url, callBack, json, type = 'POST') {
     var urlFull = api + url;
     $.ajax({

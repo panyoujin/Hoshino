@@ -17,12 +17,13 @@ $(function () {
          password = $.md5(password);
 
         var req = {User_Account: account,Password: password};
-        
         requestUrl("/api/sys_user/Login", function (obj) {
             if(obj.Code==200){
                 $.cookie('Authorization', obj.Result.token, { expires: 7 });  
-                window.location.href = "index.html";
-            }   
+                window.location.href = "login.html";
+            }
+            parent.layer.msg(obj.Message, { icon: 1 });
+
         }, JSON.stringify(req));
 
     });
