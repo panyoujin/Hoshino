@@ -12,6 +12,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Hoshino.API.Extentions;
+using Pan.Code.Cache;
 
 namespace Hoshino.API.Controllers
 {
@@ -42,6 +43,7 @@ namespace Hoshino.API.Controllers
         {
             b_category_Entity entity = model.ConvertToT<b_category_Entity>();
             this.SetCreateUserInfo(entity);
+            CacheFactory.CacheInstance.RemovePrefix(Constant.Cache_Category_Prefix);
             return this._repository.Insert(entity).ResponseSuccess();
         }
 
@@ -55,6 +57,7 @@ namespace Hoshino.API.Controllers
         {
             b_category_Entity entity = model.ConvertToT<b_category_Entity>();
             this.SetUpdateUserInfo(entity);
+            CacheFactory.CacheInstance.RemovePrefix(Constant.Cache_Category_Prefix);
             return this._repository.Update(entity, Category_ID).ResponseSuccess();
         }
 
@@ -69,6 +72,7 @@ namespace Hoshino.API.Controllers
             b_category_Entity entity = new b_category_Entity();
             this.SetUpdateUserInfo(entity);
             this._repository.Update(entity, Category_ID);
+            CacheFactory.CacheInstance.RemovePrefix(Constant.Cache_Category_Prefix);
             return this._repository.Delete(Category_ID).ResponseSuccess();
         }
 
@@ -95,12 +99,87 @@ namespace Hoshino.API.Controllers
         }
 
         /// <summary>
-        /// 获取所有分类 前台和后台公用API
+        /// 获取所有分类 前台API
         /// </summary>
         /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<ALLCategoryVM>>))]
         public ActionResult<object> GetAllCategory(Lang lang)
+        {
+            string key = string.Format(Constant.Cache_CategoryList, lang);
+            List<ALLCategoryVM> categoryList = CacheFactory.CacheInstance.Get<List<ALLCategoryVM>>(key) ?? new List<ALLCategoryVM>();
+            if (categoryList == null || categoryList.Count <= 0)
+            {
+                var (list, total) = this._repository.GetList(-1, -1);
+                var firstID = list.Min(l => l.Parent_Category_ID);
+                switch (lang)
+                {
+                    case Lang.All:
+                        foreach (var item in list.Where(l => l.Parent_Category_ID == firstID))
+                        {
+                            var child = new ALLCategoryVM() { ID = item.Category_ID, Name = item.Category_Name_CH, Name_CN = item.Category_Name_CH, Name_HK = item.Category_Name_HK, Child = new List<ALLCategoryVM>() };
+                            foreach (var item2 in list.Where(l => l.Parent_Category_ID == child.ID))
+                            {
+                                var child2 = new ALLCategoryVM() { ID = item2.Category_ID, Name = item2.Category_Name_CH, Name_CN = item2.Category_Name_CH, Name_HK = item2.Category_Name_HK, Child = new List<ALLCategoryVM>() };
+                                foreach (var item3 in list.Where(l => l.Parent_Category_ID == child2.ID))
+                                {
+                                    var child3 = new ALLCategoryVM() { ID = item3.Category_ID, Name = item3.Category_Name_CH, Name_CN = item3.Category_Name_CH, Name_HK = item3.Category_Name_HK, Child = new List<ALLCategoryVM>() };
+                                    child2.Child.Add(child3);
+                                }
+                                child.Child.Add(child2);
+                            }
+                            categoryList.Add(child);
+                        }
+                        break;
+
+                    case Lang.CHS:
+                        foreach (var item in list.Where(l => l.Parent_Category_ID == firstID))
+                        {
+                            var child = new ALLCategoryVM() { ID = item.Category_ID, Name = item.Category_Name_CH, Name_CN = item.Category_Name_CH, Name_HK = item.Category_Name_CH, Child = new List<ALLCategoryVM>() };
+                            foreach (var item2 in list.Where(l => l.Parent_Category_ID == child.ID))
+                            {
+                                var child2 = new ALLCategoryVM() { ID = item2.Category_ID, Name = item2.Category_Name_CH, Name_CN = item2.Category_Name_CH, Name_HK = item2.Category_Name_CH, Child = new List<ALLCategoryVM>() };
+                                foreach (var item3 in list.Where(l => l.Parent_Category_ID == child2.ID))
+                                {
+                                    var child3 = new ALLCategoryVM() { ID = item3.Category_ID, Name = item3.Category_Name_CH, Name_CN = item3.Category_Name_CH, Name_HK = item3.Category_Name_CH, Child = new List<ALLCategoryVM>() };
+                                    child2.Child.Add(child3);
+                                }
+                                child.Child.Add(child2);
+                            }
+                            categoryList.Add(child);
+                        }
+                        break;
+                    case Lang.CHT:
+                        foreach (var item in list.Where(l => l.Parent_Category_ID == firstID))
+                        {
+                            var child = new ALLCategoryVM() { ID = item.Category_ID, Name = item.Category_Name_HK, Name_CN = item.Category_Name_HK, Name_HK = item.Category_Name_HK, Child = new List<ALLCategoryVM>() };
+                            foreach (var item2 in list.Where(l => l.Parent_Category_ID == child.ID))
+                            {
+                                var child2 = new ALLCategoryVM() { ID = item2.Category_ID, Name = item2.Category_Name_HK, Name_CN = item2.Category_Name_HK, Name_HK = item2.Category_Name_HK, Child = new List<ALLCategoryVM>() };
+                                foreach (var item3 in list.Where(l => l.Parent_Category_ID == child2.ID))
+                                {
+                                    var child3 = new ALLCategoryVM() { ID = item3.Category_ID, Name = item3.Category_Name_HK, Name_CN = item3.Category_Name_HK, Name_HK = item3.Category_Name_HK, Child = new List<ALLCategoryVM>() };
+                                    child2.Child.Add(child3);
+                                }
+                                child.Child.Add(child2);
+                            }
+                            categoryList.Add(child);
+                        }
+                        break;
+                }
+                CacheFactory.CacheInstance.Add(key, categoryList);
+            }
+            return categoryList.ResponseSuccess("");
+        }
+
+
+        /// <summary>
+        /// 获取所有分类 后台API
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [ProducesResponseType(200, Type = typeof(ApiResult<List<ALLCategoryVM>>))]
+        public ActionResult<object> GetBackAllCategory(Lang lang)
         {
             var (list, total) = this._repository.GetList(-1, -1);
             List<ALLCategoryVM> categoryList = new List<ALLCategoryVM>();
