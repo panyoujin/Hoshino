@@ -62,12 +62,12 @@ namespace Hoshino.API.Controllers
         [Authorize]
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
-        public ActionResult<object> Delete([FromBody]int Banner_ID)
+        public ActionResult<object> Delete([FromBody]b_banner_resourcesVM model)
         {
             b_banner_resources_Entity entity = new b_banner_resources_Entity();
             this.SetUpdateUserInfo(entity);
-            this._repository.Update(entity, Banner_ID);
-            return this._repository.Delete(Banner_ID).ResponseSuccess();
+            this._repository.Update(entity, model.Banner_ID);
+            return this._repository.Delete(model.Banner_ID).ResponseSuccess();
         }
 
 
