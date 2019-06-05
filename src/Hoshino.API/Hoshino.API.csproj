@@ -19,7 +19,7 @@
         <PackageReference Include="NLog.Mongo" Version="4.6.0.68" />
         <PackageReference Include="NLog.Web.AspNetCore" Version="4.7.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
-        <PackageReference Include="Pan.Code" Version="1.0.5.1-alpha" />
+        <PackageReference Include="Pan.Code" Version="1.0.5.2-alpha" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\Hoshino.Entity\Hoshino.Entity.csproj" />

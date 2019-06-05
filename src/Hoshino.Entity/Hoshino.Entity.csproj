@@ -9,7 +9,7 @@
       <None Remove="RequestModel\**" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Pan.Code" Version="1.0.5.1-alpha" />
+        <PackageReference Include="Pan.Code" Version="1.0.5.2-alpha" />
     </ItemGroup>
 </Project>
 
