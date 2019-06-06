@@ -44,7 +44,8 @@ namespace Hoshino.API.Controllers
             }
             HttpContext.Session.Remove(Constant.Session_CheckCode);
             b_appointment_consultation_Entity entity = model.ConvertToT<b_appointment_consultation_Entity>();
-            this.SetCreateUserInfo(entity);
+            entity.Create_User = model.Contacts;
+            entity.Create_UserId = "-1";
             return this._repository.Insert(entity).ResponseSuccess();
         }
         /// <summary>
