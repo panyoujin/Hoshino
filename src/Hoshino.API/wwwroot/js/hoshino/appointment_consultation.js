@@ -34,6 +34,7 @@ var showDetail = function (ac_id) {
     requestUrl("/api/b_appointment_consultation/Get", function (data) {
         console.log(data);
         if (data.Code === 200 && !!data.Result) {
+            
             $("#hiACId").val(data.Result.AC_ID);
             $("#txtCompany").val(data.Result.Company);
             $("#txtContacts").val(data.Result.Contacts);
@@ -41,12 +42,12 @@ var showDetail = function (ac_id) {
             $("#txtEmail").val(data.Result.Email);
             $("#txtMaterial").html(data.Result.Material);
             var statusStr = "";
-            if (data.Result.AC_ID == 0) {
+            if (data.Result.AC_Status == 0) {
                 statusStr = "<span class='label label-primary'>未处理</span>";
-                $("#btnUpdateStatus").css("display", "block");
+                $("#btnUpdateStatus").show();
             } else {
                 statusStr = "<span class='label label-warning'>已处理</span>";
-                $("#btnUpdateStatus").css("display", "none");
+                $("#btnUpdateStatus").hide();
             }
             $("#txtAC_Status").html(statusStr);
             $("#txtMatter").val(data.Result.Matter);
