@@ -34,7 +34,6 @@ namespace Hoshino.API.Controllers
         /// <summary>
         /// 新增 前台API
         /// </summary>
-        [Authorize]
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(ApiResult<bool>))]
         public ActionResult<object> Post([FromBody]b_contactVM model, string code)
