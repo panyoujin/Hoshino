@@ -2,20 +2,30 @@
 $(function () {
     //加载数据
     LoadData();
-    $("#btnSearch").on('click', function () {
+    $("#btnSearch").click(function () {
         pageindex = 1;
         LoadData();
     });
 
-    $("#btnUpdateStatus").on('click', function () {
-        var ac_id = $("#AC_ID").html();
-        var Processing_Result = $("#Processing_Result").val();
+    $(document).on("click", ".appointmentUpdateStatus", function () {
+        var acId = $(this).attr("acId");
+        showDetail(acId);
+        $("#hiEventUpdateStatus").click();
+    })
+
+    $("#btnUpdateStatus").click(function () {
+        var ac_id = $("#hiACId").val();
+        var Processing_Result = $("#txtProcessing_Result").val();
         requestUrl("/api/b_appointment_consultation/UpdateStatus?AC_ID=" + ac_id, function (data) {
             $("#btnClose").click();
             LoadData();
-
         }, JSON.stringify({ AC_Status: 1, Processing_Result: Processing_Result }), 'POST');
+    });
 
+    $("#btnCheck").click(function () {
+        if (!$.isEmptyObject($("#txtMaterial").html())) {
+            window.open(_Domain + $("#txtMaterial").html(),"_blank");   
+        }
     });
 });
 
@@ -24,22 +34,29 @@ var showDetail = function (ac_id) {
     requestUrl("/api/b_appointment_consultation/Get", function (data) {
         console.log(data);
         if (data.Code === 200 && !!data.Result) {
-            console.log(data.Result.Company);
-            $("#Company").html(data.Result.Company);
-            $("#Contacts").html(data.Result.Contacts);
-            $("#Phone").html(data.Result.Phone);
-            $("#Email").html(data.Result.Email);
-            $("#Matter").html(data.Result.Matter);
-            $("#AC_ID").html(data.Result.AC_ID);
+            $("#hiACId").val(data.Result.AC_ID);
+            $("#txtCompany").val(data.Result.Company);
+            $("#txtContacts").val(data.Result.Contacts);
+            $("#txtPhone").val(data.Result.Phone);
+            $("#txtEmail").val(data.Result.Email);
+            $("#txtMaterial").html(data.Result.Material);
+            var statusStr = "";
+            if (data.Result.AC_ID == 0) {
+                statusStr = "<span class='label label-primary'>未处理</span>";
+                $("#btnUpdateStatus").css("display", "block");
+            } else {
+                statusStr = "<span class='label label-warning'>已处理</span>";
+                $("#btnUpdateStatus").css("display", "none");
+            }
+            $("#txtAC_Status").html(statusStr);
+            $("#txtMatter").val(data.Result.Matter);
+            $("#txtProcessing_Result").val(data.Result.Processing_Result);
         }
     }, { AC_ID: ac_id }, 'GET');
 
 };
 
-var updateStatus = function (ac_id) {
-    $("#hiEventUpdateStatus").click();
-    $("#AC_ID").html(ac_id);
-};
+
 
 var pageindex = 1;
 var pagesize = 10;
@@ -52,26 +69,38 @@ var LoadData = function () {
             $("#tableContent").empty();
             //设置页码，页数，总数
             $.each(data.Result, function (n, item) {
-                html += '<tr>';
-                html += '<td class="project-status">' + item.AC_ID + '</td>';
-                html += '<td class="project-status">' + item.Company + '</td>';
-                html += '<td class="project-status">' + item.Contacts + '</td>';
-                html += '<td class="project-status">' + item.Phone + '</td>';
-                html += '<td class="project-status">' + item.Email + '</td>';
-                html += '<td class="project-status">' + item.Matter + '</td>';
+                var statusStr = "";
+                var dataUrl = "";
+                var matterStr = "";
                 if (item.AC_Status === 0) {
-                    html += '<td class="project-status">未处理</td>';
+                    statusStr = "<span class='label label-primary'>未处理";
                 } else {
-                    html += '<td class="project-status">' + item.Processing_Result + '</td>';
+                    statusStr = "<span class='label label-default'>已处理";
                 }
-                html += '<td class="project-actions">';
-                html += '<a href="#" class="btn btn-white btn-sm" onclick="showDetail(' + item.AC_ID + ')"><i class="fa fa-binoculars"></i> 查看 </a>';
-                if (item.AC_Status === 0) {
-                    html += '<a href="#" class="btn btn-white btn-sm" onclick="updateStatus(' + item.AC_ID + ')"><i class="fa fa-binoculars"></i> 标记为已处理 </a>';
+                if (!$.isEmptyObject(item.Material)) {
+                    dataUrl = item.Material;
                 }
-
-                html += '</td>';
-                html += '</tr>';
+                if (item.Matter.length > 50) {
+                    matterStr = item.Matter.substr(0, 50) + '...';
+                } else {
+                    matterStr = item.Matter;
+                }
+                html += "<tr> \
+                <td class='project-status'>"+ statusStr + "</td>\
+                <td class='project-title'>"+ matterStr + "</label> <br />\
+                    <small class='label label-warning'>处理结果: "+ item.Processing_Result + "</small>\
+                </td>\
+                <td class='project-completion'>\
+                        <span class='label label-default'>"+ item.Create_Time + " </td>\
+                <td class='project-completion'>"+ item.Company + "</td>\
+                <td class='project-completion'>"+ item.Contacts + "</td>\
+                <td class='project-completion'>"+ item.Phone + "</td>\
+                <td class='project-people'>"+ item.Email + "</td>\
+                <td class='project-people'>"+ dataUrl + "</td>\
+                <td class='project-actions'>\
+                    <a href='#'  class='btn btn-white btn-sm appointmentUpdateStatus' acId='" + item.AC_ID + "'><i class='fa fa-pencil'></i> 标记为已处理 </a>\
+                </td>\
+                </tr>";
             });
             $("#tableContent").append(html);
             pagination(pageindex, pagesize, data.Total, function (index) {
@@ -81,6 +110,6 @@ var LoadData = function () {
                 }
             });
         }
-    }, { pageindex: pageindex, pagesize: 10 }, 'GET');
+    }, { AC_Status: $("#AC_Status").val(), pageindex: pageindex, pagesize: 10 }, 'GET');
 
 }
