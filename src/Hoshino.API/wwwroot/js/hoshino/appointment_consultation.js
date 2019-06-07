@@ -65,9 +65,9 @@ var LoadData = function () {
 
     requestUrl("/api/b_appointment_consultation/GetList", function (data) {
 
+        $("#tableContent").empty();
         if (data.Code === 200 && data.Result.length > 0) {
             var html = "";
-            $("#tableContent").empty();
             //设置页码，页数，总数
             $.each(data.Result, function (n, item) {
                 var statusStr = "";
