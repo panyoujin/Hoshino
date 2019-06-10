@@ -171,7 +171,7 @@ namespace Hoshino.Repository
             {
                 dic["WhatsApp"] = model.WhatsApp;
             }
-            if (model.Contact_Status != 0)
+            if (model.Contact_Status >= 0)
             {
                 dic["Contact_Status"] = model.Contact_Status;
             }

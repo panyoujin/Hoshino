@@ -22,9 +22,9 @@
 
 });
 
-//var domain = "http://www.hosinowt.com";
-var _Domain = "/";//"http://47.92.196.208/";
-var api = '';//"http://47.92.196.208:81";
+//var domain = ";
+var _Domain = "/";
+var api = '';
 var requestUrl = function (url, callBack, json, type = 'POST') {
     var urlFull = api + url;
     $.ajax({
@@ -37,8 +37,13 @@ var requestUrl = function (url, callBack, json, type = 'POST') {
         },
         //contentType : 'application/json;charset=UTF-8',
         data: json,
-        success: callBack,
+        success: function (jsonData) {
+            callBack(jsonData);
+        },
         error: function (obj) {
+            if (obj.status === 401) {
+                location = "login.html";
+            }
             console.info(obj);
         }
 
@@ -57,6 +62,9 @@ var requestFromUrl = function (url, callBack, data, type = 'POST') {
         data: data,
         success: callBack,
         error: function (obj) {
+            if (obj.status === 401) {
+                location = "login.html";
+            }
             console.info(obj);
         }
 
