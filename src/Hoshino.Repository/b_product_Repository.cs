@@ -259,7 +259,7 @@ namespace Hoshino.Repository
             {
                 dic["Category_ID"] = Category_ID;
             }
-            if (string.IsNullOrWhiteSpace(name))
+            if (!string.IsNullOrWhiteSpace(name))
             {
                 dic["Product_Name"] = name;
             }
