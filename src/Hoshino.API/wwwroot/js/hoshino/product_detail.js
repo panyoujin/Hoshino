@@ -15,8 +15,9 @@ $(function () {
         if (!$("#signupForm_base").valid()) {
             return;
         }
+        var productId=$("#productId").val();
+
         var productReq = {
-            Product_ID: $("#productId").val(),
             Product_Name_CH: $("#txtProduct_Name_CH").val(),
             Product_Name_HK: $("#txtProduct_Name_HK").val(),
             Category_ID: $("#slCategory").val(),
@@ -27,7 +28,7 @@ $(function () {
             Product_Seq: $("#txtProduct_Seq").val(),
         };
 
-        if ($.isEmptyObject(productReq.Product_ID)) {
+        if ($.isEmptyObject(productId)) {
             //保存产品
             requestUrl("/api/b_product/Post", function (obj) {
                 if (obj.Code == 200) {
@@ -40,6 +41,7 @@ $(function () {
                 }
             }, JSON.stringify(productReq));
         } else {
+            productReq.Product_ID=productId;
             requestUrl("/api/b_product/Update", function (obj) {
                 if (obj.Code == 200) {
                     parent.layer.msg('修改产品信息成功', { icon: 1 });
@@ -329,7 +331,7 @@ var dataURLtoFile = function (dataurl, filename) {
 
 //加载菜单数据
 var loadCategory = function () {
-    requestUrl("/api/b_category/GetAllCategory", function (obj) {
+    requestUrl("/api/b_category/GetBackAllCategory", function (obj) {
         if (obj.Code == 200 && obj.Result.length > 0) {
             $("#slCategory").empty();
             $.each(obj.Result, function (n, firstItem) {

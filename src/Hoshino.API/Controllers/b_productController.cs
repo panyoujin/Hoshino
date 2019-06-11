@@ -313,8 +313,8 @@ namespace Hoshino.API.Controllers
         [ProducesResponseType(200, Type = typeof(ApiResult<List<b_productVM>>))]
         public ActionResult<object> GetProductList(Lang lang, int categoryID = -1, string product_name = "", int pageindex = 1, int pagesize = 24)
         {
-            string key = string.Format(Constant.Cache_ProductList, categoryID, pageindex, pagesize, lang);
-            string totalKey = string.Format(Constant.Cache_ProductListTotal, categoryID, pageindex, pagesize, lang);
+            string key = string.Format(Constant.Cache_ProductList, categoryID, pageindex, pagesize, lang, product_name);
+            string totalKey = string.Format(Constant.Cache_ProductListTotal, categoryID, pageindex, pagesize, lang, product_name);
             var total = CacheFactory.CacheInstance.Get<int>(totalKey);
             List<b_productVM> vmList = CacheFactory.CacheInstance.Get<List<b_productVM>>(key) ?? new List<b_productVM>();
             if (vmList == null || vmList.Count <= 0)

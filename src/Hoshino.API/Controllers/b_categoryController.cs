@@ -177,6 +177,7 @@ namespace Hoshino.API.Controllers
         /// 获取所有分类 后台API
         /// </summary>
         /// <returns></returns>
+        [Authorize]
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ApiResult<List<ALLCategoryVM>>))]
         public ActionResult<object> GetBackAllCategory(Lang lang)

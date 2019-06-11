@@ -118,7 +118,7 @@ var LoadCategory=function(){
     console.info("获取菜单数据");
     //获取菜单数据
 
-    requestUrl("/api/b_category/GetAllCategory", function (obj) {
+    requestUrl("/api/b_category/GetBackAllCategory", function (obj) {
          
          if(obj.Code==200 && obj.Result.length>0){
             $.each(obj.Result,function(n,value) { 

@@ -52,12 +52,12 @@
         /// <summary>
         /// 推荐的产品列表 分类，页码，页大小,Lang
         /// </summary>
-        public const string Cache_ProductList = "Cache_Product_Category_{0}_Page_{1}_Size_{2}_Lang_{3}";
+        public const string Cache_ProductList = "Cache_Product_Category_{0}_Page_{1}_Size_{2}_Lang_{3}_Name_{4}";
 
         /// <summary>
         /// 推荐的产品列表 分类，页码，页大小,Lang
         /// </summary>
-        public const string Cache_ProductListTotal = "Cache_Product_Total_Category{0}_Page_{1}_Size_{2}_Lang_{3}";
+        public const string Cache_ProductListTotal = "Cache_Product_Total_Category{0}_Page_{1}_Size_{2}_Lang_{3}_Name_{4}";
 
 
         /// <summary>
