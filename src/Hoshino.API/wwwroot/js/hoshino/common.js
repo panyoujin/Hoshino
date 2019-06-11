@@ -1,6 +1,6 @@
 ﻿$(function () {
     var token = $.cookie('Authorization');
-    if (!window.location.pathname.indexOf("login.html") && $.isEmptyObject(token)) {
+    if (window.location.pathname.lastIndexOf("login.html")<0 && $.isEmptyObject(token)) {
         window.location.href = "login.html";
         return;
     }
