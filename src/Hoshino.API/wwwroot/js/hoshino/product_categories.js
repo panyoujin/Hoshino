@@ -60,9 +60,9 @@ $(function () {
         }, function () {
             var req = {Category_ID: categoryId};
             console.info(req);
-            requestUrl("/api/b_category/Delete", function (obj) {
+            requestUrl("/api/b_category/Delete?Category_ID="+categoryId, function (obj) {
                 if(obj.Code==200){
-                    parent.layer.confirm("分类【" +selectText+"】新增成功", {
+                    parent.layer.confirm("分类【" +selectText+"】删除成功", {
                         btn: ['确定'], //按钮
                         shade: false //不显示遮罩
                     });
