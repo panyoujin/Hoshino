@@ -113,7 +113,7 @@ LEFT JOIN  `b_product` p ON rp.`Rel_Product_ID`=p.`Product_ID`
  
   SELECT pr2.`Product_ID`,any_value(pr2.`P_Resources_ID`) AS P_Resources_ID,any_value(pr2.`P_Resources_URL`) AS P_Resources_URL,any_value(pr2.`P_Resources_Type`) AS P_Resources_Type,any_value(pr2.`P_Resources_Seq`) AS P_Resources_Seq FROM (
  SELECT pr.`Product_ID`,pr.`P_Resources_ID`,pr.`P_Resources_URL`,pr.`P_Resources_Type`,pr.`P_Resources_Seq` FROM `b_product_resources` pr  WHERE  pr.`P_Resources_Status`=1 <R%= AND pr.`Product_ID` IN (@@Product_IDS@@) %R>
- ORDER BY pr.`P_Resources_Seq`,pr.`P_Resources_ID`) pr2 GROUP BY pr2.Product_ID;
+ ORDER BY pr.`P_Resources_Seq`,pr.`P_Resources_ID` <R%= LIMIT 0, @@LimitCount@@ %R>) pr2 GROUP BY pr2.Product_ID;
                 ]]>
       </SqlCommand>
     </SqlDefinition>
