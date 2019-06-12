@@ -296,7 +296,7 @@ namespace Hoshino.Repository
 
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic["Product_IDS"] = string.Join(",", ids);
-            dic["LimitCount"] = ids.Count();
+            dic["LimitCount"] = ids.Count() * 4;
             var list = SQLHelperFactory.Instance.QueryMultiple<P, PR>("Select_b_product_List_by_ids", dic);
             return list;
         }
