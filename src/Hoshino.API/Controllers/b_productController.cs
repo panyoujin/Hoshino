@@ -93,8 +93,26 @@ namespace Hoshino.API.Controllers
                     productVM = p.ConvertToT<b_productVM>();
                     productVM.product_resourcesList = prList.Select(pr => pr.ConvertToT<b_product_resourcesVM>()).ToList();
                     productVM.product_attributeList = paList.Select(pa => pa.ConvertToT<b_product_attributeVM>()).ToList();
-                    productVM.rel_productList = rpList.Select(rp => rp.ConvertToT<b_productVM>()).ToList();
-
+                    productVM.rel_productList = new List<b_productVM>();
+                    if (rpList != null && rpList.Count() > 0)
+                    {
+                        var (r_pList, r_prList) = this._repository.GetProductListByIDs<b_product_Entity, b_product_resources_Entity>(rpList.Select(rp => rp.Product_ID));
+                        foreach (var rp in r_pList)
+                        {
+                            b_productVM r_productVM = rp.ConvertToT<b_productVM>();
+                            switch (lang)
+                            {
+                                case Lang.CHS:
+                                    r_productVM.Product_Name_HK = r_productVM.Product_Name_CH;
+                                    break;
+                                case Lang.CHT:
+                                    r_productVM.Product_Name_CH = r_productVM.Product_Name_HK;
+                                    break;
+                            }
+                            r_productVM.product_resourcesList = r_prList.Where(pr => pr.Product_ID == rp.Product_ID).Select(pr => pr.ConvertToT<b_product_resourcesVM>()).ToList();
+                            productVM.rel_productList.Add(r_productVM);
+                        }
+                    }
                     switch (lang)
                     {
                         case Lang.CHS:
@@ -156,7 +174,19 @@ namespace Hoshino.API.Controllers
                 productVM = p.ConvertToT<b_productVM>();
                 productVM.product_resourcesList = prList.Select(pr => pr.ConvertToT<b_product_resourcesVM>()).ToList();
                 productVM.product_attributeList = paList.Select(pa => pa.ConvertToT<b_product_attributeVM>()).ToList();
-                productVM.rel_productList = rpList.Select(rp => rp.ConvertToT<b_productVM>()).ToList();
+                //productVM.rel_productList = rpList.Select(rp => rp.ConvertToT<b_productVM>()).ToList();
+                productVM.rel_productList = new List<b_productVM>();
+
+                if (rpList != null && rpList.Count() > 0)
+                {
+                    var (r_pList, r_prList) = this._repository.GetProductListByIDs<b_product_Entity, b_product_resources_Entity>(rpList.Select(rp => rp.Product_ID));
+                    foreach (var rp in r_pList)
+                    {
+                        b_productVM r_productVM = rp.ConvertToT<b_productVM>();
+                        r_productVM.product_resourcesList = r_prList.Where(pr => pr.Product_ID == rp.Product_ID).Select(pr => pr.ConvertToT<b_product_resourcesVM>()).ToList();
+                        productVM.rel_productList.Add(r_productVM);
+                    }
+                }
 
                 break;
             }
