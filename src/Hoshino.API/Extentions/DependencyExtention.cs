@@ -26,7 +26,7 @@ namespace Hoshino.API.Extentions
             services.AddScoped<Ib_video_resources_Repository, b_video_resources_Repository>();
             services.AddScoped<Ilog_info_Repository, log_info_Repository>();
             services.AddScoped<Isys_user_Repository, sys_user_Repository>();
-
+            services.AddScoped<Ib_logo_resources_Repository, b_logo_resources_Repository>();
         }
     }
 }

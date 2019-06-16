@@ -73,6 +73,11 @@
     <ItemGroup>
       <Folder Include="Helper\" />
     </ItemGroup>
+    <ItemGroup>
+      <None Update="SqlConfig\b_logo_resourcesSql.xml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
 
 </Project>
 

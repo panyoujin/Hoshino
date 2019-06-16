@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SqlSetting>
+    <Data name="Insert_b_logo_resources">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                INSERT INTO b_logo_resources (Logo_Name_CH,Logo_Name_HK,Logo_URL,Logo_Seq,Create_Time,Create_UserId,Create_User) VALUES(@@Logo_Name_CH@@,@@Logo_Name_HK@@,@@Logo_URL@@,@@Logo_Seq@@,NOW(),@@Create_UserId@@,@@Create_User@@);
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Delete_b_logo_resources">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                DELETE FROM b_logo_resources WHERE Logo_ID=@@Logo_ID@@;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Select_b_logo_resources_List">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                SELECT Logo_Name_CH,Logo_Name_HK,Logo_URL,Logo_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_logo_resources WHERE Logo_Status=1 ;
+                SELECT COUNT(0) AS row_count FROM b_logo_resources WHERE Logo_Status=1;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+</SqlSetting>
+
