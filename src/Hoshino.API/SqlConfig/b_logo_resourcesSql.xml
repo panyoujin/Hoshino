@@ -22,7 +22,7 @@
         <SqlDefinition type="MySql" ConnStringName="backstage_connection">
             <SqlCommand>
                 <![CDATA[
-                SELECT Logo_Name_CH,Logo_Name_HK,Logo_URL,Logo_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_logo_resources WHERE Logo_Status=1 ;
+                SELECT Logo_ID,Logo_Name_CH,Logo_Name_HK,Logo_URL,Logo_Seq,Create_Time,Create_UserId,Create_User,Update_Time,Update_UserId,Update_User FROM b_logo_resources WHERE Logo_Status=1 ORDER BY Logo_Seq;
                 SELECT COUNT(0) AS row_count FROM b_logo_resources WHERE Logo_Status=1;
                 ]]>
             </SqlCommand>

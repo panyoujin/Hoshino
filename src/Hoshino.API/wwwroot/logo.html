@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from www.zi-han.net/theme/hplus/table_basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:20:01 GMT -->
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>星野官网后台 - Logo管理</title>
+    <meta name="keywords" content="星野官网后台">
+    <meta name="description" content="星野官网后台是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min862f.css?v=4.1.0" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+
+    <div class="wrapper wrapper-content animated fadeInUp">
+        <div class="row">
+            <div class="col-sm-8">
+
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>Logo管理</h5>
+                        <div class="ibox-tools">
+                            <button type="button" class="J_menuItem btn btn-primary btn-xs" data-toggle="modal"
+                                data-target="#insertLogo"> 新增</button>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+
+                        <div class="project-list">
+
+                            <table class="table table-hover">
+
+                                <tbody id="tableContent">
+                                    <!-- <tr>
+                                        <td class="project-status">
+                                            1
+                                        </td>
+                                        <td class="project-title">
+                                            <img style="width:144;height:50px;"
+                                                src="http://www.hosinowt.com/resources/banner/indexBanner1.png">
+                                        </td>
+                                        <td class="project-title">
+                                            米屋Mayu米潤酒粕大米麵膜（10片裝）
+                                        </td>
+                                        <td class="project-completion">
+                                            <small>创建于 2014.08.15</small>
+                                        </td>
+                                        <td class="project-actions">
+                                            <a href="#" class="btn btn-white btn-sm" ><i class="fa fa-binoculars"></i> 查看 </a>
+                                             <a href="#" class="btn btn-white btn-sm"><i class="fa fa-delete"></i> 删除 </a>
+                                        </td>
+                                    </tr> -->
+                                </tbody>
+
+                            </table>
+                            <!-- <div style="text-align: right;" id="pagination">
+                            </div> -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 弹出窗口  新增banner 开始-->
+    <div class="modal inmodal fade" id="insertLogo" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row">
+                        <label title="上传图片" class="col-sm-2 btn btn-primary">
+                            <input type="file" accept="image/*" name="file" id="Import" class="hide"> 上传新图片
+                        </label>
+                        <div style="width:255;height:100px;" class="col-md-9">
+                            <img id="imgLogo" src="img/default.png" style="width:100%;height:100%;">
+                        </div>
+                    </div>
+                    <div class="row" style="height:20px;" >
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 control-label">排序：</label>
+                        <div class="col-sm-9">
+                            <input id="txtLogoSeq" class="form-control" type="text" value="0">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" id="btnClose" data-dismiss="modal">关闭</button>
+                    <button class="btn btn-primary" type="submit" id="btnSave">保存内容</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 弹出窗口 新增banner- 结束-->
+
+
+    <script src="js/jquery.min.js?v=2.1.4"></script>
+    <script src="js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="js/content.min.js?v=1.0.0"></script>
+    <script src="js/jqueryupload.js?v=1.0.0"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/hoshino/common.js"></script>
+    <script src="js/hoshino/logo.js"></script>
+
+
+</body>
+
+</html>
