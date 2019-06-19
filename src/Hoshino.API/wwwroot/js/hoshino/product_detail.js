@@ -17,7 +17,7 @@ $(function () {
         if (!$("#signupForm_base").valid()) {
             return;
         }
-        var productId=$("#productId").val();
+        var productId = $("#productId").val();
 
         var productReq = {
             Product_Name_CH: $("#txtProduct_Name_CH").val(),
@@ -43,7 +43,7 @@ $(function () {
                 }
             }, JSON.stringify(productReq));
         } else {
-            productReq.Product_ID=productId;
+            productReq.Product_ID = productId;
             requestUrl("/api/b_product/Update", function (obj) {
                 if (obj.Code == 200) {
                     parent.layer.msg('修改产品信息成功', { icon: 1 });
@@ -59,10 +59,16 @@ $(function () {
 
 
     //三个图片详情
-    $("#imgPic1,#imgPic2,#imgPic3").click(function () {
+    // $("#imgPic1,#imgPic2,#imgPic3").click(function () {
+    //     $("#hiEventShowDialog").click();
+    //     imagePicDocument = $(this);
+    // });
+    //三个图片详情
+    $(document).on("click", ".imgPic", function () {
         $("#hiEventShowDialog").click();
         imagePicDocument = $(this);
-    });
+    })
+
     //video编辑
     $("#imgVideo").click(function () {
         $("#imgVideoInput").click();
@@ -102,6 +108,27 @@ $(function () {
         }, formData);
     });
 
+    //新增产品图片
+    $("#btnImage").click(function () {
+        $("#divImageContent").append("<div class='form-group'> \
+            <input class='resourcesId' type='text' style='display:none' value='0'>\
+            <a href='#' class='col-sm-3'>\
+                <img class='imgPic' pic='' style='height: 200px; width: 200px; 'src='./img/default.png' alt='展示图片'>\
+            </a>\
+            <label class='col-sm-2 control-label'>启用：</label>\
+            <div class='col-sm-2'>\
+                <select  class='form-control m-b slP_Resources_Status'  name='slP_Resources_Status'>\
+                    <option value='1' selected>是</option>\
+                    <option value='0'>否</option>\
+                </select>\
+            </div>\
+            <label class='col-sm-2 control-label'>排序：</label>\
+            <div class='col-sm-2'>\
+                <input name='txtP_Resources_Seq' class='form-control txtP_Resources_Seq' value='0' type='text'>\
+            </div>\
+        </div>");
+    });
+
     // //提交产品图片 上一步
     // $("#btnproduct_resources_back").click(function () {
     //     $("#product_resources").css("display", "none");
@@ -111,33 +138,25 @@ $(function () {
     $("#btnproduct_resources_next").click(function () {
         var insertModel = [];
         var updateModel = [];
-        var pic1 = { P_Resources_ID: $("#resourcesId1").val(), Product_ID: $("#productId").val(), P_Resources_URL: $("#imgPic1").attr("pic"), P_Resources_Type: "image", P_Resources_Status: $("#slP_Resources_Status1").val(), P_Resources_Seq: $("#txtP_Resources_Seq1").val(), P_Resources_Name_CH: "默认名称", P_Resources_Name_HK: "默认名称" };
-        var pic2 = { P_Resources_ID: $("#resourcesId2").val(), Product_ID: $("#productId").val(), P_Resources_URL: $("#imgPic2").attr("pic"), P_Resources_Type: "image", P_Resources_Status: $("#slP_Resources_Status2").val(), P_Resources_Seq: $("#txtP_Resources_Seq2").val(), P_Resources_Name_CH: "默认名称", P_Resources_Name_HK: "默认名称" };
-        var pic3 = { P_Resources_ID: $("#resourcesId3").val(), Product_ID: $("#productId").val(), P_Resources_URL: $("#imgPic3").attr("pic"), P_Resources_Type: "image", P_Resources_Status: $("#slP_Resources_Status3").val(), P_Resources_Seq: $("#txtP_Resources_Seq3").val(), P_Resources_Name_CH: "默认名称", P_Resources_Name_HK: "默认名称" };
-        var pic4 = { P_Resources_ID: $("#resourcesId4").val(), Product_ID: $("#productId").val(), P_Resources_URL: $("#videoControl").attr("vic"), P_Resources_Type: "video", P_Resources_Status: $("#slP_Resources_Status4").val(), P_Resources_Seq: $("#txtP_Resources_Seq4").val(), P_Resources_Name_CH: "默认名称", P_Resources_Name_HK: "默认名称" };
-        if (pic1.P_Resources_ID > 0) {
-            updateModel.push(pic1);
-        } else if (!$.isEmptyObject(pic1.P_Resources_URL)) {
-            insertModel.push(pic1);
+        var video = { P_Resources_ID: $("#resourcesIdVideo").val(), Product_ID: $("#productId").val(), P_Resources_URL: $("#videoControl").attr("vic"), P_Resources_Type: "video", P_Resources_Status: $("#slP_Resources_StatusVideo").val(), P_Resources_Seq: $("#txtP_Resources_SeqVideo").val(), P_Resources_Name_CH: "默认名称", P_Resources_Name_HK: "默认名称" };
+        if (video.P_Resources_ID > 0) {
+            updateModel.push(video);
+        } else if (!$.isEmptyObject(video.P_Resources_URL)) {
+            insertModel.push(video);
         }
+        $("#divImageContent .form-group").each(function (index) {
+            var imageObj = { P_Resources_ID: $(this).find(".resourcesId").val(), Product_ID: $("#productId").val(),
+             P_Resources_URL: $(this).find("a .imgPic").attr("pic"), P_Resources_Type: "image",
+              P_Resources_Status: $(this).find("div .slP_Resources_Status").val(), P_Resources_Seq: $(this).find("div .txtP_Resources_Seq").val(), 
+              P_Resources_Name_CH: "默认名称", P_Resources_Name_HK: "默认名称" };
 
-        if (pic2.P_Resources_ID > 0) {
-            updateModel.push(pic2);
-        } else if (!$.isEmptyObject(pic2.P_Resources_URL)) {
-            insertModel.push(pic2);
-        }
+              if (imageObj.P_Resources_ID > 0) {
+                updateModel.push(imageObj);
+            } else if (!$.isEmptyObject(imageObj.P_Resources_URL)) {
+                insertModel.push(imageObj);
+            }
 
-        if (pic3.P_Resources_ID > 0) {
-            updateModel.push(pic3);
-        } else if (!$.isEmptyObject(pic3.P_Resources_URL)) {
-            insertModel.push(pic3);
-        }
-
-        if (pic4.P_Resources_ID > 0) {
-            updateModel.push(pic4);
-        } else if (!$.isEmptyObject(pic4.P_Resources_URL)) {
-            insertModel.push(pic4);
-        }
+        });
 
         if (insertModel.length > 0) {
             requestUrl("/api/b_product_resources/Post", function (obj) {
@@ -293,14 +312,14 @@ $(function () {
         }, JSON.stringify(req));
 
     });
-    $("#btnProductRef").click(function(){
+    $("#btnProductRef").click(function () {
         window.location.href = "product_manage.html";
     });
     //关联产品删除 event
     $(document).on("click", ".refProductDelete", function () {
         var Source_Product_ID = $("#productId").val();
         var Rel_Product_ID = $(this).attr("refId");
-        var req = { Source_Product_ID: Source_Product_ID, Rel_Product_ID: Rel_Product_ID};
+        var req = { Source_Product_ID: Source_Product_ID, Rel_Product_ID: Rel_Product_ID };
         requestUrl("/api/b_rel_product/Delete", function (obj) {
             console.info(obj);
             if (obj.Code == 200) {
@@ -366,21 +385,43 @@ var loadProductEditData = function (productId) {
 
             if (obj.Result.product_resourcesList.length > 0) {
                 var picIndex = 1;
+                $("#divImageContent").empty();
                 $.each(obj.Result.product_resourcesList, function (n, item) {
                     if (item.P_Resources_Type == "image") {
-                        $("#resourcesId" + picIndex).val(item.P_Resources_ID);
-                        $("#imgPic" + picIndex).attr("pic", item.P_Resources_URL);
-                        $("#imgPic" + picIndex).attr("src", _Domain + item.P_Resources_URL);
-                        $("#slP_Resources_Status" + picIndex).val(item.P_Resources_Status);
-                        $("#txtP_Resources_Seq" + picIndex).val(item.P_Resources_Seq);
+                        // $("#resourcesId" + picIndex).val(item.P_Resources_ID);
+                        // $("#imgPic" + picIndex).attr("pic", item.P_Resources_URL);
+                        // $("#imgPic" + picIndex).attr("src", _Domain + item.P_Resources_URL);
+                        // $("#slP_Resources_Status" + picIndex).val(item.P_Resources_Status);
+                        // $("#txtP_Resources_Seq" + picIndex).val(item.P_Resources_Seq);
+                        var imgStatusStr = "";
+                        if (item.P_Resources_Status == 1) {
+                            imgStatusStr = "<option value='1' selected>是</option><option value='0'>否</option>";
+                        } else {
+                            imgStatusStr = "<option value='1'>是</option><option value='0' selected>否</option>";
+                        }
+    
+                        $("#divImageContent").append("<div class='form-group'> \
+                        <input class='resourcesId' type='text' style='display:none' value='"+item.P_Resources_ID+"'>\
+                        <a href='#' class='col-sm-3'>\
+                            <img class='imgPic' pic='"+item.P_Resources_URL+"' style='height: 200px; width: 200px;' src='"+_Domain+item.P_Resources_URL+"' alt='展示图片'>\
+                        </a>\
+                        <label class='col-sm-2 control-label'>启用：</label>\
+                        <div class='col-sm-2'>\
+                            <select class='form-control m-b slP_Resources_Status' name='slP_Resources_Status'>"+imgStatusStr+"</select>\
+                        </div>\
+                        <label class='col-sm-2 control-label'>排序：</label>\
+                        <div class='col-sm-2'>\
+                            <input name='txtP_Resources_Seq' class='form-control txtP_Resources_Seq' value='"+item.P_Resources_Seq+"' type='text'>\
+                        </div>\
+                        </div>");
 
                         picIndex++;
                     } else if (item.P_Resources_Type == "video") {
-                        $("#resourcesId4").val(item.P_Resources_ID);
+                        $("#resourcesIdVideo").val(item.P_Resources_ID);
                         $("#videoControl").attr("vic", item.P_Resources_URL);
                         $("#videoControl").attr("src", _Domain + item.P_Resources_URL);
-                        $("#slP_Resources_Status4").val(item.P_Resources_Status);
-                        $("#txtP_Resources_Seq4").val(item.P_Resources_Seq);
+                        $("#slP_Resources_StatusVideo").val(item.P_Resources_Status);
+                        $("#txtP_Resources_SeqVideo").val(item.P_Resources_Seq);
                     }
                 });
             }
