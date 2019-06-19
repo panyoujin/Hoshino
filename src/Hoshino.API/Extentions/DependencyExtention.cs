@@ -21,6 +21,7 @@ namespace Hoshino.API.Extentions
             services.AddScoped<Ib_contact_Repository, b_contact_Repository>();
             services.AddScoped<Ib_product_Repository, b_product_Repository>();
             services.AddScoped<Ib_product_attribute_Repository, b_product_attribute_Repository>();
+            services.AddScoped<Ib_product_attribute_template_Repository, b_product_attribute_template_Repository>();
             services.AddScoped<Ib_product_resources_Repository, b_product_resources_Repository>();
             services.AddScoped<Ib_rel_product_Repository, b_rel_product_Repository>();
             services.AddScoped<Ib_video_resources_Repository, b_video_resources_Repository>();

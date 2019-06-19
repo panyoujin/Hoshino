@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SqlSetting>
+    <Data name="Insert_b_product_attribute_template">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                INSERT INTO b_product_attribute_template (P_Attribute_Name_CH,P_Attribute_Name_HK,P_Attribute_Seq,Create_Time,Create_UserId,Create_User) VALUES(@@P_Attribute_Name_CH@@,@@P_Attribute_Name_HK@@,@@P_Attribute_Seq@@,NOW(),@@Create_UserId@@,@@Create_User@@);
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Delete_b_product_attribute_template">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                DELETE FROM b_product_attribute_template;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+    <Data name="Select_b_product_attribute_template_List">
+        <SqlDefinition type="MySql" ConnStringName="backstage_connection">
+            <SqlCommand>
+                <![CDATA[
+                SELECT P_Attribute_ID,P_Attribute_Name_CH,P_Attribute_Name_HK,P_Attribute_Seq FROM b_product_attribute_template ORDER BY P_Attribute_Seq,P_Attribute_ID;
+                ]]>
+            </SqlCommand>
+        </SqlDefinition>
+    </Data>
+</SqlSetting>
+

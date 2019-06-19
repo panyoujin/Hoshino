@@ -7,6 +7,8 @@ $(function () {
     if (!$.isEmptyObject(productId)) {
         //如果该产品不存在数据库，则返回上一级
         loadProductEditData(productId);
+    } else {
+        loadProductAttributeTemplate();
     }
 
 
@@ -426,6 +428,8 @@ var loadProductEditData = function (productId) {
                     </div>\
                 </div>");
                 });
+            } else {
+                loadProductAttributeTemplate();
             }
 
             if (obj.Result.rel_productList.length > 0) {
@@ -449,7 +453,59 @@ var loadProductEditData = function (productId) {
         }
     }, '', 'GET');
 
-}
+};
+
+//编辑产品信息
+var loadProductAttributeTemplate = function () {
+    requestUrl("/api/b_product_attribute_template/GetList", function (obj) {
+        console.info(obj);
+        if (obj.Code === 200) {
+            if (obj.Result.length > 0) {
+                $("#signupForm_attribute").empty();
+                $.each(obj.Result, function (n, item) {
+                    var attributeStatusStr = "<option value='1' selected>是</option><option value='0'>否</option>";
+
+                    $("#signupForm_attribute").append("<div class='attributeItem'>\
+                    <div class='form-group'>\
+                        <div class='col-sm-4'>\
+                            <input  name='txtP_Attribute_Name_CH' value='"+ item.P_Attribute_Name_CH + "' class='form-control' type='text' placeholder='属性简体'>\
+                        </div>\
+                        <div class='col-sm-6'>\
+                            <input  name='txtP_Attribute_Value_CH' value='' class='form-control' type='text' placeholder='简体内容'>\
+                        </div>\
+                    </div>\
+                    <div class='form-group'>\
+                        <div class='col-sm-4'>\
+                            <input  name='txtP_Attribute_Name_HK' value='"+ item.P_Attribute_Name_HK + "' class='form-control' type='text' placeholder='属性繁体'>\
+                        </div>\
+                        <div class='col-sm-6'>\
+                            <input  name='txtP_Attribute_Value_EN'class='form-control' value='' type='text' placeholder='繁体内容'>\
+                        </div>\
+                    </div>\
+                    <div class='form-group'>\
+                        <label class='col-sm-2 control-label'>启用：</label>\
+                        <div class='col-sm-2'>\
+                            <select  class='form-control m-b'> \
+                            "+ attributeStatusStr + " </select>\
+                        </div>\
+                        <label class='col-sm-2 control-label'>排序：</label>\
+                        <div class='col-sm-4'>\
+                            <input name='txtP_Resources_Seq' value='"+ item.P_Attribute_Seq + "' class='form-control' value='0' type='text'>\
+                        </div>\
+                        <div class='col-sm-2'>\
+                            <button class='btn btn-warning btnAttributeDelete' type='button'>删除</button>\
+                        </div>\
+                    </div>\
+                </div>");
+                });
+            }
+
+        } else {
+            console.log("template 3");
+        }
+    }, '', 'GET');
+
+};
 
 
 function getUrlParam(name) {
