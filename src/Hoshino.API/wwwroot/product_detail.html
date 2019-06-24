@@ -204,7 +204,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <input id="resourcesIdVideo" type="text" style="display:none" value="0">
                                 <a href="#" class="col-sm-3">
@@ -229,17 +229,15 @@
 
                             </div>
 
+                            <!--产品图片 end-->
                             <div class="form-group">
-
-                                <!--产品图片 end-->
-                                <div class="form-group">
-                                    <div class="col-sm-offset-9">
-                                        <!-- <button class="btn btn-warning" type="button"
+                                <div class="col-sm-offset-9">
+                                    <!-- <button class="btn btn-warning" type="button"
                                         id="btnproduct_resources_back">上一步</button> -->
-                                        <button class="btn btn-primary" type="button"
-                                            id="btnproduct_resources_next">下一步</button>
-                                    </div>
+                                    <button class="btn btn-primary" type="button"
+                                        id="btnproduct_resources_next">下一步</button>
                                 </div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -358,7 +356,8 @@
 
 
     <!-- 弹出窗口 开始-->
-    <div class="modal inmodal fade" tabindex="-1" id="picCropper" role="dialog" aria-hidden="true" data-backdrop="false">
+    <div class="modal inmodal fade" tabindex="-1" id="picCropper" role="dialog" aria-hidden="true"
+        data-backdrop="false">
 
         <div class="modal-dialog modal-lg">
             <div class="ibox-title  back-change">
@@ -383,6 +382,7 @@
                                 <input type="file" accept="image/*" name="file" id="inputImage" class="hide"> 上传新图片
                             </label>
                             <label title="确定" id="download" class="btn btn-primary">确定</label>
+                            <label title="关闭" id="btnClose" class="btn btn-primary" data-dismiss="modal">关闭</label>
                         </div>
                         <h4></h4>
 
@@ -403,7 +403,8 @@
     <!-- 弹出窗口 结束-->
 
     <!-- 产品关联 弹出窗口 开始-->
-    <div class="modal inmodal fade" id="productRefAdd" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="false">
+    <div class="modal inmodal fade" id="productRefAdd" tabindex="-1" role="dialog" aria-hidden="true"
+        data-backdrop="false">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
