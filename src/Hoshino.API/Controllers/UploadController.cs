@@ -39,15 +39,12 @@ namespace Hoshino.API.Controllers
         /// </summary>
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(IFormCollection))]
-        public ActionResult<object> Post([FromForm] IFormCollection formCollection)
+        public ActionResult<object> Post([FromForm]IFormCollection formCollection, string picMode = "")
         {
             UploadVM upload = new UploadVM();
             try
             {
                 string baseDirectory = AppContext.BaseDirectory;
-
-                //string webRootPath = _hostingEnvironment.WebRootPath;
-                //string contentRootPath = _hostingEnvironment.ContentRootPath;
 
                 FormFileCollection filelist = (FormFileCollection)formCollection.Files;
 
@@ -63,14 +60,34 @@ namespace Hoshino.API.Controllers
 
 
                     if (!di.Exists) { di.Create(); }
+                    string fullFile = Path.Combine(FilePath, FileName + fileType);
+                    string oldFile= Path.Combine(FilePath, FileName+"1" + fileType);
 
-                    using (FileStream fs = System.IO.File.Create(Path.Combine(FilePath, FileName + fileType)))
+                    using (FileStream fs = System.IO.File.Create(oldFile))
                     {
                         // 复制文件
                         file.CopyTo(fs);
                         // 清空缓冲区数据
                         fs.Flush();
                     }
+
+
+                    switch (picMode)
+                    {
+                        //缩略图
+                        case "Thumbnail":
+                            Util.ImagePro.MakeThumNail(oldFile, fullFile,350,350,"W");
+                            break;
+                        //详情图
+                        case "Details":
+                            Util.ImagePro.MakeThumNail(oldFile, fullFile, 800, 800, "W");
+                            break;
+                        //原图
+                        case "OriginalGraph":
+                        case "":
+                            break;
+                    }
+
                     upload.fileName = name;
                     upload.filePath = Path.Combine(Tpath, FileName + fileType);
                     upload.fileType = fileType;
