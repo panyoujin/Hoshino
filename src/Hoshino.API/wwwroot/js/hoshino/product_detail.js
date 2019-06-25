@@ -91,6 +91,7 @@ $(function () {
 
     //截图工具的确定 event
     $("#download").click(function () {
+        var picMode=$("#slPicMode").val();
         var dataURL = $(".image-crop > img").cropper("getDataURL", "image/jpeg");
 
         var file = dataURLtoFile(dataURL, "picBase64");
@@ -98,7 +99,7 @@ $(function () {
         var formData = new FormData();
         formData.append("file", file);
 
-        requestFromUrl("/api/Upload/Post", function (obj) {
+        requestFromUrl("/api/Upload/Post?picMode="+picMode, function (obj) {
             if (obj.Code == 200) {
                 imagePicDocument.attr("src", _Domain + obj.Result.filePath);
                 imagePicDocument.attr("pic", obj.Result.filePath);

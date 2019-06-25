@@ -61,9 +61,8 @@ namespace Hoshino.API.Controllers
 
                     if (!di.Exists) { di.Create(); }
                     string fullFile = Path.Combine(FilePath, FileName + fileType);
-                    string oldFile= Path.Combine(FilePath, FileName+"1" + fileType);
 
-                    using (FileStream fs = System.IO.File.Create(oldFile))
+                    using (FileStream fs = System.IO.File.Create(fullFile))
                     {
                         // 复制文件
                         file.CopyTo(fs);
@@ -71,16 +70,20 @@ namespace Hoshino.API.Controllers
                         fs.Flush();
                     }
 
-
+                    string newFullFile = "";
                     switch (picMode)
                     {
                         //缩略图
                         case "Thumbnail":
-                            Util.ImagePro.MakeThumNail(oldFile, fullFile,350,350,"W");
+                            FileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+                            newFullFile = Path.Combine(FilePath, FileName + fileType);
+                            Util.ImagePro.MakeThumNail(fullFile, newFullFile, 350, 350, "W");
                             break;
                         //详情图
                         case "Details":
-                            Util.ImagePro.MakeThumNail(oldFile, fullFile, 800, 800, "W");
+                            FileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+                            newFullFile = Path.Combine(FilePath, FileName + fileType);
+                            Util.ImagePro.MakeThumNail(fullFile, newFullFile, 800, 800, "W");
                             break;
                         //原图
                         case "OriginalGraph":

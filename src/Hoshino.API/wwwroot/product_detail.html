@@ -129,9 +129,7 @@
                     <div class="ibox-title">
                         <h5><a href="product_manage.html">产品管理</a> > 产品资源新增/编辑</h5>
                         <div class="ibox-tools">
-                            <a class="collapse-link">
-                                <i class="fa fa-chevron-up"></i>
-                            </a>
+                            <a href="#" class="btn btn-primary btn-xs" id="btnImage">新增图片</a>
                         </div>
                     </div>
                     <div class="ibox-content">
@@ -374,6 +372,11 @@
                         <h4>图片预览：</h4>
                         <div class="img-preview" style=" height: 200px;width: 200px;"></div>
                         <h4>说明：</h4>
+                        <select id="slPicMode" class="input-md  form-control" style="width: 200px">
+                            <option value="Details" selected>详情图</option>
+                            <option value="Thumbnail">缩略图</option>
+                            <option value="OriginalGraph">原图</option>
+                        </select>
                         <p>
                             你可以选择新图片上传
                         </p>
