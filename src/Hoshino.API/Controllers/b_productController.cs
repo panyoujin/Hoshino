@@ -228,24 +228,28 @@ namespace Hoshino.API.Controllers
             {
                 var (ids, rows) = this._repository.GetProductIDList<int>(categoryID, "", 1, -1, -1, pageindex, pagesize);
                 total = rows;
-                var (pList, prList) = this._repository.GetProductListByIDs<b_product_Entity, b_product_resources_Entity>(ids);
-                foreach (var p in pList)
+
+                if (ids != null || ids.Count() > 0)
                 {
-                    b_productVM productVM = p.ConvertToT<b_productVM>();
-                    switch (lang)
+                    var (pList, prList) = this._repository.GetProductListByIDs<b_product_Entity, b_product_resources_Entity>(ids);
+                    foreach (var p in pList)
                     {
-                        case Lang.CHS:
-                            productVM.Product_Name_HK = productVM.Product_Name_CH;
-                            break;
-                        case Lang.CHT:
-                            productVM.Product_Name_CH = productVM.Product_Name_HK;
-                            break;
+                        b_productVM productVM = p.ConvertToT<b_productVM>();
+                        switch (lang)
+                        {
+                            case Lang.CHS:
+                                productVM.Product_Name_HK = productVM.Product_Name_CH;
+                                break;
+                            case Lang.CHT:
+                                productVM.Product_Name_CH = productVM.Product_Name_HK;
+                                break;
+                        }
+                        productVM.product_resourcesList = prList.Where(pr => pr.Product_ID == p.Product_ID).Select(pr => pr.ConvertToT<b_product_resourcesVM>()).ToList();
+                        vmList.Add(productVM);
                     }
-                    productVM.product_resourcesList = prList.Where(pr => pr.Product_ID == p.Product_ID).Select(pr => pr.ConvertToT<b_product_resourcesVM>()).ToList();
-                    vmList.Add(productVM);
+                    CacheFactory.CacheInstance.Add(key, vmList);
+                    CacheFactory.CacheInstance.Add(totalKey, total);
                 }
-                CacheFactory.CacheInstance.Add(key, vmList);
-                CacheFactory.CacheInstance.Add(totalKey, total);
             }
             return vmList.ResponseSuccess("", total);
         }
@@ -269,24 +273,27 @@ namespace Hoshino.API.Controllers
             {
                 var (ids, rows) = this._repository.GetProductIDList<int>(categoryID, "", -1, 1, -1, pageindex, pagesize);
                 total = rows;
-                var (pList, prList) = this._repository.GetProductListByIDs<b_product_Entity, b_product_resources_Entity>(ids);
-                foreach (var p in pList)
+                if (ids != null || ids.Count() > 0)
                 {
-                    b_productVM productVM = p.ConvertToT<b_productVM>();
-                    switch (lang)
+                    var (pList, prList) = this._repository.GetProductListByIDs<b_product_Entity, b_product_resources_Entity>(ids);
+                    foreach (var p in pList)
                     {
-                        case Lang.CHS:
-                            productVM.Product_Name_HK = productVM.Product_Name_CH;
-                            break;
-                        case Lang.CHT:
-                            productVM.Product_Name_CH = productVM.Product_Name_HK;
-                            break;
+                        b_productVM productVM = p.ConvertToT<b_productVM>();
+                        switch (lang)
+                        {
+                            case Lang.CHS:
+                                productVM.Product_Name_HK = productVM.Product_Name_CH;
+                                break;
+                            case Lang.CHT:
+                                productVM.Product_Name_CH = productVM.Product_Name_HK;
+                                break;
+                        }
+                        productVM.product_resourcesList = prList.Where(pr => pr.Product_ID == p.Product_ID).Select(pr => pr.ConvertToT<b_product_resourcesVM>()).ToList();
+                        vmList.Add(productVM);
                     }
-                    productVM.product_resourcesList = prList.Where(pr => pr.Product_ID == p.Product_ID).Select(pr => pr.ConvertToT<b_product_resourcesVM>()).ToList();
-                    vmList.Add(productVM);
+                    CacheFactory.CacheInstance.Add(key, vmList);
+                    CacheFactory.CacheInstance.Add(totalKey, total);
                 }
-                CacheFactory.CacheInstance.Add(key, vmList);
-                CacheFactory.CacheInstance.Add(totalKey, total);
             }
             return vmList.ResponseSuccess("", total);
         }
@@ -309,24 +316,27 @@ namespace Hoshino.API.Controllers
             {
                 var (ids, rows) = this._repository.GetProductIDList<int>(categoryID, "", -1, -1, 1, pageindex, pagesize);
                 total = rows;
-                var (pList, prList) = this._repository.GetProductListByIDs<b_product_Entity, b_product_resources_Entity>(ids);
-                foreach (var p in pList)
+                if (ids != null || ids.Count() > 0)
                 {
-                    b_productVM productVM = p.ConvertToT<b_productVM>();
-                    switch (lang)
+                    var (pList, prList) = this._repository.GetProductListByIDs<b_product_Entity, b_product_resources_Entity>(ids);
+                    foreach (var p in pList)
                     {
-                        case Lang.CHS:
-                            productVM.Product_Name_HK = productVM.Product_Name_CH;
-                            break;
-                        case Lang.CHT:
-                            productVM.Product_Name_CH = productVM.Product_Name_HK;
-                            break;
+                        b_productVM productVM = p.ConvertToT<b_productVM>();
+                        switch (lang)
+                        {
+                            case Lang.CHS:
+                                productVM.Product_Name_HK = productVM.Product_Name_CH;
+                                break;
+                            case Lang.CHT:
+                                productVM.Product_Name_CH = productVM.Product_Name_HK;
+                                break;
+                        }
+                        productVM.product_resourcesList = prList.Where(pr => pr.Product_ID == p.Product_ID).Select(pr => pr.ConvertToT<b_product_resourcesVM>()).ToList();
+                        vmList.Add(productVM);
                     }
-                    productVM.product_resourcesList = prList.Where(pr => pr.Product_ID == p.Product_ID).Select(pr => pr.ConvertToT<b_product_resourcesVM>()).ToList();
-                    vmList.Add(productVM);
+                    CacheFactory.CacheInstance.Add(key, vmList);
+                    CacheFactory.CacheInstance.Add(totalKey, total);
                 }
-                CacheFactory.CacheInstance.Add(key, vmList);
-                CacheFactory.CacheInstance.Add(totalKey, total);
             }
             return vmList.ResponseSuccess("", total);
         }
@@ -351,24 +361,28 @@ namespace Hoshino.API.Controllers
             {
                 var (ids, rows) = this._repository.GetProductIDList<int>(categoryID, product_name, -1, -1, -1, pageindex, pagesize);
                 total = rows;
-                var (pList, prList) = this._repository.GetProductListByIDs<b_product_Entity, b_product_resources_Entity>(ids);
-                foreach (var p in pList)
+                if (ids != null || ids.Count() > 0)
                 {
-                    b_productVM productVM = p.ConvertToT<b_productVM>();
-                    switch (lang)
+                    var (pList, prList) = this._repository.GetProductListByIDs<b_product_Entity, b_product_resources_Entity>(ids);
+                    foreach (var p in pList)
                     {
-                        case Lang.CHS:
-                            productVM.Product_Name_HK = productVM.Product_Name_CH;
-                            break;
-                        case Lang.CHT:
-                            productVM.Product_Name_CH = productVM.Product_Name_HK;
-                            break;
+                        b_productVM productVM = p.ConvertToT<b_productVM>();
+                        switch (lang)
+                        {
+                            case Lang.CHS:
+                                productVM.Product_Name_HK = productVM.Product_Name_CH;
+                                break;
+                            case Lang.CHT:
+                                productVM.Product_Name_CH = productVM.Product_Name_HK;
+                                break;
+                        }
+                        productVM.product_resourcesList = prList.Where(pr => pr.Product_ID == p.Product_ID).Select(pr => pr.ConvertToT<b_product_resourcesVM>()).ToList();
+                        vmList.Add(productVM);
+
                     }
-                    productVM.product_resourcesList = prList.Where(pr => pr.Product_ID == p.Product_ID).Select(pr => pr.ConvertToT<b_product_resourcesVM>()).ToList();
-                    vmList.Add(productVM);
+                    CacheFactory.CacheInstance.Add(key, vmList);
+                    CacheFactory.CacheInstance.Add(totalKey, total);
                 }
-                CacheFactory.CacheInstance.Add(key, vmList);
-                CacheFactory.CacheInstance.Add(totalKey, total);
             }
             return vmList.ResponseSuccess("", total);
         }
