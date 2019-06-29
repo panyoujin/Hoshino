@@ -229,7 +229,7 @@ namespace Hoshino.API.Controllers
                 var (ids, rows) = this._repository.GetProductIDList<int>(categoryID, "", 1, -1, -1, pageindex, pagesize);
                 total = rows;
 
-                if (ids != null || ids.Count() > 0)
+                if (ids != null && ids.Count() > 0)
                 {
                     var (pList, prList) = this._repository.GetProductListByIDs<b_product_Entity, b_product_resources_Entity>(ids);
                     foreach (var p in pList)
@@ -273,7 +273,7 @@ namespace Hoshino.API.Controllers
             {
                 var (ids, rows) = this._repository.GetProductIDList<int>(categoryID, "", -1, 1, -1, pageindex, pagesize);
                 total = rows;
-                if (ids != null || ids.Count() > 0)
+                if (ids != null && ids.Count() > 0)
                 {
                     var (pList, prList) = this._repository.GetProductListByIDs<b_product_Entity, b_product_resources_Entity>(ids);
                     foreach (var p in pList)
@@ -316,7 +316,7 @@ namespace Hoshino.API.Controllers
             {
                 var (ids, rows) = this._repository.GetProductIDList<int>(categoryID, "", -1, -1, 1, pageindex, pagesize);
                 total = rows;
-                if (ids != null || ids.Count() > 0)
+                if (ids != null && ids.Count() > 0)
                 {
                     var (pList, prList) = this._repository.GetProductListByIDs<b_product_Entity, b_product_resources_Entity>(ids);
                     foreach (var p in pList)
@@ -361,7 +361,7 @@ namespace Hoshino.API.Controllers
             {
                 var (ids, rows) = this._repository.GetProductIDList<int>(categoryID, product_name, -1, -1, -1, pageindex, pagesize);
                 total = rows;
-                if (ids != null || ids.Count() > 0)
+                if (ids != null && ids.Count() > 0)
                 {
                     var (pList, prList) = this._repository.GetProductListByIDs<b_product_Entity, b_product_resources_Entity>(ids);
                     foreach (var p in pList)
