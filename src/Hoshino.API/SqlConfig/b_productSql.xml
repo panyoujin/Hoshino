@@ -98,8 +98,8 @@ LEFT JOIN  `b_product` p ON rp.`Rel_Product_ID`=p.`Product_ID`
     <SqlDefinition type="MySql" ConnStringName="backstage_connection">
       <SqlCommand>
         <![CDATA[
- SELECT p.`Product_ID` FROM `b_product` p  WHERE p.`Product_Status`=1 <%= AND Category_ID=@@Category_ID@@%> <%= AND Product_New=@@Product_New@@%> <%= AND Product_Hot=@@Product_Hot@@%> <%= AND Product_Recommend=@@Product_Recommend@@%> <R%= AND (Product_Name_CH LIKE '%@@Product_Name@@%' OR Product_Name_HK LIKE '%@@Product_Name@@%')%R>  ORDER BY p.Product_Seq,p.Product_ID <R%= LIMIT @@StartIndex@@, @@SelectCount@@ %R> ;
- SELECT count(p.`Product_ID`) AS row_count  FROM `b_product` p  WHERE p.`Product_Status`=1 <%= AND Category_ID=@@Category_ID@@%> <%= AND Product_New=@@Product_New@@%> <%= AND Product_Hot=@@Product_Hot@@%> <%= AND Product_Recommend=@@Product_Recommend@@%> <R%= AND (Product_Name_CH LIKE '%@@Product_Name@@%' OR Product_Name_HK LIKE '%@@Product_Name@@%')%R> ;
+ SELECT p.`Product_ID` FROM `b_product` p  WHERE p.`Product_Status`=1 <R%= AND Category_ID IN (@@Category_ID@@)%R> <%= AND Product_New=@@Product_New@@%> <%= AND Product_Hot=@@Product_Hot@@%> <%= AND Product_Recommend=@@Product_Recommend@@%> <R%= AND (Product_Name_CH LIKE '%@@Product_Name@@%' OR Product_Name_HK LIKE '%@@Product_Name@@%')%R>  ORDER BY p.Product_Seq,p.Product_ID <R%= LIMIT @@StartIndex@@, @@SelectCount@@ %R> ;
+ SELECT count(p.`Product_ID`) AS row_count  FROM `b_product` p  WHERE p.`Product_Status`=1 <R%= AND Category_ID IN (@@Category_ID@@)%R> <%= AND Product_New=@@Product_New@@%> <%= AND Product_Hot=@@Product_Hot@@%> <%= AND Product_Recommend=@@Product_Recommend@@%> <R%= AND (Product_Name_CH LIKE '%@@Product_Name@@%' OR Product_Name_HK LIKE '%@@Product_Name@@%')%R> ;
                 ]]>
       </SqlCommand>
     </SqlDefinition>

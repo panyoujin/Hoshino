@@ -255,9 +255,10 @@ namespace Hoshino.Repository
         public (IEnumerable<T>, int) GetProductIDList<T>(int Category_ID, string name, int IsNew, int IsHot, int IsRecommend, int pageindex, int pagesize)
         {
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            if (Category_ID >= 0)
+            if (Category_ID > 0)
             {
-                dic["Category_ID"] = Category_ID;
+                var idList = GetCategoryList(Category_ID);
+                dic["Category_ID"] = string.Join(',', idList);
             }
             if (!string.IsNullOrWhiteSpace(name))
             {
@@ -299,6 +300,31 @@ namespace Hoshino.Repository
             dic["LimitCount"] = ids.Count() * 4;
             var list = SQLHelperFactory.Instance.QueryMultiple<P, PR>("Select_b_product_List_by_ids", dic);
             return list;
+        }
+
+
+
+        /// <summary>
+        /// 获取列表
+        /// <summary>
+        public List<int> GetCategoryList(int categoryID)
+        {
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            var list = SQLHelperFactory.Instance.QueryForListByT<b_category_Entity>("Select_b_category_List", dic);
+            if (list == null || list.Count <= 0)
+            {
+                return null;
+            }
+            var idList = new List<int>();
+            idList.Add(categoryID);
+            foreach (var c in list)
+            {
+                if (idList.Contains(c.Parent_Category_ID.Value))
+                {
+                    idList.Add(c.Category_ID);
+                }
+            }
+            return idList;
         }
     }
 }
