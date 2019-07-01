@@ -52,7 +52,8 @@ namespace Hoshino.API.Controllers
                 {
                     String Tpath = Path.Combine("resources", DateTime.Now.ToString("yyyyMMddHH"));
                     string name = file.FileName;
-                    string FileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+                    //string FileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+                    string FileName = Guid.NewGuid().ToString("N").ToLower();
                     string FilePath = Path.Combine(baseDirectory, Tpath);
 
                     string fileType = System.IO.Path.GetExtension(name);
@@ -75,13 +76,15 @@ namespace Hoshino.API.Controllers
                     {
                         //缩略图
                         case "Thumbnail":
-                            FileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+                            //FileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+                            FileName = Guid.NewGuid().ToString("N").ToLower();
                             newFullFile = Path.Combine(FilePath, FileName + fileType);
                             Util.ImagePro.MakeThumNail(fullFile, newFullFile, 350, 350, "W");
                             break;
                         //详情图
                         case "Details":
-                            FileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+                            FileName = Guid.NewGuid().ToString("N").ToLower();
+                            //FileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
                             newFullFile = Path.Combine(FilePath, FileName + fileType);
                             Util.ImagePro.MakeThumNail(fullFile, newFullFile, 800, 800, "W");
                             break;
